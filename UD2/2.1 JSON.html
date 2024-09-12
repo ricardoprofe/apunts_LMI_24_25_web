@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>UD 2.1 JSON i YAML</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">UD 2.1 JSON i YAML</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#json" id="toc-json"><span
+class="toc-section-number">1</span> JSON</a>
+<ul>
+<li><a href="#sintaxi-json" id="toc-sintaxi-json"><span
+class="toc-section-number">1.1</span> Sintaxi JSON</a></li>
+<li><a href="#tipus-de-valors" id="toc-tipus-de-valors"><span
+class="toc-section-number">1.2</span> Tipus de valors</a>
+<ul>
+<li><a href="#array" id="toc-array"><span
+class="toc-section-number">1.2.1</span> Array</a></li>
+<li><a href="#objecte" id="toc-objecte"><span
+class="toc-section-number">1.2.2</span> Objecte</a></li>
+<li><a href="#strings" id="toc-strings"><span
+class="toc-section-number">1.2.3</span> Strings</a></li>
+<li><a href="#número" id="toc-número"><span
+class="toc-section-number">1.2.4</span> Número</a></li>
+<li><a href="#booleà" id="toc-booleà"><span
+class="toc-section-number">1.2.5</span> Booleà</a></li>
+<li><a href="#null" id="toc-null"><span
+class="toc-section-number">1.2.6</span> Null</a></li>
+</ul></li>
+<li><a href="#dades-json-emmagatzemades"
+id="toc-dades-json-emmagatzemades"><span
+class="toc-section-number">1.3</span> Dades JSON emmagatzemades</a></li>
+</ul></li>
+<li><a href="#yaml" id="toc-yaml"><span
+class="toc-section-number">2</span> YAML</a>
+<ul>
+<li><a href="#sintaxis-de-yaml" id="toc-sintaxis-de-yaml"><span
+class="toc-section-number">2.1</span> Sintaxis de YAML</a></li>
+<li><a href="#tipus-de-dades" id="toc-tipus-de-dades"><span
+class="toc-section-number">2.2</span> Tipus de dades</a>
+<ul>
+<li><a href="#valors-escalars" id="toc-valors-escalars"><span
+class="toc-section-number">2.2.1</span> Valors escalars</a></li>
+<li><a href="#objectes" id="toc-objectes"><span
+class="toc-section-number">2.2.2</span> Objectes</a></li>
+<li><a href="#seqüències" id="toc-seqüències"><span
+class="toc-section-number">2.2.3</span> Seqüències</a></li>
+<li><a href="#diccionaris" id="toc-diccionaris"><span
+class="toc-section-number">2.2.4</span> Diccionaris</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#referències" id="toc-referències"><span
+class="toc-section-number">3</span> Referències</a></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="json"><span
+            class="header-section-number">1</span> JSON</h1>
+            <p><strong>JSON</strong> és un format que emmagatzema
+            informació estructurada i s’utilitza principalment per
+            transferir dades entre un servidor i un client.</p>
+            <p>El fitxer és bàsicament una alternativa més simple i
+            lleugera a l’XML (llenguatge de marcatge estés, per les
+            seves sigles en anglès) que compta amb funcions
+            similars.</p>
+            <p>Els desenvolupadors usen JSON per treballar amb AJAX
+            (JavaScript asíncron i XML, per les sigles en anglès).
+            Aquests formats funcionen bé junts per aconseguir la càrrega
+            asincrònica de les dades emmagatzemades, el que significa
+            que un lloc web pot actualitzar el vostre informació sense
+            actualitzar la pàgina.</p>
+            <p>Aquest procés és més fàcil de fer amb JSON que amb
+            XML/RSS. I avui, com molts llocs web estan adoptant AJAX, el
+            fitxer .json s’ha tornat molt popular.</p>
+            <h2 data-number="1.1" id="sintaxi-json"><span
+            class="header-section-number">1.1</span> Sintaxi JSON</h2>
+            <p>Ja saps què és un fitxer JSON, ara has de saber que per
+            crear correctament un fitxer <strong>.json</strong>, has de
+            seguir la sintaxi correcta.</p>
+            <p>Hi ha dos elements centrals en un objecte JSON:
+            <strong>claus</strong> (<em>Keys</em>) i
+            <strong>valors</strong> (<em>Values</em>).</p>
+            <p>Les <strong>Keys</strong> han de ser cadenes de caràcters
+            (<em>strings</em>). Com el seu nom indica, aquestes contenen
+            una seqüència de caràcters envoltats de cometes.</p>
+            <p>Els <strong>Values</strong> són un tipus de dades JSON
+            vàlides. Podeu tenir la forma d’un array, objecte, cadena
+            (string), booleà, número o nul.</p>
+            <p>Un <strong>objecte</strong> JSON comença i acaba amb
+            <strong>claus</strong> <code>{}</code>. Podeu tenir dos o
+            més parells de claus/valor dins, amb una
+            <strong>coma</strong> per separar-los. Així mateix, cada key
+            és seguida per dos punts per distingir-la del valor.</p>
+            <p>Exemple:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;ciutat&quot;</span><span class="fu">:</span><span class="st">&quot;Nova York&quot;</span><span class="fu">,</span> <span class="dt">&quot;pais&quot;</span><span class="fu">:</span><span class="st">&quot;Estats Units&quot;</span><span class="fu">}</span></span></code></pre></div>
+            <p>Aquí tenim dos parells de clau/valor: ciutat i país són
+            les claus; Nova York i els Estats Units són els valors.</p>
+            <h2 data-number="1.2" id="tipus-de-valors"><span
+            class="header-section-number">1.2</span> Tipus de
+            valors</h2>
+            <p>Com s’esmentava abans, els valors contenen un tipus de
+            dades JSON vàlid, com:</p>
+            <h3 data-number="1.2.1" id="array"><span
+            class="header-section-number">1.2.1</span> Array</h3>
+            <p>Un <strong>array</strong> (conegut com a arranjament o
+            vector) és una <strong>col·lecció ordenada de
+            valors</strong>. Està envoltat de
+            <strong>claudàtors</strong> <code>[]</code> i cada valor
+            dins està separat per una coma.</p>
+            <p>Un valor d’un array pot contenir objectes JSON, el que
+            significa que utilitza el mateix concepte de parell
+            clau/valor. Per exemple:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;estudiants&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">&quot;Nom&quot;</span><span class="fu">:</span><span class="st">&quot;Tom&quot;</span><span class="fu">,</span> <span class="dt">&quot;Cognom&quot;</span><span class="fu">:</span><span class="st">&quot;Jackson&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">&quot;Nom&quot;</span><span class="fu">:</span><span class="st">&quot;Linda&quot;</span><span class="fu">,</span> <span class="dt">&quot;Cognom&quot;</span><span class="fu">:</span><span class="st">&quot;Garner&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">&quot;Nom&quot;</span><span class="fu">:</span><span class="st">&quot;Adam&quot;</span><span class="fu">,</span> <span class="dt">&quot;Cognom&quot;</span><span class="fu">:</span><span class="st">&quot;Cooper&quot;</span><span class="fu">}</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span><span class="fu">}</span></span></code></pre></div>
+            <p>En aquest cas, la informació entre claudàtors és un
+            array, que té tres objectes.</p>
+            <h3 data-number="1.2.2" id="objecte"><span
+            class="header-section-number">1.2.2</span> Objecte</h3>
+            <p>Un <strong>objecte</strong> conté una
+            <strong>clau</strong> i un <strong>valor</strong>. Hi ha dos
+            punts després de cada clau i una coma després de cada valor,
+            que també distingeix cada objecte. Tots dos estan entre
+            cometes.</p>
+            <p>L’objecte, com a valor, ha de seguir la mateixa regla que
+            un objecte comú. Exemple:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;empleats&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;nom&quot;</span><span class="fu">:</span><span class="st">&quot;Tom&quot;</span><span class="fu">,</span> <span class="dt">&quot;cognom&quot;</span><span class="fu">:</span><span class="st">&quot;Jackson&quot;</span><span class="fu">}}</span></span></code></pre></div>
+            <p>Ací, empleats és la clau, mentre que tot el que és dins
+            de les claus és l’objecte.</p>
+            <h3 data-number="1.2.3" id="strings"><span
+            class="header-section-number">1.2.3</span> Strings</h3>
+            <p>Un <strong>string</strong> (cadena de caràcters) és una
+            seqüència establerta de zero o més caràcters Unicode. Està
+            tancat entre <strong>dos cometes dobles</strong>.</p>
+            <p>Aquest exemple mostra que Tom és un string ja que és un
+            conjunt de caràcters dins una cometa doble:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;Nom&quot;</span><span class="fu">:</span> <span class="st">&quot;Tom&quot;</span><span class="fu">}</span></span></code></pre></div>
+            <h3 data-number="1.2.4" id="número"><span
+            class="header-section-number">1.2.4</span> Número</h3>
+            <p>El número a JSON ha de ser un nombre enter o un punt
+            flotant, com</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;Edat&quot;</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">}</span></span></code></pre></div>
+            <h3 data-number="1.2.5" id="booleà"><span
+            class="header-section-number">1.2.5</span> Booleà</h3>
+            <p>Pots utilitzar true o false com a valor, de la següent
+            manera:</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;Casat&quot;</span><span class="fu">:</span> <span class="kw">false</span> <span class="fu">}</span></span></code></pre></div>
+            <h3 data-number="1.2.6" id="null"><span
+            class="header-section-number">1.2.6</span> Null</h3>
+            <p>És per mostrar que no hi ha informació, valor nul.</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;Tipus de sang&quot;</span><span class="fu">:</span> <span class="kw">null</span> <span class="fu">}</span></span></code></pre></div>
+            <h2 data-number="1.3" id="dades-json-emmagatzemades"><span
+            class="header-section-number">1.3</span> Dades JSON
+            emmagatzemades</h2>
+            <p>Hi ha dues formes de emmagatzemar dades JSON:
+            <strong>objecte</strong> i <strong>vector</strong>. El
+            primer es veu així:</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;nom&quot;</span><span class="fu">:</span><span class="st">&quot;Tom&quot;</span><span class="fu">,</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;cognom&quot;</span><span class="fu">:</span><span class="st">&quot;Jackson&quot;</span><span class="fu">,</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;gènere&quot;</span><span class="fu">:</span><span class="st">&quot;masculí&quot;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <p>Les claus indiquen que és un objecte JSON. Té tres
+            parelles clau/valor que estan separades per comes. A cada
+            parella, tens les claus (nom, cognom i gènere) seguides de
+            dos punts per distingir-los dels valors (Tom, Jackson,
+            masculí). Els valors en aquest exemple són strings. Per això
+            també estan entre cometes, com les claus.</p>
+            <p>Un altre mètode per emmagatzemar dades és un
+            <strong>vector</strong> (array). Fes-li una ullada a aquest
+            exemple:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;nom&quot;</span><span class="fu">:</span><span class="st">&quot;Tom&quot;</span><span class="fu">,</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;cognom&quot;</span><span class="fu">:</span><span class="st">&quot;Jackson&quot;</span><span class="fu">,</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;gènere&quot;</span><span class="fu">:</span><span class="st">&quot;masculí&quot;</span><span class="fu">,</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;hobby&quot;</span><span class="fu">:</span><span class="ot">[</span><span class="st">&quot;futbol&quot;</span><span class="ot">,</span> <span class="st">&quot;lectura&quot;</span><span class="ot">,</span> <span class="st">&quot;natació&quot;</span><span class="ot">]</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <p>El que diferencia això del mètode anterior és el quart
+            parell clau/valor. Hobby és la clau i hi ha diversos valors
+            (futbol, lectura, natació) entre claudàtors, que representen
+            un vector.</p>
+            <p>Per a representar un document json que tinga
+            correspondència amb XML es necessita un element arrel, el
+            qual és un objecte el valor del qual és un array d’objectes.
+            Per exemple:</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;empleats&quot;</span><span class="fu">:</span><span class="ot">[</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">&quot;nom&quot;</span><span class="fu">:</span><span class="st">&quot;John&quot;</span><span class="fu">,</span> <span class="dt">&quot;cognom&quot;</span><span class="fu">:</span><span class="st">&quot;Doe&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">&quot;nom&quot;</span><span class="fu">:</span><span class="st">&quot;Anna&quot;</span><span class="fu">,</span> <span class="dt">&quot;cognom&quot;</span><span class="fu">:</span><span class="st">&quot;Smith&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">&quot;nom&quot;</span><span class="fu">:</span><span class="st">&quot;Peter&quot;</span><span class="fu">,</span> <span class="dt">&quot;cognom&quot;</span><span class="fu">:</span><span class="st">&quot;Jones&quot;</span><span class="fu">}</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span><span class="fu">}</span></span></code></pre></div>
+            <p><em>empleats</em> és l’arrel del document json i els 3
+            valors que conté estan dins d’un array. Aquest document es
+            podria representar en forma de llista així:</p>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Empleats:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>- Nom: John</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>- Cognom: Doe</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>- Nom: Anna</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>- Cognom: Smith</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>- Nom: Peter</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>- Cognom: Jones</span></code></pre></div>
+            <h1 data-number="2" id="yaml"><span
+            class="header-section-number">2</span> YAML</h1>
+            <p><strong>YAML</strong> significa <em>Ain’t Markup
+            Language</em>, és un format de dades per a serialització,
+            intercanvi de dades i arxius de configuració.</p>
+            <p>Aquests fitxers contenen dades de text organitzades en
+            una estructura jeràrquica.</p>
+            <p>Admet tipus escalars (enter, cadenes, flotant, booleà,
+            temps) i tipus de col·lecció (array, llista).</p>
+            <p>Punts importants:</p>
+            <ul>
+            <li>És <strong>sensible a majúscules i
+            minúscules</strong></li>
+            <li>L’extensió de fitxer és
+            <strong><code>.yaml</code></strong></li>
+            <li><strong>No es permeten les tabulacions</strong></li>
+            </ul>
+            <h2 data-number="2.1" id="sintaxis-de-yaml"><span
+            class="header-section-number">2.1</span> Sintaxis de
+            YAML</h2>
+            <p>Un document yaml conté diverses línies de text amb les
+            regles següents.</p>
+            <p>En un alt nivell, els documents yaml s’interpreten com a
+            mapes o diccionaris:</p>
+            <ul>
+            <li>La primera línia comença amb <code>---</code></li>
+            <li>Cada línia de text conté parelles de claus i valors</li>
+            <li>La clau i els valors estan separats per dos punts
+            (<code>:</code>) i espai</li>
+            <li>S’usa el <strong>sagnat a l’estil Python</strong> per a
+            indicar que un element està dins d’un altre.</li>
+            <li>Utilitzeu <strong>espais en compte de
+            tabulacions</strong> per al sagnat</li>
+            <li>Es poden escriure comentaris d’una línia començant per
+            <code>#</code></li>
+            </ul>
+            <p>Un mapa senzill de clau-valor:</p>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clau</span><span class="kw">:</span><span class="at"> valor</span></span></code></pre></div>
+            <h2 data-number="2.2" id="tipus-de-dades"><span
+            class="header-section-number">2.2</span> Tipus de dades</h2>
+            <p>YAML admet els tipus de dades següents:</p>
+            <table>
+            <colgroup>
+            <col style="width: 40%" />
+            <col style="width: 60%" />
+            </colgroup>
+            <thead>
+            <tr class="header">
+            <th>Tipus</th>
+            <th>Descripció</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td>String</td>
+            <td>Les cadenes es tanquen amb o sense cometes simples o
+            dobles</td>
+            </tr>
+            <tr class="even">
+            <td>Nombre</td>
+            <td>Pot ser nombres enters o valors flotants</td>
+            </tr>
+            <tr class="odd">
+            <td>Booleà</td>
+            <td>Accepta <code>true</code> o <code>false</code></td>
+            </tr>
+            <tr class="even">
+            <td>Seqüència</td>
+            <td>Admet array o llista</td>
+            </tr>
+            <tr class="odd">
+            <td>Set</td>
+            <td>Set emmagatzema els elements no ordenats sense
+            duplicats</td>
+            </tr>
+            <tr class="even">
+            <td>Map</td>
+            <td>Els mapes emmagatzemen parelles clau-valor com ara un
+            hash map</td>
+            </tr>
+            <tr class="odd">
+            <td>Binari</td>
+            <td>Dades binàries de cadenes octals, imatges, fitxers</td>
+            </tr>
+            <tr class="even">
+            <td>Timestamp</td>
+            <td>Marca de temps</td>
+            </tr>
+            </tbody>
+            </table>
+            <h3 data-number="2.2.1" id="valors-escalars"><span
+            class="header-section-number">2.2.1</span> Valors
+            escalars</h3>
+            <p>Els escalars són <strong>nombres enters</strong> o
+            <strong>valors flotants</strong>, <strong>cadenes</strong> i
+            <strong>valors booleans</strong>. Les cadenes es poden
+            tancar amb cometes simples, dobles o sense cometes:</p>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">valor</span><span class="kw">:</span><span class="at"> </span><span class="dv">11</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pi</span><span class="kw">:</span><span class="at"> </span><span class="fl">3.14</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">isEnabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">strvalue1</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;valor de cadena1&#39;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">strvalue2</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;valor de cadena2&quot;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">strvalue3</span><span class="kw">:</span><span class="at"> valor de cadena3</span></span></code></pre></div>
+            <h3 data-number="2.2.2" id="objectes"><span
+            class="header-section-number">2.2.2</span> Objectes</h3>
+            <p>Recordem com és un objecte en JSON:</p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;nom&quot;</span><span class="er">:</span> <span class="st">&quot;Miquel Sanchis&quot;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <p>La seua representació en YAML seria:</p>
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nom</span><span class="kw">:</span><span class="at"> Miquel Sanchis</span></span></code></pre></div>
+            <h3 data-number="2.2.3" id="seqüències"><span
+            class="header-section-number">2.2.3</span> Seqüències</h3>
+            <p>Un <strong>array</strong> és un grup de valors similars
+            amb un sol nom. En YAML, un array representa una única clau
+            assignada a diversos valors. Cada valor comença amb un
+            guionet <code>-</code> seguit d’espai:</p>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clau1</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> valor1</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> valor2</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> valor3</span></span></code></pre></div>
+            <p>Es pot representar en una línia tancant els valors entre
+            claudàtors <code>[]</code>:</p>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clau1</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">valor1</span><span class="kw">,</span><span class="at">valor2</span><span class="kw">,</span><span class="at">valor3</span><span class="kw">]</span></span></code></pre></div>
+            <p>El que també es pot representar en vàries línies:</p>
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clau1</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">valor1</span><span class="kw">,</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="at">   valor2</span><span class="kw">,</span><span class="at">valor3</span><span class="kw">]</span></span></code></pre></div>
+            <p>La representació en JSON seria:</p>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;clau1&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;valor1&quot;</span><span class="ot">,</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;valor2&quot;</span><span class="ot">,</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;valor3&quot;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span> </span></code></pre></div>
+            <p>Els arrays també es poden representar sense clau:</p>
+            <div class="sourceCode" id="cb20"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">un</span><span class="kw">,</span><span class="at"> dos</span><span class="kw">,</span><span class="at"> tres</span><span class="kw">,</span><span class="at"> quatre</span><span class="kw">]</span></span></code></pre></div>
+            <div class="sourceCode" id="cb21"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> un</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> dos</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> tres</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> quatre</span></span></code></pre></div>
+            <p>En JSON seria:</p>
+            <div class="sourceCode" id="cb22"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;un&quot;</span><span class="ot">,</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;dos&quot;</span><span class="ot">,</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;tres&quot;</span><span class="ot">,</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;quatre&quot;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div>
+            <p>Més exemples:</p>
+            <div class="sourceCode" id="cb23"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Array de nombres enters</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">numbers</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="dv">1</span><span class="kw">,</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="dv">2</span><span class="kw">,</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="dv">3</span><span class="kw">,</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="dv">4</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="kw">]</span></span></code></pre></div>
+            <div class="sourceCode" id="cb24"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Array de nombres enters i decimals</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">numbers</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fl">1.5</span><span class="kw">,</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fl">2.9</span><span class="kw">,</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="dv">3</span><span class="kw">,</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="dv">4</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="kw">]</span></span></code></pre></div>
+            <p>Per a representar <strong>arrays d’arrays</strong>, o
+            <strong>arrays multidimensionals</strong>, emprem la notació
+            indentada:</p>
+            <div class="sourceCode" id="cb25"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">estudiants</span><span class="kw">:</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">213</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">nom</span><span class="kw">:</span><span class="at"> Franc</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dades</span><span class="kw">:</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">estudis</span><span class="kw">:</span><span class="at"> English</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">estudi_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">edat</span><span class="kw">:</span><span class="at"> </span><span class="dv">23</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">nacionalitat</span><span class="kw">:</span><span class="at"> USA</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">codi</span><span class="kw">:</span><span class="at"> </span><span class="dv">97845</span></span></code></pre></div>
+            <p>L’equivalent en JSON seria:</p>
+            <div class="sourceCode" id="cb26"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;estudiants&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">213</span><span class="fu">,</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;nom&quot;</span><span class="fu">:</span> <span class="st">&quot;Franc&quot;</span><span class="fu">,</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;dades&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&quot;estudis&quot;</span><span class="fu">:</span> <span class="st">&quot;English&quot;</span><span class="fu">,</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&quot;estudi_id&quot;</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&quot;edat&quot;</span><span class="fu">:</span> <span class="dv">23</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&quot;nacionalitat&quot;</span><span class="fu">:</span> <span class="st">&quot;USA&quot;</span><span class="fu">,</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&quot;codi&quot;</span><span class="fu">:</span> <span class="dv">97845</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <p>Un <strong>array d’objectes</strong> conté una
+            <strong>llista d’objectes</strong> (un objecte conté parells
+            clau-valor):</p>
+            <div class="sourceCode" id="cb27"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alumnes</span><span class="kw">:</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="fu">nom</span><span class="kw">:</span><span class="at"> Franc</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="fu">nom</span><span class="kw">:</span><span class="at"> Mara</span></span></code></pre></div>
+            <p>El que en JSON seria:</p>
+            <div class="sourceCode" id="cb28"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;alumnes&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;nom&quot;</span><span class="fu">:</span> <span class="st">&quot;Franc&quot;</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;nom&quot;</span><span class="fu">:</span> <span class="st">&quot;Mara&quot;</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <p>Es poden niuar arrays dins d’objectes així com objectes
+            dins d’arrays:</p>
+            <div class="sourceCode" id="cb29"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alumnes</span><span class="kw">:</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="fu">nom</span><span class="kw">:</span><span class="at"> Franc</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="fu">assignatures</span><span class="kw">:</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> Programació</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> Matemàtiques</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="fu">nom</span><span class="kw">:</span><span class="at"> Mara</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="fu">assignatures</span><span class="kw">:</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> Estructura de computadors</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> Programació</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> Física</span></span></code></pre></div>
+            <p>EL mateix exemple en JSON:</p>
+            <div class="sourceCode" id="cb30"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;alumnes&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;nom&quot;</span><span class="fu">:</span> <span class="st">&quot;Franc&quot;</span><span class="fu">,</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;assignatures&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Programació&quot;</span><span class="ot">,</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Matemàtiques&quot;</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;nom&quot;</span><span class="fu">:</span> <span class="st">&quot;Mara&quot;</span><span class="fu">,</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;assignatures&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Estructura de computadors&quot;</span><span class="ot">,</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Programació&quot;</span><span class="ot">,</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Física&quot;</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <h3 data-number="2.2.4" id="diccionaris"><span
+            class="header-section-number">2.2.4</span> Diccionaris</h3>
+            <p>Un diccionari conté parelles clau-valor.</p>
+            <p>Un diccionari en Yaml es pot representar en dues
+            sintaxis:</p>
+            <ul>
+            <li>Mapatge fluid</li>
+            <li>Mapatge de blocs</li>
+            </ul>
+            <p>En el <strong>mapatge fluid</strong>, les parelles de
+            clau i valor estan separades per una coma i totes les
+            parelles s’inclouen entre claus <code>{}</code>:</p>
+            <div class="sourceCode" id="cb31"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diccionari</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mysqldatabase</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="fu">hostname</span><span class="kw">:</span><span class="at"> localhost</span><span class="kw">,</span><span class="at"> </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="dv">3012</span><span class="kw">,</span><span class="at"> </span><span class="fu">username</span><span class="kw">:</span><span class="at"> root</span><span class="kw">,</span><span class="at"> </span><span class="fu">password</span><span class="kw">:</span><span class="at"> root</span><span class="kw">}</span></span></code></pre></div>
+            <p>En el <strong>mapatge de blocs</strong>, cada parella
+            clau-valor es representa en una línia amb indentació:</p>
+            <div class="sourceCode" id="cb32"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diccionari</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mysqldatabase</span><span class="kw">:</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hostname</span><span class="kw">:</span><span class="at"> localhost</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="dv">3012</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">username</span><span class="kw">:</span><span class="at"> root</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">password</span><span class="kw">:</span><span class="at"> root</span></span></code></pre></div>
+            <p>L’equivalent en JSON:</p>
+            <div class="sourceCode" id="cb33"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;mysqldatabase&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;hostname&quot;</span><span class="fu">:</span> <span class="st">&quot;localhost&quot;</span><span class="fu">,</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;port&quot;</span><span class="fu">:</span> <span class="dv">3012</span><span class="fu">,</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;username&quot;</span><span class="fu">:</span> <span class="st">&quot;root&quot;</span><span class="fu">,</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;password&quot;</span><span class="fu">:</span> <span class="st">&quot;root&quot;</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <h1 data-number="3" id="referències"><span
+            class="header-section-number">3</span> Referències</h1>
+            <ul>
+            <li><a
+            href="https://www.json.org/json-en.html">Json.org</a></li>
+            <li><a
+            href="https://www.w3schools.com/js/js_json_intro.asp">JSON
+            W3Schools</a></li>
+            <li><a
+            href="https://www.w3schools.io/file/yaml-introduction/">YAML
+            Tutorial</a></li>
+            </ul>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

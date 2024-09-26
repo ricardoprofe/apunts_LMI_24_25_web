@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>UD 2.2 XML</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">UD 2.2 XML</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a
+href="#ud-2.-llenguatges-per-a-emmagatzematge-i-transmissió-dinformació.-xml"
+id="toc-ud-2.-llenguatges-per-a-emmagatzematge-i-transmissió-dinformació.-xml"><span
+class="toc-section-number">1</span> UD 2. LLENGUATGES PER A
+EMMAGATZEMATGE I TRANSMISSIÓ D’INFORMACIÓ. XML</a>
+<ul>
+<li><a href="#introducció.-xml" id="toc-introducció.-xml"><span
+class="toc-section-number">1.1</span> INTRODUCCIÓ. XML</a>
+<ul>
+<li><a href="#llenguatges-basats-en-xml"
+id="toc-llenguatges-basats-en-xml"><span
+class="toc-section-number">1.1.1</span> Llenguatges basats en
+XML</a></li>
+<li><a href="#tecnologies-relacionades-amb-xml"
+id="toc-tecnologies-relacionades-amb-xml"><span
+class="toc-section-number">1.1.2</span> Tecnologies relacionades amb
+XML</a></li>
+</ul></li>
+<li><a href="#estructura-xml" id="toc-estructura-xml"><span
+class="toc-section-number">1.2</span> Estructura XML</a>
+<ul>
+<li><a href="#qüestions-bàsiques" id="toc-qüestions-bàsiques"><span
+class="toc-section-number">1.2.1</span> Qüestions bàsiques</a></li>
+<li><a href="#estructura-dun-document-xml"
+id="toc-estructura-dun-document-xml"><span
+class="toc-section-number">1.2.2</span> Estructura d’un document
+XML</a></li>
+<li><a href="#regles-per-als-noms" id="toc-regles-per-als-noms"><span
+class="toc-section-number">1.2.3</span> Regles per als noms</a></li>
+<li><a href="#elements-del-pròleg" id="toc-elements-del-pròleg"><span
+class="toc-section-number">1.2.4</span> Elements del pròleg</a></li>
+<li><a href="#elements-del-document"
+id="toc-elements-del-document"><span
+class="toc-section-number">1.2.5</span> Elements del document</a></li>
+<li><a href="#jerarquies-en-xml" id="toc-jerarquies-en-xml"><span
+class="toc-section-number">1.2.6</span> Jerarquies en XML</a></li>
+</ul></li>
+<li><a href="#documents-ben-formats"
+id="toc-documents-ben-formats"><span
+class="toc-section-number">1.3</span> Documents ben formats</a></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1"
+            id="ud-2.-llenguatges-per-a-emmagatzematge-i-transmissió-dinformació.-xml"><span
+            class="header-section-number">1</span> UD 2. LLENGUATGES PER
+            A EMMAGATZEMATGE I TRANSMISSIÓ D’INFORMACIÓ. XML</h1>
+            <h2 data-number="1.1" id="introducció.-xml"><span
+            class="header-section-number">1.1</span> INTRODUCCIÓ.
+            XML</h2>
+            <p>XML, de l’anglès eXtensible Markup Language («llenguatge
+            de marques extensible»), és un metallenguatge extensible,
+            d’etiquetes, desenvolupat pel World Wide Web Consortium
+            (W3C). És una simplificació i adaptació de SGML, i permet de
+            definir la gramàtica de llenguatges específics (de la
+            mateixa manera que HTML és, alhora, un llenguatge definit
+            per SGML).</p>
+            <p>XML no és realment un llenguatge en particular, sinó una
+            manera de definir llenguatges per a diferents necessitats.
+            Es proposa com un estàndard per a l’intercanvi d’informació
+            estructurada entre diferents plataformes. Es pot utilitzar
+            per a bases de dades, editors de text, fulls de càlcul i per
+            moltes altres aplicacions diverses.</p>
+            <p>En crear XML es van plantejar aquests objectius:</p>
+            <ol type="1">
+            <li>Devia ser similar a HTML (de fet es basa en el
+            llenguatge SGML base per al format HTML)</li>
+            <li>Devia ser extensible, és a dir que sigui possible
+            afegir-ne de noves etiquetes sense problemes. Aquesta és la
+            base del llenguatge XML.</li>
+            <li>Devia tenir unes regles concises i fàcils, a més
+            d’estrictes.</li>
+            <li>Devia ser fàcil d’implantar en tot tipus de sistemes.
+            XML neix amb una vocació multiplataforma, com a base
+            d’intercanvi d’informació entre sistemes de tota mena.</li>
+            <li>Havia de ser fàcil de llegir pels humans i fàcil crear
+            processadors XML, anomenats parsers (un processador o
+            analitzador sintàctic, no només pot comprovar si els nostres
+            documents estan ben formats o són vàlids, sinó que també
+            podem incorporar-los a les nostres aplicacions, de manera
+            que aquestes puguin manipular i treballar amb documents
+            XML)</li>
+            </ol>
+            <p>D’aquesta manera, XML (com ja va fer SGML) és un
+            llenguatge que permet especificar altres llenguatges.
+            Entenent com a llenguatges en aquest cas, el conjunt
+            d’etiquetes es poden utilitzar en un document; no només
+            quines etiquetes sinó en quina ordre i de quina manera es
+            poden fer servir.</p>
+            <h3 data-number="1.1.1" id="llenguatges-basats-en-xml"><span
+            class="header-section-number">1.1.1</span> Llenguatges
+            basats en XML</h3>
+            <p>Alguns dels llenguatges estàndard de marcatge basats en
+            XML són:</p>
+            <ul>
+            <li><strong>RSS</strong>. (Really Simple Syndication, encara
+            que hi ha altres interpretacions dels acrònims) Per produir
+            continguts sindicables, s’utilitza fonamentalment per
+            produir notícies. És una de les aplicacions XML més
+            utilitzada.</li>
+            <li><strong>Atom</strong>. Format semblant a l’anterior,
+            pensat també per distribuir informació des d’una web. Moltes
+            vegades complementa RSS</li>
+            <li><strong>ePUB</strong>. Format de llibre digital que ha
+            esdevingut un estàndard de facto per la gran implantació que
+            està tenint en tots els dispositius de lectura digitals. En
+            realitat és un fitxer comprimit (ZIP) que conté tres
+            documents XML que són els que especifiquen l’estructura i el
+            contingut del document.</li>
+            <li><strong>SOAP</strong>. Simple Object Access Protocol.
+            Protocol estàndard de comunicació entre objectes utilitzat
+            per comunicar amb Serveis Web.</li>
+            <li><strong>SVG</strong>. Scalable Vector Graphics, gràfics
+            de vectors escalables. Permet definir imatges vectorials
+            pensades per a ser publicades a una pàgina web.</li>
+            <li><strong>XHTML</strong>. Versió del llenguatge de creació
+            de pàgines web, HTML, que és compatible amb les normes
+            XML.</li>
+            </ul>
+            <h3 data-number="1.1.2"
+            id="tecnologies-relacionades-amb-xml"><span
+            class="header-section-number">1.1.2</span> Tecnologies
+            relacionades amb XML</h3>
+            <p>XML té un gran nombre de tecnologies per donar
+            funcionalitat, presentació o integració amb altres
+            llenguatges. Les més importants són:</p>
+            <ul>
+            <li><strong>DTD</strong>. Document Type Definition,
+            definició de tipus de document. És un llenguatge que permet
+            especificar documents les regles dels quals han de complir
+            els documents XML als quals s’associïn. És a dir, permet
+            crear documents de validació per a fitxers XML.</li>
+            <li><strong>XML Schema</strong>. La funció que compleix
+            aquesta tecnologia és la mateixa que l’anterior, la
+            diferència és que els documents s XML Schema tenen una
+            sintaxi 100% XML, per la qual cosa és un format orientat a
+            suplir l’anterior.</li>
+            <li><strong>Namespacing</strong>, espais de noms. Permet
+            aconseguir noms d’elements que no tenen ambigüitat: és a dir
+            noms únics dins![ref2] dels documents XML.</li>
+            <li><strong>XPath</strong>. Llenguatge de consulta que
+            permet seleccionar o accedir a parts del document XML.</li>
+            <li><strong>CSS</strong>. Cascade StyleSheet. Fulles d´estil
+            en cascada. Permeten donar format als documents XML o
+            HTML.</li>
+            <li><strong>XSLT</strong>. Serveix per al mateix que CSS,
+            donar format a un document XML. Té moltes més possibilitats
+            que el CSS.</li>
+            <li><strong>XQuery</strong>. Permet consultar dades dels
+            documents XML, manejant-ho com si fos una base de
+            dades.</li>
+            <li><strong>DOM</strong>. Document Object Model, permet
+            accedir a l’estructura jeràrquica del document, normalment
+            per utilitzar-la dins un llenguatge de programació</li>
+            </ul>
+            <figure>
+            <img
+            src="img/Aspose.Words.e271c845-ab65-4f74-a98f-a71dd105dbe5.009.png"
+            alt="Tecnologies XML" />
+            <figcaption aria-hidden="true">Tecnologies XML</figcaption>
+            </figure>
+            <h2 data-number="1.2" id="estructura-xml"><span
+            class="header-section-number">1.2</span> Estructura XML</h2>
+            <h3 data-number="1.2.1" id="qüestions-bàsiques"><span
+            class="header-section-number">1.2.1</span> Qüestions
+            bàsiques</h3>
+            <p>Els documents XML en definitiva són documents de
+            llenguatges de marques, on hi ha text normal i
+            <strong>etiquetes</strong> (marques) que permeten
+            classificar aquest text indicant-ne el significat.</p>
+            <p>Les etiquetes en XML es decideixen a voluntat; no hi ha
+            una sèrie d’etiquetes que es poden utilitzar; de fet, la
+            funció d’XML és definir tipus de documents etiquetats.</p>
+            <p>Exemple d’XML:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span>&gt;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> &lt;<span class="kw">nom</span>&gt;Jorge&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> &lt;<span class="kw">cognom</span>&gt;Sánchez&lt;/<span class="kw">cognom</span>&gt;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">persona</span>&gt;</span></code></pre></div>
+            <p>El codi és similar a HTML, només que les etiquetes es
+            decideixen segons ens interesse. Però el funcionament és el
+            mateix:</p>
+            <ul>
+            <li>Les etiquetes tenen tancament que s’indica amb el signe
+            <code>/</code> abans del nom de l’etiqueta</li>
+            <li>Les etiquetes afecten el text (i altres etiquetes) que
+            estan entre l’obertura i el tancament</li>
+            </ul>
+            <p>D’altra banda, XML anomena <strong>element</strong> a les
+            etiquetes; més ben dit, element seria tant l’etiqueta com
+            allò que conté.</p>
+            <p>En qualsevol cas, les normes són:</p>
+            <ul>
+            <li><p>Les etiquetes serveixen per indicar elements. El nom
+            de l’etiqueta s’indica entre els símbols <code>&lt;</code> i
+            <code>&gt;</code></p></li>
+            <li><p>Les etiquetes es tanquen indicant <code>&lt;/</code>
+            seguit del nom de l’etiqueta que s’està tancant i
+            <code>&gt;</code></p></li>
+            <li><p>XML ​​distingeix entre majúscules i minúscules sent
+            bona pràctica escriure les etiquetes en
+            <strong>minúscules</strong>. Tampoc es recomana usar accents
+            ni caràcters no ASCII.</p></li>
+            <li><p>Es poden espaiar i tabular les etiquetes a voluntat.
+            És bona pràctica que un element intern a un altre aparegui
+            al codi amb un sagnat major (per això a l’exemple anterior
+            nom, que és dins de persona, apareix sagnat).</p></li>
+            <li><p>Els comentaris al codi s’inicien amb els símbols
+            <code>&lt;!--</code> i acaben amb
+            <code>--&gt;</code></p></li>
+            <li><p>Segons la W3C (organisme d’estandardització d’XML),
+            el text en un document XML ha d’estar codificat a Unicode
+            (normalment <strong>UTF-8</strong>)</p></li>
+            </ul>
+            <h3 data-number="1.2.2"
+            id="estructura-dun-document-xml"><span
+            class="header-section-number">1.2.2</span> Estructura d’un
+            document XML</h3>
+            <p>Els documents XML es divideixen en:</p>
+            <ul>
+            <li><p><strong>Pròleg</strong>. Es tracta de la primera zona
+            del document i serveix per descriure quin tipus de document
+            és. És similar a l’apartat <strong>head</strong> de
+            <strong>HTML</strong>. Pot contenir</p></li>
+            <li><p><strong>Declaració del document</strong>, que permet
+            indicar el tipus de document XML que és.</p>
+            <ul>
+            <li><strong>Instruccions</strong> per al processament del
+            document</li>
+            <li><strong>Comentaris</strong></li>
+            <li><strong>Indicació del document DTD, XSD o Relax
+            NG</strong> per comprovar si és vàlid segons les regles
+            imposades per aquest document.</li>
+            <li>Indicació d’altres documents que afecten l’actual, com
+            ara els documents <strong>XSLT</strong> que permeten
+            especificar la manera com el document s’ha de mostrar a la
+            pantalla.</li>
+            </ul></li>
+            <li><p><strong>Element arrel</strong>. Tot el contingut del
+            document ha d’estar inclòs a l’anomenat element arrel, es
+            tracta d’un element obligatori que s’obre després del pròleg
+            i cal tancar just al final. D’aquesta manera, qualsevol
+            element està dins de l’element arrel. Conté:</p>
+            <ul>
+            <li><strong>Més elements</strong></li>
+            <li><strong>Atributs</strong></li>
+            <li><strong>Text normal</strong></li>
+            <li><strong>Entitats</strong></li>
+            <li><strong>Comentaris</strong></li>
+            </ul></li>
+            </ul>
+            <h3 data-number="1.2.3" id="regles-per-als-noms"><span
+            class="header-section-number">1.2.3</span> Regles per als
+            noms</h3>
+            <p>A XML els elements i atributs tenen un nom (més
+            correctament anomenat <strong>identificador</strong>), el
+            qual ha de complir aquestes regles:</p>
+            <ul>
+            <li>En XML es distingeix entre majúscules i minúscules, per
+            la qual cosa cal anar amb compte en utilitzar el nom des
+            d’un altre punt del document.</li>
+            <li>Han de començar per una lletra, seguit de més lletres,
+            números o el signe de subratllat o guió baix.</li>
+            <li>No poden començar amb la paraula XML ni en majúscules ni
+            en minúscules ni a cap combinació de majúscules ni
+            minúscules.</li>
+            </ul>
+            <h3 data-number="1.2.4" id="elements-del-pròleg"><span
+            class="header-section-number">1.2.4</span> Elements del
+            pròleg</h3>
+            <h4 data-number="1.2.4.1" id="declaració-xml"><span
+            class="header-section-number">1.2.4.1</span> Declaració
+            XML</h4>
+            <p>Es tracta de la primera línia d’un document XML i indica
+            el tipus de document XML que és (i així poder validar-lo).
+            En realitat, és opcional, però és molt recomanable. És:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span></code></pre></div>
+            <p>Indica la versió XML del document i la codificació (utf-8
+            és la habitual). Hi ha més versions de xml, com la 1.1 que
+            permet utilitzar caràcters no ASCII estàndard en les
+            definicions de les etiquetes. Nosaltres ens quedem amb la
+            1.0 que val per al 99% dels casos.</p>
+            <h4 data-number="1.2.4.2"
+            id="instruccions-de-processament"><span
+            class="header-section-number">1.2.4.2</span> Instruccions de
+            processament</h4>
+            <p>Un document XML pot incloure instruccions d’aquest tipus
+            que indica un document per validar l’XML, donar-li format, …
+            o altres funcions. Per exemple:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml-stylesheet</span> type=&quot;text/xsl&quot; href=&quot;stylesheet.xsl&quot;<span class="fu">?&gt;</span></span></code></pre></div>
+            <p>Aquesta instrucció associa un document xsl al document
+            XML per poder donar-li un format de sortida (especifiqueu la
+            manera com les dades es mostren per pantalla per
+            exemple).</p>
+            <h3 data-number="1.2.5" id="elements-del-document"><span
+            class="header-section-number">1.2.5</span> Elements del
+            document</h3>
+            <h4 data-number="1.2.5.1" id="comentaris"><span
+            class="header-section-number">1.2.5.1</span> Comentaris</h4>
+            <p>Com s’ha indicat abans, comencen amb el símbol
+            <strong><code>&lt;!--</code></strong> i acaben amb
+            <strong><code>--&gt;</code></strong>. Dins hi pot haver
+            qualsevol text que s’utilitza amb fins explicatius o de
+            documentació del codi.</p>
+            <p>Els comentaris no es poden ficar dins de l’etiqueta d’un
+            element, ni tampoc poden contenir etiquetes tant d’obertura
+            com de tancament.</p>
+            <h4 data-number="1.2.5.2" id="elements"><span
+            class="header-section-number">1.2.5.2</span> Elements</h4>
+            <p>Són la base del document XML. Serveixen per donar
+            significat al text o altres elements o també per definir
+            relacions entre diferents elements i dades.</p>
+            <p>Hi ha una confusió entre allò que és un element i allò
+            que és una etiqueta. En aquest cas per exemple:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">nom</span>&gt;Joan&lt;/<span class="kw">nom</span>&gt;</span></code></pre></div>
+            <ul>
+            <li><code>&lt;nom&gt;</code> És una <strong>etiqueta
+            d’obertura</strong></li>
+            <li><code>&lt;/nom&gt;</code> És una <strong>etiqueta de
+            tancament</strong></li>
+            <li><code>&lt;nom&gt;Joan&lt;/nom&gt;</code> És un
+            <strong>element</strong> (l’element nom)</li>
+            <li><code>Joan</code> és el <strong>contingut</strong> de
+            l’element</li>
+            </ul>
+            <p>El contingut d’un element pot contenir només text:</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">descripció</span>&gt;</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    Producte amb preu rebaixat a causa de la seva escassa demanda</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">descripció</span>&gt;</span></code></pre></div>
+            <p>O pot contenir altres elements (o totes dues coses).
+            L’element <em>persona</em> consta d’un element <em>nom</em>
+            i un altre <em>cognom</em>.</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span>&gt;</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">nom</span>&gt;Jorge&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">cognom</span>&gt;Sánchez&lt;/<span class="kw">cognom</span>&gt;</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">persona</span>&gt;</span></code></pre></div>
+            <p>Cal obrir i tancar els elements amb l’etiqueta que
+            serveix per definir l’element; sempre cal tancar l’últim
+            element que es va obrir.</p>
+            <p><strong>Això és un error</strong>:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span>&gt;</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">nom</span>&gt;Jorge&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">cognom</span>&gt;Sánchez&lt;/<span class="kw">persona</span>&gt;</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">cognom</span>&gt;</span></code></pre></div>
+            <p>Hi pot haver fins i tot elements buits:</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">casat</span>&gt;&lt;/<span class="kw">casat</span>&gt;</span></code></pre></div>
+            <p>En aquest cas es poden tancar a la pròpia etiqueta
+            d’obertura:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">casat</span> /&gt;</span></code></pre></div>
+            <h4 data-number="1.2.5.3" id="atributs"><span
+            class="header-section-number">1.2.5.3</span> Atributs</h4>
+            <p>Es defineixen dins les etiquetes d’obertura dels
+            elements. Se n’indica el nom seguit del signe <code>=</code>
+            i del valor (entre cometes) que es dóna a l’atribut.
+            Exemple:</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span><span class="ot"> complexitat=</span><span class="st">&quot;alta&quot;</span>&gt;</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">nom</span>&gt;Joan&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">cognom</span>&gt;López&lt;/<span class="kw">cognom</span>&gt;</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">persona</span>&gt;</span></code></pre></div>
+            <p>Un element pot contenir diversos atributs:</p>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span><span class="ot"> privadesa=</span><span class="st">&quot;alta&quot;</span><span class="ot"> tipus=</span><span class="st">&quot;autor&quot;</span>&gt;</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">nom</span>&gt;Maria&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">cognom</span>&gt;García&lt;/<span class="kw">cognom</span>&gt;</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">persona</span>&gt;</span></code></pre></div>
+            <p>Un <strong>atribut</strong> és una informació
+            complementària associada a un element. Cada element pot
+            tenir una llista d’atributs associada, on l’ordre és
+            intranscendent però no poden aparèixer atributs
+            repetits.</p>
+            <p>Un atribut consisteix en una <strong>parella de nom i
+            valor</strong>, on el valor ha d’aparèixer tancat entre
+            <strong>cometes simples o dobles</strong>, seguint la
+            sintaxi següent:</p>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">element</span><span class="ot"> atribut1=</span><span class="st">&quot;valor1&quot;</span><span class="ot"> atribut2=</span><span class="st">&quot;valor2&quot;</span>&gt;</span></code></pre></div>
+            <p>Per exemple:</p>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">pes</span><span class="ot"> unitat=</span><span class="st">&quot;grams&quot;</span><span class="ot"> precisio=</span><span class="st">&quot;0,01&quot;</span>&gt;5,73&lt;/<span class="kw">pes</span>&gt;</span></code></pre></div>
+            <p>En dissenyar un document XML pot sorgir el dubte de quan
+            utilitzar elements i quan atributs.</p>
+            <p>L’exemple anterior, en un altre context, potser s’hauria
+            pensat formar-lo només per part d’elements, és a dir, amb
+            una estructura semblant a:</p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">ingredient</span>&gt;</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">tipus</span>&gt; tomàquets&lt;/<span class="kw">tipus</span>&gt;</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">pes</span>&gt; 5,73 &lt;/<span class="kw">pes</span>&gt;</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">unitat</span>&gt; grams &lt;/<span class="kw">gramos</span>&gt;</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">precision</span>&gt; 0,01 &lt;/<span class="kw">precision</span>&gt;</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">ingredient</span>&gt;</span></code></pre></div>
+            <p>En aquest cas és clar que és preferible la primera opció,
+            ja que sembla lògic que cada element pes inclogui com a
+            atributs la unitat de mesura i la precisió. En altres casos
+            és més dubtós.</p>
+            <p>Encara que no es pot donar un criteri vàlid per a tots
+            els casos sí que podem donar algunes pautes que ajudin a
+            prendre una decisió:</p>
+            <ul>
+            <li>Si la informació té una estructura interna, ha de ser un
+            element.</li>
+            <li>Si conté una gran quantitat d’informació, sembla més
+            adequat, un element.</li>
+            <li><strong>Podem fer el símil que un element és un
+            substantiu i un atribut un adjectiu</strong>.</li>
+            <li>Els mecanismes de processament i presentació de
+            documents permeten tenir millor control sobre els elements.
+            Per tant, aquella informació que tingui un processament o
+            presentació complexos ha de ser un element.</li>
+            </ul>
+            <p>Com a consell final, <strong>en cas de dubte, cal
+            utilitzar un element</strong>.</p>
+            <h4 data-number="1.2.5.4" id="text"><span
+            class="header-section-number">1.2.5.4</span> Text</h4>
+            <p>El text, com es va comentar abans, sempre està entre una
+            etiqueta d’obertura i una de tancament. Això vol dir que tot
+            text és part d’un element XML.</p>
+            <p>Es pot escriure qualsevol caràcter Unicode al text, però
+            no és vàlid utilitzar caràcters que podrien donar lloc a
+            confusió com els signes separadors <code>&lt;</code> i
+            <code>&gt;</code> per exemple</p>
+            <h4 data-number="1.2.5.5" id="cdata"><span
+            class="header-section-number">1.2.5.5</span> CDATA</h4>
+            <p>Hi ha la possibilitat de marcar text perquè no sigui
+            processat com a part de XML, això s’aconsegueix
+            col·locant-lo dins d’un element CDATA. Format:</p>
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>! [CDATA [ text no processable… ]]&gt;</span></code></pre></div>
+            <p>Això permet utilitzar els caràcters <code>&lt;</code> i
+            <code>&gt;</code> per exemple i no seran considerats
+            separadors d’etiquetes.</p>
+            <p>Exemple:</p>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">document</span>&gt;</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">titol</span>&gt;Prova&lt;/<span class="kw">titol</span>&gt;</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">exemple</span>&gt;</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="bn">&lt;![CDATA[</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>            En HTML la negreta s&#39;escriu: &lt;strong&gt;</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="bn">]]&gt;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">exemple</span>&gt;</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">document</span>&gt;</span></code></pre></div>
+            <p>A l’exemple, els símbols <code>&lt;</code> i
+            <code>&gt;</code> no es prenen com una etiqueta XML, sino
+            com a text normal.</p>
+            <p>Un altre ús de CDATA és col·locar dins aquest element
+            codi de llenguatges de scripts com
+            <strong>Javascript</strong> perquè no siguin interpretats
+            com a part d’XML.</p>
+            <h4 data-number="1.2.5.6" id="entitats"><span
+            class="header-section-number">1.2.5.6</span> Entitats</h4>
+            <p>Les entitats representen <strong>caràcters
+            individuals</strong>. S’utilitzen per poder representar
+            <strong>caràcters especials</strong> o bé <strong>caràcters
+            inexistents</strong> al teclat habitual. Es tracta de codis
+            que comencen amb el signe <code>&amp;</code> que segueix el
+            nom de l’entitat o el número Unicode del caràcter que volem
+            representar.</p>
+            <p>A XML hi ha definides cinc entitats:</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th>Entitat</th>
+            <th>Caràcter</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td><code>&amp;lt;</code></td>
+            <td>&lt;</td>
+            </tr>
+            <tr class="even">
+            <td><code>&amp;gt;</code></td>
+            <td>&gt;</td>
+            </tr>
+            <tr class="odd">
+            <td><code>&amp;amp;</code></td>
+            <td>&amp;</td>
+            </tr>
+            <tr class="even">
+            <td><code>&amp;quot;</code></td>
+            <td>”</td>
+            </tr>
+            <tr class="odd">
+            <td><code>&amp;apos;</code></td>
+            <td>‘</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>També podem representar caràcters mitjançant entitats amb
+            número. Per tant, el <code>&amp;#241;</code> representa la
+            lletra ñ (suposant que codifiquem en Unicode). El nombre pot
+            ser hexadecimal per exemple per a l’eñe de nou, seria
+            <code>&amp;#xF1;</code></p>
+            <h3 data-number="1.2.6" id="jerarquies-en-xml"><span
+            class="header-section-number">1.2.6</span> Jerarquies en
+            XML</h3>
+            <p>En aquest punt analitzarem com s’estructuren les dades en
+            un document XML. Quan hem de tractar amb grans quantitats
+            d’informació, o fins i tot quantitats no tan grans.</p>
+            <p>Usualment és millor agrupar-les en subtemes relacionats
+            en compte de tenir tota la informació en un únic gran grup.
+            Per exemple, aquest capítol està dividit en subtemes que se
+            subdivideixen en paràgrafs. Un formulari d’impostos es
+            divideix en subseccions al llarg de pàgines múltiples. Això
+            fa que la informació sigui més comprensible i també més
+            accessible.</p>
+            <p>Els desenvolupadors de programari han utilitzat aquest
+            paradigma durant molts anys, usant una estructura anomenada
+            <strong>model d’objecte</strong>. En aquest model d’objecte
+            tota la informació que s’està modelant se subdivideix en
+            diversos objectes i aquests, per la seva banda, s’agrupen en
+            una jerarquia.</p>
+            <p>XML també agrupa la informació a jerarquies. Els elements
+            dels nostres documents s’ordenen per mitjà de
+            <strong>relació pare/fill</strong> o
+            <strong>germà/germà</strong>. Aquests components s’anomenen
+            elements.</p>
+            <p>Considerem el nostre exemple <code>&lt;name&gt;</code>,
+            mostrat jeràrquicament:</p>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> &lt;name&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> &lt;first&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="st">&quot;John&quot;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> &lt;midle&gt;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="st">&quot;Fitzjerald Johansen&quot;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> &lt;last&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="st">&quot;Doe&quot;</span></span></code></pre></div>
+            <p><code>&lt;name&gt;</code> és pare de
+            <code>&lt;first&gt;</code>, que, per la seva banda, és fill
+            de <code>&lt;name&gt;</code>. <code>&lt;first&gt;</code>,
+            <code>&lt;midle&gt;</code> i <code>&lt;last&gt;</code> són
+            tots germans (és a dir, són tots fills de
+            <code>&lt;name&gt;</code>). Observar també que el text també
+            és fill d’un element. Per exemple “John” és fill de
+            <code>&lt;first&gt;</code>.</p>
+            <p>Aquesta estructura també s’anomena
+            <strong>arbre</strong>. Totes les parts de l’arbre que conté
+            <strong>fills</strong> s’anomenen <strong>branques</strong>,
+            mentre que les parts que no tenen fills s’anomenen
+            <strong>fulles</strong>.</p>
+            <p>Depenent del contingut dels elements es poden classificar
+            en:</p>
+            <ul>
+            <li>Elements amb <strong>contingut d’element</strong>.
+            Aquells que tenen fills que són alhora altres elements. Al
+            nostre exemple <code>&lt;name&gt;</code></li>
+            <li>Elements de <strong>contingut simple</strong>. Aquells
+            que només contenen text. En el nostre exemple
+            <code>&lt;first&gt;</code>, <code>&lt;midle&gt;</code> i
+            <code>&lt;last&gt;</code>.</li>
+            <li>Elements de <strong>contingut combinat</strong>. Quan
+            tenen tant text com altres elements.</li>
+            <li>En el nostre exemple no n’hi ha cap cas. Però, per
+            exemple:</li>
+            </ul>
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">doc</span>&gt;</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">parent</span>&gt;</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        This is some</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">em</span>&gt;text&lt;/<span class="kw">em</span>&gt;</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        in my element</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">parent</span>&gt;</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">doc</span>&gt;</span></code></pre></div>
+            <p>En aquest exemple, <code>&lt;parent&gt;</code> té tres
+            fills:</p>
+            <ul>
+            <li>Un fill de text <code>"this is some"</code></li>
+            <li>Un fill <code>&lt;em&gt;</code></li>
+            <li>Un altre fill de text <code>"in my element"</code></li>
+            </ul>
+            <p>Les relacions també es poden definir fent l’analogia de
+            l’arbre una mica més complexa. <code>&lt;doc&gt;</code> és
+            l’<strong>ancestre</strong> de <code>&lt;em&gt;</code>;
+            <code>&lt;em&gt;</code> és un <strong>descendent</strong> de
+            <code>&lt;doc&gt;</code>.</p>
+            <p>Després de comprendre les relacions jeràrquiques entre
+            els elements (i el text que conté), es tindrà una idea més
+            completa de la naturalesa d’XML. També estarà millor
+            preparat per treballar amb algunes de les altres tecnologies
+            relacionades amb XML, que fan un ús ampli d’aquest
+            paradigma.</p>
+            <p>Gràficament es representa de la següent manera:</p>
+            <figure>
+            <img
+            src="img/Aspose.Words.e271c845-ab65-4f74-a98f-a71dd105dbe5.010.jpeg"
+            alt="Jerarquia d’un document" />
+            <figcaption aria-hidden="true">Jerarquia d’un
+            document</figcaption>
+            </figure>
+            <h2 data-number="1.3" id="documents-ben-formats"><span
+            class="header-section-number">1.3</span> Documents ben
+            formats</h2>
+            <p>Sense la presència d’un DTD, no es pot comprovar la
+            validesa d’un document, només es pot comprovar si està ben
+            format. A continuació s’enumeren algunes regles que han de
+            complir un document perquè se’l considere <strong>ben
+            format</strong>:</p>
+            <ul>
+            <li>Dins del text comú no es poden utilitzar els símbols de
+            major (<code>&gt;</code>), menor (<code>&lt;</code>),
+            ampersand (<code>&amp;</code>) ni les cometes simples o
+            dobles. Cal utilitzar entitats o estar incloses en una
+            secció CDATA</li>
+            <li>En principi en el text normal, els símbols de separació
+            de caràcters com espais en blanc, tabuladors i salts de
+            línia, no es tenen en compte, s’ignoren però sí que és
+            possible que siguen significatius en alguns elements (si
+            així s’indica al seu document de validació). No tenir en
+            compte els espais, significa que en el text contingut en un
+            element encara que deixem 25 espais, s’entendrà que n’hem
+            deixat un de sol.</li>
+            <li>En qualsevol cas tots els caràcters escrits al document
+            XML formen part del mateix, serà una qüestió posterior si es
+            tenen en compte o no per presentar les dades del document
+            XML en pantalla o impressió.</li>
+            <li>Els elements han d’estar niuats adequadament, es tanquen
+            primer els últims elements oberts.</li>
+            <li>Els valors dels atributs s’han de tancar entre cometes
+            simples o dobles.</li>
+            <li>Tot element ha de tenir una etiqueta de fi o fer servir
+            l’etiqueta d’element buit.</li>
+            <li>El document ha de tindre un únic element arrel.</li>
+            <li>Tot text ha d’estar inclòs en un element.</li>
+            <li>Els noms dels elements comencen amb lletres i poden anar
+            seguits de lletres, números, guions o de punts (els guions i
+            els punts no són molt recomanables) Els noms dels elements
+            no poden començar amb el text XML tant en minúscules com a
+            majúscules o combinant ambdues.</li>
+            </ul>
+            <p>La comprovació que un document està ben format la podem
+            fer simplement amb el navegador. Si editem l’exemple 1 amb
+            un editor de text pla (bloc de notes, notepad, VS Code,
+            etc., ), sense la línia de DOCTYPE que és per cridar a la
+            validació, com veurem en el tema següent, i després ho obrim
+            amb un navegador (Firefox) visualitzem el resultat
+            següent:</p>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">identificació</span>&gt;</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">nom_complet</span>&gt;</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">nom</span>&gt; Pepe &lt;/<span class="kw">nom</span>&gt; </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">cognom1</span>&gt; González &lt;/<span class="kw">cognom1</span>&gt;</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">cognom2</span>&gt; Ribera &lt;/<span class="kw">cognom2</span>&gt;</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">nom_complet</span>&gt;</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">sobrenom</span>&gt; Pepito Grillo &lt;/<span class="kw">sobrenom</span>&gt;</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">identificacion</span>&gt;</span></code></pre></div>
+            <p><img
+            src="img/Aspose.Words.e271c845-ab65-4f74-a98f-a71dd105dbe5.011.png" /></p>
+            <p>Tot i això, si haguéssim comès qualsevol error, com
+            canviar el nom de tancament d’una etiqueta obtenim:</p>
+            <p><img
+            src="img/Aspose.Words.e271c845-ab65-4f74-a98f-a71dd105dbe5.012.png" /></p>
+            <p>Aquest tractament de visualització serà diferent a cada
+            navegador, fins i tot moltes vegades canvia duna versió a
+            una altra del mateix navegador. Per exemple, a l’Explorer 9
+            l’exemple correcte seria validat mostrant també l’estructura
+            del fitxer:</p>
+            <p><img
+            src="img/Aspose.Words.e271c845-ab65-4f74-a98f-a71dd105dbe5.013.png" /></p>
+            <p>Però en visualitzar l’exemple amb errors, simplement ens
+            visualitza el contingut de les etiquetes, sense donar més
+            explicació de l’error:</p>
+            <p><img
+            src="img/Aspose.Words.e271c845-ab65-4f74-a98f-a71dd105dbe5.014.png" /></p>
+            <p>Per tant, i per unificar criteris a partir d’ara ens
+            referirem sempre als resultats utilitzant Mozilla Firefox o
+            Chrome.</p>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

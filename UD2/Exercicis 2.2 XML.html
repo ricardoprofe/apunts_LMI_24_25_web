@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>Exercicis 2.2 JSON i YAML</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">Exercicis 2.2 JSON i YAML</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#exercicis-unitat-2.-xml-i"
+id="toc-exercicis-unitat-2.-xml-i"><span
+class="toc-section-number">1</span> EXERCICIS UNITAT 2. XML I</a>
+<ul>
+<li><a href="#exercici-1" id="toc-exercici-1"><span
+class="toc-section-number">1.1</span> Exercici 1</a></li>
+<li><a href="#exercici-2" id="toc-exercici-2"><span
+class="toc-section-number">1.2</span> Exercici 2</a></li>
+<li><a href="#exercici-3" id="toc-exercici-3"><span
+class="toc-section-number">1.3</span> Exercici 3</a></li>
+<li><a href="#exercici-4" id="toc-exercici-4"><span
+class="toc-section-number">1.4</span> Exercici 4</a></li>
+<li><a href="#exercici-5" id="toc-exercici-5"><span
+class="toc-section-number">1.5</span> Exercici 5</a></li>
+<li><a href="#exercici-6.-cotxes" id="toc-exercici-6.-cotxes"><span
+class="toc-section-number">1.6</span> Exercici 6. Cotxes</a></li>
+<li><a href="#exercici-7" id="toc-exercici-7"><span
+class="toc-section-number">1.7</span> Exercici 7</a></li>
+<li><a href="#exercici-8.-llibres" id="toc-exercici-8.-llibres"><span
+class="toc-section-number">1.8</span> Exercici 8. Llibres</a></li>
+<li><a href="#exercici-9-cd-música" id="toc-exercici-9-cd-música"><span
+class="toc-section-number">1.9</span> Exercici 9 CD música</a></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="exercicis-unitat-2.-xml-i"><span
+            class="header-section-number">1</span> EXERCICIS UNITAT 2.
+            XML I</h1>
+            <h2 data-number="1.1" id="exercici-1"><span
+            class="header-section-number">1.1</span> Exercici 1</h2>
+            <p>Copia el següent exemple en un document mitjançant un
+            editor de text (per exemple, Visual Studio Code). Desa’l amb
+            l’extensió .XML i obre’l amb un navegador.</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">nom</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">nom</span>&gt;Juan Martín&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">cognoms</span>&gt;Fernández Moreno de la Vega&lt;/<span class="kw">cognoms</span>&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">nom</span>&gt;</span></code></pre></div>
+            <h2 data-number="1.2" id="exercici-2"><span
+            class="header-section-number">1.2</span> Exercici 2</h2>
+            <p>Crea un document XML el text següent de manera que el
+            marcatge possibiliti les cerques d’informació segons els
+            camps següents: comanda, destinatari de la comanda, article
+            comanda, adreça de lliurament, data de lliurament. Utilitzar
+            un atribut per a la referència (“A2023”).</p>
+            <blockquote>
+            <p>Comanda per al senyor Juan Delgado Martínez. La comanda
+            està formada per una bicicleta A2023. A lliurar al carrer
+            Barco 4, tercer pis, lletra A, el dia 19-5-2000.</p>
+            </blockquote>
+            <h2 data-number="1.3" id="exercici-3"><span
+            class="header-section-number">1.3</span> Exercici 3</h2>
+            <p>Escriure un document XML que representi l’estructura i
+            les dades que es mostren al diagrama següent:</p>
+            <p><img src="images/ex2_2_2.png" /></p>
+            <p>Completar el contingut del document perquè el text
+            complet siga el següent (tres paràgrafs en total):</p>
+            <ul>
+            <li>Hola què tal?</li>
+            <li>Fa molt de temps que no escrius. A veure si crides i
+            quedem aviat.</li>
+            <li>Una salutació.</li>
+            </ul>
+            <h2 data-number="1.4" id="exercici-4"><span
+            class="header-section-number">1.4</span> Exercici 4</h2>
+            <p>Representar l’estructura en arbre, i després escriure un
+            document XML que represente la informació següent sobre la
+            carta del menú d’esmorzars d’un restaurant:</p>
+            <p><img src="images/ex2_2_4.png" /></p>
+            <h2 data-number="1.5" id="exercici-5"><span
+            class="header-section-number">1.5</span> Exercici 5</h2>
+            <p>Dir si els documents XML següents estan ben formats, i,
+            si no ho estan, dir per què i corregir els errors.</p>
+            <p>Enunciat document 1:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">document</span>&gt;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">p</span>&gt;El meu primer &lt;<span class="kw">destacar</span><span class="ot"> importància=</span><span class="er">1&gt;document</span> <span class="er">XML&lt;/destacar&gt;&lt;/p]</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;p&gt;Comença</span> <span class="er">amb</span> <span class="er">l</span><span class="st">&#39;etiqueta </span><span class="er">&lt;</span><span class="st">document</span><span class="dv">&amp;gt;</span><span class="er">&lt;</span><span class="st">/p&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">  </span><span class="er">&lt;</span><span class="st">p&gt;A continuació col·loquem un element sense contingut</span><span class="er">&lt;</span><span class="st">/p&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">  </span><span class="er">&lt;</span><span class="st">imatge fitxer=&quot;imagen.gif&quot;&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span><span class="st">/document&gt;</span></span></code></pre></div>
+            <p>Enunciat document 2:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">llibres</span>&gt;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">llibre</span><span class="ot"> id=</span><span class="st">&quot;quixot&quot;</span>&gt;</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titol</span>&gt;El Quixot&lt;/<span class="kw">titol</span>&gt;</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> nom=</span><span class="er">Miguel</span> <span class="er">cognom=Cervantes&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;descripcio&gt;És</span> <span class="er">el</span> <span class="er">millor</span> <span class="er">llibre</span> <span class="er">de</span> <span class="er">Cervantes.&lt;/descripcio&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;/llibre]</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/Llibres&gt;</span></span></code></pre></div>
+            <h2 data-number="1.6" id="exercici-6.-cotxes"><span
+            class="header-section-number">1.6</span> Exercici 6.
+            Cotxes</h2>
+            <p>Tenim un concessionari de cotxes que periòdicament ha
+            d’enviar informació sobre els vehicles que té en oferta a un
+            portal publicitari de compravenda de cotxes. La informació
+            que heu d’enviar és:</p>
+            <ul>
+            <li>La marca</li>
+            <li>El model</li>
+            <li>Motor</li>
+            <li>Matrícula</li>
+            <li>Quilòmetres</li>
+            <li>Preu original</li>
+            <li>Preu oferta</li>
+            <li>Extres</li>
+            <li>Fotos</li>
+            </ul>
+            <p>Crea un document XML que contingui informació de com a
+            mínim 2 cotxes.</p>
+            <h2 data-number="1.7" id="exercici-7"><span
+            class="header-section-number">1.7</span> Exercici 7</h2>
+            <p>Escriure un document XML per recollir la informació
+            següent sobre arbres:</p>
+            <ul>
+            <li>Acer monspessulanum
+            <ul>
+            <li>Nom comú: Arce de Montpellier, Arce menor</li>
+            <li>Vegetació: Caducifoli</li>
+            <li>Alçada: De 6 a 10 metres</li>
+            <li>Forma i estructura: Copa esfèrica. Tronc principal recte
+            amb bifurcacions.</li>
+            <li>Ramatge penjant</li>
+            <li>Color a la primavera: Fes verd brillant, revers verd
+            blanquinós</li>
+            <li>Resistència a les gelades: Gelades fortes (fins a
+            -15ºC)</li>
+            </ul></li>
+            <li>Olea europea
+            <ul>
+            <li>Nom comú: Olivo</li>
+            <li>Vegetació: Perenne</li>
+            <li>Alçada: De 8 a 15 metres</li>
+            <li>Forma i estructura: Copa irregular. Tronc principal
+            irregular amb bifurcacions. Ramatge tortuós</li>
+            <li>Color a la primavera: Fes verd fosc, revers verd
+            platejat</li>
+            <li>Resistència a les gelades: Gelades mitjanes (fins a
+            -10ºC)</li>
+            </ul></li>
+            <li>Platanus orientalis
+            <ul>
+            <li>Nom comú: Platà</li>
+            <li>Vegetació: Caducifoli</li>
+            <li>Alçada: De 20 a 25 metres</li>
+            <li>Forma i estructura: Copa ovoïdal. Tronc principal recte.
+            Ramatge expandit</li>
+            <li>Color a la primavera: Fes verd mitjà, enus verd
+            clar</li>
+            <li>Color a la tardor: Ocre</li>
+            <li>Resistència a les gelades: Gelades fortes (fins a
+            -20ºC)</li>
+            </ul></li>
+            <li>Quercus ilex
+            <ul>
+            <li>Nom comú: Alzina</li>
+            <li>Vegetació: Perenne</li>
+            <li>Alçada: Al voltant de 25 metres</li>
+            <li>Forma i estructura: Copa esfèrica o el·líptica
+            irregular. Tronc principal recte. Ramatge tortuós</li>
+            <li>Color a la primavera: Platejat en fulles joves. En
+            fulles antigues, fes verd fosc, revers platejat</li>
+            <li>Resistència a les gelades: Gelades fortes (fins a
+            -15ºC)</li>
+            </ul></li>
+            </ul>
+            <p>Representar la vegetació com a
+            <strong>atribut</strong>.</p>
+            <h2 data-number="1.8" id="exercici-8.-llibres"><span
+            class="header-section-number">1.8</span> Exercici 8.
+            Llibres</h2>
+            <p>Crear un document XML ben format amb informació de
+            llibres trobats a diverses llibreries electròniques sobre la
+            temàtica ‘XML’. Sobre cada llibre necessitem saber:</p>
+            <ul>
+            <li>El codi ISBN</li>
+            <li>El títol</li>
+            <li>El nivell de profunditat en el tractament de la matèria
+            (bàsic, intermedi o avançat)</li>
+            <li>Els autors</li>
+            <li>L’editorial</li>
+            <li>La data de publicació</li>
+            <li>La pàgina web del llibre en cas que en tingui.</li>
+            <li>El preu</li>
+            </ul>
+            <p>Hem d’incloure informació d’un mínim de dues llibreries i
+            per a cadascuna mínim tres llibres. Representar el nivell de
+            profunditat com a <strong>atribut</strong>.</p>
+            <h2 data-number="1.9" id="exercici-9-cd-música"><span
+            class="header-section-number">1.9</span> Exercici 9 CD
+            música</h2>
+            <p>Escriure un document XML ben format per emmagatzemar la
+            informació dels CD continguda en les imatges següents. El
+            document XML ha de contenir la major informació
+            possible.</p>
+            <p><img src="images/ex2_2_9.png" width="400" /></p>
+            <p><img src="images/ex2_2_9b.png" width="400" /></p>
+            <p><img src="images/ex2_2_9c.png" width="400" /></p>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

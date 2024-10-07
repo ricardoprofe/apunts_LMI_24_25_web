@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>UD 2.3 Validació XML</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">UD 2.3 Validació XML</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#validació-dxml" id="toc-validació-dxml"><span
+class="toc-section-number">1</span> Validació d’XML</a>
+<ul>
+<li><a href="#dtd" id="toc-dtd"><span
+class="toc-section-number">1.1</span> DTD</a>
+<ul>
+<li><a href="#declaració-del-dtd" id="toc-declaració-del-dtd"><span
+class="toc-section-number">1.1.1</span> Declaració del DTD</a></li>
+<li><a href="#declaració-de-tipus-delements"
+id="toc-declaració-de-tipus-delements"><span
+class="toc-section-number">1.1.2</span> Declaració de Tipus
+d’Elements</a></li>
+<li><a href="#declaració-de-tipus-datributs"
+id="toc-declaració-de-tipus-datributs"><span
+class="toc-section-number">1.1.3</span> Declaració de Tipus
+d’Atributs</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#espais-de-noms" id="toc-espais-de-noms"><span
+class="toc-section-number">2</span> Espais de noms</a>
+<ul>
+<li><a href="#resolució-del-conflicte-de-noms-mitjançant-un-prefix"
+id="toc-resolució-del-conflicte-de-noms-mitjançant-un-prefix"><span
+class="toc-section-number">2.1</span> Resolució del conflicte de noms
+mitjançant un prefix</a></li>
+</ul></li>
+<li><a href="#xml-schema" id="toc-xml-schema"><span
+class="toc-section-number">3</span> XML Schema</a>
+<ul>
+<li><a href="#declaració-de-lesquema"
+id="toc-declaració-de-lesquema"><span
+class="toc-section-number">3.1</span> Declaració de l’esquema</a></li>
+<li><a href="#definició-desquemes" id="toc-definició-desquemes"><span
+class="toc-section-number">3.2</span> Definició d’esquemes</a></li>
+<li><a href="#elements-de-xsd" id="toc-elements-de-xsd"><span
+class="toc-section-number">3.3</span> Elements de XSD</a>
+<ul>
+<li><a href="#elements-simples" id="toc-elements-simples"><span
+class="toc-section-number">3.3.1</span> Elements simples</a></li>
+<li><a href="#atributs" id="toc-atributs"><span
+class="toc-section-number">3.3.2</span> Atributs</a></li>
+<li><a href="#restriccions" id="toc-restriccions"><span
+class="toc-section-number">3.3.3</span> Restriccions</a></li>
+<li><a href="#elements-complexos" id="toc-elements-complexos"><span
+class="toc-section-number">3.3.4</span> Elements complexos</a></li>
+<li><a href="#indicadors" id="toc-indicadors"><span
+class="toc-section-number">3.3.5</span> Indicadors</a></li>
+</ul></li>
+<li><a href="#exemples" id="toc-exemples"><span
+class="toc-section-number">3.4</span> Exemples</a>
+<ul>
+<li><a href="#nota" id="toc-nota"><span
+class="toc-section-number">3.4.1</span> Nota:</a></li>
+<li><a href="#mensaje" id="toc-mensaje"><span
+class="toc-section-number">3.4.2</span> Mensaje:</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#referències" id="toc-referències"><span
+class="toc-section-number">4</span> Referències</a></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="validació-dxml"><span
+            class="header-section-number">1</span> Validació d’XML</h1>
+            <p>Per a saber si un document XML és vàlid, hem de comprovar
+            si està ben format i si valida contra un esquema determinat.
+            Els llenguatges per a definir esquemes més utilitzats són
+            <strong>Document Type Definition (DTD)</strong>, <strong>XML
+            Schema Definition(XSD)</strong> i <strong>Relax
+            NG</strong>.</p>
+            <h2 data-number="1.1" id="dtd"><span
+            class="header-section-number">1.1</span> DTD</h2>
+            <p>El fitxer DTD conté la definició d’elements, atributs i
+            entitats permeses, i pot expressar algunes limitacions per
+            combinar-los. Su’utilitza en fitxers SGML i XML.</p>
+            <p>El primer que s’ha de verificar és que el document XML
+            està ben format (<em>well formed</em>), seguint les regles
+            vistes a l’apartat anterior.</p>
+            <p>Després podem validar el document XML utilitzant un
+            <em>parser</em> que aplica les definicions del fitxer DTD.
+            Un document XML vàlid és aquell que no només està ben
+            format, sinó que també segueix les regles del DTD.</p>
+            <h3 data-number="1.1.1" id="declaració-del-dtd"><span
+            class="header-section-number">1.1.1</span> Declaració del
+            DTD</h3>
+            <p>Per a declarar quin DTD hem d’utilitzar tenim 3
+            opcions:</p>
+            <h4 data-number="1.1.1.1"
+            id="declaració-interna-en-el-mateix-document-xml"><span
+            class="header-section-number">1.1.1.1</span> Declaració
+            interna en el mateix document XML</h4>
+            <p>Exemple de document XML amb DTD inclòs.</p>
+            <p>Exemple:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> <span class="dt">nota</span> <span class="dt">[</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;!ELEMENT</span> <span class="dt">nota</span> (destinatari, remitent, capcalera, cos)<span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;!ELEMENT</span> <span class="dt">destinatari</span> (#PCDATA)<span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;!ELEMENT</span> <span class="dt">remitent</span> (#PCDATA)<span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;!ELEMENT</span> <span class="dt">capcalera</span> (#PCDATA)<span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;!ELEMENT</span> <span class="dt">cos</span> (#PCDATA)<span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">]&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">nota</span>&gt;</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">destinatari</span>&gt;Tove&lt;/<span class="kw">destinatari</span>&gt;</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">remitent</span>&gt;Jani&lt;/<span class="kw">remitent</span>&gt;</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">capcalera</span>&gt;Recordatori&lt;/<span class="kw">capcalera</span>&gt;</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">cos</span>&gt;Truca&#39;m!&lt;/<span class="kw">cos</span>&gt;</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">nota</span>&gt;</span></code></pre></div>
+            <h4 data-number="1.1.1.2"
+            id="declaració-en-un-fitxer-extern-local"><span
+            class="header-section-number">1.1.1.2</span> Declaració en
+            un fitxer extern local</h4>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> <span class="dt">element_arrel</span> SYSTEM &quot;document.dtd&quot;<span class="dt">&gt;</span></span></code></pre></div>
+            <h4 data-number="1.1.1.3"
+            id="declaració-en-un-fitxer-extern-public"><span
+            class="header-section-number">1.1.1.3</span> Declaració en
+            un fitxer extern public</h4>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> <span class="dt">element_arrel</span> PUBLIC &quot;url/document.dtd&quot;<span class="dt">&gt;</span></span></code></pre></div>
+            <p>Exemple de referència pública:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> <span class="dt">HTML</span> PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;<span class="dt">&gt;</span></span></code></pre></div>
+            <p>Aquest DTD s’utilitza per validar documents XHTML
+            estrictes.</p>
+            <h3 data-number="1.1.2"
+            id="declaració-de-tipus-delements"><span
+            class="header-section-number">1.1.2</span> Declaració de
+            Tipus d’Elements</h3>
+            <p>Sintaxi:</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode dtd"><code class="sourceCode dtd"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!ELEMENT</span> <span class="fu">nom_element</span> <span class="fu">tipus_de_contingut</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>El nom ha de ser vàlid a XML i únic.</p>
+            <p>Tipus d’elements:</p>
+            <ul>
+            <li>Només contenen elements: s’especifica entre parèntesis
+            l’identificador de cada sub-element.
+            <ul>
+            <li>Relació sequencial: es separa cada element amb
+            comes:<br />
+            <code>&lt;!ELEMENT identificació (element1, element2, ...) &gt;</code></li>
+            <li>Relació alternativa: es separa cada element amb
+            <code>|</code><br />
+            <code>&lt;!ELEMENT nom (element1 | element2)&gt;</code></li>
+            </ul></li>
+            </ul>
+            <p>També podem indicar la freqüència de repetició de cada
+            element.</p>
+            <blockquote>
+            <p>Indicadors de freqüència: * <code>*</code>: 0 o més
+            vegades. * <code>?</code>: 0 o 1 vegada. * <code>+</code>: 1
+            o més vegades.</p>
+            </blockquote>
+            <p>Per exemple:</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode dtd"><code class="sourceCode dtd"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!ELEMENT</span> <span class="fu">identificacio</span> <span class="dv">(</span><span class="fu">situacio</span><span class="fl">?</span><span class="dv">,</span><span class="fu">nom_complet</span><span class="dv">,</span> <span class="fu">nick</span><span class="fl">*</span><span class="dv">,</span><span class="fu">mail</span><span class="fl">?</span><span class="dv">)</span><span class="dt">&gt;</span></span></code></pre></div>
+            <ul>
+            <li><p>Només contenen dades (PCDATA):<br />
+            <code>&lt;!ELEMENT nom (#PCDATA)&gt;</code></p></li>
+            <li><p>Elements buits:<br />
+            <code>&lt;!ELEMENT nom EMPTY&gt;</code></p></li>
+            <li><p>Elements mixtos (PCDATA + elements):<br />
+            Ex.:
+            <code>&lt;!ELEMENT comentari (#PCDATA | elem1 | elem2)*&gt;</code></p></li>
+            </ul>
+            <h3 data-number="1.1.3"
+            id="declaració-de-tipus-datributs"><span
+            class="header-section-number">1.1.3</span> Declaració de
+            Tipus d’Atributs</h3>
+            <p>Sintaxi:
+            <code>&lt;!ATTLIST nom_element nom_atribut tipus predeterminacio&gt;</code></p>
+            <p>Tipus d’atributs:</p>
+            <ul>
+            <li><p><strong>CDATA</strong>, <strong>NMTOKEN</strong>,
+            <strong>NMTOKENS</strong>:</p>
+            <ul>
+            <li><strong>CDATA</strong>: Qualsevol text.</li>
+            <li><strong>NMTOKEN</strong>: Valors sense espais i només
+            lletres, números, subratllats.</li>
+            <li><strong>NMTOKENS</strong>: Llista de NMTOKENs.</li>
+            </ul></li>
+            <li><p>Atributs enumerats:<br />
+            Ex.:
+            <code>&lt;!ATTLIST cotxe color (blanc | negre | gris) "negre"&gt;</code></p></li>
+            <li><p><strong>ID</strong>, <strong>IDREF</strong>,
+            <strong>IDREFS</strong>:</p>
+            <ul>
+            <li><strong>ID</strong>: Un valor únic per a identificar
+            elements.</li>
+            <li><strong>IDREF</strong>: Referència a un ID d’un altre
+            element.</li>
+            <li><strong>IDREFS</strong>: Llista de referències a ID
+            d’altres elements.</li>
+            </ul></li>
+            </ul>
+            <p>Predeterminació d’Atributs:</p>
+            <ul>
+            <li><strong>#REQUIRED</strong>: Atribut obligatori.</li>
+            <li><strong>#IMPLIED</strong>: Atribut opcional.</li>
+            <li><strong>#FIXED</strong>: Valor fixat declarat en el
+            DTD</li>
+            <li>Valor per defecte: Definició predeterminada.</li>
+            </ul>
+            <p>Exemples:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode dtd"><code class="sourceCode dtd"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!ATTLIST</span> <span class="fu">cotxe</span> <span class="fu">color</span> <span class="kw">CDATA</span> <span class="kw">#IMPLIED</span><span class="dt">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!ATTLIST</span> <span class="fu">cotxe</span> <span class="fu">matricula</span> <span class="kw">ID</span> <span class="kw">#REQUIRED</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!ATTLIST</span> <span class="fu">cotxe</span> <span class="fu">marca</span> <span class="kw">CDATA</span> <span class="fu">FIXED</span> <span class="st">&quot;Seat&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!ATTLIST</span> <span class="fu">cotxe</span> <span class="fu">color</span> <span class="kw">CDATA</span> <span class="st">&quot;vermell&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h1 data-number="2" id="espais-de-noms"><span
+            class="header-section-number">2</span> Espais de noms</h1>
+            <p>XML <strong>Namespaces</strong> (espais de noms) són un
+            mètode per a evitar els conflictes de noms.</p>
+            <p>Per exemple, si usem documents XML de diferents fonts amb
+            el mateix nom en elements distints, es produeix un conflicte
+            de noms.</p>
+            <p>Per exemple, podem tindre un document XML amb una
+            etiqueta <em>persona</em> definida així:</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span>&gt;</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">nom</span>&gt; ... &lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">cognoms</span>&gt; .. &lt;/<span class="kw">cognoms</span>&gt;</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">persona</span>&gt;</span></code></pre></div>
+            <p>i un altre document on es defineix així:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span>&gt;</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">nom</span>&gt; ... &lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">cognom1</span>&gt; .. &lt;/<span class="kw">cognom1</span>&gt;</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">cognom2</span>&gt; .. &lt;/<span class="kw">cognom2</span>&gt;</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">persona</span>&gt;</span></code></pre></div>
+            <p>Si afegim aquests fragments XML junts, hi hauria un
+            conflicte de noms. Tots dos contenen un element
+            <code>&lt;persona&gt;</code>, però tenen contingut
+            diferent.</p>
+            <h2 data-number="2.1"
+            id="resolució-del-conflicte-de-noms-mitjançant-un-prefix"><span
+            class="header-section-number">2.1</span> Resolució del
+            conflicte de noms mitjançant un prefix</h2>
+            <p>Els conflictes de noms en XML es poden evitar fàcilment
+            mitjançant un <strong>prefix de nom</strong>.</p>
+            <p>El problema anterior es pot resoldre així:</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">client:persona</span>&gt;</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">client:nom</span>&gt; ... &lt;/<span class="kw">client:nom</span>&gt;</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">client:cognoms</span>&gt; .. &lt;/<span class="kw">client:cognoms</span>&gt;</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">client:persona</span>&gt;</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">alumne:persona</span>&gt;</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">alumne:nom</span>&gt; ... &lt;/<span class="kw">alumne:nom</span>&gt;</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">alumne:cognom1</span>&gt; .. &lt;/<span class="kw">alumne:cognom1</span>&gt;</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">alumne:cognom2</span>&gt; .. &lt;/<span class="kw">alumne:cognom2</span>&gt;</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">alumne:persona</span>&gt;</span></code></pre></div>
+            <p>Quan s’utilitzen prefixos en XML, s’ha de definir un
+            espai de noms per al prefix.</p>
+            <p>L’espai de noms es pot indicar amb un atribut
+            <strong>xmlns</strong> a l’etiqueta inicial d’un element i
+            té la sintaxi següent:</p>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>xmlns:prefix=&quot;URI&quot;</span></code></pre></div>
+            <blockquote>
+            <p>L’<strong>identificador uniforme de recursos</strong>
+            (<strong>Uniform Resource Identifier</strong>,
+            <strong>URI</strong>) és un text curt que identifica sense
+            equivocació qualsevol recurs (servei, pàgina, document,
+            adreça de correu electrònic …) accessible en una xarxa.
+            També engloba els <strong>URL</strong>, acrònim de
+            <strong>Uniform Resource Locator</strong>.</p>
+            </blockquote>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">root</span>&gt;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">client:persona</span><span class="ot"> xmlns:client=</span><span class="st">&quot;namespace/client&quot;</span>&gt;</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">client:nom</span>&gt; ... &lt;/<span class="kw">client:nom</span>&gt;</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">client:cognoms</span>&gt; .. &lt;/<span class="kw">client:cognoms</span>&gt;</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">client:persona</span>&gt;</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">alumne:persona</span><span class="ot"> xmlns:alumne=</span><span class="st">&quot;http://example.org/alumne&quot;</span>&gt;</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">alumne:nom</span>&gt; ... &lt;/<span class="kw">alumne:nom</span>&gt;</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">alumne:cognom1</span>&gt; .. &lt;/<span class="kw">alumne:cognom1</span>&gt;</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">alumne:cognom2</span>&gt; .. &lt;/<span class="kw">alumne:cognom2</span>&gt;</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">alumne:persona</span>&gt;</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">root</span>&gt;</span></code></pre></div>
+            <p>A l’exemple anterior:</p>
+            <p>L’atribut <code>xmlns</code> del primer element
+            <code>&lt;persona&gt;</code> dóna al prefix
+            <code>client:</code> un espai de noms qualificat. L’atribut
+            <code>xmlns</code> del segon element
+            <code>&lt;persona&gt;</code> dóna al prefix
+            <code>alumne:</code> un espai de noms qualificat.</p>
+            <p>Quan es defineix un espai de noms per a un element, tots
+            els elements fills amb el mateix prefix s’associen amb el
+            mateix espai de noms.</p>
+            <p>L’URI de l’espai de noms no és utilitzat per
+            l’analitzador. El seu propòsit és donar a l’espai de noms un
+            nom únic. Les empreses sovint utilitzen l’espai de noms com
+            a punter a una pàgina web que conté informació sobre l’espai
+            de noms.</p>
+            <p>L’exemple anterior també es pot fer declarant l’espai de
+            noms a l’element arrel XML:</p>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">root</span><span class="ot"> xmlns:client=</span><span class="st">&quot;namespace/client&quot;</span><span class="ot"> xmlns:alumne=</span><span class="st">&quot;http://example.org/alumne&quot;</span>&gt;</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">client:persona</span>&gt;</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">client:nom</span>&gt; ... &lt;/<span class="kw">client:nom</span>&gt;</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">client:cognoms</span>&gt; .. &lt;/<span class="kw">client:cognoms</span>&gt;</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">client:persona</span>&gt;</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">alumne:persona</span>&gt;</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">alumne:nom</span>&gt; ... &lt;/<span class="kw">alumne:nom</span>&gt;</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">alumne:cognom1</span>&gt; .. &lt;/<span class="kw">alumne:cognom1</span>&gt;</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">alumne:cognom2</span>&gt; .. &lt;/<span class="kw">alumne:cognom2</span>&gt;</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">alumne:persona</span>&gt;</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">root</span>&gt;</span></code></pre></div>
+            <p>Quan es defineix un namespace per a un element, els seus
+            descendents també l’hereten i no és necessari indicar-ho en
+            ells:</p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span><span class="ot"> xmlns=</span><span class="st">&quot;namespace/client&quot;</span>&gt;</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">nom</span>&gt; ... &lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">cognoms</span>&gt; .. &lt;/<span class="kw">cognoms</span>&gt;</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">persona</span>&gt;</span></code></pre></div>
+            <h1 data-number="3" id="xml-schema"><span
+            class="header-section-number">3</span> XML Schema</h1>
+            <p>Una altra forma alternativa a DTD de validar documents és
+            amb un llenguatge anomenat <strong>XML Schema</strong>
+            (també anomenat <strong>XSD</strong> o <strong>XML Schema
+            Definition</strong>).</p>
+            <p>Es pot dir que un XSD (o esquema) és l’evolució natural
+            d’un DTD. Permet expressar amb més potència, gramàtiques més
+            complexes utilitzant la mateixa sintaxi XML. Va néixer el
+            1998 i es va recomanar l’ús el 2001 pel W3C (World Wide Web
+            Consortium).</p>
+            <p>El principal avantatge de XSD és que en estar basat en
+            XML, és fàcilment extensible a les futures modificacions o
+            necessitats.</p>
+            <p>També permet definir de manera molt clara els tipus de
+            dades i els espais de noms que se suporten. Això és realment
+            important ja que si un element se sap que és de tipus
+            <em>double</em> i, finalment, s’escriu com a string o
+            integer, no s’admetrà la validesa del document.</p>
+            <p>És més, es poden definir els tipus de dades exactament
+            igual que si fora una base de dades, facilitant la conversió
+            d’un a un altre i les transferències informació.</p>
+            <h2 data-number="3.1" id="declaració-de-lesquema"><span
+            class="header-section-number">3.1</span> Declaració de
+            l’esquema</h2>
+            <p>Per a indicar quin esquema utilitza un document XML
+            s’escriu aquest en l’element arrel:</p>
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">root</span><span class="ot"> xmlns=</span><span class="st">&quot;https://example.org&quot;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ot">xmlns:xsi=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ot">xsi:schemaLocation=</span><span class="st">&quot;http://example.org/ document.xsd&quot;</span>&gt;</span></code></pre></div>
+            <p>L’exemple anterior és per a un esquema públic en
+            Internet, indicant que el document de l’esquema és
+            <code>document.xsd</code> i es troba en l’URL
+            <code>http://example.org/</code>.</p>
+            <p>Si l’esquema és local:</p>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">root</span><span class="ot"> xmlns=</span><span class="st">&quot;https://example.org&quot;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ot">xmlns:xsi=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ot">xsi:noNamespaceSchemaLocation=</span><span class="st">&quot;local_schema.xsd&quot;</span>&gt;</span></code></pre></div>
+            <p>O sense espai de noms:</p>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">root</span><span class="ot"> xmlns:xsi=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ot">xsi:noNamespaceSchemaLocation=</span><span class="st">&quot;local_schema.xsd&quot;</span>&gt;</span></code></pre></div>
+            <h2 data-number="3.2" id="definició-desquemes"><span
+            class="header-section-number">3.2</span> Definició
+            d’esquemes</h2>
+            <p>L’element <code>&lt;schema&gt;</code> és l’element arrel
+            de cada esquema XML:</p>
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:schema</span><span class="ot"> xmlns:xs=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>&gt;</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:schema</span>&gt; </span></code></pre></div>
+            <p>L’atribut
+            <code>xmlns:xs="http://www.w3.org/2001/XMLSchema"</code>
+            indica que els elements i els tipus de dades utilitzats a
+            l’esquema provenen de l’espai de noms
+            <code>"http://www.w3.org/2001/XMLSchema"</code>. També
+            especifica que els elements i els tipus de dades que
+            provenen de l’espai de noms
+            <code>"http://www.w3.org/2001/XMLSchema"</code> han de tenir
+            el prefix <strong><code>xs:</code></strong>.</p>
+            <p>Una capçalera més completa per a xs:schema seria:</p>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:schema</span><span class="ot"> xmlns:xs=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ot">targetNamespace=</span><span class="st">&quot;http://example.org&quot;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ot">xmlns=</span><span class="st">&quot;http://example.org&quot;</span>&gt;</span></code></pre></div>
+            <p><strong><code>targetNamespace</code></strong> indica que
+            els elements definits per aquest esquema provenen de l’espai
+            de noms <code>"http://example.org"</code> i
+            <strong><code>xmlns</code></strong> indica que l’espai de
+            noms predeterminat és <code>"http://example.org"</code>.</p>
+            <h2 data-number="3.3" id="elements-de-xsd"><span
+            class="header-section-number">3.3</span> Elements de
+            XSD</h2>
+            <p>Els <strong>elements</strong> de XSD Schema poden ser
+            simples o complexos.</p>
+            <p>Els <strong>elements simples</strong> només poden
+            contindre text, no poden contindre altres elements o
+            atributs.</p>
+            <p>Els <strong>elements complexos</strong> poden contindre
+            altres elements i/o atributs.</p>
+            <h3 data-number="3.3.1" id="elements-simples"><span
+            class="header-section-number">3.3.1</span> Elements
+            simples</h3>
+            <p>El text dels elements simples pot ser de molts tipus
+            diferents. Pot ser un dels tipus inclosos a la definició de
+            l’esquema XML (booleà, string, etc.), o pot ser un tipus
+            personalitzat que podem definir nosaltres.</p>
+            <p>També podem afegir restriccions (<em>facets</em>) a un
+            tipus de dades per limitar-ne el contingut, o bé podem
+            demanar que les dades coincideixin amb un patró
+            específic.</p>
+            <p>La sintaxi per a definir un element simple és:</p>
+            <div class="sourceCode" id="cb20"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;nom_element&quot;</span><span class="ot"> type=</span><span class="st">&quot;tipus_element&quot;</span>/&gt; </span></code></pre></div>
+            <p>On <code>name</code> és el nom de l’element i
+            <code>type</code> és el tipus.</p>
+            <p>Els tipus més usats són:</p>
+            <ul>
+            <li>xs:string</li>
+            <li>xs:decimal</li>
+            <li>xs:integer</li>
+            <li>xs:boolean</li>
+            <li>xs:date</li>
+            <li>xs:time</li>
+            </ul>
+            <p>Per exemple, el fragment XML:</p>
+            <div class="sourceCode" id="cb21"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">nom</span>&gt;Andreu&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">edat</span>&gt;23&lt;/<span class="kw">edat</span>&gt;</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">data_naixement</span>&gt;2019-06-25&lt;/<span class="kw">data_naixement</span>&gt;</span></code></pre></div>
+            <p>tindria el següent esquema:</p>
+            <div class="sourceCode" id="cb22"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;nom&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;edat&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:integer&quot;</span>/&gt;</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;data_naixement&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:date&quot;</span>/&gt;</span></code></pre></div>
+            <p>Els elements simples poden tindre un <strong>valor per
+            defecte</strong> o un <strong>valor fixe</strong>.</p>
+            <p>S’assigna automàticament un <strong>valor per
+            defecte</strong> a l’element quan no s’especifica cap altre
+            valor.</p>
+            <div class="sourceCode" id="cb23"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;color&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span><span class="ot"> default=</span><span class="st">&quot;negre&quot;</span>/&gt;</span></code></pre></div>
+            <p>Si indiquem que un <strong>valor es fixe</strong>, sempre
+            té eixe valor i no pot tindre un altre:</p>
+            <div class="sourceCode" id="cb24"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;color&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span><span class="ot"> fixed=</span><span class="st">&quot;blanc&quot;</span>/&gt;</span></code></pre></div>
+            <h3 data-number="3.3.2" id="atributs"><span
+            class="header-section-number">3.3.2</span> Atributs</h3>
+            <p>Els atributs es declaren com a <strong>tipus
+            simples</strong>. Els elements simples no poden tindre
+            atributs. Si un element té atributs, es considera que és de
+            tipus complex, però l’atribut en si es declara sempre com un
+            tipus simple.</p>
+            <p>La sintaxi per a definir un atribut és:</p>
+            <div class="sourceCode" id="cb25"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;nom_atribut&quot;</span><span class="ot"> type=</span><span class="st">&quot;tipus_atribut&quot;</span>/&gt; </span></code></pre></div>
+            <p>Exemple:</p>
+            <div class="sourceCode" id="cb26"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">article</span><span class="ot"> lang=</span><span class="st">&quot;es&quot;</span>&gt;</span></code></pre></div>
+            <div class="sourceCode" id="cb27"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;lang&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt; </span></code></pre></div>
+            <p>Els atributs poden tindre els mateixos tipus que els
+            elements. També poden tindre un valor <code>default</code> o
+            <code>fixed</code>.</p>
+            <p>A més, també poden ser <strong>opcionals</strong> o
+            <strong>requerits</strong>. Si no s’especifica res, sempre
+            són opcionals (<code>use="optional"</code>). Per a indicar
+            que són requerits s’utilitza
+            <code>use="required"</code>:</p>
+            <div class="sourceCode" id="cb28"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;lang&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span><span class="ot"> use=</span><span class="st">&quot;required&quot;</span>/&gt; </span></code></pre></div>
+            <p>Si s’especifica que un atribut té un <strong>valor per
+            defecte</strong> (<code>default="valor"</code>), no és
+            necessari indicar que és requerit.</p>
+            <div class="sourceCode" id="cb29"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;lang&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span><span class="ot"> default=</span><span class="st">&quot;en&quot;</span> /&gt; </span></code></pre></div>
+            <h3 data-number="3.3.3" id="restriccions"><span
+            class="header-section-number">3.3.3</span> Restriccions</h3>
+            <p>Quan un element o atribut XML té un tipus de dades
+            definit, imposa restriccions al contingut de l’element o
+            atribut.</p>
+            <p>Si un element XML és de tipus <code>"xs:integer"</code> i
+            conté una cadena com <code>"Hola"</code>, l’element no es
+            validarà.</p>
+            <p>A més, amb XSD, també podem afegir les nostres pròpies
+            restriccions als elements i atributs. Aquestes restriccions
+            s’anomenen <em>facets</em>.</p>
+            <p>Per exemple, el següent defineix un element <em>edat</em>
+            que ha de ser un número enter entre 0 i 120:</p>
+            <div class="sourceCode" id="cb30"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;edat&quot;</span>&gt;</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:simpleType</span>&gt;</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:restriction</span><span class="ot"> base=</span><span class="st">&quot;xs:integer&quot;</span>&gt;</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:minInclusive</span><span class="ot"> value=</span><span class="st">&quot;0&quot;</span>/&gt;</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:maxInclusive</span><span class="ot"> value=</span><span class="st">&quot;120&quot;</span>/&gt;</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:restriction</span>&gt;</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:simpleType</span>&gt;</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:element</span>&gt; </span></code></pre></div>
+            <p>En aquesta estructura es pot veure les etiquetes que es
+            necessiten per a definir la restricció:</p>
+            <ul>
+            <li><code>&lt;xs:element name="nom_element"&gt;</code> :
+            defineix el nom de l’element.</li>
+            <li><code>&lt;xs:simpleType&gt;</code> : indica que és un
+            tipus simple.</li>
+            <li><code>&lt;xs:restriction base="xs:tipus"&gt;</code> :
+            indica el tipus de l’element.</li>
+            </ul>
+            <p>La mateixa definició es podria escriure així:</p>
+            <div class="sourceCode" id="cb31"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;edat&quot;</span><span class="ot"> type=</span><span class="st">&quot;tipus_edat&quot;</span> /&gt;</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:simpleType</span><span class="ot"> name=</span><span class="st">&quot;tipus_edat&quot;</span>&gt;</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:restriction</span><span class="ot"> base=</span><span class="st">&quot;xs:integer&quot;</span>&gt;</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:minInclusive</span><span class="ot"> value=</span><span class="st">&quot;0&quot;</span>/&gt;</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:maxInclusive</span><span class="ot"> value=</span><span class="st">&quot;120&quot;</span>/&gt;</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:restriction</span>&gt;</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:simpleType</span>&gt;</span></code></pre></div>
+            <p>Aquesta segona forma és millor si el tipus
+            <code>tipus_edat</code> pot ser reutilitzat per altres
+            elements.</p>
+            <p>Per a limitar el contingut d’un element XML a un
+            <strong>conjunt de valors</strong> acceptables, utilitzem la
+            restricció d’enumeració.</p>
+            <p>L’exemple següent defineix un element anomenat
+            <code>"color"</code> amb una restricció. Els únics valors
+            acceptables són: <em>negre</em>, <em>blanc</em> i
+            <em>roig</em>:</p>
+            <div class="sourceCode" id="cb32"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;color&quot;</span>&gt;</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:simpleType</span>&gt;</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:restriction</span><span class="ot"> base=</span><span class="st">&quot;xs:string&quot;</span>&gt;</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:enumeration</span><span class="ot"> value=</span><span class="st">&quot;negre&quot;</span>/&gt;</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:enumeration</span><span class="ot"> value=</span><span class="st">&quot;blanc&quot;</span>/&gt;</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:enumeration</span><span class="ot"> value=</span><span class="st">&quot;roig&quot;</span>/&gt;</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:restriction</span>&gt;</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:simpleType</span>&gt;</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:element</span>&gt; </span></code></pre></div>
+            <p>El mateix esquema seria aplicable als atributs. Per
+            exemple, un atribut que només pot tindre els valor “blanc” o
+            “negre” i el valor per defecte és “blanc”:</p>
+            <div class="sourceCode" id="cb33"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;color&quot;</span><span class="ot"> default=</span><span class="st">&quot;blanc&quot;</span>&gt;</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:simpleType</span>&gt;</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:restriction</span><span class="ot"> base=</span><span class="st">&quot;xs:string&quot;</span>&gt;</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:enumeration</span><span class="ot"> value=</span><span class="st">&quot;blanc&quot;</span> /&gt;</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:enumeration</span><span class="ot"> value=</span><span class="st">&quot;negre&quot;</span> /&gt;</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xs:restriction</span>&gt;</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:simpleType</span>&gt;</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:attribute</span>&gt;</span></code></pre></div>
+            <p>Si no volem restringir els valor sinó estendre’ls, hem
+            d’utilitzar <strong>extension</strong> en lloc de
+            <strong>restriction</strong>. Per exemple, el següent codi
+            validaria un element anomenat <em>plaza</em> de tipus string
+            amb un atribut booleà (<em>estaLibre</em>) que per defecte
+            és <strong>false</strong>:</p>
+            <div class="sourceCode" id="cb34"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;plaza&quot;</span>&gt;</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:simpleContent</span>&gt;</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:extension</span><span class="ot"> base=</span><span class="st">&quot;xs:string&quot;</span>&gt;</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;estaLibre&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:boolean&quot;</span><span class="ot"> default=</span><span class="st">&quot;false&quot;</span> /&gt;</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">xs:extension</span>&gt;                                                        </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xs:simpleContent</span>&gt;                                                </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:element</span>&gt;</span></code></pre></div>
+            <p>També es poden usar expressions regulars per a
+            especificar patrons. alguns exemples:</p>
+            <div class="sourceCode" id="cb35"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:restriction</span><span class="ot"> base=</span><span class="st">&quot;xs:string&quot;</span>&gt;</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- 0 o més lletres minúscules --&gt;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:pattern</span><span class="ot"> value=</span><span class="st">&quot;([a-z])*&quot;</span> /&gt;</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:restriction</span>&gt;</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:restriction</span><span class="ot"> base=</span><span class="st">&quot;xs:string&quot;</span>&gt;</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- Només els valors &quot;on&quot; i &quot;off&quot; --&gt;</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:pattern</span><span class="ot"> value=</span><span class="st">&quot;on|off&quot;</span> /&gt;</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:restriction</span>&gt;</span></code></pre></div>
+            <p>També es pot limitar la longitud d’una cadena de
+            caracters amb <code>xs:length</code>:</p>
+            <div class="sourceCode" id="cb36"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:restriction</span><span class="ot"> base=</span><span class="st">&quot;xs:string&quot;</span>&gt;</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- Màxim 10 caracters --&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:length</span><span class="ot"> value=</span><span class="st">&quot;10&quot;</span>/&gt;</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:restriction</span>&gt;</span></code></pre></div>
+            <p><a
+            href="https://www.w3schools.com/xml/schema_facets.asp">Mes
+            sobre restriccions</a>.</p>
+            <h3 data-number="3.3.4" id="elements-complexos"><span
+            class="header-section-number">3.3.4</span> Elements
+            complexos</h3>
+            <p>Un <strong>element complex</strong> és un element XML que
+            conté altres elements i/o atributs.</p>
+            <p>Hi ha quatre tipus d’elements complexos:</p>
+            <ul>
+            <li>elements buits</li>
+            <li>elements que només contenen altres elements</li>
+            <li>elements que només contenen text</li>
+            <li>elements que contenen tant altres elements com text</li>
+            </ul>
+            <p>Cadascun d’aquests elements també pot contenir
+            atributs.</p>
+            <h4 data-number="3.3.4.1"
+            id="elements-complexos-que-contenen-només-altres-elements"><span
+            class="header-section-number">3.3.4.1</span> Elements
+            complexos que contenen només altres elements</h4>
+            <p>S’utilitza <code>&lt;xs:sequence&gt;</code> per a definir
+            elements que només contenen altres elements:</p>
+            <div class="sourceCode" id="cb37"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;alumne&quot;</span><span class="ot"> type=</span><span class="st">&quot;tipus_persona&quot;</span>/&gt;</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:complexType</span><span class="ot"> name=</span><span class="st">&quot;tipus_persona&quot;</span>&gt;</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;nom&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;cognom&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:complexType</span>&gt; </span></code></pre></div>
+            <p>En aquest exemple <code>&lt;nom&gt;</code> i
+            <code>&lt;cognom&gt;</code> han d’aparèixer obligatòriament
+            i en el mateix ordre:</p>
+            <div class="sourceCode" id="cb38"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Correcte --&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">alumne</span>&gt;</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">nom</span>&gt;Maria&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">cognom</span>&gt;Llopis&lt;/<span class="kw">cognom</span>&gt;</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">alumne</span>&gt;</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Incorrecte --&gt;</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">alumne</span>&gt;</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">cognom</span>&gt;Llopis&lt;/<span class="kw">cognom</span>&gt;</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">nom</span>&gt;Maria&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">alumne</span>&gt;</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Incorrecte --&gt;</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">alumne</span>&gt;</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">nom</span>&gt;Maria&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">alumne</span>&gt;</span></code></pre></div>
+            <h4 data-number="3.3.4.2"
+            id="elements-complexos-buits-empty"><span
+            class="header-section-number">3.3.4.2</span> Elements
+            complexos buits (empty)</h4>
+            <p>Hi ha diferents formes de definir un element que no pot
+            contindre altres elements:</p>
+            <div class="sourceCode" id="cb39"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;element_buit&quot;</span>&gt;</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:complexType</span>/&gt;</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:element</span>&gt;</span></code></pre></div>
+            <div class="sourceCode" id="cb40"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">element_buit</span> /&gt;</span></code></pre></div>
+            <p>Si volem que tinga atributs:</p>
+            <div class="sourceCode" id="cb41"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;producte&quot;</span>&gt;</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;id&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:integer&quot;</span>/&gt;</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:element</span>&gt; </span></code></pre></div>
+            <div class="sourceCode" id="cb42"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">producte</span><span class="ot"> id=</span><span class="st">&quot;223&quot;</span> /&gt;</span></code></pre></div>
+            <h4 data-number="3.3.4.3"
+            id="elements-complexos-amb-només-text"><span
+            class="header-section-number">3.3.4.3</span> Elements
+            complexos amb només text</h4>
+            <p>La diferència entre aquest tipus d’element i els elements
+            simples és que els simples no poden tindre text i atributs.
+            Si volem que un element tinga text i atributs, hem de
+            declarar-lo com a complex.</p>
+            <p>Aquest tipus només conté contingut simple (text i
+            atributs), per tant, afegim un element
+            <code>simpleContent</code> al voltant del contingut. A més,
+            hem de definir una <strong>extensió</strong> O una
+            <strong>restricció</strong> dins de l’element
+            <code>simpleContent</code>, com per exemple:</p>
+            <div class="sourceCode" id="cb43"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;preu&quot;</span>&gt;</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:simpleContent</span>&gt;</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:extension</span><span class="ot"> base=</span><span class="st">&quot;xs:decimal&quot;</span>&gt;</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;moneda&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span> /&gt;</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>      &lt;/<span class="kw">xs:extension</span>&gt;</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:simpleContent</span>&gt;</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:element</span>&gt; </span></code></pre></div>
+            <p>validaria el següent fragment XML:</p>
+            <div class="sourceCode" id="cb44"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">preu</span><span class="ot"> moneda=</span><span class="st">&quot;euro&quot;</span>&gt;25&lt;/<span class="kw">preu</span>&gt;</span></code></pre></div>
+            <h4 data-number="3.3.4.4"
+            id="elements-complexos-mixtes"><span
+            class="header-section-number">3.3.4.4</span> Elements
+            complexos mixtes</h4>
+            <p>Els elements mixtes poden contindre text i altres
+            elements. S’especifiquen amb l’atribut
+            <code>mixed="true"</code>:</p>
+            <div class="sourceCode" id="cb45"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;missatge&quot;</span>&gt;</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:complexType</span><span class="ot"> mixed=</span><span class="st">&quot;true&quot;</span>&gt;</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;destinatari&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;data&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:date&quot;</span>/&gt;</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;cos&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:element</span>&gt; </span></code></pre></div>
+            <div class="sourceCode" id="cb46"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">missatge</span>&gt;</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  Per a: &lt;<span class="kw">destinatari</span>&gt;John Smith&lt;/<span class="kw">destinatari</span>&gt;.</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  Amb data: &lt;<span class="kw">data</span>&gt;2023-01-10&lt;/<span class="kw">data</span>&gt;</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  Cos del missatge: &lt;<span class="kw">cos</span>&gt;Hola, com va?&lt;/<span class="kw">cos</span>&gt;.</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">missatge</span>&gt; </span></code></pre></div>
+            <p>En aquest exemple, <code>&lt;destinatari&gt;</code>,
+            <code>&lt;data&gt;</code> i <code>&lt;cos&gt;</code> han
+            d’aparèixer sempre i en el mateix ordre, pero poden tindre
+            text intercalat.</p>
+            <h3 data-number="3.3.5" id="indicadors"><span
+            class="header-section-number">3.3.5</span> Indicadors</h3>
+            <p>Els indicadors serveixen per indicar com apareixen els
+            elements XML</p>
+            <h4 data-number="3.3.5.1" id="indicadors-dordre"><span
+            class="header-section-number">3.3.5.1</span> Indicadors
+            d’ordre</h4>
+            <p>L’indicador <strong><code>xs:all</code></strong>
+            especifica que els elements poden aparèixer en qualsevol
+            ordre i sempre una vegada:</p>
+            <div class="sourceCode" id="cb47"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;persona&quot;</span>&gt;</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:all</span>&gt;</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;altura&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:decimal&quot;</span>/&gt;</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;pes&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:integerS&quot;</span>/&gt;</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:all</span>&gt;</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:element</span>&gt; </span></code></pre></div>
+            <p>Amb l’exemple anterior serien vàlides:</p>
+            <div class="sourceCode" id="cb48"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span>&gt;</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">altura</span>&gt;1.70&lt;/<span class="kw">altura</span>&gt;</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">pes</span>&gt;75&lt;/<span class="kw">pes</span>&gt;</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span>&gt;</span></code></pre></div>
+            <p>i</p>
+            <div class="sourceCode" id="cb49"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span>&gt;</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">pes</span>&gt;75&lt;/<span class="kw">pes</span>&gt;</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">altura</span>&gt;1.70&lt;/<span class="kw">altura</span>&gt;  </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span>&gt;</span></code></pre></div>
+            <p>L’indicador <strong><code>xs:choice</code></strong>
+            especifica que, de tots els elements fills, només pot
+            aparèixer un:</p>
+            <div class="sourceCode" id="cb50"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;persona&quot;</span>&gt;</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:choice</span>&gt;</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;alumne&quot;</span><span class="ot"> type=</span><span class="st">&quot;tipus_alumne&quot;</span>/&gt;</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;professor&quot;</span><span class="ot"> type=</span><span class="st">&quot;tipus_professor&quot;</span>/&gt;</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:choice</span>&gt;</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:element</span>&gt; </span></code></pre></div>
+            <p>L’indicador <strong><code>xs:sequence</code></strong> ja
+            el coneixem. Especifica que tots els elements fills han
+            d’aparèixer en el mateix ordre en el que estan
+            especificats.</p>
+            <h4 data-number="3.3.5.2" id="indicadors-docurrència"><span
+            class="header-section-number">3.3.5.2</span> Indicadors
+            d’ocurrència</h4>
+            <p>Els indicadors d’ocurrència són
+            <strong><code>minOccurs</code></strong> i
+            <strong><code>maxOccurs</code></strong>, i especifiquen el
+            nombre mínim i màxim d’ocurrències d’un element.</p>
+            <div class="sourceCode" id="cb51"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;alumne&quot;</span>&gt;</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;assignatura&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span><span class="ot"> minOccurs=</span><span class="st">&quot;2&quot;</span><span class="ot"> maxOccurs=</span><span class="st">&quot;10&quot;</span>/&gt;</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:element</span>&gt; </span></code></pre></div>
+            <p>El valor per defecte d’ambdos indicadors és
+            <code>"1"</code>.</p>
+            <p>Per a permetre infinites ocurrències d’un element, s’usa
+            el valor <code>maxOccurs="unbounded"</code>.</p>
+            <p>Equivalències entre les multiplicitats de DTD i els
+            indicadors d’ocurrència de XSD:</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th>Multiplicitat</th>
+            <th>DTD</th>
+            <th>XSD</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td>0 o 1</td>
+            <td><code>?</code></td>
+            <td><code>minOccurs="0"</code></td>
+            </tr>
+            <tr class="even">
+            <td>0 o varis</td>
+            <td><code>*</code></td>
+            <td><code>minOccurs="0" maxOccurs="unbounded"</code></td>
+            </tr>
+            <tr class="odd">
+            <td>1 o varis</td>
+            <td><code>+</code></td>
+            <td><code>maxOccurs="unbounded"</code></td>
+            </tr>
+            </tbody>
+            </table>
+            <h2 data-number="3.4" id="exemples"><span
+            class="header-section-number">3.4</span> Exemples</h2>
+            <h3 data-number="3.4.1" id="nota"><span
+            class="header-section-number">3.4.1</span> Nota:</h3>
+            <p><strong>XML</strong></p>
+            <div class="sourceCode" id="cb52"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">nota</span><span class="ot"> xmlns:xsi=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="ot">xsi:noNamespaceSchemaLocation=</span><span class="st">&quot;nota.xsd&quot;</span>&gt;</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">destinatario</span>&gt;Pep&lt;/<span class="kw">destinatario</span>&gt;</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">remitente</span>&gt;Jenny&lt;/<span class="kw">remitente</span>&gt;</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">cabecera</span>&gt;Recordatorio&lt;/<span class="kw">cabecera</span>&gt;</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">cuerpo</span>&gt;Llámame!&lt;/<span class="kw">cuerpo</span>&gt;</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">nota</span>&gt;</span></code></pre></div>
+            <p><strong>XSD</strong></p>
+            <div class="sourceCode" id="cb53"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:schema</span><span class="ot"> xmlns:xs=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>&gt;</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;nota&quot;</span>&gt;</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;destinatario&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;remitente&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;cabecera&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;cuerpo&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xs:complexType</span>&gt; </span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:element</span>&gt;</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:schema</span>&gt;</span></code></pre></div>
+            <h3 data-number="3.4.2" id="mensaje"><span
+            class="header-section-number">3.4.2</span> Mensaje:</h3>
+            <p><strong>XML</strong></p>
+            <div class="sourceCode" id="cb54"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">mensaje</span><span class="ot"> xmlns:xsi=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="ot">xsi:noNamespaceSchemaLocation=</span><span class="st">&quot;mensaje.xsd&quot;</span> </span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="ot">prioridad=</span><span class="st">&quot;urgente&quot;</span>&gt;</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">de</span>&gt;Alfredo Reino&lt;/<span class="kw">de</span>&gt;</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">a</span>&gt;Hans van Parijs&lt;/<span class="kw">a</span>&gt;</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">texto</span><span class="ot"> idioma=</span><span class="st">&quot;holandés&quot;</span>&gt; Hallo Hans, hoe gaat het?</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">texto</span>&gt;</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">mensaje</span>&gt;</span></code></pre></div>
+            <p><strong>XSD</strong></p>
+            <div class="sourceCode" id="cb55"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;utf-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:schema</span><span class="ot"> xmlns:xs=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>&gt;</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;mensaje&quot;</span>&gt;</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;de&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span> /&gt;</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;a&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span> /&gt;</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;texto&quot;</span>&gt;</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:simpleContent</span>&gt;</span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>                    &lt;<span class="kw">xs:extension</span><span class="ot"> base=</span><span class="st">&quot;xs:string&quot;</span>&gt;</span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>                        &lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;idioma&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span> /&gt;</span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>                    &lt;/<span class="kw">xs:extension</span>&gt;                    </span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>                &lt;/<span class="kw">xs:simpleContent</span>&gt;</span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xs:element</span>&gt;</span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a>      &lt;/<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;prioridad&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span> /&gt;</span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">xs:element</span>&gt;</span>
+<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:schema</span>&gt;</span></code></pre></div>
+            <h1 data-number="4" id="referències"><span
+            class="header-section-number">4</span> Referències</h1>
+            <ul>
+            <li><a
+            href="https://www.w3schools.com/xml/schema_intro.asp">W3Schools
+            XSD</a></li>
+            <li><a
+            href="https://www.w3.org/TR/xmlschema11-1/">Especificació de
+            XSD</a></li>
+            </ul>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

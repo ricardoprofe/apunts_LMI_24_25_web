@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>Pràctica 2.4 Tranformacions XML-JSON</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">Pràctica 2.4 Tranformacions XML-JSON</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#pràctica-2.4-tranformacions-xml-json"
+id="toc-pràctica-2.4-tranformacions-xml-json"><span
+class="toc-section-number">1</span> Pràctica 2.4 Tranformacions
+XML-JSON</a>
+<ul>
+<li><a href="#exercici-1" id="toc-exercici-1"><span
+class="toc-section-number">1.1</span> Exercici 1</a></li>
+<li><a href="#exercici-2" id="toc-exercici-2"><span
+class="toc-section-number">1.2</span> Exercici 2</a></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1"
+            id="pràctica-2.4-tranformacions-xml-json"><span
+            class="header-section-number">1</span> Pràctica 2.4
+            Tranformacions XML-JSON</h1>
+            <h2 data-number="1.1" id="exercici-1"><span
+            class="header-section-number">1.1</span> Exercici 1</h2>
+            <p>Transforma el següent document XML a JSON:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">cartellera</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">pelicula</span><span class="ot"> idioma=</span><span class="st">&quot;anglès&quot;</span>&gt;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">titol</span>&gt;Inception&lt;/<span class="kw">titol</span>&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">director</span>&gt;Christopher Nolan&lt;/<span class="kw">director</span>&gt;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">durada</span>&gt;148&lt;/<span class="kw">durada</span>&gt;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">repartiment</span>&gt;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">actor</span><span class="ot"> protagonista=</span><span class="st">&quot;true&quot;</span>&gt;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">nom</span>&gt;Leonardo DiCaprio&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">personatge</span>&gt;Dom Cobb&lt;/<span class="kw">personatge</span>&gt;</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">actor</span>&gt;</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">actor</span><span class="ot"> protagonista=</span><span class="st">&quot;false&quot;</span>&gt;</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">nom</span>&gt;Joseph Gordon-Levitt&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">personatge</span>&gt;Arthur&lt;/<span class="kw">personatge</span>&gt;</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">actor</span>&gt;</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">repartiment</span>&gt;</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">premis</span>&gt;</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">premi</span>&gt;Oscar als millors efectes visuals&lt;/<span class="kw">premi</span>&gt;</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">premi</span>&gt;Oscar al millor so&lt;/<span class="kw">premi</span>&gt;</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">premis</span>&gt;</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">fotos</span>&gt;</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span><span class="ot"> tipus=</span><span class="st">&quot;cartell&quot;</span>&gt;inception_poster.jpg&lt;/<span class="kw">foto</span>&gt;</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span><span class="ot"> tipus=</span><span class="st">&quot;escena&quot;</span>&gt;inception_scene1.jpg&lt;/<span class="kw">foto</span>&gt;</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">fotos</span>&gt;</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">pelicula</span>&gt;</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">pelicula</span><span class="ot"> idioma=</span><span class="st">&quot;italià&quot;</span>&gt;</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">titol</span>&gt;La dolce vita&lt;/<span class="kw">titol</span>&gt;</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">director</span>&gt;Federico Fellini&lt;/<span class="kw">director</span>&gt;</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">durada</span>&gt;174&lt;/<span class="kw">durada</span>&gt;</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">repartiment</span>&gt;</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">actor</span><span class="ot"> protagonista=</span><span class="st">&quot;true&quot;</span>&gt;</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">nom</span>&gt;Marcello Mastroianni&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">personatge</span>&gt;Marcello Rubini&lt;/<span class="kw">personatge</span>&gt;</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">actor</span>&gt;</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">actor</span><span class="ot"> protagonista=</span><span class="st">&quot;false&quot;</span>&gt;</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">nom</span>&gt;Anita Ekberg&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">personatge</span>&gt;Silvia&lt;/<span class="kw">personatge</span>&gt;</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">actor</span>&gt;</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">repartiment</span>&gt;</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">premis</span>&gt;</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">premi</span>&gt;Palma d&#39;Or al Festival de Cannes&lt;/<span class="kw">premi</span>&gt;</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">premis</span>&gt;</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">fotos</span>&gt;</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span><span class="ot"> tipus=</span><span class="st">&quot;cartell&quot;</span>&gt;ladolcevita_poster.jpg&lt;/<span class="kw">foto</span>&gt;</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span><span class="ot"> tipus=</span><span class="st">&quot;escena&quot;</span>&gt;ladolcevita_scene1.jpg&lt;/<span class="kw">foto</span>&gt;</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">fotos</span>&gt;</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">pelicula</span>&gt;    </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">cartellera</span>&gt;</span></code></pre></div>
+            <h2 data-number="1.2" id="exercici-2"><span
+            class="header-section-number">1.2</span> Exercici 2</h2>
+            <p>Transforma el següent document JSON a XML:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;series&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Breaking Bad&quot;</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;seasons&quot;</span><span class="fu">:</span> <span class="dv">5</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;is_completed&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;genres&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Crime&quot;</span><span class="ot">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Drama&quot;</span><span class="ot">,</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Thriller&quot;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;main_cast&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;actor_1&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Bryan Cranston&quot;</span><span class="fu">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">&quot;role&quot;</span><span class="fu">:</span> <span class="st">&quot;Walter White&quot;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                <span class="fu">},</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;actor_2&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Aaron Paul&quot;</span><span class="fu">,</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">&quot;role&quot;</span><span class="fu">:</span> <span class="st">&quot;Jesse Pinkman&quot;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                <span class="fu">}</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">},</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;ratings&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;imdb&quot;</span><span class="fu">:</span> <span class="fl">9.5</span><span class="fu">,</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;rotten_tomatoes&quot;</span><span class="fu">:</span> <span class="dv">96</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Stranger Things&quot;</span><span class="fu">,</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;seasons&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;is_completed&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;genres&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Science Fiction&quot;</span><span class="ot">,</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Drama&quot;</span><span class="ot">,</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Horror&quot;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>            <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;main_cast&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;actor_1&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Millie Bobby Brown&quot;</span><span class="fu">,</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">&quot;role&quot;</span><span class="fu">:</span> <span class="st">&quot;Eleven&quot;</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                <span class="fu">},</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;actor_2&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Finn Wolfhard&quot;</span><span class="fu">,</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">&quot;role&quot;</span><span class="fu">:</span> <span class="st">&quot;Mike Wheeler&quot;</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>                <span class="fu">}</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>            <span class="fu">},</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;ratings&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;imdb&quot;</span><span class="fu">:</span> <span class="fl">8.7</span><span class="fu">,</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;rotten_tomatoes&quot;</span><span class="fu">:</span> <span class="dv">93</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <p>Entregar els 2 fitxers en Aules.</p>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

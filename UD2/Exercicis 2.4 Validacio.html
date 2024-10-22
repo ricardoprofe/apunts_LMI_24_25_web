@@ -115,6 +115,12 @@ class="toc-section-number">1.2</span> Exercici 2</a></li>
 class="toc-section-number">1.3</span> Exercici 3</a></li>
 <li><a href="#exercici-4" id="toc-exercici-4"><span
 class="toc-section-number">1.4</span> Exercici 4</a></li>
+<li><a href="#exercici-5" id="toc-exercici-5"><span
+class="toc-section-number">1.5</span> Exercici 5</a></li>
+<li><a href="#exercici-6" id="toc-exercici-6"><span
+class="toc-section-number">1.6</span> Exercici 6</a></li>
+<li><a href="#exercici-7" id="toc-exercici-7"><span
+class="toc-section-number">1.7</span> Exercici 7</a></li>
 </ul></li>
 </ul>
             </div>
@@ -126,55 +132,129 @@ class="toc-section-number">1.4</span> Exercici 4</a></li>
             Validació XML</h1>
             <h2 data-number="1.1" id="exercici-1"><span
             class="header-section-number">1.1</span> Exercici 1</h2>
-            <p>Escriure el document XSD que permeta validar el document
-            XML que es mostra a continuació.</p>
+            <p>A partir del següent document <code>xsd</code>, crear un
+            document <code>xml</code> vàlid:</p>
             <div class="sourceCode" id="cb1"><pre
             class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">etiqueta</span>&gt;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">nom</span>&gt;Roberto García&lt;/<span class="kw">nom</span>&gt;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">carrer</span>&gt;c/ Major, 27&lt;/<span class="kw">carrer</span>&gt;</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">ciutat</span>&gt;Coslada&lt;/<span class="kw">ciutat</span>&gt;</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">pais</span>&gt;Espanya&lt;/<span class="kw">pais</span>&gt;</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">edat</span>&gt;23&lt;/<span class="kw">edat</span>&gt;</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">etiqueta</span>&gt;</span></code></pre></div>
-            <p><strong>NOTA</strong>: representar l’edat com a enter,
-            tenint en compte que ha d’estar entre 0 i 115 anys.</p>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:schema</span><span class="ot"> xmlns:xs=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;persona&quot;</span>&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;nom&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;edat&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:int&quot;</span>/&gt;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;email&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:element</span>&gt;</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;persones&quot;</span>&gt;</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;persona&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:complexType&quot;</span><span class="ot"> maxOccurs=</span><span class="st">&quot;unbounded&quot;</span>/&gt;</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:element</span>&gt;</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:schema</span>&gt;</span></code></pre></div>
+            <p>El document generat ha de tindre una llista d’almenys 2
+            persones diferents.</p>
             <h2 data-number="1.2" id="exercici-2"><span
             class="header-section-number">1.2</span> Exercici 2</h2>
-            <p>Escriure el document XSD que permeta validar el document
-            XML que es mostra a continuació.</p>
+            <p>A partir del següent document <code>xsd</code>, crear un
+            document <code>xml</code> vàlid:</p>
             <div class="sourceCode" id="cb2"><pre
             class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">nota</span>&gt;</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">para</span>&gt;Pedro&lt;/<span class="kw">para</span>&gt;</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">para</span>&gt;Juan&lt;/<span class="kw">para</span>&gt;</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">de</span>&gt;Laura&lt;/<span class="kw">de</span>&gt;</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">titulo</span>&gt;Recordatori&lt;/<span class="kw">titulo</span>&gt;</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">contingut</span>&gt;A les 7:00 en la porta del teatre&lt;/<span class="kw">contingut</span>&gt;</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">nota</span>&gt;</span></code></pre></div>
-            <p><strong>Nota</strong>: Pot haver-hi un o més destinataris
-            referenciats en camps <strong>para</strong>.</p>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xs:schema</span><span class="ot"> xmlns:xs=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>&gt;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;persones&quot;</span>&gt;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;persona&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:complexType&quot;</span><span class="ot"> maxOccurs=</span><span class="st">&quot;unbounded&quot;</span>/&gt;</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:element</span>&gt;</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:complexType</span><span class="ot"> name=</span><span class="st">&quot;direccio&quot;</span>&gt;</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;carrer&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;ciutat&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;codi_postal&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:complexType</span><span class="ot"> name=</span><span class="st">&quot;telefon&quot;</span>&gt;</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:simpleContent</span>&gt;</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:extension</span><span class="ot"> base=</span><span class="st">&quot;xs:string&quot;</span>&gt;</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;tipus&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span><span class="ot"> use=</span><span class="st">&quot;required&quot;</span>/&gt;</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">xs:extension</span>&gt;</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xs:simpleContent</span>&gt;</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;persona&quot;</span>&gt;</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;nom&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span>/&gt;</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;edat&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:int&quot;</span>/&gt;</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;direccio&quot;</span><span class="ot"> type=</span><span class="st">&quot;direccio&quot;</span>/&gt;</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xs:element</span><span class="ot"> name=</span><span class="st">&quot;telefon&quot;</span><span class="ot"> type=</span><span class="st">&quot;telefon&quot;</span><span class="ot"> minOccurs=</span><span class="st">&quot;0&quot;</span>/&gt;</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">xs:sequence</span>&gt;</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xs:complexType</span>&gt;</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xs:element</span>&gt;</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xs:schema</span>&gt;</span></code></pre></div>
+            <p>El document generat ha de tindre una llista d’almenys 2
+            persones diferents.</p>
             <h2 data-number="1.3" id="exercici-3"><span
             class="header-section-number">1.3</span> Exercici 3</h2>
             <p>Escriure el document XSD que permeta validar el document
             XML que es mostra a continuació.</p>
             <div class="sourceCode" id="cb3"><pre
-            class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">missatge</span>&gt;</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">remitent</span>&gt;</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">nom</span>&gt;Alfredo Regne&lt;/<span class="kw">nom</span>&gt;</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">email</span>&gt;alf@ibium.com&lt;/<span class="kw">email</span>&gt;</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">remitent</span>&gt;</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">destinatari</span>&gt;</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">nom</span>&gt;Bill Clinton&lt;/<span class="kw">nom</span>&gt;</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">email</span>&gt;president@whitehouse.gov&lt;/<span class="kw">email</span>&gt;</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">destinatari</span>&gt;</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">assumpte</span>&gt;Hola Bill&lt;/<span class="kw">assumpte</span>&gt;</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">text</span>&gt;</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">paragraf</span>&gt;Hola, com estàs?&lt;/<span class="kw">paragraf</span>&gt;</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">paragraf</span>&gt;Fa molt de temps que no escrius. A veure si crides i quedem prompte.&lt;/<span class="kw">paragraf</span>&gt;</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">paragraf</span>&gt;Una salutació.&lt;/<span class="kw">paragraf</span>&gt;</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">text</span>&gt;</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">missatge</span>&gt;</span></code></pre></div>
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">nota</span>&gt;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">para</span>&gt;Pedro&lt;/<span class="kw">para</span>&gt;</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">para</span>&gt;Juan&lt;/<span class="kw">para</span>&gt;</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">de</span>&gt;Laura&lt;/<span class="kw">de</span>&gt;</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">titulo</span>&gt;Recordatori&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">contingut</span>&gt;A les 7:00 en la porta del teatre&lt;/<span class="kw">contingut</span>&gt;</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">nota</span>&gt;</span></code></pre></div>
+            <p><strong>Nota</strong>: Pot haver-hi un o més destinataris
+            referenciats en camps <strong>para</strong>.</p>
+            <h2 data-number="1.4" id="exercici-4"><span
+            class="header-section-number">1.4</span> Exercici 4</h2>
+            <p>Escriure el document XSD que permeta validar el document
+            XML que es mostra a continuació.</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">etiqueta</span>&gt;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">nom</span>&gt;Roberto García&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">carrer</span>&gt;c/ Major, 27&lt;/<span class="kw">carrer</span>&gt;</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">ciutat</span>&gt;Coslada&lt;/<span class="kw">ciutat</span>&gt;</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">pais</span>&gt;Espanya&lt;/<span class="kw">pais</span>&gt;</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">edat</span>&gt;23&lt;/<span class="kw">edat</span>&gt;</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">etiqueta</span>&gt;</span></code></pre></div>
+            <p><strong>NOTA</strong>: representar l’edat com a enter,
+            tenint en compte que ha d’estar entre 0 i 115 anys.</p>
+            <h2 data-number="1.5" id="exercici-5"><span
+            class="header-section-number">1.5</span> Exercici 5</h2>
+            <p>Escriure el document XSD que permeta validar el document
+            XML que es mostra a continuació.</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">missatge</span>&gt;</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">remitent</span>&gt;</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">nom</span>&gt;Alfredo Regne&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">email</span>&gt;alf@ibium.com&lt;/<span class="kw">email</span>&gt;</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">remitent</span>&gt;</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">destinatari</span>&gt;</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">nom</span>&gt;Bill Clinton&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">email</span>&gt;president@whitehouse.gov&lt;/<span class="kw">email</span>&gt;</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">destinatari</span>&gt;</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">assumpte</span>&gt;Hola Bill&lt;/<span class="kw">assumpte</span>&gt;</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">text</span>&gt;</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">paragraf</span>&gt;Hola, com estàs?&lt;/<span class="kw">paragraf</span>&gt;</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">paragraf</span>&gt;Fa molt de temps que no escrius. A veure si crides i quedem prompte.&lt;/<span class="kw">paragraf</span>&gt;</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">paragraf</span>&gt;Una salutació.&lt;/<span class="kw">paragraf</span>&gt;</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">text</span>&gt;</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">missatge</span>&gt;</span></code></pre></div>
             <p>S’han de tindre en compte les següents
             consideracions:</p>
             <ol type="1">
@@ -183,53 +263,90 @@ class="toc-section-number">1.4</span> Exercici 4</a></li>
             <strong>destinatari</strong>.</li>
             <li><strong>text</strong> pot tindre 0 o més paràgrafs.</li>
             </ol>
-            <h2 data-number="1.4" id="exercici-4"><span
-            class="header-section-number">1.4</span> Exercici 4</h2>
+            <h2 data-number="1.6" id="exercici-6"><span
+            class="header-section-number">1.6</span> Exercici 6</h2>
             <p>Escriure el document XSD extern per a l’arxiu
             <code>vehicles.xml</code>:</p>
-            <div class="sourceCode" id="cb4"><pre
-            class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">oferta</span>&gt;</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">vehicle</span>&gt;</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">marca</span>&gt;ford&lt;/<span class="kw">marca</span>&gt;</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">model</span>&gt;focus&lt;/<span class="kw">model</span>&gt;</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">motor</span>&gt;duratore 1.4&lt;/<span class="kw">motor</span>&gt;</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">matricula</span>&gt;1234AAAA&lt;/<span class="kw">matricula</span>&gt;</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">kilometres</span>&gt;12500&lt;/<span class="kw">kilometres</span>&gt;</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">preu_inicial</span>&gt;12000&lt;/<span class="kw">preu_inicial</span>&gt;</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">preu_oferta</span>&gt;10000&lt;/<span class="kw">preu_oferta</span>&gt;</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">extres</span>&gt;</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">extra</span>&gt;llantes&lt;/<span class="kw">extra</span>&gt;</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">extra</span>&gt;pintura metal·litzada&lt;/<span class="kw">extra</span>&gt;</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">extres</span>&gt;</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">fotos</span>&gt;</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span>&gt;11325.jpg&lt;/<span class="kw">foto</span>&gt;</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span>&gt;11326.jpg&lt;/<span class="kw">foto</span>&gt;    </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span>&gt;11345.jpg&lt;/<span class="kw">foto</span>&gt;</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">fotos</span>&gt;</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">vehicle</span>&gt;</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">vehicle</span>&gt;</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">marca</span>&gt;ford&lt;/<span class="kw">marca</span>&gt;</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">model</span>&gt;focus&lt;/<span class="kw">model</span>&gt;</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">motor</span>&gt;duratore 2.0&lt;/<span class="kw">motor</span>&gt;</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">matricula</span>&gt;12345AAA&lt;/<span class="kw">matricula</span>&gt;</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">kilometres</span>&gt;125000&lt;/<span class="kw">kilometres</span>&gt;</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">preu_inicial</span>&gt;10000&lt;/<span class="kw">preu_inicial</span>&gt;</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">preu_oferta</span>&gt;9000&lt;/<span class="kw">preu_oferta</span>&gt;</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">extres</span>&gt;</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">extra</span>&gt;pintura metal·litzada&lt;/<span class="kw">extra</span>&gt;</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">extra</span>&gt;aleró posterior&lt;/<span class="kw">extra</span>&gt;</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">extra</span>&gt;climatitzador&lt;/<span class="kw">extra</span>&gt;</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">extres</span>&gt;</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">fotos</span>&gt;</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span>&gt;11345.jpg&lt;/<span class="kw">foto</span>&gt;</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">fotos</span>&gt;</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">vehicle</span>&gt;</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">oferta</span>&gt;</span></code></pre></div>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">oferta</span>&gt;</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">vehicle</span>&gt;</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">marca</span>&gt;ford&lt;/<span class="kw">marca</span>&gt;</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">model</span>&gt;focus&lt;/<span class="kw">model</span>&gt;</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">motor</span>&gt;duratore 1.4&lt;/<span class="kw">motor</span>&gt;</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">matricula</span>&gt;1234AAAA&lt;/<span class="kw">matricula</span>&gt;</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">kilometres</span>&gt;12500&lt;/<span class="kw">kilometres</span>&gt;</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">preu_inicial</span>&gt;12000&lt;/<span class="kw">preu_inicial</span>&gt;</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">preu_oferta</span>&gt;10000&lt;/<span class="kw">preu_oferta</span>&gt;</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">extres</span>&gt;</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">extra</span>&gt;llantes&lt;/<span class="kw">extra</span>&gt;</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">extra</span>&gt;pintura metal·litzada&lt;/<span class="kw">extra</span>&gt;</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">extres</span>&gt;</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">fotos</span>&gt;</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span>&gt;11325.jpg&lt;/<span class="kw">foto</span>&gt;</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span>&gt;11326.jpg&lt;/<span class="kw">foto</span>&gt;    </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span>&gt;11345.jpg&lt;/<span class="kw">foto</span>&gt;</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">fotos</span>&gt;</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">vehicle</span>&gt;</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">vehicle</span>&gt;</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">marca</span>&gt;ford&lt;/<span class="kw">marca</span>&gt;</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">model</span>&gt;focus&lt;/<span class="kw">model</span>&gt;</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">motor</span>&gt;duratore 2.0&lt;/<span class="kw">motor</span>&gt;</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">matricula</span>&gt;12345AAA&lt;/<span class="kw">matricula</span>&gt;</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">kilometres</span>&gt;125000&lt;/<span class="kw">kilometres</span>&gt;</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">preu_inicial</span>&gt;10000&lt;/<span class="kw">preu_inicial</span>&gt;</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">preu_oferta</span>&gt;9000&lt;/<span class="kw">preu_oferta</span>&gt;</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">extres</span>&gt;</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">extra</span>&gt;pintura metal·litzada&lt;/<span class="kw">extra</span>&gt;</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">extra</span>&gt;aleró posterior&lt;/<span class="kw">extra</span>&gt;</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">extra</span>&gt;climatitzador&lt;/<span class="kw">extra</span>&gt;</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">extres</span>&gt;</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">fotos</span>&gt;</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">foto</span>&gt;11345.jpg&lt;/<span class="kw">foto</span>&gt;</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">fotos</span>&gt;</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">vehicle</span>&gt;</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">oferta</span>&gt;</span></code></pre></div>
             <p><strong>Notes</strong>: Poden haver-hi 0 o més vehicles,
             extres i fotos. Els quilòmetres sempre es donen en unitats
             enteres i el preu es dona en euros, podent tindre
             cèntims.</p>
+            <h2 data-number="1.7" id="exercici-7"><span
+            class="header-section-number">1.7</span> Exercici 7</h2>
+            <p>Escriure el document XSD extern per al següent arxiu:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span> <span class="fu">?&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">tienda</span>&gt;</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">departamentos</span>&gt;</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">departamento</span>&gt;</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">nombre</span>&gt;Zapatillas&lt;/<span class="kw">nombre</span>&gt;</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">departamento</span>&gt;</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">departamento</span><span class="ot"> comentario=</span><span class="st">&quot;sin encargado&quot;</span>&gt;</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">nombre</span>&gt;Guantes&lt;/<span class="kw">nombre</span>&gt;</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">departamento</span>&gt;</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">departamentos</span>&gt;</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">productos</span>&gt;</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">producto</span><span class="ot"> id=</span><span class="st">&quot;p0015&quot;</span>&gt;</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">nombre</span>&gt;Zapatillas Trekking&lt;/<span class="kw">nombre</span>&gt;</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">precio</span><span class="ot"> moneda=</span><span class="st">&quot;euros&quot;</span><span class="ot"> descuento=</span><span class="st">&quot;si&quot;</span>&gt;30.50&lt;/<span class="kw">precio</span>&gt; </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">producto</span>&gt;</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">producto</span><span class="ot"> id=</span><span class="st">&quot;p0016&quot;</span>&gt;</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">nombre</span>&gt;Zapatillas Basquet&lt;/<span class="kw">nombre</span>&gt;</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">precio</span><span class="ot"> moneda=</span><span class="st">&quot;pesetas&quot;</span><span class="ot"> descuento=</span><span class="st">&quot;si&quot;</span>&gt;25.95&lt;/<span class="kw">precio</span>&gt; </span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">producto</span>&gt;</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">producto</span><span class="ot"> id=</span><span class="st">&quot;p0045&quot;</span>&gt;</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">nombre</span>&gt;Guantes esquí&lt;/<span class="kw">nombre</span>&gt;</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">precio</span>&gt;16&lt;/<span class="kw">precio</span>&gt; </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">producto</span>&gt;</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">productos</span>&gt;</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">tienda</span>&gt;</span></code></pre></div>
+            <p><strong>Notes:</strong> L’element moneda és de tipus
+            decimal. Departaments i productes poden tindre 0 o més
+            elements. L’atribut <strong>id</strong> és requerit. Els
+            atributs de <strong>moneda</strong> i
+            <strong>comentario</strong> són opcionals. L’atribut
+            <strong>decuento</strong> és opcional i només pot tindre els
+            valors <strong>si</strong> o <strong>no</strong>, valor per
+            defecte <strong>no</strong>.</p>
         </main>
         
 

@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>UD 3.1 XPath</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">UD 3.1 XPath</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#xpath-xml-path-language"
+id="toc-xpath-xml-path-language"><span
+class="toc-section-number">1</span> 3.1. XPATH: XML PATH LANGUAGE</a>
+<ul>
+<li><a href="#arbre-del-document" id="toc-arbre-del-document"><span
+class="toc-section-number">1.1</span> Arbre del document</a></li>
+<li><a href="#tipus-de-nodes" id="toc-tipus-de-nodes"><span
+class="toc-section-number">1.2</span> Tipus de nodes</a></li>
+<li><a href="#sintaxi-de-les-expressions-xpath"
+id="toc-sintaxi-de-les-expressions-xpath"><span
+class="toc-section-number">1.3</span> Sintaxi de les expressions
+XPath</a></li>
+<li><a href="#sintaxi-abreviada" id="toc-sintaxi-abreviada"><span
+class="toc-section-number">1.4</span> Sintaxi abreviada</a>
+<ul>
+<li><a href="#eix-en-anglès-axis" id="toc-eix-en-anglès-axis"><span
+class="toc-section-number">1.4.1</span> Eix (en anglès, axis)</a></li>
+<li><a href="#predicat-en-anglés-predicate"
+id="toc-predicat-en-anglés-predicate"><span
+class="toc-section-number">1.4.2</span> Predicat (en anglés,
+predicate)</a></li>
+<li><a href="#selecció-de-nodes-en-anglés-node-test"
+id="toc-selecció-de-nodes-en-anglés-node-test"><span
+class="toc-section-number">1.4.3</span> Selecció de nodes (en anglés,
+node test)</a></li>
+<li><a href="#passos-de-cerca-consecutius"
+id="toc-passos-de-cerca-consecutius"><span
+class="toc-section-number">1.4.4</span> Passos de cerca
+consecutius</a></li>
+<li><a href="#expressions-niuades" id="toc-expressions-niuades"><span
+class="toc-section-number">1.4.5</span> Expressions niuades</a></li>
+</ul></li>
+<li><a href="#referències" id="toc-referències"><span
+class="toc-section-number">1.5</span> Referències</a></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="xpath-xml-path-language"><span
+            class="header-section-number">1</span> 3.1. XPATH: XML PATH
+            LANGUAGE</h1>
+            <p>XPath és un llenguatge que permet seleccionar nodes d’un
+            document XML i calcular valors a partir del seu contingut.
+            Existeixen diverses versions d’XPath aprovades pel W3C,
+            encara que la més utilitzada continua sent la versió 1:</p>
+            <ul>
+            <li>novembre de 1999: XML Path Language 1.0</li>
+            <li>gener de 2007: XML Path Language 2.0</li>
+            <li>desembre de 2010: XML Path Language 2.0 (2a edició)</li>
+            <li>abril de 2014: XML Path Language 3.0</li>
+            <li>març de 2017: XPath 3.1</li>
+            </ul>
+            <h2 data-number="1.1" id="arbre-del-document"><span
+            class="header-section-number">1.1</span> Arbre del
+            document</h2>
+            <p>XPath considera un document XML com un arbre de nodes. En
+            Informàtica, un arbre és una estructura de dades que equival
+            a un arbre matemàtic. En Matemàtiques, un arbre és un cas
+            particular de graf. Els següents termes definits en teoria
+            de grafs s’utilitzen també en Informàtica i en XPath:</p>
+            <ul>
+            <li>Un <strong>graf</strong> és un conjunt d’objectes
+            anomenats nodes o vèrtexs units per enllaços anomenats arcs
+            o arestes. Un graf dirigit és un graf en el qual els arcs
+            tenen direcció.</li>
+            </ul>
+            <p><img src="images/xpath_01.png" alt="Graf" /> <img
+            src="images/xpath_02.png" alt="Graf dirigit" /></p>
+            <ul>
+            <li>Quan dos nodes estan units per un arc amb direcció, el
+            <strong>node pare</strong> és el node del qual parteix l’arc
+            i el <strong>node fill</strong> és el node al qual arriba
+            l’arc.</li>
+            </ul>
+            <figure>
+            <img src="images/xpath_03.png" alt="Nodes pare i fill" />
+            <figcaption aria-hidden="true">Nodes pare i
+            fill</figcaption>
+            </figure>
+            <ul>
+            <li>Un <strong>arbre</strong> és un graf en el qual
+            qualsevol parella de vèrtexs està connectada per un únic
+            camí (és a dir, que no hi ha cicles). Un arbre dirigit és un
+            arbre en el qual les arestes tenen direcció i tots els nodes
+            menys un tenen un únic pare.</li>
+            </ul>
+            <p><img src="images/xpath_04.png" alt="Arbre" /> <img
+            src="images/xpath_05.png" alt="Arbre dirigit" /></p>
+            <ul>
+            <li>El <strong>node arrel</strong> d’un arbre dirigit és
+            l’únic node sense pare. Els nodes germans són els nodes que
+            tenen el mateix pare.</li>
+            </ul>
+            <figure>
+            <img src="images/xpath_06.png" alt="Node arrel" />
+            <figcaption aria-hidden="true">Node arrel</figcaption>
+            </figure>
+            <ul>
+            <li>Els <strong>nodes descendents</strong> d’un node són
+            tots els nodes als quals s’arriba des del node: els fills,
+            els fills dels fills, etc. Els <strong>nodes
+            ascendents</strong> d’un node són tots els nodes dels quals
+            un node és descendent: el pare, el pare del pare, etc.</li>
+            </ul>
+            <p><img src="images/xpath_07.png" alt="Nodes descendents" />
+            <img src="images/xpath_08.png" alt="Nodes ascendents" /></p>
+            <h2 data-number="1.2" id="tipus-de-nodes"><span
+            class="header-section-number">1.2</span> Tipus de nodes</h2>
+            <p>Un document XML es pot representar com un arbre dirigit,
+            considerant per exemple els elements com a nodes i que un
+            element és pare dels elements que conté. Però en XPath no
+            només els elements són nodes, en realitat hi ha set tipus de
+            nodes:</p>
+            <ul>
+            <li>Arrel</li>
+            <li>Element</li>
+            <li>Atribut</li>
+            <li>Text</li>
+            <li>Comentari</li>
+            <li>Instrucció de processament</li>
+            <li>Espai de noms</li>
+            </ul>
+            <blockquote>
+            <p>La declaració DOCTYPE no es considera com a node.</p>
+            </blockquote>
+            <p>Per exemple, el següent document XML:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">biblioteca</span>&gt;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">biblioteca</span>&gt;</span></code></pre></div>
+            <p>es pot representar amb el següent arbre:</p>
+            <p><img src="images/xpath_09.png" /></p>
+            <p>Els nodes atributs i de text no són com els nodes
+            element. Per exemple, els nodes atributs i de text no poden
+            tenir descendents. En realitat el node atribut ni tan sols
+            es considera fill, sinó com una etiqueta adossada a
+            l’element. El text contingut per una etiqueta sí que es
+            considera fill de l’element, encara que les expressions
+            XPath solen treballar amb nodes element i per referir-se als
+            atributs o text s’utilitzen notacions especials.</p>
+            <h2 data-number="1.3"
+            id="sintaxi-de-les-expressions-xpath"><span
+            class="header-section-number">1.3</span> Sintaxi de les
+            expressions XPath</h2>
+            <p>Una <strong>expressió XPath</strong> és una cadena de
+            text que representa un recorregut en l’arbre del document.
+            Les expressions més simples s’assemblen a les rutes dels
+            arxius en l’explorador de Windows o en la shell de
+            GNU/Linux.</p>
+            <p>Avaluar una expressió XPath és cercar si hi ha nodes al
+            document que s’ajusten al recorregut definit a l’expressió.
+            Els resultats de l’avaluació són tots els nodes que
+            s’ajusten a l’expressió. Per a avaluar una expressió XPath,
+            el document ha d’estar ben format.</p>
+            <p>Les expressions XPath es poden escriure de dues maneres
+            diferents:</p>
+            <ul>
+            <li>sintaxi abreviada: més compacta i fàcil de llegir, que
+            s’explica en aquesta lliçó</li>
+            <li>sintaxi completa: més llarga però amb més opcions
+            disponibles</li>
+            </ul>
+            <p>Les expressions XPath es poden dividir en passos de
+            cerca. Cada pas de cerca es pot dividir en tres parts:</p>
+            <ul>
+            <li><strong>eix</strong>: selecciona nodes element o atribut
+            basant-se en els noms.</li>
+            <li><strong>predicat</strong>: restringeix la selecció de
+            l’eix a què els nodes compleixin certes condicions.</li>
+            <li><strong>selecció de nodes</strong>: dels nodes
+            seleccionats per l’eix i el predicat, selecciona els
+            elements, el text que contenen o tots dos.</li>
+            </ul>
+            <h2 data-number="1.4" id="sintaxi-abreviada"><span
+            class="header-section-number">1.4</span> Sintaxi
+            abreviada</h2>
+            <p>Exemples d’expressions XPath de sintaxi abreviada i el
+            resultat de la seva avaluació en el document d’exemple
+            anterior:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>/biblioteca/libro/autor</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <p><strong>Nota:</strong> En XPath 1.0 no es pot seleccionar
+            únicament el valor de l’atribut, sinó que s’obtenen
+            respostes del tipus
+            <code>nomDeAtribut=ValorDeAtribut</code>.</p>
+            <h3 data-number="1.4.1" id="eix-en-anglès-axis"><span
+            class="header-section-number">1.4.1</span> Eix (en anglès,
+            axis)</h3>
+            <p>L’eix ens permet seleccionar un subconjunt de nodes del
+            document i correspon a recorreguts en l’arbre del document.
+            Els nodes element es marquen amb el nom de l’element. Els
+            nodes atribut es marquen amb <code>@</code> i el nom de
+            l’atribut.</p>
+            <ul>
+            <li><strong>/</strong>: si està al principi de l’expressió,
+            indica el node arrel; si no, indica “fill”. Ha d’anar seguit
+            del nom d’un element.</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>/biblioteca/libro/autor</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>: <code>/autor</code><br />
+            <strong>Resultat</strong>: No retorna res perquè
+            <code>&lt;autor&gt;</code> no és fill del node arrel.</p>
+            <p><strong>Expressió</strong>:
+            <code>/biblioteca/autor</code><br />
+            <strong>Resultat</strong>: No retorna res perquè
+            <code>&lt;autor&gt;</code> no és fill de
+            <code>&lt;biblioteca&gt;</code>.</p>
+            <p><strong>Expressió</strong>:
+            <code>/biblioteca/libro/autor/@fechaNacimiento</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fechaNacimiento=&quot;28/03/1936&quot;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fechaNacimiento=&quot;28/03/1936&quot;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>/biblioteca/libro/@fechaNacimiento</code><br />
+            <strong>Resultat</strong>: No retorna res perquè
+            <code>&lt;libro&gt;</code> no té l’atribut
+            <code>fechaNacimiento</code>.</p>
+            <blockquote>
+            <p><strong>Nota:</strong> En XPath 1.0 no es pot seleccionar
+            únicament el valor de l’atribut, sinó que s’obtenen
+            respostes del tipus
+            <code>nomDeAtribut=ValorDeAtribut</code>.</p>
+            </blockquote>
+            <hr />
+            <ul>
+            <li><strong>//</strong>: indica “descendent” (fills, fills
+            dels fills, etc.).</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>/biblioteca//autor</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>: <code>//autor</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//autor//libro</code><br />
+            <strong>Resultat</strong>: No retorna res perquè
+            <code>&lt;libro&gt;</code> no és descendent de
+            <code>&lt;autor&gt;</code>.</p>
+            <p><strong>Expressió</strong>: <code>//@año</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>año=&quot;1973&quot;</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>año=&quot;1973&quot;</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>año=&quot;1969&quot;</span></code></pre></div>
+            <hr />
+            <ul>
+            <li><strong>/..</strong>: indica l’element pare.</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>/biblioteca/libro/autor/@fechaNacimiento/..</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//@fechaNacimiento/../..</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <blockquote>
+            <p><strong>Nota:</strong> En aquests exemples es seleccionen
+            únicament els nodes que tenen l’atribut
+            <code>fechaNacimiento</code>.</p>
+            </blockquote>
+            <hr />
+            <ul>
+            <li><strong>|</strong>: permet indicar diversos
+            recorreguts.</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//autor|//titulo</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//autor|//titulo|//@año</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>año=&quot;1973&quot;</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>año=&quot;1973&quot;</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>año=&quot;1969&quot;</span></code></pre></div>
+            <h3 data-number="1.4.2"
+            id="predicat-en-anglés-predicate"><span
+            class="header-section-number">1.4.2</span> Predicat (en
+            anglés, predicate)</h3>
+            <p>El predicat s’escriu entre claudàtors, a continuació de
+            l’eix. Si l’eix ha seleccionat uns nodes, el predicat permet
+            restringir aquesta selecció als que complisquen determinades
+            condicions.</p>
+            <ul>
+            <li><strong><code>[@atribut]</code></strong>: selecciona els
+            elements que tenen l’atribut.</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//autor[@fechaNacimiento]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <hr />
+            <ul>
+            <li><strong><code>[número]</code></strong>: si hi ha
+            diversos resultats, selecciona un d’ells per número d’ordre;
+            <code>last()</code> selecciona l’últim d’ells.</li>
+            </ul>
+            <p><strong>Expressió</strong>: <code>//libro[1]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//libro[last()]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//libro[last()-1]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <hr />
+            <ul>
+            <li><strong><code>[condició]</code></strong>: selecciona els
+            nodes que compleixen la condició.</li>
+            </ul>
+            <p>Els predicats permeten definir condicions sobre els
+            valors dels atributs. En les condicions es poden utilitzar
+            els operadors següents:</p>
+            <ul>
+            <li>Operadors lògics: <code>and</code>, <code>or</code>,
+            <code>not()</code></li>
+            <li>Operadors aritmètics: <code>+</code>, <code>-</code>,
+            <code>*</code>, <code>div</code>, <code>mod</code></li>
+            <li>Operadors de comparació: <code>=</code>,
+            <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>,
+            <code>&lt;=</code>, <code>&gt;=</code></li>
+            </ul>
+            <p>Les comparacions es poden fer entre valors de nodes i
+            atributs o amb cadenes de text o numèriques. En el cas de
+            les cadenes de text, han d’estar envoltades per cometes
+            simples o dobles. En el cas de les cadenes numèriques, les
+            cometes són optatives.</p>
+            <ul>
+            <li>La condició pot utilitzar el valor d’un atribut
+            (utilitzant <code>@</code>) o el text que conté
+            l’element.</li>
+            </ul>
+            <p>En els exemples següents s’obtenen, respectivament, els
+            elements <code>&lt;fechaPublicacion&gt;</code> el valor de
+            l’atribut <code>año</code> dels quals és posterior/major a
+            1970 i els elements <code>&lt;libro&gt;</code> el subelement
+            <code>&lt;autor&gt;</code> del qual té com a contingut
+            “Mario Vargas Llosa”:</p>
+            <p><strong>Expressió</strong>:
+            <code>//fechaPublicacion[@año&gt;1970]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//libro[autor="Mario Vargas Llosa"]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <ul>
+            <li>Per fer referència al propi valor de l’element
+            seleccionat s’utilitza el punt <code>(.)</code>.</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//@año[.&gt;1970]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>año=&quot;1973&quot;</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>año=&quot;1973&quot;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//autor[.="Mario Vargas Llosa"]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <ul>
+            <li>Es poden escriure diversos predicats seguits, cadascun
+            dels quals restringeix els resultats de l’anterior, com si
+            estigueren encadenats per l’operació lògica
+            <code>and</code>.</li>
+            </ul>
+            <p>En l’exemple següent es seleccionen els llibres escrits
+            per Mario Vargas Llosa i publicats en 1973:</p>
+            <p><strong>Expressió</strong>:
+            <code>//libro[autor="Mario Vargas Llosa"][fechaPublicacion/@año="1973"]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb20"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <ul>
+            <li>Un predicat pot contenir condicions compostes.</li>
+            </ul>
+            <p>En els exemples següents es seleccionen, respectivament,
+            els llibres escrits per Mario Vargas Llosa i publicats en
+            1973 (primer exemple) i els llibres escrits per Mario Vargas
+            Llosa o publicats en 1973 (segon exemple):</p>
+            <p><strong>Expressió</strong>:
+            <code>//libro[autor="Mario Vargas Llosa" and fechaPublicacion/@año="1973"]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb21"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//libro[autor="Mario Vargas Llosa" or fechaPublicacion/@año="1973"]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb22"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <ul>
+            <li>També es pot buscar part del contingut d’un node de text
+            mitjançant la funció
+            <code>contains(nom_element, “text_a_buscar”)</code>:</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//libro[contains(titulo, "Pantaleón")]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb23"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <h3 data-number="1.4.3"
+            id="selecció-de-nodes-en-anglés-node-test"><span
+            class="header-section-number">1.4.3</span> Selecció de nodes
+            (en anglés, node test)</h3>
+            <p>La selecció de nodes s’escriu a continuació de l’eix i el
+            predicat. Si l’eix i el predicat han seleccionat uns nodes,
+            la selecció de nodes indica amb quina part d’aquests nodes
+            ens quedem.</p>
+            <ul>
+            <li><strong><code>/node()</code></strong>: selecciona tots
+            els fills (elements o text) del node.</li>
+            <li><strong><code>//node()</code></strong>: selecciona tots
+            els descendents (elements o text) del node.</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//libro/node()</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb24"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//autor/node()</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb25"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Milan Kundera</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>Mario Vargas Llosa</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>Mario Vargas Llosa</span></code></pre></div>
+            <ul>
+            <li><strong><code>/text()</code></strong>: selecciona
+            únicament el text contingut en el node.<br />
+            </li>
+            <li><strong><code>//text()</code></strong>: selecciona
+            únicament el text contingut en el node i tots els seus
+            descendents.</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//autor/text()</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb26"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Milan Kundera  </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>Mario Vargas Llosa  </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>Mario Vargas Llosa </span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//libro/text()</code><br />
+            <strong>Resultat</strong>: No retorna res perquè
+            <code>&lt;llibre&gt;</code> no conté text.</p>
+            <p><strong>Expressió</strong>:
+            <code>//libro//text()</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb27"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>La vida està en un altre lloc  </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>Milan Kundera  </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>Pantaleó i les visitadores  </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>Mario Vargas Llosa  </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>Conversació en la catedral  </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>Mario Vargas Llosa</span></code></pre></div>
+            <ul>
+            <li><strong><code>/*</code></strong>: selecciona tots els
+            fills (només elements) del node.<br />
+            </li>
+            <li><strong><code>//*</code></strong>: selecciona tots els
+            descendents (només elements) del node.</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>/biblioteca/*</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb28"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>: <code>//autor/*</code><br />
+            <strong>Resultat</strong>: No retorna res perquè
+            <code>&lt;autor&gt;</code> només conté text.</p>
+            <p><strong>Expressió</strong>:
+            <code>/biblioteca//*</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb29"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span>&gt;Milan Kundera&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span></code></pre></div>
+            <ul>
+            <li><strong><code>/@*</code></strong>: selecciona tots els
+            atributs del node.<br />
+            </li>
+            <li><strong><code>//@*</code></strong>: selecciona tots els
+            atributs dels descendents del node.</li>
+            </ul>
+            <p><strong>Expressió</strong>: <code>//@*</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb30"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>año=&quot;1973&quot;</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>fechaNacimiento=&quot;28/03/1936&quot;</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>año=&quot;1973&quot;</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>fechaNacimiento=&quot;28/03/1936&quot;</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>año=&quot;1969&quot;</span></code></pre></div>
+            <p><strong>Expressió</strong>: <code>//libro/@*</code><br />
+            <strong>Resultat</strong>: No retorna res perquè
+            <code>&lt;llibre&gt;</code> no té atributs.</p>
+            <p><strong>Expressió</strong>: <code>//autor/@*</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb31"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>`fechaNacimiento=&quot;28/03/1936&quot;`  </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>`fechaNacimiento=&quot;28/03/1936&quot;`</span></code></pre></div>
+            <blockquote>
+            <p>Nota: En XPath 1.0 no es pot seleccionar únicament el
+            valor de l’atribut, sinó que s’obtenen respostes del tipus
+            <code>nomAtribut=valorAtribut</code>.</p>
+            </blockquote>
+            <h3 data-number="1.4.4"
+            id="passos-de-cerca-consecutius"><span
+            class="header-section-number">1.4.4</span> Passos de cerca
+            consecutius</h3>
+            <p>Una expressió XPath pot contindre diversos passos de
+            cerca consecutius. Cada un inclourà el seu eix (i, si és el
+            cas, el seu predicat) i l’últim pas de cerca inclourà, si és
+            el cas, una selecció de nodes. Cada pas de cerca treballa a
+            partir dels nodes seleccionats pel pas de cerca
+            anterior.</p>
+            <p>En l’exemple següent s’obtenen els títols dels llibres
+            publicats després de 1970, mitjançant dos passos de cerca: -
+            En el primer pas
+            (<code>//fechaPublicacion[@año&gt;1970]</code>) se
+            seleccionen els elements
+            <code>&lt;fechaPublicacion&gt;</code> que tinguen l’atribut
+            <code>año</code> superior a 1970. - En el segon pas
+            (<code>/../titulo</code>), se seleccionen primer els
+            elements pare (<code>/..</code>) dels
+            <code>&lt;fechaPublicacion&gt;</code> seleccionats en el
+            primer pas de cerca (és a dir, elements
+            <code>&lt;libro&gt;</code>) i a continuació els seus
+            subelements <code>&lt;titulo&gt;</code>.</p>
+            <p><strong>Expressió</strong>:
+            <code>//fechaPublicacion[@año&gt;1970]/../titulo</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb32"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span></code></pre></div>
+            <p>Un determinat resultat es pot obtindre mitjançant un únic
+            pas de cerca o mitjançant diversos passos.</p>
+            <ul>
+            <li>En els exemples següents s’obtenen els llibres escrits
+            per Mario Vargas Llosa de dues formes diferents:
+            <ul>
+            <li>mitjançant un únic pas de cerca. Se seleccionen els
+            elements <code>&lt;libro&gt;</code> el subelement dels quals
+            <code>&lt;autor&gt;</code> té com a contingut la cadena
+            “Mario Vargas Llosa”.</li>
+            </ul></li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//libro[autor="Mario Vargas Llosa"]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb33"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <ul>
+            <li>mitjançant dos passos de cerca. En el primer pas se
+            seleccionen els elements <code>&lt;autor&gt;</code> el
+            contingut dels quals és la cadena “Mario Vargas Llosa”. En
+            el segon pas de cerca se seleccionen els elements pare (és a
+            dir, els elements <code>&lt;libro&gt;</code>).</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//autor[.="Mario Vargas Llosa"]/..</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb34"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1973&quot;</span>/&gt;</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">libro</span>&gt;</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">fechaPublicacion</span><span class="ot"> año=</span><span class="st">&quot;1969&quot;</span>/&gt;</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">libro</span>&gt;</span></code></pre></div>
+            <ul>
+            <li>En els exemples següents s’obté l’autor que ha publicat
+            llibres en 1969 de diverses formes diferents:</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//@año[.=1969]/../../autor</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb35"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//libro[fechaPublicacion/@año=1969]/autor</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb36"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//fechaPublicacion[@año=1969]/../autor</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb37"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <p><strong>Expressió</strong>:
+            <code>//autor[../fechaPublicacion/@año=1969]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb38"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">autor</span><span class="ot"> fechaNacimiento=</span><span class="st">&quot;28/03/1936&quot;</span>&gt;Mario Vargas Llosa&lt;/<span class="kw">autor</span>&gt;</span></code></pre></div>
+            <h3 data-number="1.4.5" id="expressions-niuades"><span
+            class="header-section-number">1.4.5</span> Expressions
+            niuades</h3>
+            <p>Les expressions XPath poden niuar-se, la qual cosa permet
+            definir expressions més complexes. Per exemple, en el
+            document utilitzat anteriorment, un exemple d’expressió
+            niada seria, per exemple, obtindre els títols dels llibres
+            publicats el mateix any que la novel·la “La vida está en
+            otra parte”. Aquesta informació no està directament
+            emmagatzemada en el document, però es pot obtindre la
+            resposta en dos passos: - obtindre primer l’any en què es va
+            publicar la novel·la “La vida està en un altre lloc”:</p>
+            <p><strong>Expressió</strong>:
+            <code>//libro[titulo="La vida está en otra parte"]/fechaPublicacion/@año</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb39"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>año=&quot;1973&quot;</span></code></pre></div>
+            <ul>
+            <li>i obtindre després els títols dels llibres publicats en
+            1973:</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//libro[fechaPublicacion/@año=1973]/titulo</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb40"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span></code></pre></div>
+            <p>Aquestes dues expressions es poden unir en una única
+            expressió, substituint en la segona expressió el valor 1973
+            per la primera expressió:</p>
+            <p><strong>Expressió</strong>:
+            <code>//libro[fechaPublicacion/@año=//libro[titulo="La vida está en otra parte"]/fechaPublicacion/@año]/titulo</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb41"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span></code></pre></div>
+            <p>Com que cada una de les expressions es pot escriure de
+            diverses maneres, en realitat hi ha moltes formes de trobar
+            la resposta. Per exemple, en la solució següent els
+            predicats es troben al final de l’eix en cada
+            subexpressió:</p>
+            <p><strong>Expressió</strong>:
+            <code>//titulo[../fechaPublicacion/@año=//@año[../../titulo="La vida está en otra parte"]]</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb42"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;La vida está en otra parte&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span></code></pre></div>
+            <p>Un altre exemple d’expressió niuada seria obtindre els
+            títols dels llibres del mateix autor que la novel·la
+            “Pantaleón y las visitadoras”. Com en l’exemple anterior, la
+            resposta pot obtindre’s en dos passos: - obtindre primer
+            l’autor de la novel·la “Pantaleón y las visitadoras”:</p>
+            <p><strong>Expressió</strong>:
+            <code>//libro[titulo="Pantaleón y las visitadoras"]/autor/text()</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb43"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>Mario Vargas Llosa</span></code></pre></div>
+            <ul>
+            <li>i obtindre després els títols dels llibres escrits per
+            Mario Vargas Llosa:</li>
+            </ul>
+            <p><strong>Expressió</strong>:
+            <code>//libro[autor="Mario Vargas Llosa"]/titulo</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb44"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span></code></pre></div>
+            <p>Aquestes dues expressions es poden unir en una única
+            expressió, substituint en la segona expressió el valor
+            “Mario Vargas Llosa” per la primera expressió:</p>
+            <p><strong>Expressió</strong>:
+            <code>//libro[autor=//libro[titulo="Pantaleón y las visitadoras"]/autor/text()]/titulo</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb45"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span></code></pre></div>
+            <p>Un detall important és que no cal escriure la primera
+            expressió entre cometes. Fins i tot es pot ometre la
+            selecció de nodes <code>/text()</code> de la segona
+            expressió i escriure l’expressió XPath així:</p>
+            <p><strong>Expressió</strong>:
+            <code>//libro[autor=//libro[titulo="Pantaleón y las visitadoras"]/autor]/titulo</code><br />
+            <strong>Resultat</strong>:</p>
+            <div class="sourceCode" id="cb46"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Pantaleón y las visitadoras&lt;/<span class="kw">titulo</span>&gt;</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">titulo</span>&gt;Conversación en la catedral&lt;/<span class="kw">titulo</span>&gt;</span></code></pre></div>
+            <hr />
+            <h2 data-number="1.5" id="referències"><span
+            class="header-section-number">1.5</span> Referències</h2>
+            <p>Aquestes notes estan extretes de la pàgina de Bartolomé
+            Sintes Marco: <a
+            href="https://www.mclibre.org/consultar/xml/lecciones/xml-xpath.html">enllaç
+            a la pàgina</a></p>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

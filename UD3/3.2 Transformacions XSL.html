@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>UD 3.2 Transformacions XSLT</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">UD 3.2 Transformacions XSLT</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#xsl" id="toc-xsl"><span
+class="toc-section-number">1</span> 3.2. XSL</a>
+<ul>
+<li><a href="#xslt" id="toc-xslt"><span
+class="toc-section-number">1.1</span> XSLT</a></li>
+<li><a href="#declaració-del-document-xslt"
+id="toc-declaració-del-document-xslt"><span
+class="toc-section-number">1.2</span> Declaració del document
+XSLT</a></li>
+<li><a href="#xslt-template" id="toc-xslt-template"><span
+class="toc-section-number">1.3</span> XSLT Template</a></li>
+<li><a href="#recuperar-valors" id="toc-recuperar-valors"><span
+class="toc-section-number">1.4</span> Recuperar valors</a></li>
+<li><a href="#utilitzar-un-parser-xsl"
+id="toc-utilitzar-un-parser-xsl"><span
+class="toc-section-number">1.5</span> Utilitzar un parser xsl</a></li>
+<li><a href="#més-exemples-amb-xslvalue-of"
+id="toc-més-exemples-amb-xslvalue-of"><span
+class="toc-section-number">1.6</span> Més exemples amb
+xsl:value-of</a></li>
+<li><a href="#iterar-sobre-llistes" id="toc-iterar-sobre-llistes"><span
+class="toc-section-number">1.7</span> Iterar sobre llistes</a></li>
+<li><a href="#controlant-leixida" id="toc-controlant-leixida"><span
+class="toc-section-number">1.8</span> Controlant l’eixida</a></li>
+<li><a href="#resum" id="toc-resum"><span
+class="toc-section-number">1.9</span> Resum</a></li>
+<li><a href="#referències" id="toc-referències"><span
+class="toc-section-number">1.10</span> Referències</a></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="xsl"><span
+            class="header-section-number">1</span> 3.2. XSL</h1>
+            <p>XSL (Extensible Stylesheet Language “llenguatge
+            extensible de fulles d’estil”) és una família de llenguatges
+            basats en l’estàndard XML que permet descriure com la
+            informació continguda en un document XML qualsevol ha de ser
+            transformada o formatada per a la seva presentació en un
+            mitjà específic.</p>
+            <p>Aquesta família està formada per tres llenguatges:</p>
+            <ul>
+            <li><p><strong>XSLT</strong> (sigles d’Extensible Stylesheet
+            Language Transformations, llenguatge de fulles extensibles
+            de transformació), que permet convertir documents XML d’una
+            sintaxi a altra (per exemple, d’un XML a un altre o a un
+            document HTML).</p></li>
+            <li><p><strong>XSL-FO</strong> (llenguatge de fulles
+            extensibles de formato d’objectes), que permet especificar
+            el format visual amb el qual es vol presentar un document
+            XML, és usat principalment per a generar documents
+            PDF.</p></li>
+            <li><p><strong>XPath</strong>, o XML Path Language, és una
+            sintaxi per a accedir o referir-se a porcions d’un document
+            XML.</p></li>
+            <li><p><strong>XQuery</strong>,un llenguatge de consulta de
+            documents XML.</p></li>
+            </ul>
+            <p>Aquestes tres especificacions són recomanacions oficials
+            del W3C.</p>
+            <h2 data-number="1.1" id="xslt"><span
+            class="header-section-number">1.1</span> XSLT</h2>
+            <p><strong>XSLT</strong> s’utilitza per transformar un
+            document XML en un altre document XML o un altre tipus de
+            document reconegut per un navegador, com HTML.</p>
+            <p>Amb XSLT podem afegir/eliminar elements i atributs al
+            fitxer d’eixida. També podem reordenar i ordenar els
+            elements.</p>
+            <p>Una manera habitual de descriure el procés de
+            transformació és dir que XSLT transforma un arbre d’origen
+            XML en un arbre de resultats XML.</p>
+            <p>XSLT utilitza <strong>XPath</strong> per trobar
+            informació en un document XML. XPath s’utilitza per navegar
+            per elements i atributs en documents XML.</p>
+            <p>En el procés de transformació, XSLT utilitza XPath per
+            definir parts del document font que han de coincidir amb una
+            o més plantilles predefinides. Quan es troba una
+            coincidència, XSLT transformarà la part coincident del
+            document d’origen en el document de resultats.</p>
+            <h2 data-number="1.2"
+            id="declaració-del-document-xslt"><span
+            class="header-section-number">1.2</span> Declaració del
+            document XSLT</h2>
+            <p>L’element arrel que declara que el document és un full
+            d’estil XSL és <code>&lt;xsl:stylesheet&gt;</code> o
+            <code>&lt;xsl:transform&gt;</code>.</p>
+            <blockquote>
+            <p>Nota: <code>&lt;xsl:stylesheet&gt;</code> i
+            <code>&lt;xsl:transform&gt;</code> són completament sinònims
+            i es poden utilitzar indiferentment.</p>
+            </blockquote>
+            <p>La manera correcta de declarar un full d’estil XSL segons
+            la recomanació XSLT del W3C és:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ot">xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>&gt;</span></code></pre></div>
+            <p>o:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:transform</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ot">xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>&gt;</span></code></pre></div>
+            <p>En el document XML que volem transformar, hem d’afegir la
+            declaració de quin document xslt volem utilitzar per a fer
+            la transformació:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml-stylesheet</span> type=&quot;text/xsl&quot; href=&quot;ruta_document.xsl&quot;<span class="fu">?&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div>
+            <blockquote>
+            <p>Els documents xslt han de tindre l’extensió
+            <code>.xsl</code>.</p>
+            </blockquote>
+            <h2 data-number="1.3" id="xslt-template"><span
+            class="header-section-number">1.3</span> XSLT Template</h2>
+            <p>Un full d’estil XSL consta d’un o més conjunt de regles
+            que s’anomenen <em>templates</em> (plantilles).</p>
+            <p>Una plantilla conté regles per aplicar quan coincideix un
+            node especificat.</p>
+            <p>L’element <code>&lt;xsl:template&gt;</code> s’utilitza
+            per crear plantilles.</p>
+            <p>Aquest element té un atribut, <code>match</code>, que
+            s’utilitza per associar una plantilla amb un element XML.
+            L’atribut <code>match</code> també es pot utilitzar per
+            definir una plantilla per a tot el document XML. El valor de
+            l’atribut match és una expressió XPath (és a dir,
+            <code>match="/"</code> defineix tot el document). Aquesta és
+            el tipus de plantilla que utilitzarem en aquests apunts,
+            encara que també es poden associar templates a elements
+            concrets.</p>
+            <blockquote>
+            <p>Els elements xsl:stylesheet, xsl:transform i xsl:template
+            s’han de tancar amb la corresponent etiqueta de
+            tancament.</p>
+            </blockquote>
+            <p>Exemple de plantilla genèrica:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ot">xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>&gt;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:template</span><span class="ot"> match=</span><span class="st">&quot;/&quot;</span>&gt;</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- Ací posem els elements de la plantilla --&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xsl:template</span>&gt;</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xsl:stylesheet</span>&gt; </span></code></pre></div>
+            <h2 data-number="1.4" id="recuperar-valors"><span
+            class="header-section-number">1.4</span> Recuperar
+            valors</h2>
+            <p>L’element <code>&lt;xsl:value-of&gt;</code> es pot
+            utilitzar per extraure el valor d’un element XML i afegir-lo
+            al flux d’eixida de la transformació.</p>
+            <p>Per exemple, per al següent xml:</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">persona</span>&gt;</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">nombre</span>&gt;Pepe&lt;/<span class="kw">nombre</span>&gt;</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">apellido1</span>&gt;Lopez&lt;/<span class="kw">apellido1</span>&gt;</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">apellido2</span>&gt;Faus&lt;/<span class="kw">apellido2</span>&gt;</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">persona</span>&gt;</span></code></pre></div>
+            <p>Podem donar-li un format en HTML amb la següent
+            plantilla:</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>&gt;</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xsl:template</span><span class="ot"> match=</span><span class="st">&quot;/&quot;</span>&gt;</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">h1</span>&gt;Persona&lt;/<span class="kw">h1</span>&gt;</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">p</span>&gt;&lt;<span class="kw">strong</span>&gt;Nombre: &lt;/<span class="kw">strong</span>&gt; </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>          &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;persona/nombre&quot;</span>/&gt; </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">p</span>&gt;</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">p</span>&gt;&lt;<span class="kw">strong</span>&gt;Primer apellido: &lt;/<span class="kw">strong</span>&gt; </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>          &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;persona/apellido1&quot;</span>/&gt; </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">p</span>&gt;</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">p</span>&gt;&lt;<span class="kw">strong</span>&gt;Segundo apellido: &lt;/<span class="kw">strong</span>&gt; </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>          &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;persona/apellido2&quot;</span>/&gt; </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">p</span>&gt;</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xsl:template</span>&gt;</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xsl:stylesheet</span>&gt;</span></code></pre></div>
+            <p>obtenim la següent eixida:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Persona<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Nombre: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>Pepe</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Primer apellido: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>Lopez</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Segundo apellido: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>Faus</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Si guardem el resultat anterior en un fitxer html i ho
+            visualitzem amb un navegador web, podem veure el resultat
+            com a pàgina web:</p>
+            <figure>
+            <img src="images/xslt01.png" alt="Persona com a HTML" />
+            <figcaption aria-hidden="true">Persona com a
+            HTML</figcaption>
+            </figure>
+            <h2 data-number="1.5" id="utilitzar-un-parser-xsl"><span
+            class="header-section-number">1.5</span> Utilitzar un parser
+            xsl</h2>
+            <p>Per a fer la transformació xsl necessitem un programa o
+            complement que la puga fer.</p>
+            <p>Per exemple, en BaseX podem fer les transformacions amb
+            la funció <code>xslt:transform-text</code>, en l’apartat
+            file:</p>
+            <pre><code>xslt:transform-text(
+  doc(&quot;/ruta/fitxer.xml&quot;),
+  doc(&quot;/ruta/fitxer.xsd&quot;)
+)</code></pre>
+            <figure>
+            <img src="images/xslt02.png" alt="Transformacions" />
+            <figcaption aria-hidden="true">Transformacions</figcaption>
+            </figure>
+            <blockquote>
+            <p>Nota: reemplaçar <code>ruta</code> per la teua ruta
+            local.</p>
+            </blockquote>
+            <p>L’script generat el podem guardar per a futurs usos.</p>
+            <p>També podem utilitzar una aplicació web, per exemple:</p>
+            <p><a
+            href="https://www.freeformatter.com/xsl-transformer.html">FreeFormatter.com</a></p>
+            <h2 data-number="1.6"
+            id="més-exemples-amb-xslvalue-of"><span
+            class="header-section-number">1.6</span> Més exemples amb
+            xsl:value-of</h2>
+            <p>Una altra operació molt comú és transformar un xml en un
+            altre xml.</p>
+            <p>Per a l’exemple anterior, podem unir els elements
+            <code>apellido1</code> i <code>apellido2</code> en un únic
+            element anomenat <code>apellidos</code>:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>&gt;</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xsl:template</span><span class="ot"> match=</span><span class="st">&quot;/&quot;</span>&gt;</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">persona</span>&gt;</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">nombre</span>&gt; &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;persona/nombre&quot;</span>/&gt; &lt;/<span class="kw">nombre</span>&gt;</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">apellidos</span>&gt;</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;persona/apellido1&quot;</span>/&gt; </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:text</span>&gt; &lt;/<span class="kw">xsl:text</span>&gt; </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;persona/apellido2&quot;</span>/&gt; </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">apellidos</span>&gt;</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">persona</span>&gt;</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xsl:template</span>&gt;</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xsl:stylesheet</span>&gt;</span></code></pre></div>
+            <p>Resultat:</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">persona</span><span class="dt">&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">nombre</span><span class="dt">&gt;</span>Pepe<span class="dt">&lt;/</span><span class="kw">nombre</span><span class="dt">&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">apellidos</span><span class="dt">&gt;</span>Lopez Faus<span class="dt">&lt;/</span><span class="kw">apellidos</span><span class="dt">&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">persona</span><span class="dt">&gt;</span></span></code></pre></div>
+            <blockquote>
+            <p>Nota: Hem usat l’element
+            <code>&lt;xsl:text&gt; &lt;/xsl:text&gt;</code> per a
+            inserir un espai en blanc. Aquest element es pot utilitzar
+            per a escriure qualsevol text, incloent salts de línia.</p>
+            </blockquote>
+            <p>Un altre exemple seria transformar el fitxer xml en
+            fitxer json:</p>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">xsl:stylesheet</span><span class="ot"> version</span><span class="op">=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl</span><span class="op">=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">xsl:template</span><span class="ot"> match</span><span class="op">=</span><span class="st">&quot;/&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        &quot;nombre&quot;: &quot;<span class="dt">&lt;</span><span class="kw">xsl:value-of</span><span class="ot"> select</span><span class="op">=</span><span class="st">&quot;persona/nombre&quot;</span><span class="dt">/&gt;</span>&quot;,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        &quot;apellido1&quot;: &quot;<span class="dt">&lt;</span><span class="kw">xsl:value-of</span><span class="ot"> select</span><span class="op">=</span><span class="st">&quot;persona/apellido1&quot;</span><span class="dt">/&gt;</span>&quot;,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        &quot;apellido2&quot;: &quot;<span class="dt">&lt;</span><span class="kw">xsl:value-of</span><span class="ot"> select</span><span class="op">=</span><span class="st">&quot;persona/apellido2&quot;</span><span class="dt">/&gt;</span>&quot;</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">xsl:template</span><span class="dt">&gt;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">xsl:stylesheet</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Resultat:</p>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode json"><code class="sourceCode json"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;nombre&quot;</span><span class="fu">:</span> <span class="st">&quot;Pepe&quot;</span><span class="fu">,</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;apellido1&quot;</span><span class="fu">:</span> <span class="st">&quot;Lopez&quot;</span><span class="fu">,</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;apellido2&quot;</span><span class="fu">:</span> <span class="st">&quot;Faus&quot;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+            <h2 data-number="1.7" id="iterar-sobre-llistes"><span
+            class="header-section-number">1.7</span> Iterar sobre
+            llistes</h2>
+            <p>L’element XSL <code>&lt;xsl:for-each&gt;</code> es pot
+            utilitzar per seleccionar tots els elements XML d’un conjunt
+            de nodes especificat:</p>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:for-each</span><span class="ot"> select=</span><span class="st">&quot;estudiants/estudiant&quot;</span>&gt;</span></code></pre></div>
+            <p>El valor de l’atribut select és una expressió XPath que
+            completa la ruta especificada en <code>xsl:template</code>.
+            És a dir, si tenim
+            <code>&lt;xsl:template match="/"&gt;</code>,
+            <code>&lt;xsl:for-each select="estudiants/estudiant"&gt;</code>
+            equivaldria a l’expressió XPath
+            <code>/estudiants/estudiant</code>.</p>
+            <p>Per exemple, amb l’xml següent:</p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">estudiants</span>&gt;</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">estudiant</span>&gt;</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">nom</span>&gt;Josep&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">cognoms</span>&gt;Faus Gomis&lt;/<span class="kw">cognoms</span>&gt;</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">edad</span>&gt;18&lt;/<span class="kw">edad</span>&gt;</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">estudiant</span>&gt;</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">estudiant</span>&gt;</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">nom</span>&gt;Maria&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">cognoms</span>&gt;Vidal Pérez&lt;/<span class="kw">cognoms</span>&gt;</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">edad</span>&gt;17&lt;/<span class="kw">edad</span>&gt;</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">estudiant</span>&gt;</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">estudiant</span>&gt;</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">nom</span>&gt;Anna&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">cognoms</span>&gt;García López&lt;/<span class="kw">cognoms</span>&gt;</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">edad</span>&gt;28&lt;/<span class="kw">edad</span>&gt;</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">estudiant</span>&gt;</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">estudiant</span>&gt;</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">nom</span>&gt;Pau&lt;/<span class="kw">nom</span>&gt;</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">cognoms</span>&gt;Martínez Sánchez&lt;/<span class="kw">cognoms</span>&gt;</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">edad</span>&gt;16&lt;/<span class="kw">edad</span>&gt;</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">estudiant</span>&gt;</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">estudiants</span>&gt;</span></code></pre></div>
+            <p>I l’arxiu xsl:</p>
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>&gt;</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xsl:template</span><span class="ot"> match=</span><span class="st">&quot;/&quot;</span> &gt;</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">h1</span>&gt;Estudiants&lt;/<span class="kw">h1</span>&gt;</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xsl:for-each</span><span class="ot"> select=</span><span class="st">&quot;estudiants/estudiant&quot;</span>&gt;</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">p</span>&gt; &lt;<span class="kw">strong</span>&gt;Estudiant: &lt;/<span class="kw">strong</span>&gt;</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;nom&quot;</span>/&gt;</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:text</span>&gt; &lt;/<span class="kw">xsl:text</span>&gt;</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;cognoms&quot;</span>/&gt;</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">p</span>&gt;</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">p</span>&gt; &lt;<span class="kw">strong</span>&gt;Edat: &lt;/<span class="kw">strong</span>&gt;</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;edat&quot;</span>/&gt;</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">p</span>&gt;</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">hr</span>/&gt;</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xsl:for-each</span>&gt;</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xsl:template</span>&gt;    </span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xsl:stylesheet</span>&gt;</span></code></pre></div>
+            <p>Obtenim:</p>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Estudiants<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Estudiant: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>Josep Faus Gomis<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Edat: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>18<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">/&gt;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Estudiant: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>Maria Vidal Pérez<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Edat: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>17<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">/&gt;</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Estudiant: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>Anna García López<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Edat: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>28<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">/&gt;</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Estudiant: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>Pau Martínez Sánchez<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Edat: <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>16<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">/&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/xslt03.png" alt="Estudiant en html" />
+            <figcaption aria-hidden="true">Estudiant en
+            html</figcaption>
+            </figure>
+            <p>Utilitzant <strong>predicats</strong> podem filtrar els
+            resultats de <code>xsl:for-each</code>. Per exemple,
+            amb:</p>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:for-each</span><span class="ot"> select=</span><span class="st">&quot;estudiants/estudiant[edat&gt;=18]&quot;</span>&gt;</span></code></pre></div>
+            <p>obtenim només els estudiants Josep Faus Gomis i Anna
+            García López.</p>
+            <p>També podem ordenar l’eixida amb
+            <code>&lt;xsl:sort&gt;</code>:</p>
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>&gt;</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">xsl:template</span><span class="ot"> match=</span><span class="st">&quot;/&quot;</span> &gt;</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">h1</span>&gt;Estudiants&lt;/<span class="kw">h1</span>&gt;</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xsl:for-each</span><span class="ot"> select=</span><span class="st">&quot;estudiants/estudiant&quot;</span>&gt;</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">xsl:sort</span><span class="ot"> select=</span><span class="st">&quot;cognoms&quot;</span> /&gt;</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">p</span>&gt; &lt;<span class="kw">strong</span>&gt;Estudiant: &lt;/<span class="kw">strong</span>&gt;</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;nom&quot;</span>/&gt;</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:text</span>&gt; &lt;/<span class="kw">xsl:text</span>&gt;</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;cognoms&quot;</span>/&gt;</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">p</span>&gt;</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">p</span>&gt; &lt;<span class="kw">strong</span>&gt;Edat: &lt;/<span class="kw">strong</span>&gt;</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>                &lt;<span class="kw">xsl:value-of</span><span class="ot"> select=</span><span class="st">&quot;edat&quot;</span>/&gt;</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>            &lt;/<span class="kw">p</span>&gt;</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">hr</span>/&gt;</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">xsl:for-each</span>&gt;</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">xsl:template</span>&gt;    </span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">xsl:stylesheet</span>&gt;</span></code></pre></div>
+            <p>En aquest exemple hem ordenat per
+            <code>cognoms</code>.</p>
+            <p>També podem ordenar per ordre descendent:</p>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:sort</span><span class="ot"> select=</span><span class="st">&quot;cognoms&quot;</span><span class="ot"> order=</span><span class="st">&quot;descending&quot;</span> /&gt;</span></code></pre></div>
+            <h2 data-number="1.8" id="controlant-leixida"><span
+            class="header-section-number">1.8</span> Controlant
+            l’eixida</h2>
+            <p>Podem controlar el format d’eixida amb l’element
+            <code>&lt;xsl:output&gt;</code>. Aquest és un element
+            d’etiqueta única i que s’ha de posar preferentment a
+            continuació de <code>&lt;xsl:template&gt;</code>. Alguns
+            exemples:</p>
+            <div class="sourceCode" id="cb20"><pre
+            class="sourceCode xml"><code class="sourceCode xml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:output</span><span class="ot"> method=</span><span class="st">&quot;xml&quot;</span><span class="ot"> indent=</span><span class="st">&quot;yes&quot;</span>/&gt; exporta a xml amb indentació</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:output</span><span class="ot"> method=</span><span class="st">&quot;html&quot;</span><span class="ot"> indent=</span><span class="st">&quot;yes&quot;</span>/&gt; exporta a html amb indentació</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">xsl:output</span><span class="ot"> method=</span><span class="st">&quot;text&quot;</span><span class="ot"> indent=</span><span class="st">&quot;no&quot;</span>/&gt; exporta a format text sense indentació</span></code></pre></div>
+            <p><a
+            href="https://www.w3schools.com/xml/ref_xsl_el_output.asp">Més
+            sobre xsl:output</a>.</p>
+            <h2 data-number="1.9" id="resum"><span
+            class="header-section-number">1.9</span> Resum</h2>
+            <ul>
+            <li><code>&lt;xsl:template match="/"&gt; &lt;/xsl:template&gt;</code>:
+            Especifica la plantilla.</li>
+            <li><code>&lt;xsl:value-of select="expressio_xpath"/&gt;</code>:
+            Selecciona el valor de l’etiqueta que es correspon amb
+            <code>expressio_xpath</code>.</li>
+            <li><code>&lt;xsl:text&gt; &lt;/xsl:text&gt;</code>: Escriu
+            el contingut entre aquestes etiquetes.</li>
+            <li><code>&lt;xsl:for-each select="expressio_xpath"&gt; &lt;/xsl:for-each&gt;</code>:
+            Itera sobre tots els elements es corresponen amb
+            <code>expressio_xpath</code>.</li>
+            <li><code>&lt;xsl:sort select="element" order="ascending|descending"/&gt;</code>:
+            Ordena segons els valors de <code>element</code> en ordre
+            ascendent o descendent (per defecte ascendent).</li>
+            <li><code>&lt;xsl:output method="xml|html|text" indent="yes|no"/&gt;</code>:
+            Especifica el format d’eixida.</li>
+            </ul>
+            <h2 data-number="1.10" id="referències"><span
+            class="header-section-number">1.10</span> Referències</h2>
+            <ul>
+            <li><a href="https://www.w3.org/TR/xslt/all/">Recomanació
+            XSLT</a>.</li>
+            <li><a
+            href="https://www.w3schools.com/xml/xsl_intro.asp">W3Schools
+            XSLT tutorial</a></li>
+            </ul>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

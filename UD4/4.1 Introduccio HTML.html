@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>UD 4.1 Introducció a HTML</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">UD 4.1 Introducció a HTML</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#introducció-a-html-i-css"
+id="toc-introducció-a-html-i-css"><span
+class="toc-section-number">1</span> Introducció a HTML i CSS</a>
+<ul>
+<li><a href="#què-és-el-llenguatge-html"
+id="toc-què-és-el-llenguatge-html"><span
+class="toc-section-number">1.1</span> Què és el llenguatge HTML?</a>
+<ul>
+<li><a href="#història-de-lhtml" id="toc-història-de-lhtml"><span
+class="toc-section-number">1.1.1</span> Història de l’HTML</a></li>
+</ul></li>
+<li><a href="#què-és-una-pàgina-web"
+id="toc-què-és-una-pàgina-web"><span
+class="toc-section-number">1.2</span> Què és una pàgina web?</a>
+<ul>
+<li><a href="#com-es-crea-una-pàgina-web"
+id="toc-com-es-crea-una-pàgina-web"><span
+class="toc-section-number">1.2.1</span> Com es crea una pàgina
+web?</a></li>
+</ul></li>
+<li><a href="#sintaxi-bàsica-dhtml" id="toc-sintaxi-bàsica-dhtml"><span
+class="toc-section-number">1.3</span> Sintaxi bàsica d’HTML</a>
+<ul>
+<li><a href="#elements" id="toc-elements"><span
+class="toc-section-number">1.3.1</span> Elements</a></li>
+<li><a href="#atributs" id="toc-atributs"><span
+class="toc-section-number">1.3.2</span> Atributs</a></li>
+</ul></li>
+<li><a href="#estructura-dels-documents-html"
+id="toc-estructura-dels-documents-html"><span
+class="toc-section-number">1.4</span> Estructura dels documents HTML</a>
+<ul>
+<li><a href="#letiqueta-doctype" id="toc-letiqueta-doctype"><span
+class="toc-section-number">1.4.1</span> L’etiqueta DOCTYPE</a></li>
+<li><a href="#letiqueta-html" id="toc-letiqueta-html"><span
+class="toc-section-number">1.4.2</span> L’etiqueta html</a></li>
+<li><a href="#lencapçalament-head" id="toc-lencapçalament-head"><span
+class="toc-section-number">1.4.3</span> L’encapçalament
+<code>&lt;head&gt;</code></a></li>
+<li><a href="#el-cos" id="toc-el-cos"><span
+class="toc-section-number">1.4.4</span> El cos</a></li>
+<li><a href="#pàgina-html-bàsica" id="toc-pàgina-html-bàsica"><span
+class="toc-section-number">1.4.5</span> Pàgina HTML bàsica</a></li>
+</ul></li>
+<li><a href="#comentaris" id="toc-comentaris"><span
+class="toc-section-number">1.5</span> Comentaris</a></li>
+<li><a href="#etiquetes-de-text" id="toc-etiquetes-de-text"><span
+class="toc-section-number">1.6</span> Etiquetes de text</a>
+<ul>
+<li><a href="#capçaleres" id="toc-capçaleres"><span
+class="toc-section-number">1.6.1</span> Capçaleres</a></li>
+<li><a href="#paràgrafs" id="toc-paràgrafs"><span
+class="toc-section-number">1.6.2</span> Paràgrafs</a></li>
+<li><a href="#letiqueta-pre" id="toc-letiqueta-pre"><span
+class="toc-section-number">1.6.3</span> L’etiqueta pre</a></li>
+<li><a href="#altres-etiquetes-de-text"
+id="toc-altres-etiquetes-de-text"><span
+class="toc-section-number">1.6.4</span> Altres etiquetes de
+text</a></li>
+</ul></li>
+<li><a href="#etiquetes-en-bloc-i-en-línia"
+id="toc-etiquetes-en-bloc-i-en-línia"><span
+class="toc-section-number">1.7</span> Etiquetes en bloc i en
+línia</a></li>
+<li><a href="#etiquetes-de-grup-i-semàntiques"
+id="toc-etiquetes-de-grup-i-semàntiques"><span
+class="toc-section-number">1.8</span> Etiquetes de grup i
+semàntiques</a>
+<ul>
+<li><a href="#letiqueta-div" id="toc-letiqueta-div"><span
+class="toc-section-number">1.8.1</span> L’etiqueta div</a></li>
+<li><a href="#letiqueta-span" id="toc-letiqueta-span"><span
+class="toc-section-number">1.8.2</span> L’etiqueta span</a></li>
+<li><a href="#etiquetes-semàntiques"
+id="toc-etiquetes-semàntiques"><span
+class="toc-section-number">1.8.3</span> Etiquetes semàntiques</a></li>
+</ul></li>
+<li><a href="#referències" id="toc-referències"><span
+class="toc-section-number">1.9</span> Referències</a></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="introducció-a-html-i-css"><span
+            class="header-section-number">1</span> Introducció a HTML i
+            CSS</h1>
+            <h2 data-number="1.1" id="què-és-el-llenguatge-html"><span
+            class="header-section-number">1.1</span> Què és el
+            llenguatge HTML?</h2>
+            <p>El llenguatge <strong>HTML (HyperText Markup
+            Language)</strong> és el llenguatge estàndard utilitzat per
+            escriure i estructurar el contingut de les pàgines web. És
+            la base de tota pàgina web i permet definir elements com
+            textos, imatges, enllaços, taules, i molt més, utilitzant
+            una sèrie d’instruccions conegudes com a
+            <strong>etiquetes</strong>.</p>
+            <p>Les pàgines web escrites en HTML són accessibles als
+            usuaris gràcies a un tipus especial de programari anomenat
+            <strong>navegador</strong> (com ara Google Chrome, Mozilla
+            Firefox, o Microsoft Edge). Els navegadors interpreten el
+            codi HTML i el tradueixen en una interfície visual que els
+            usuaris poden entendre i interactuar amb facilitat.</p>
+            <p>El llenguatge HTML està dissenyat per assegurar que el
+            contingut es visualitze de manera coherent en diferents
+            navegadors. Això significa que, independentment del
+            dispositiu o programari utilitzat, els documents HTML
+            haurien d’aparèixer de forma semblant per a tots els
+            usuaris. Aquest objectiu d’universalitat és fonamental per a
+            l’èxit d’Internet com a eina global de comunicació.</p>
+            <p>El navegador utilitza el llenguatge HTML per
+            <strong>processar i mostrar</strong> la informació que conté
+            una pàgina web. És a dir, el codi HTML serveix com una mena
+            d’instruccions perquè el navegador sàpiga com representar
+            correctament el contingut de la pàgina a l’usuari.</p>
+            <h3 data-number="1.1.1" id="història-de-lhtml"><span
+            class="header-section-number">1.1.1</span> Història de
+            l’HTML</h3>
+            <p>L’any <strong>1989</strong>, dos investigadors del
+            <strong>CERN</strong>, <strong>Tim Berners-Lee</strong> i
+            <strong>Anders Berglund</strong>, van desenvolupar el que
+            avui coneixem com a HTML. Aquest llenguatge basat en
+            etiquetes es va crear amb l’objectiu de <strong>facilitar
+            l’intercanvi d’informació</strong> a través d’Internet. La
+            seva funció original era connectar documents i dades
+            mitjançant enllaços hipertextuals, un concepte revolucionari
+            en aquell moment.</p>
+            <ol type="1">
+            <li><p><strong>HTML 1.0 (1993)</strong><br />
+            La primera versió d’HTML, molt senzilla, permetia
+            estructurar documents bàsics amb text, enllaços i imatges.
+            No incloïa moltes funcionalitats modernes, ja que estava
+            pensada exclusivament per compartir informació
+            estàtica.</p></li>
+            <li><p><strong>HTML 2.0 (1995)</strong><br />
+            Va establir un conjunt de característiques bàsiques
+            estàndard, incloent-hi formularis i suports per a taules. Va
+            ser la primera versió formalment especificada per l’IETF
+            (Internet Engineering Task Force).</p></li>
+            <li><p><strong>HTML 3.2 (1997)</strong><br />
+            Va ser un gran pas endavant amb la introducció de novetats
+            com les taules més avançades, suports per a scripts (per
+            exemple, JavaScript), etiquetes per al format visual com
+            <code>&lt;font&gt;</code> i més opcions per al disseny de
+            pàgines web.</p></li>
+            <li><p><strong>HTML 4.0 (1997-1999)</strong><br />
+            Va establir una base més sòlida per al desenvolupament web
+            amb tres versions de documentació (Strict, Transitional,
+            Frameset). També va afegir suport per al contingut
+            multimèdia, fulls d’estil CSS, i va començar a separar el
+            contingut de la presentació.</p></li>
+            <li><p><strong>HTML 5 (2014)</strong><br />
+            És la versió actual i la més avançada d’HTML. Introdueix
+            etiquetes semàntiques com <code>&lt;header&gt;</code>,
+            <code>&lt;footer&gt;</code>, <code>&lt;article&gt;</code> i
+            <code>&lt;section&gt;</code>. Suporta àudio i vídeo de
+            manera nativa (<code>&lt;audio&gt;</code> i
+            <code>&lt;video&gt;</code>), gràfics amb
+            <code>&lt;canvas&gt;</code>, aplicacions web modernes, i
+            millores significatives en accessibilitat i compatibilitat
+            amb dispositius mòbils.</p></li>
+            </ol>
+            <figure>
+            <img src="images/html5.png" alt="logo HTML5" />
+            <figcaption aria-hidden="true">logo HTML5</figcaption>
+            </figure>
+            <h2 data-number="1.2" id="què-és-una-pàgina-web"><span
+            class="header-section-number">1.2</span> Què és una pàgina
+            web?</h2>
+            <p>Una pàgina web és, essencialment, un <strong>arxiu de
+            text</strong> que conté codi escrit en el llenguatge HTML.
+            Aquest arxiu porta l’extensió <strong>.html</strong> o
+            <strong>.htm</strong> i pot ser llegit i interpretat per
+            qualsevol navegador web, com Google Chrome, Mozilla Firefox
+            o Safari.</p>
+            <h3 data-number="1.2.1"
+            id="com-es-crea-una-pàgina-web"><span
+            class="header-section-number">1.2.1</span> Com es crea una
+            pàgina web?</h3>
+            <p>Les pàgines web poden ser creades utilitzant eines molt
+            senzilles, com ara el <strong>Bloc de Notes</strong> (o
+            qualsevol editor de text bàsic), però també es poden
+            desenvolupar amb programes més avançats coneguts com a
+            <strong>editors de codi HTML</strong>. Alguns exemples
+            populars d’aquests editors són:</p>
+            <ul>
+            <li><strong>Visual Studio Code</strong>: Un editor de codi
+            avançat amb moltes extensions i funcions per al
+            desenvolupament web.</li>
+            <li><strong>Sublime Text</strong>: Una altra eina lleugera i
+            potent per escriure codi HTML.</li>
+            <li><strong>Adobe Dreamweaver</strong>: Un editor visual que
+            permet veure el disseny de la pàgina mentre s’escriu el
+            codi.</li>
+            <li><strong>Brackets</strong>: Ideal per treballar amb HTML,
+            CSS i JavaScript.</li>
+            </ul>
+            <p>Els editors especialitzats ofereixen funcionalitats
+            addicionals, com el ressaltat de sintaxi, l’autocompletat i
+            eines de depuració, que fan més fàcil escriure i gestionar
+            el codi HTML.</p>
+            <p>El codi <strong>HTML</strong> és considerat <strong>text
+            pla</strong>, perquè és un fitxer que només conté caràcters
+            textuals sense cap format especial associat, com el que
+            podríem trobar en un document de Word o una imatge. Això vol
+            dir que es pot obrir i llegir amb qualsevol editor de text
+            simple. Així mateix, no conté estils visuals (com colors,
+            tipografies o dissenys) per defecte. Per afegir aquests
+            elements visuals, cal utilitzar altres tecnologies com
+            <strong>CSS (Cascading Style Sheets)</strong> o incloure
+            scripts amb <strong>JavaScript</strong> per funcionalitats
+            dinàmiques.</p>
+            <p>Quan un navegador carrega un arxiu HTML, interpreta les
+            etiquetes i el codi inclòs dins del fitxer per
+            <strong>convertir el text pla en una pàgina web amb
+            format</strong> que els usuaris poden veure i interactuar.
+            Això fa que el codi HTML siga la base sobre la qual es
+            construeix tota la interfície d’usuari a Internet.</p>
+            <h2 data-number="1.3" id="sintaxi-bàsica-dhtml"><span
+            class="header-section-number">1.3</span> Sintaxi bàsica
+            d’HTML</h2>
+            <p>El <strong>llenguatge HTML</strong> basa la seva sintaxi
+            en <strong>elements</strong>, els quals estan definits per
+            <strong>etiquetes</strong>. Des de la versió 5 d’HTML, les
+            etiquetes defineixen el <strong>tipus de contingut</strong>
+            que contenen, tenen una funció exclusivament
+            <strong>semàntica</strong>, deixant l’aparença per a ser
+            definida amb el llenguatge <strong>CSS</strong>.</p>
+            <p>A més, els elements poden tindre 0 o més
+            <strong>atributs</strong>, que modifiquen o afegeixen
+            informació a les etiquetes.</p>
+            <h3 data-number="1.3.1" id="elements"><span
+            class="header-section-number">1.3.1</span> Elements</h3>
+            <p>El llenguatge HTML està format per
+            <strong>elements</strong>. Cada element està format per una
+            <strong>etiqueta d’obertura</strong>, el
+            <strong>contingut</strong> de l’element i una
+            <strong>etiqueta de tancament</strong>. Per exemple, en:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Hola món!<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>L’etiqueta d’obertura és
+            <strong><code>&lt;p&gt;</code></strong>, l’etiqueta de
+            tancament és <strong><code>&lt;/p&gt;</code></strong> i el
+            contingut de l’element és
+            <strong><code>Hola món!</code></strong>.</p>
+            <p>La majoria dels elements HTML es poden niar dins
+            d’altres:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Hola <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span> món! <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span> <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>En aquest exemple, l’etiqueta <code>&lt;strong&gt;</code>
+            està niada dins de l’etiqueta <code>&lt;p&gt;</code>.</p>
+            <p>Per a que el niament siga correcte, les etiquetes s’han
+            de tancar en el mateix ordre en què s’han obert. El següent
+            exemple seria incorrecte:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Incorrecte, strong s&#39;ha de tancar abans que p --&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Hola <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span> món!  <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span> <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Tampoc hem d’oblidar tancar les etiquetes:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Incorrecte, strong no s&#39;ha tancat --&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Hola <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span> món!  <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span> </span></code></pre></div>
+            <p>També existeixen elements buits, que estan formats per
+            una única etiqueta i no tenen contingut. Exemples d’elements
+            buits són <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>,
+            <code>&lt;meta&gt;</code> o <code>&lt;img&gt;</code>.</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Açò és un paràgraf <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span> amb un salt de línia<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <blockquote>
+            <p>En XHTML les etiquetes úniques han de tancar-se de la
+            mateixa maner aque en XML, per exemple
+            <code>&lt;br/&gt;</code>. En HTML5 no cal fer-ho, però si ho
+            fem no dona error.</p>
+            </blockquote>
+            <p>El llenguatge HTML té un <strong>número d’etiquetes
+            limitat</strong>.</p>
+            <p>Ací hi trobaràs una llista d’etiquetes vàlides: <a
+            href="https://www.w3schools.com/TAGS/default.asp">HTML
+            Element Reference</a></p>
+            <h3 data-number="1.3.2" id="atributs"><span
+            class="header-section-number">1.3.2</span> Atributs</h3>
+            <p>Els elements HTML poden tindre <strong>atributs</strong>.
+            Els atributs proporcionen informació addicional als
+            elements.</p>
+            <p>Les regles per utilitzar atributs són:</p>
+            <ul>
+            <li>Els atributs sempre s’escriuen dins de l’etiqueta
+            d’obertura.</li>
+            <li>Solen tindre la forma <strong>nom=“valor”</strong>.</li>
+            <li>El valor de l’atribut pot anar entre cometes simples
+            <code>(')</code> o dobles <code>(")</code>.</li>
+            <li>Si una etiqueta té varis atributs, es poden separar amb
+            espais.</li>
+            </ul>
+            <p><strong>Exemples:</strong></p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Etiqueta amb un atribut --&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;https://es.wikipedia.org&quot;</span><span class="dt">&gt;</span>Anar a Wikipedia<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Etiqueta amb dos atributs --&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;img_robot.jpg&quot;</span><span class="ot"> alt</span><span class="op">=</span><span class="st">&quot;Robot simpàtic&quot;</span><span class="dt">&gt;</span> </span></code></pre></div>
+            <p>Els valors poden anar entre etiquetes simples o dobles,
+            encara que també es poden utilitzar sense cometes, però el
+            W3C recomana emprar-les sempre.</p>
+            <p>Si el valor de l’atribut està entre etiquetes simples,
+            dins es poden utilitzar etiquetes dobles i a la inversa.</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;font-family: &#39;Times New Roman&#39; &quot;</span><span class="dt">&gt;</span>Text d&#39;exemple<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> style</span><span class="op">=</span><span class="st">&#39;font-family: &quot;Times New Roman&quot; &#39;</span><span class="dt">&gt;</span>Text d&#39;exemple<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h2 data-number="1.4"
+            id="estructura-dels-documents-html"><span
+            class="header-section-number">1.4</span> Estructura dels
+            documents HTML</h2>
+            <h3 data-number="1.4.1" id="letiqueta-doctype"><span
+            class="header-section-number">1.4.1</span> L’etiqueta
+            DOCTYPE</h3>
+            <p>En <strong>HTML5</strong>, cada document ha de començar
+            definint el <strong>DOCTYPE</strong>. Aquesta declaració és
+            essencial perquè informa el navegador sobre el tipus de
+            document que es tracta i amb quina sintaxi s’ha creat la
+            pàgina. Aquesta informació permet que el navegador pugui
+            processar i renderitzar correctament el contingut.</p>
+            <p>El <strong>DOCTYPE</strong> no és una etiqueta HTML
+            pròpiament dita, sinó una instrucció especial que ajuda a
+            establir el mode de renderització del navegador.</p>
+            <p>El <strong>DOCTYPE</strong> s’ha de col·locar a la
+            primera línia de cada document HTML, abans de qualsevol
+            altra informació o etiqueta.</p>
+            <p>En <strong>HTML5</strong> l’etiqueta per al DOCTYPE és
+            molt simple:</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.4.2" id="letiqueta-html"><span
+            class="header-section-number">1.4.2</span> L’etiqueta
+            html</h3>
+            <p>Un document HTML ha d’estar delimitat per les etiquetes
+            <code>&lt;html&gt;</code> i <code>&lt;/html&gt;</code>.
+            Aquestes etiquetes defineixen el conjunt del document.</p>
+            <p>L’etiqueta <code>&lt;html&gt;</code> pot incloure
+            l’atribut <strong>lang</strong>, que és útil per especificar
+            l’idioma principal del contingut de la pàgina web.</p>
+            <ol type="1">
+            <li><p><strong>Definir l’idioma de la pàgina</strong>:
+            Permet establir quin idioma s’utilitza en el contingut de la
+            pàgina web, com ara <code>es</code> per a espanyol,
+            <code>ca</code> per a català o <code>en</code> per a
+            anglès.</p></li>
+            <li><p><strong>Millorar l’accessibilitat i la
+            indexació</strong>:</p>
+            <ul>
+            <li>Els motors de cerca utilitzen aquesta informació per
+            comprendre millor el contingut de la pàgina i oferir-lo de
+            manera més precisa en els resultats de cerca.</li>
+            <li>Els programes de síntesi de veu utilitzen aquest atribut
+            per pronunciar correctament el contingut segons l’idioma
+            especificat.</li>
+            </ul></li>
+            </ol>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;ca&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     ... </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.4.3" id="lencapçalament-head"><span
+            class="header-section-number">1.4.3</span> L’encapçalament
+            <code>&lt;head&gt;</code></h3>
+            <p>L’etiqueta <code>&lt;head&gt;</code> està delimitada per
+            <code>&lt;head&gt;</code> i <code>&lt;/head&gt;</code>.
+            Aquesta secció del document proporciona informació sobre la
+            pàgina i inclou etiquetes de tipus informatiu, com ara el
+            <strong>títol</strong> de la pàgina
+            (<code>&lt;title&gt;</code>), l’autor, les paraules clau i
+            altres metadades importants.</p>
+            <p>És important destacar que el contingut inclòs dins de
+            l’etiqueta <code>&lt;head&gt;</code> <strong>no es mostra
+            directament en el navegador</strong>, ja que serveix
+            únicament per a finalitats informatives i de
+            configuració.</p>
+            <p>Al seu interior podem afegir alguns dels elements HTML
+            següents:</p>
+            <ul>
+            <li><p><strong><code>&lt;title&gt;</code></strong> i
+            <strong><code>&lt;/title&gt;</code></strong>: s’empra per
+            definir el <strong>títol de la pàgina</strong>. És
+            imprescindible en HTML5, per la qual cosa sempre cal
+            afegir-ho. Aquest és el títol que es mostrarà a la barra de
+            títol del navegador, en fer un marcador a la pàgina o als
+            cercadors d’Internet.</p></li>
+            <li><p><strong><code>&lt;link&gt;</code></strong>:
+            s’utilitza per enllaçar amb recursos externs, generalment
+            fulls d’estil CSS. Hi tornarem més endavant.</p></li>
+            <li><p><strong><code>&lt;style&gt;</code></strong> i
+            <strong><code>&lt;/style&gt;</code></strong>: ens permet
+            definir estils específics per a la pàgina actual. Se sol
+            emprar en combinació amb l’anterior, per això els tractarem
+            en arribar als fulls d’estil.</p></li>
+            <li><p><strong><code>&lt;base&gt;</code></strong>: defineix
+            l’URL base per a la resta dels enllaços que incloem a la
+            pàgina web. S’empra en casos molt concrets.</p></li>
+            <li><p><strong><code>&lt;script&gt;</code></strong> i
+            <strong><code>&lt;/script&gt;</code></strong>: és un altre
+            element important que s’utilitza per englobar accions en
+            altres llenguatges, generalment <strong>Javascript</strong>,
+            per aconseguir que la pàgina web realitze determinades
+            tasques. Aquestes són operacions que s’executen en accedir a
+            la pàgina, augmentant-ne la versatilitat.</p></li>
+            </ul>
+            <h4 data-number="1.4.3.1" id="les-metadades"><span
+            class="header-section-number">1.4.3.1</span> Les
+            metadades</h4>
+            <p>L’etiqueta <strong><code>&lt;meta&gt;</code></strong>
+            s’utilitza per afegir informació sobre la pàgina
+            (<em>metadades</em>) i es col·loca dins de l’etiqueta
+            <strong><code>&lt;head&gt;</code></strong>.</p>
+            <p>Els motors de cerca utilitzen la informació proporcionada
+            per aquesta etiqueta per millorar la cerca i la indexació
+            del contingut web.</p>
+            <p>Aquesta etiqueta inclou dos atributs principals:</p>
+            <ul>
+            <li><strong><code>&lt;name&gt;</code></strong>: Defineix el
+            tipus d’informació que s’està proporcionant (per exemple,
+            paraules clau, descripció, autor, etc.).</li>
+            <li><strong><code>&lt;content&gt;</code></strong>: Conté el
+            valor associat al tipus d’informació definit a l’atribut
+            <code>&lt;name&gt;</code>.</li>
+            </ul>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;description&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;Aquesta és una pàgina d&#39;exemple sobre HTML.&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;keywords&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;HTML, meta, etiquetes&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;author&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;Nom de l&#39;autor&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>En aquest exemple també vegem com, amb l’etiqueta
+            <code>&lt;meta&gt;</code>, estem definint el joc de
+            caràcters (<em>charset, character set</em>) del document
+            HTML. És molt important fer-ho per a que la pàgina es
+            visualitze correctament.</p>
+            <p>El W3C recomana el charset <strong>UTF-8</strong>.</p>
+            <p>S’indica amb l’etiqueta
+            <strong><code>&lt;meta charset="UTF-8"&gt;</code></strong></p>
+            <p>Les etiquetes <strong><code>&lt;meta&gt;</code></strong>
+            també donen informació de l’autor, descripció de la pàgina,
+            paraules clau (<em>keywords</em>). L’atribut
+            <strong><code>name</code></strong> defineix el tipus
+            d’informació (author, description, keywords), mentre que
+            l’atribut <strong><code>content</code></strong> especifica
+            el valor corresponent.</p>
+            <p>Un altre ús de les etiquetes meta és establir el
+            <strong>viewport</strong> o la vista del document.</p>
+            <p>El <strong>viewport</strong> és l’àrea visible d’una
+            pàgina web per a l’usuari. Varia segons el dispositiu: serà
+            menor en un telèfon mòbil que en una pantalla d’ordinador.
+            Per a facilitar l’adaptabilitat de les pàgines als diferents
+            dispositius, s’hauria d’afegir el següent viewport a totes
+            les pàgines:</p>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Això dóna al navegador instruccions sobre com processar
+            les dimensions i l’escala de la pàgina.</p>
+            <p>La part <strong><code>width=device-width</code></strong>
+            estableix l’amplada de la pàgina per a que s’adapte a
+            l’amplada de pantalla del dispositiu.</p>
+            <p>La part <strong><code>initial-scale=1.0</code></strong>
+            estableix el nivell de zoom inicial quan el navegador
+            carrega la pàgina per primera vegada.</p>
+            <p>Més info sobre el viewport en <a
+            href="https://www.w3schools.com/css/css_rwd_viewport.asp">W3Schools</a>.</p>
+            <h3 data-number="1.4.4" id="el-cos"><span
+            class="header-section-number">1.4.4</span> El cos</h3>
+            <p>El <strong>cos</strong> (<em>body</em>) <strong>és la
+            part visible de les pàgines HTML</strong>. Està flanquejat
+            per les etiquetes <strong><code>&lt;body&gt;</code></strong>
+            i <strong><code>&lt;/body&gt;</code></strong>.</p>
+            <p>Dins col·locarem el contingut de la nostra pàgina, dins
+            d’etiquetes de contingut (<code>&lt;p&gt;</code>,
+            <code>&lt;h1&gt;</code>, <code>&lt;img&gt;</code>, etc.)</p>
+            <h3 data-number="1.4.5" id="pàgina-html-bàsica"><span
+            class="header-section-number">1.4.5</span> Pàgina HTML
+            bàsica</h3>
+            <p>Ja tenim tots els elements per a començar a fer la nostra
+            primera pàgina web:</p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;ca&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>     <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>HTLM5<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>         <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>     <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>     <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>          ...</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>     <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h2 data-number="1.5" id="comentaris"><span
+            class="header-section-number">1.5</span> Comentaris</h2>
+            <p>Els comentaris en HTML s’escriuen entre les etiquetes
+            <strong><code>&lt;!--</code></strong> i
+            <strong><code>--&gt;</code></strong>. Poden ocupar vàries
+            línies.</p>
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Açò és un paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Açò és un comentari --&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Açò és un altre paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Açò és un comentari </span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">que ocupa 2 línies--&gt;</span></span></code></pre></div>
+            <h2 data-number="1.6" id="etiquetes-de-text"><span
+            class="header-section-number">1.6</span> Etiquetes de
+            text</h2>
+            <h3 data-number="1.6.1" id="capçaleres"><span
+            class="header-section-number">1.6.1</span> Capçaleres</h3>
+            <p>HTML defineix <strong>6 nivells de capçaleres o
+            títols</strong> amb les etiquetes de <code>&lt;h1&gt;</code>
+            a <code>&lt;h6&gt;</code>.</p>
+            <p><code>&lt;h1&gt;</code> defineix el títol de més
+            importància o de primer nivell, mentre que
+            <code>&lt;h6&gt;</code> seria el de menor nivell.</p>
+            <p>És important ressaltar que aquest elements tenen un valor
+            semàntic i no és una bona pràctica usar-los per a donar
+            format al document, per a això usaríem CSS. Cada capçalera
+            representa un inici de secció i dins hauriem d’escriure el
+            contingut relatiu a eixa secció. Així, després d’una
+            capçalera <code>&lt;h1&gt;</code> hauriem d’obrir una
+            <code>&lt;h2&gt;</code>, mai una <code>&lt;h3&gt;</code>
+            directament.</p>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Títol 1<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>Títol 2<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>Títol 3<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h4</span><span class="dt">&gt;</span>Títol 4<span class="dt">&lt;/</span><span class="kw">h4</span><span class="dt">&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h5</span><span class="dt">&gt;</span>Títol 5<span class="dt">&lt;/</span><span class="kw">h5</span><span class="dt">&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h6</span><span class="dt">&gt;</span>Títol 6<span class="dt">&lt;/</span><span class="kw">h6</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p><strong><code>&lt;h1&gt;</code></strong> defineix la
+            capçalera més important, mentre que
+            <strong><code>&lt;h6&gt;</code></strong> defineix la de
+            menys importància.</p>
+            <p><strong>Més informació</strong>: <a
+            href="https://www.w3schools.com/html/html_headings.asp">W3Schools
+            HTML Headings</a></p>
+            <h3 data-number="1.6.2" id="paràgrafs"><span
+            class="header-section-number">1.6.2</span> Paràgrafs</h3>
+            <p>Per definir els paràgrafs utilitzem l’etiqueta
+            <strong><code>&lt;p&gt; &lt;/p&gt;</code></strong>, la qual
+            introdueix una línia en blanc després del paràgraf.</p>
+            <p>És important assenyalar que dins de les etiquetes de
+            text, varis espais seguits i els salts de línia no es tenen
+            en compte. Per exemple:</p>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>Aquest paràgraf</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>conté moltes línies</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>al codi font,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>però el navegador</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>ho ignora.</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>Aquest paràgraf</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>conté         molts espais</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>al codi    font,</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>però el         navegador</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>ho ignora.</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>mostraria:</p>
+            <figure>
+            <img src="images/p.png" alt="Espais als paràgrafs" />
+            <figcaption aria-hidden="true">Espais als
+            paràgrafs</figcaption>
+            </figure>
+            <p>Com es pot veure, s’ignoren els espais addicionals i els
+            salts de línia.</p>
+            <p>L’etiqueta única
+            <strong><code>&lt;br&gt;</code></strong>, la qual no té
+            tancament, ens serveix per fer un salt de línia, dins dels
+            paràgrafs. També es pot utilitzar dins de títols.</p>
+            <p>Com a norma general, utilitzarem vàries etiquetes
+            <code>&lt;p&gt;</code> per a separar els paràgrafs en lloc
+            de <code>&lt;br&gt;</code>.</p>
+            <p>L’etiqueta <strong><code>&lt;hr&gt;</code></strong> és
+            similar a <strong><code>&lt;br&gt;</code></strong>, però, a
+            més, afegeix una línia horitzontal separadora.</p>
+            <p>El següent codi:</p>
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Capçalera 1<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Açò és un text<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>Capçalera molt llarga que es <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span> divideix en dues línies<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Açò és un altre text<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">hr</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>mostraria això:</p>
+            <figure>
+            <img src="images/hr.png"
+            alt="Exemples de &lt;br&gt; i &lt;hr&gt;" />
+            <figcaption aria-hidden="true">Exemples de
+            <code>&lt;br&gt;</code> i
+            <code>&lt;hr&gt;</code></figcaption>
+            </figure>
+            <h3 data-number="1.6.3" id="letiqueta-pre"><span
+            class="header-section-number">1.6.3</span> L’etiqueta
+            pre</h3>
+            <p>L’etiqueta
+            <strong><code>&lt;pre&gt; &lt;/pre&gt;</code></strong>
+            defineix un paràgraf que respecta els codis propis del text
+            pla (salts de línia, nombre d’espais, etc.).</p>
+            <p>És adequada per fer textos literals, per exemple poemes
+            amb salts de línia, sense necessitat d’utilitzar
+            <code>&lt;br&gt;</code>.</p>
+            <p><a
+            href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_pre">Exemple</a></p>
+            <h3 data-number="1.6.4" id="altres-etiquetes-de-text"><span
+            class="header-section-number">1.6.4</span> Altres etiquetes
+            de text</h3>
+            <p>Serveixen per indicar que un text concret té un
+            significat especial.</p>
+            <ul>
+            <li><strong><code>&lt;strong&gt; &lt;/strong&gt;</code></strong>:
+            Text important (es mostra en negreta)</li>
+            <li><strong><code>&lt;em&gt; &lt;/em&gt;</code></strong>
+            text amb èmfasi, es mostra en cursiva</li>
+            <li><strong><code>&lt;blockquote&gt; &lt;/blockquote&gt;</code></strong>:
+            per cites (etiqueta de bloc). <a
+            href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_formatting_blockquote">Exemple</a></li>
+            <li><strong><code>&lt;mark&gt; &lt;/mark&gt;</code></strong>:
+            per a mostrar text ressaltat.</li>
+            <li><strong><code>&lt;del&gt; &lt;/del&gt;</code></strong>:
+            per a mostrar text que ha sigut eliminat, sol representar-se
+            amb una línea a través del text.</li>
+            <li><strong><code>&lt;sub&gt; &lt;/sub&gt;</code></strong>:
+            Subindex</li>
+            <li><strong><code>&lt;sup&gt; &lt;/sup&gt;</code></strong>:
+            Superindex</li>
+            </ul>
+            <p>Aquestes etiquetes no són per donar format sinó per donar
+            significat especial al text. <strong>Sempre</strong> hem de
+            formatar el contingut mitjançant els <strong>fulls d’estil
+            (CSS)</strong>.</p>
+            <p>Altres etiquetes heretades de versions anteriors de HTML,
+            permeten també formatar el text, però no tenen un significat
+            especial. Es recomana utilitzar, al seu lloc, les versions
+            d’HTML5:</p>
+            <ul>
+            <li><strong><code>&lt;b&gt; &lt;/b&gt;</code></strong>: Text
+            en negreta</li>
+            <li><strong><code>&lt;i&gt; &lt;/i&gt;</code></strong>
+            (italic): es mostra en cursiva</li>
+            <li><strong><code>&lt;u&gt; &lt;/u&gt;</code></strong>
+            (underlined): es mostra subratllat</li>
+            </ul>
+            <blockquote>
+            <p>No hem de fer servir <code>&lt;u&gt;</code> per
+            subratllar. Dóna lloc a equivocacions per l’usuari, que es
+            pot pensar que és un link (enllaç).</p>
+            </blockquote>
+            <p>Altres etiquetes de format: <a
+            href="https://www.w3schools.com/html/html_formatting.asp">https://www.w3schools.com/html/html_formatting.asp</a></p>
+            <p>Altres etiquetes de cites: <a
+            href="https://www.w3schools.com/html/html_quotation_elements.asp">https://www.w3schools.com/html/html_quotation_elements.asp</a></p>
+            <h2 data-number="1.7"
+            id="etiquetes-en-bloc-i-en-línia"><span
+            class="header-section-number">1.7</span> Etiquetes en bloc i
+            en línia</h2>
+            <p>En HTML les etiquetes que tenen contingut poden definir
+            <strong>elements en bloc (block-level elements)</strong> o
+            <strong>elements en línia (inline elements)</strong>.</p>
+            <p>Els <strong>elements en bloc</strong> solen ser
+            representants amb un salt de línia en finalitzar el bloc.
+            Serveixen per a representar blocs de text més o menys
+            llargs, com paràgrafs, capçaleres, cites. Les etiquetes de
+            bloc vistes fins ara són
+            <strong><code>&lt;h1&gt; - &lt;h6&gt;</code></strong>,
+            <strong><code>&lt;p&gt;</code></strong>,
+            <strong><code>&lt;pre&gt;</code></strong> i
+            <strong><code>&lt;blockquote&gt;</code></strong>.</p>
+            <p>Els <strong>elements en línia</strong> serveixen per a
+            ressaltar parts d’un text, generalment més menudes que un
+            element en bloc. Les etiquetes en línia són
+            <strong><code>&lt;em&gt;</code></strong>,
+            <strong><code>&lt;strong&gt;</code></strong>,
+            <strong><code>&lt;u&gt;</code></strong>,
+            <strong><code>&lt;i&gt;</code></strong>, etc.</p>
+            <p><a
+            href="https://www.w3schools.com/html/html_blocks.asp">Referència</a></p>
+            <p>Les etiquetes de text es poden niuar unes dins de les
+            altres. Generalment es niuen etiquetes d’elements en línia
+            dins d’etiquetes de bloc, però fer-ho a l’inrevés no és
+            incorrecte. Tambés és freqüent niuar elements en línia dins
+            d’altres elements en línia.</p>
+            <p>Exemples:</p>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Açó és una capçalera, defineix un element en bloc<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span> Açó és un paràgraf que defineix un altre element en bloc.</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  Podem escriure en <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">em</span><span class="dt">&gt;</span> negreta i cursiva <span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> <span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span> utilitzant les etiquetes strong i em.</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Generalment no es niuen elements de bloc dins d’altres
+            elements de bloc amb una semàntica diferent, per exemple,
+            seria incorrecte niuar un
+            <strong><code>&lt;p&gt;</code></strong> dins d’un
+            <strong><code>&lt;h1&gt;</code></strong>.</p>
+            <h2 data-number="1.8"
+            id="etiquetes-de-grup-i-semàntiques"><span
+            class="header-section-number">1.8</span> Etiquetes de grup i
+            semàntiques</h2>
+            <h3 data-number="1.8.1" id="letiqueta-div"><span
+            class="header-section-number">1.8.1</span> L’etiqueta
+            div</h3>
+            <p><strong>L’etiqueta de bloc</strong>
+            <strong><code>&lt;div&gt;</code></strong> s’utilitza per
+            definir un bloc de contingut o secció de la pàgina, per
+            poder aplicar diferents estils i fins i tot per realitzar
+            operacions sobre aquest bloc específic.</p>
+            <p>Per exemple:</p>
+            <div class="sourceCode" id="cb20"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;border: 2px solid rgb(204, 102, 204);&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Índex<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>Pàgina principal<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>Galeria<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>Autors<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span> </span></code></pre></div>
+            <p>agrupa tots els elements i dibuixa una vora al voltant
+            d’ells:</p>
+            <figure>
+            <img src="images/div.png" alt="Ús de &lt;div&gt;" />
+            <figcaption aria-hidden="true">Ús de
+            <code>&lt;div&gt;</code></figcaption>
+            </figure>
+            <h3 data-number="1.8.2" id="letiqueta-span"><span
+            class="header-section-number">1.8.2</span> L’etiqueta
+            span</h3>
+            <p>L’etiqueta <strong><code>&lt;span&gt;</code></strong>
+            funciona igual que
+            <strong><code>&lt;div&gt;</code></strong>, però a diferència
+            d’aquesta, és una <strong>etiqueta en línia</strong>.
+            Serveix per a agrupar paraules i elements en l’interior de
+            paràgrafs, títols i altres elements de bloc:</p>
+            <div class="sourceCode" id="cb21"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>He pintat de color <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;color:red&quot;</span><span class="dt">&gt;</span>roig<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span> el meu cotxe<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span> </span></code></pre></div>
+            <figure>
+            <img src="images/span.png" alt="Ús de &lt;span&gt;" />
+            <figcaption aria-hidden="true">Ús de
+            <code>&lt;span&gt;</code></figcaption>
+            </figure>
+            <blockquote>
+            <p>Ni <strong><code>&lt;div&gt;</code></strong> ni
+            <strong><code>&lt;span&gt;</code></strong> generen cap canvi
+            en l’aparença dels seus continguts. Aquests canvis es fan
+            per mitjà de CSS i dels atributs <strong>class</strong> i
+            <strong>id</strong>.</p>
+            </blockquote>
+            <h3 data-number="1.8.3" id="etiquetes-semàntiques"><span
+            class="header-section-number">1.8.3</span> Etiquetes
+            semàntiques</h3>
+            <p>Abans d’HTML5, les pàgines web feien un ús intensiu de
+            les etiquetes <strong><code>&lt;div&gt;</code></strong> i
+            <strong><code>&lt;span&gt;</code></strong>. S’utilitzaven
+            per a agrupar elements com la capçalera, menú, peu, etc de
+            les pàgines web. HTML5 va introduir noves etiquetes per a
+            aquest propòsit.</p>
+            <p>Les més importants són:</p>
+            <ul>
+            <li><strong><code>&lt;header&gt; &lt;/header&gt;</code></strong>:
+            per definir un bloc de contingut que farà de capçalera de la
+            pàgina web.</li>
+            <li><strong><code>&lt;main&gt; &lt;/main&gt;</code></strong>:
+            defineix un bloc per al contingut principal de la
+            pàgina.</li>
+            <li><strong><code>&lt;footer&gt; &lt;/footer&gt;</code></strong>:
+            defineix el peu de pàgina de la nostra web.</li>
+            <li><strong><code>&lt;nav&gt; &lt;/nav&gt;</code></strong>:
+            on inclourem diferents enllaços (barra de navegació) perquè
+            l’usuari es puga desplaçar entre les parts del nostre lloc
+            web.</li>
+            <li><strong><code>&lt;section&gt; &lt;/section&gt;</code></strong>:
+            per definir grans seccions de la nostra pàgina.</li>
+            <li><strong><code>&lt;article&gt; &lt;/article&gt;</code></strong>:
+            marca els límits d’un contingut específic, com ara una
+            notícia o un article en general.</li>
+            <li><strong><code>&lt;aside&gt; &lt;/aside&gt;</code></strong>:
+            s’empra per definir un contingut relacionat amb la pàgina,
+            però que s’ha de considerar separat del contingut
+            principal.</li>
+            </ul>
+            <figure>
+            <img src="images/img_sem_elements.gif" height="200"
+            alt="Elements semàntics (W3Schools)" />
+            <figcaption aria-hidden="true">Elements semàntics
+            (W3Schools)</figcaption>
+            </figure>
+            <p>En utilitzar elements semàntics, estem donant un
+            significat a les diferents seccions de la nostra pàgina,
+            sent més fàcils de crear i mantindre.</p>
+            <blockquote>
+            <p><strong><code>&lt;div&gt;</code></strong> i
+            <strong><code>&lt;span&gt;</code></strong> NO són elements
+            semàntics.</p>
+            </blockquote>
+            <p>Més sobre els elements semàntics a <a
+            href="https://www.w3schools.com/html/html5_semantic_elements.asp">W3Schools</a>.</p>
+            <h2 data-number="1.9" id="referències"><span
+            class="header-section-number">1.9</span> Referències</h2>
+            <ul>
+            <li><a
+            href="https://www.w3schools.com/html/">W3Schools</a></li>
+            <li><a
+            href="http://www.ite.educacion.es/formacion/materiales/182/cd/indice.htm">Curs
+            HTML5 ITE</a></li>
+            <li><a href="https://html.spec.whatwg.org/">Especificació de
+            HTML</a></li>
+            <li><a href="https://validator.w3.org/">Validador
+            HTML</a></li>
+            </ul>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

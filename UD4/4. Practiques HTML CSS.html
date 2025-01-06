@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>Pràctiques HTML i CSS</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">Pràctiques HTML i CSS</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#pràctiques-html-i-css"
+id="toc-pràctiques-html-i-css"><span class="toc-section-number">1</span>
+4. Pràctiques HTML i CSS</a>
+<ul>
+<li><a href="#exercici-1.-estructura-de-directoris"
+id="toc-exercici-1.-estructura-de-directoris"><span
+class="toc-section-number">1.1</span> Exercici 1. Estructura de
+directoris</a></li>
+<li><a href="#exercici-2.-plantilla"
+id="toc-exercici-2.-plantilla"><span
+class="toc-section-number">1.2</span> Exercici 2. Plantilla</a></li>
+<li><a href="#exercici-3.-text" id="toc-exercici-3.-text"><span
+class="toc-section-number">1.3</span> Exercici 3. Text</a>
+<ul>
+<li><a href="#entrega-pràctica-1" id="toc-entrega-pràctica-1"><span
+class="toc-section-number">1.3.1</span> Entrega pràctica 1</a></li>
+</ul></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="pràctiques-html-i-css"><span
+            class="header-section-number">1</span> 4. Pràctiques HTML i
+            CSS</h1>
+            <p>En aquesta sèrie d’exercicis faràs una pàgina web
+            estàtica d’una empresa, associació o entitat inventada per
+            tú. Està estructurada en exercicis que es corresponen als
+            continguts de la part teòrica. Cada exercici continua a
+            partir de l’exercici anterior. En acabar un grup
+            d’exercicis, hauràs de fer l’entrega corresponent a eixos
+            exercicis. Aquestes entregues s’avaluaran com a
+            pràctiques.</p>
+            <h2 data-number="1.1"
+            id="exercici-1.-estructura-de-directoris"><span
+            class="header-section-number">1.1</span> Exercici 1.
+            Estructura de directoris</h2>
+            <p>En aquest exercici anem a crear l’estructura bàsica de
+            directoris (carpetes) de les teues pàgines web.</p>
+            <p>Vés a la teua carpeta Documents i crea un carpeta
+            anomenada <strong>public_html</strong>. Dins d’aquesta crea
+            una carpeta on anirà la teua pàgina web, anomenada
+            <strong>empresa</strong>. I dins d’aquesta crea 3 carpetes:
+            <strong>img</strong>, <strong>css</strong> i
+            <strong>fonts</strong>.</p>
+            <p>Crea també, en public_html, una carpeta anomenada
+            <strong>proves</strong>, per a guardar les pàgines que no
+            siguen de la web de la teua empresa. L’estructura resultant
+            ha de ser aquesta:</p>
+            <figure>
+            <img src="images/exercici_1.png" width="300"
+            alt="Estructura de carpetes" />
+            <figcaption aria-hidden="true">Estructura de
+            carpetes</figcaption>
+            </figure>
+            <h2 data-number="1.2" id="exercici-2.-plantilla"><span
+            class="header-section-number">1.2</span> Exercici 2.
+            Plantilla</h2>
+            <p>En aquesta pràctica crearàs la plantilla bàsica de la
+            teua primera pàgina web.</p>
+            <p>Crea una pàgina sense contingut amb les
+            <strong>metadades</strong> següents:
+            <strong>codificació</strong> (UTF-8), <strong>autor</strong>
+            (author: el teu nom), <strong>descripció</strong>
+            (description: “nom de l’empresa.”), <strong>paraules
+            clau</strong> (keywords: “paraules relacionades amb els
+            articles de la teua empresa, separades amb comes”) i
+            <strong>viewport</strong>.</p>
+            <p>Comprova que la codificació de la pàgina és UTF-8 (en
+            propietats del document).</p>
+            <p>Guarda la plantilla amb el nom
+            <strong><em>plantilla_empresa.html</em></strong> dins de la
+            carpeta <strong>proves</strong>. Torna-la a guardar amb el
+            nom <strong>index.html</strong> dins de la carpeta
+            empresa.</p>
+            <p>Edita la pàgina <strong>index.html</strong> i escriu un
+            text de prova dins de l’etiqueta body de la pàgina.
+            Guarda-la i comprova que es visualitza al navegador.</p>
+            <h2 data-number="1.3" id="exercici-3.-text"><span
+            class="header-section-number">1.3</span> Exercici 3.
+            Text</h2>
+            <p>A partir de l’arxiu <strong>index.html</strong> de la
+            pràctica anterior, heu de crear el contingut d’una pàgina
+            que mostre informació sobre la vostra empresa. La pàgina ha
+            de tindre, com a mínim les següents seccions:</p>
+            <ul>
+            <li>Informació de l’empresa: Nom, direcció, sector,
+            etc…</li>
+            <li>Descripció de l’empresa: breu història,
+            característiques, etc…</li>
+            <li>Productes: una breu descripció dels productes que
+            comercialitza, activitats que realitza, etc.</li>
+            </ul>
+            <p>La pàgina ha de tindre els següents elements HTML:</p>
+            <ul>
+            <li>Un títol (<code>&lt;title&gt;</code>) amb el nom de
+            l’empresa.</li>
+            <li>Informació sobre la pàgina amb les etiquetes
+            <meta>
+            vistes fins ara.</li>
+            <li>Els títols necessaris (atenció a l’ordre de niuament i
+            estructura del document).</li>
+            <li>Paràgrafs, per al text.</li>
+            <li>Elements d’èmfasi: em i strong.</li>
+            <li>Elements semàntics utilitzats correctament, com a mínim
+            <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code> i
+            <code>&lt;footer&gt;</code>. Opcionalment
+            <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>,
+            etc.</li>
+            <li>Altres elements que considereu necessaris.</li>
+            </ul>
+            <h3 data-number="1.3.1" id="entrega-pràctica-1"><span
+            class="header-section-number">1.3.1</span> Entrega pràctica
+            1</h3>
+            <p>Comprimeix la carpeta <strong>public_html</strong> en
+            format zip i entrega-ho a Aules.</p>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

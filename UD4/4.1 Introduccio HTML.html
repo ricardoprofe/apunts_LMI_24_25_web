@@ -34,7 +34,7 @@
         }
         @media print {
         pre > code.sourceCode { white-space: pre-wrap; }
-        pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
         }
         pre.numberSource code
           { counter-reset: source-line 0; }
@@ -253,6 +253,12 @@ class="toc-section-number">1.9</span> Referències</a></li>
             Frameset). També va afegir suport per al contingut
             multimèdia, fulls d’estil CSS, i va començar a separar el
             contingut de la presentació.</p></li>
+            <li><p><strong>XHTML (2000)</strong> Va ser pensat per a
+            substituir l’HTML. Afegeix les restriccions de XML a HTML,
+            per exemple, totes les etiquetes s’han de tancar
+            apropiadament i han d’estar escrites en minúscules, així com
+            que tots els documents has d’estar ben format i complir amb
+            les especificacions de l’estàndard.</p></li>
             <li><p><strong>HTML 5 (2014)</strong><br />
             És la versió actual i la més avançada d’HTML. Introdueix
             etiquetes semàntiques com <code>&lt;header&gt;</code>,
@@ -389,7 +395,8 @@ class="toc-section-number">1.9</span> Referències</a></li>
             <ul>
             <li>Els atributs sempre s’escriuen dins de l’etiqueta
             d’obertura.</li>
-            <li>Solen tindre la forma <strong>nom=“valor”</strong>.</li>
+            <li>Tenen la forma <strong><code>nom="valor"</code></strong>
+            o simplement <strong><code>nom</code></strong>.</li>
             <li>El valor de l’atribut pot anar entre cometes simples
             <code>(')</code> o dobles <code>(")</code>.</li>
             <li>Si una etiqueta té varis atributs, es poden separar amb
@@ -433,7 +440,7 @@ class="toc-section-number">1.9</span> Referències</a></li>
             <p>En <strong>HTML5</strong> l’etiqueta per al DOCTYPE és
             molt simple:</p>
             <div class="sourceCode" id="cb10"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span></code></pre></div>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span></code></pre></div>
             <h3 data-number="1.4.2" id="letiqueta-html"><span
             class="header-section-number">1.4.2</span> L’etiqueta
             html</h3>
@@ -461,7 +468,7 @@ class="toc-section-number">1.9</span> Referències</a></li>
             </ul></li>
             </ol>
             <div class="sourceCode" id="cb11"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;ca&quot;</span><span class="dt">&gt;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     ... </span>
@@ -588,7 +595,7 @@ class="toc-section-number">1.9</span> Referències</a></li>
             <p>Ja tenim tots els elements per a començar a fer la nostra
             primera pàgina web:</p>
             <div class="sourceCode" id="cb14"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+            class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;ca&quot;</span><span class="dt">&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>     <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>HTLM5<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>

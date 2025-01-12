@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>UD 4.2 Introducció a CSS</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">UD 4.2 Introducció a CSS</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#introducció-a-css" id="toc-introducció-a-css"><span
+class="toc-section-number">1</span> Introducció a CSS</a>
+<ul>
+<li><a href="#introducció" id="toc-introducció"><span
+class="toc-section-number">1.1</span> Introducció</a>
+<ul>
+<li><a href="#avantatges-del-css" id="toc-avantatges-del-css"><span
+class="toc-section-number">1.1.1</span> Avantatges del CSS</a></li>
+<li><a href="#versions" id="toc-versions"><span
+class="toc-section-number">1.1.2</span> Versions</a></li>
+</ul></li>
+<li><a href="#aplicació-dels-estils"
+id="toc-aplicació-dels-estils"><span
+class="toc-section-number">1.2</span> Aplicació dels estils</a>
+<ul>
+<li><a href="#css-integrats-en-una-etiqueta-html"
+id="toc-css-integrats-en-una-etiqueta-html"><span
+class="toc-section-number">1.2.1</span> CSS Integrats en una Etiqueta
+HTML</a></li>
+<li><a href="#css-interns-al-document-html"
+id="toc-css-interns-al-document-html"><span
+class="toc-section-number">1.2.2</span> CSS Interns al Document
+HTML</a></li>
+<li><a href="#css-externs" id="toc-css-externs"><span
+class="toc-section-number">1.2.3</span> CSS Externs</a></li>
+</ul></li>
+<li><a href="#regles-css" id="toc-regles-css"><span
+class="toc-section-number">1.3</span> Regles CSS</a>
+<ul>
+<li><a href="#aplicació-de-regles-en-cascada"
+id="toc-aplicació-de-regles-en-cascada"><span
+class="toc-section-number">1.3.1</span> Aplicació de Regles en
+Cascada</a></li>
+<li><a href="#selectors-repetits" id="toc-selectors-repetits"><span
+class="toc-section-number">1.3.2</span> Selectors Repetits</a></li>
+<li><a href="#herència-en-css" id="toc-herència-en-css"><span
+class="toc-section-number">1.3.3</span> Herència en CSS</a></li>
+</ul></li>
+<li><a href="#comentaris" id="toc-comentaris"><span
+class="toc-section-number">1.4</span> Comentaris</a></li>
+<li><a href="#propietats-css-bàsiques"
+id="toc-propietats-css-bàsiques"><span
+class="toc-section-number">1.5</span> Propietats CSS bàsiques</a>
+<ul>
+<li><a href="#propietats-de-tipus-de-lletra"
+id="toc-propietats-de-tipus-de-lletra"><span
+class="toc-section-number">1.5.1</span> Propietats de tipus de
+lletra</a></li>
+<li><a href="#propietats-de-text" id="toc-propietats-de-text"><span
+class="toc-section-number">1.5.2</span> Propietats de text</a></li>
+<li><a href="#imatges-de-fons" id="toc-imatges-de-fons"><span
+class="toc-section-number">1.5.3</span> Imatges de fons</a></li>
+</ul></li>
+<li><a href="#selectors" id="toc-selectors"><span
+class="toc-section-number">1.6</span> Selectors</a>
+<ul>
+<li><a href="#selectors-de-tipus-o-etiqueta"
+id="toc-selectors-de-tipus-o-etiqueta"><span
+class="toc-section-number">1.6.1</span> Selectors de tipus o
+etiqueta</a></li>
+<li><a href="#selectors-de-classe-."
+id="toc-selectors-de-classe-."><span
+class="toc-section-number">1.6.2</span> Selectors de classe (.)</a></li>
+<li><a href="#selectors-id" id="toc-selectors-id"><span
+class="toc-section-number">1.6.3</span> Selectors ID (#)</a></li>
+<li><a href="#selectors-descendents"
+id="toc-selectors-descendents"><span
+class="toc-section-number">1.6.4</span> Selectors descendents</a></li>
+<li><a href="#grups-de-selectors" id="toc-grups-de-selectors"><span
+class="toc-section-number">1.6.5</span> Grups de selectors</a></li>
+<li><a href="#selectors-pseudo-classe-enllaços"
+id="toc-selectors-pseudo-classe-enllaços"><span
+class="toc-section-number">1.6.6</span> Selectors pseudo-classe:
+enllaços</a></li>
+<li><a href="#selectors-pseudo-elements"
+id="toc-selectors-pseudo-elements"><span
+class="toc-section-number">1.6.7</span> Selectors
+pseudo-elements</a></li>
+<li><a href="#el-selector-universal"
+id="toc-el-selector-universal"><span
+class="toc-section-number">1.6.8</span> El selector universal
+(*)</a></li>
+</ul></li>
+<li><a href="#referències" id="toc-referències"><span
+class="toc-section-number">1.7</span> Referències</a></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="introducció-a-css"><span
+            class="header-section-number">1</span> Introducció a
+            CSS</h1>
+            <h2 data-number="1.1" id="introducció"><span
+            class="header-section-number">1.1</span> Introducció</h2>
+            <p>Els <strong>fulls d’estil en cascada</strong>
+            (<em>Cascading Style Sheets, CSS</em>) són una tecnologia
+            que permet donar format a les dades d’un document, millorant
+            la presentació visual d’una pàgina web i separant el
+            contingut de l’estil. CSS proporciona un conjunt d’eines
+            poderoses per controlar l’aspecte de qualsevol element
+            HTML.</p>
+            <p>El format que ofereix CSS es pot dividir en tres àrees
+            principals:</p>
+            <ol type="1">
+            <li><p><strong>Fonts i colors</strong>: CSS permet
+            personalitzar fonts, colors, grandàries de text, estils de
+            línia, i altres propietats que afecten el contingut
+            visible.</p></li>
+            <li><p><strong>Distàncies i marcs</strong>: Aquesta àrea
+            controla l’espai al voltant i dins dels elements.</p></li>
+            <li><p><strong>Layout</strong>: CSS també permet determinar
+            com es distribueixen i col·loquen els elements a la pàgina
+            web.</p></li>
+            </ol>
+            <p>Abans de la popularització dels CSS, en versions prèvies
+            d’HTML, era comú utilitzar etiquetes i atributs específics
+            per modificar l’aspecte visual dels elements, com ara
+            <code>&lt;font&gt;</code> per personalitzar tipus de lletra
+            o <code>&lt;center&gt;</code> per alinear contingut. Aquest
+            enfocament, però, dificultava la separació entre contingut i
+            estil, fent que les pàgines foren més complexes de mantenir
+            i menys flexibles.</p>
+            <p>Amb l’arribada de CSS, es va establir un estàndard que
+            permet separar clarament el contingut HTML del seu estil
+            visual, millorant l’eficiència, la consistència i
+            l’accessibilitat en el desenvolupament web.</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Aquest exemple és incorrecte hui en dia --&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;&lt;</span><span class="kw">font</span><span class="ot"> color</span><span class="op">=</span><span class="st">&quot;red&quot;</span><span class="ot"> face</span><span class="op">=</span><span class="st">&quot;Arial&quot;</span><span class="ot"> size</span><span class="op">=</span><span class="st">&quot;5&quot;</span><span class="dt">&gt;</span>Titular de la pàgina<span class="dt">&lt;/</span><span class="kw">font</span><span class="dt">&gt;&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;&lt;</span><span class="kw">font</span><span class="ot"> color</span><span class="op">=</span><span class="st">&quot;gray&quot;</span><span class="ot"> face</span><span class="op">=</span><span class="st">&quot;Verdana&quot;</span><span class="ot"> size</span><span class="op">=</span><span class="st">&quot;2&quot;</span><span class="dt">&gt;</span>Un paràgraf de text.<span class="dt">&lt;/</span><span class="kw">font</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;&lt;</span><span class="kw">font</span><span class="ot"> color</span><span class="op">=</span><span class="st">&quot;gray&quot;</span><span class="ot"> face</span><span class="op">=</span><span class="st">&quot;Verdana&quot;</span><span class="ot"> size</span><span class="op">=</span><span class="st">&quot;2&quot;</span><span class="dt">&gt;</span>Un altre paràgraf de text.<span class="dt">&lt;/</span><span class="kw">font</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Abans de l’adopció generalitzada dels fulls d’estil en
+            cascada (CSS), gestionar l’aparença dels llocs web amb
+            moltes pàgines era una tasca extremadament laboriosa.
+            Aquesta complexitat provenia del fet que qualsevol canvi en
+            el format requeria una edició manual element per element i
+            pàgina per pàgina.</p>
+            <h3 data-number="1.1.1" id="avantatges-del-css"><span
+            class="header-section-number">1.1.1</span> Avantatges del
+            CSS</h3>
+            <ul>
+            <li>Permet separar el contingut de la seva presentació.</li>
+            <li>Permet definir les regles de presentació d’un document a
+            partir de les etiquetes que conté.</li>
+            <li>Permet aplicar les regles de presentació a múltiples
+            pàgines.</li>
+            </ul>
+            <h3 data-number="1.1.2" id="versions"><span
+            class="header-section-number">1.1.2</span> Versions</h3>
+            <ul>
+            <li>CSS 1 (1996)</li>
+            <li>CSS 2 (1998)</li>
+            <li>CSS 2.1 es finalitza al 2011.</li>
+            <li>CSS 3 (versió actual)</li>
+            </ul>
+            <figure>
+            <img src="images/css3.png" alt="Logo de CSS3" />
+            <figcaption aria-hidden="true">Logo de CSS3</figcaption>
+            </figure>
+            <h2 data-number="1.2" id="aplicació-dels-estils"><span
+            class="header-section-number">1.2</span> Aplicació dels
+            estils</h2>
+            <p>Aplicar fulls d’estil CSS a HTML es pot fer de tres
+            formes:</p>
+            <ul>
+            <li>CSS integrades en un element HTML5: Amb
+            l’<strong>atribut</strong>
+            <strong><code>style</code></strong> en etiquetes html.</li>
+            <li>CSS internes al document: Amb una
+            <strong>etiqueta</strong>
+            <strong><code>&lt;style&gt;</code></strong>.</li>
+            <li>CSS externes al document: Amb un <strong>arxiu
+            extern</strong> <code>.css</code> enllaçat amb l’etiqueta
+            <strong><code>&lt;link&gt;</code></strong>.</li>
+            </ul>
+            <h3 data-number="1.2.1"
+            id="css-integrats-en-una-etiqueta-html"><span
+            class="header-section-number">1.2.1</span> CSS Integrats en
+            una Etiqueta HTML</h3>
+            <p>Els CSS integrats, també coneguts com a <em>inline
+            styles</em>, permeten especificar regles CSS directament
+            dins d’una etiqueta HTML. Aquesta tècnica assigna estils a
+            elements individuals utilitzant l’atribut style.</p>
+            <p>Exemple de CSS integrat:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;color: blue; font-size: 16px;&quot;</span><span class="dt">&gt;</span>Aquest paràgraf té un estil integrat.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>En aquest exemple, el text del paràgraf apareixerà en
+            blau i tindrà una mida de lletra de 16 píxels.</p>
+            <p>Tot i que és la forma menys recomanada de definir estils
+            en CSS, els CSS integrats poden ser útils en determinades
+            situacions, com per exemple:</p>
+            <ul>
+            <li><strong>Proves ràpides</strong>: Quan cal aplicar un
+            canvi visual temporal o fer una prova ràpida d’un
+            estil.</li>
+            <li><strong>Estils únics</strong>: Per elements molt
+            específics que no es repetiran en cap altre lloc del lloc
+            web.</li>
+            <li><strong>Correccions puntuals</strong>: Quan necessites
+            una solució ràpida sense alterar fitxers CSS externs.</li>
+            </ul>
+            <p><strong>Exemple</strong>: Estil definit en una
+            etiqueta:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;color:red&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   Això és un paràgraf de color roig</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;color:blue&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>   Això és un paràgraf de color blau</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>El resultat serà:</p>
+            <figure>
+            <img src="images/uf1_p_css.png" width="300"
+            alt="Aplicació de CSS amb l’atribut style" />
+            <figcaption aria-hidden="true">Aplicació de CSS amb
+            l’atribut style</figcaption>
+            </figure>
+            <p>Mitjançant l’etiqueta
+            <strong><code>&lt;span&gt;</code></strong> i l’atribut
+            <strong>style</strong>.</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   Això és un paràgraf amb vàries paraules  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;color:green&quot;</span><span class="dt">&gt;</span>de color verd<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span>. Fàcil, no?</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>El resultat serà:</p>
+            <figure>
+            <img src="images/uf1_span.png" width="300"
+            alt="Estil definit amb span i style" />
+            <figcaption aria-hidden="true">Estil definit amb span i
+            style</figcaption>
+            </figure>
+            <p>Mitjançant l’etiqueta
+            <strong><code>&lt;div&gt;</code></strong> i l’atribut
+            <strong><code>style</code></strong>.</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;color:blue; font-weight:bold&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>Aquestes etiquetes van en <span class="dt">&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>blau i negreta<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        Seguim dins del DIV, amb el mateix estil.</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>El resultat serà:</p>
+            <figure>
+            <img src="images/uf1_div-css.png" width="300"
+            alt="Estil definit amb div i style" />
+            <figcaption aria-hidden="true">Estil definit amb div i
+            style</figcaption>
+            </figure>
+            <h3 data-number="1.2.2"
+            id="css-interns-al-document-html"><span
+            class="header-section-number">1.2.2</span> CSS Interns al
+            Document HTML</h3>
+            <p>Els <strong>CSS interns</strong> permeten definir regles
+            d’estil dins del mateix document HTML, però separats del
+            contingut principal. Aquesta tècnica és útil per
+            <strong>aplicar estils a una única pàgina web de manera
+            centralitzada</strong>, sense haver de repetir regles per a
+            cada element.</p>
+            <p>Les regles CSS s’escriuen dins de l’etiqueta
+            <strong><code>&lt;style&gt;</code></strong> que es col·loca
+            a la secció <strong><code>&lt;head&gt;</code></strong> del
+            document HTML.</p>
+            <p>Els estils definits amb CSS interns afecten tots els
+            elements de la pàgina que compleixen les regles
+            especificades.</p>
+            <p>Aquesta tècnica no és òptima per llocs web grans, ja que
+            els estils no es poden reutilitzar fàcilment en altres
+            pàgines. Això pot complicar el manteniment i reduir
+            l’eficiència del codi.</p>
+            <p>Els CSS interns són adequats per a projectes menuts o
+            llocs web amb una sola pàgina, on no és necessari compartir
+            estils amb altres documents.</p>
+            <p>Exemple:</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;ca&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Exemple de CSS intern<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        body {</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">font-family</span>: Arial<span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">background-color</span>: <span class="cn">#f0f0f0</span><span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">color</span>: <span class="cn">#333</span><span class="op">;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        h1 {</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            <span class="kw">color</span>: <span class="cn">#0056b3</span><span class="op">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        p {</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            <span class="kw">margin</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>            <span class="kw">line-height</span>: <span class="dv">1.6</span><span class="op">;</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Títol amb CSS intern<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Aquest és un paràgraf formatat amb regles CSS definides internament.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Resultat:</p>
+            <figure>
+            <img src="images/css_intern.png" alt="CSS intern" />
+            <figcaption aria-hidden="true">CSS intern</figcaption>
+            </figure>
+            <p>El principal inconvenient dels CSS interns està en la
+            seua <strong>dificultat per reutilitzar estils</strong>, ja
+            que els estils només són accessibles des del document en què
+            estan definits, cosa que limita la seva utilitat en llocs
+            web amb múltiples pàgines.</p>
+            <p>Els CSS interns són una bona opció en escenaris com: -
+            <strong>Prototips ràpids</strong>: Quan necessites dissenyar
+            i provar ràpidament una pàgina sense preocupar-te per
+            múltiples fitxers. - <strong>Llocs d’una sola
+            pàgina</strong>: Per projectes simples, on la compartició
+            d’estils no és necessària. - <strong>Estils específics
+            temporals</strong>: Per aplicar regles CSS úniques a una
+            pàgina concreta sense afectar altres pàgines.</p>
+            <h3 data-number="1.2.3" id="css-externs"><span
+            class="header-section-number">1.2.3</span> CSS Externs</h3>
+            <p>Els <strong>CSS externs</strong> són una manera de
+            definir estils en un fitxer separat del document HTML.
+            Aquest mètode permet aplicar estils de manera centralitzada
+            i consistent a totes les pàgines d’un lloc web.</p>
+            <p>Un o varis fitxers CSS amb els estils definits poden ser
+            compartit per totes les pàgines d’un lloc web, assegurant la
+            consistència visual i simplificant el manteniment.</p>
+            <p>Aquest enfocament segueix les bones pràctiques de
+            desenvolupament web, mantenint el contingut (HTML) i l’estil
+            (CSS) en fitxers separats.</p>
+            <p>Els CSS externs es guarden en un fitxer específic amb
+            extensió <strong><code>.css</code></strong>, on es
+            defineixen totes les regles d’estil del lloc web.</p>
+            <p>Avantatges dels CSS externs:</p>
+            <ul>
+            <li><strong>Reutilització d’estils</strong>: Es poden
+            aplicar els mateixos estils a múltiples pàgines, evitant
+            duplicació de codi.</li>
+            <li><strong>Facilitat de manteniment</strong>: Qualsevol
+            canvi realitzat en el fitxer CSS s’aplica automàticament a
+            totes les pàgines que el tinguin enllaçat.</li>
+            <li><strong>Organització millorada</strong>: Manté el codi
+            HTML net i centrat en el contingut.</li>
+            </ul>
+            <p><strong>Aquest sistema és el més adequat en la majoria
+            dels casos</strong>, especialment per llocs web amb
+            múltiples pàgines.</p>
+            <p>Exemple de fitxer CSS:</p>
+            <p>Un fitxer CSS típic pot incloure regles per estilitzar
+            diversos elements HTML. Per exemple:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">12</span><span class="dt">pt</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span>: Arial<span class="op">,</span> Helvetica<span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">normal</span><span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">36</span><span class="dt">pt</span><span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span>: Verdana<span class="op">,</span> Arial<span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration</span>: <span class="dv">underline</span><span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">teal</span><span class="op">;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#006600</span><span class="op">;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Per utilitzar els CSS externs, cal enllaçar el fitxer CSS
+            al document HTML mitjançant l’etiqueta
+            <strong><code>&lt;link&gt;</code></strong>, que es col·loca
+            dins de la secció <strong><code>&lt;head&gt;</code></strong>
+            del document.</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;estil.css&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span></code></pre></div>
+            <ul>
+            <li><strong><code>rel="stylesheet"</code></strong>: Indica
+            que l’enllaç és un full d’estils.</li>
+            <li><strong><code>href="estil.css"</code></strong>:
+            Especifica la ubicació o el nom del fitxer CSS que conté les
+            regles d’estil.</li>
+            </ul>
+            <p>Els <strong>CSS externs</strong> són la millor opció per
+            llocs web professionals, ja que promouen la coherència,
+            simplifiquen el manteniment i permeten escalar fàcilment el
+            projecte. Amb aquest enfocament, els desenvolupadors poden
+            garantir un codi més net, organitzat i eficient.</p>
+            <h2 data-number="1.3" id="regles-css"><span
+            class="header-section-number">1.3</span> Regles CSS</h2>
+            <p>Les <strong>regles CSS</strong> són l’element fonamental
+            que defineix com es representaran les diferents etiquetes
+            HTML d’una pàgina web. Aquestes regles permeten controlar
+            l’aspecte visual del contingut, com ara el color, la mida de
+            la lletra, els marges, i moltes altres propietats.</p>
+            <p>Una regla CSS típica es compon de <strong>tres
+            parts</strong>:</p>
+            <ol type="1">
+            <li><p><strong>Selector</strong><br />
+            Indica a quin(s) element(s) HTML s’aplicaran les regles
+            d’estil. Per exemple:</p>
+            <ul>
+            <li><strong><code>p</code></strong> per paràgrafs</li>
+            <li><strong><code>.classe</code></strong> per elements amb
+            una classe específica</li>
+            <li><strong><code>#id</code></strong> per un element amb un
+            ID específic</li>
+            </ul></li>
+            <li><p><strong>Propietat</strong><br />
+            Defineix l’aspecte que es vol modificar (per exemple,
+            <em>color</em>, <em>font-size</em>,
+            <em>background-color</em>).</p></li>
+            <li><p><strong>Valor</strong><br />
+            Especifica el detall de la propietat (per exemple,
+            <em>red</em>, <em>16px</em>, <em>#ffffff</em>).</p></li>
+            </ol>
+            <p>Exemple bàsic:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">14</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <ul>
+            <li><strong>Selector</strong>: <code>p</code>
+            (paràgrafs)</li>
+            <li><strong>Propietat 1</strong>: <code>color</code>, amb
+            valor <code>blue</code></li>
+            <li><strong>Propietat 2</strong>: <code>font-size</code>,
+            amb valor <code>14px</code></li>
+            </ul>
+            <p>Si volem especificar <strong>més d’una propietat</strong>
+            dins d’una regla CSS, hem de seguir aquestes
+            indicacions:</p>
+            <ol type="1">
+            <li><p><strong>Dins de les claus
+            <code>{}</code></strong><br />
+            Les propietats i els seus valors s’especifiquen dins de les
+            claus que segueixen el selector.</p></li>
+            <li><p><strong>Separades per punt i coma ( <code>;</code>
+            )</strong><br />
+            Cada propietat es separa de la següent amb un punt i coma
+            per garantir la claredat.</p></li>
+            <li><p><strong>Terminar amb punt i coma,
+            recomanat</strong><br />
+            Tot i que no és obligatori posar el punt i coma després de
+            l’última propietat, és una bona pràctica fer-ho, ja que
+            facilita afegir noves propietats sense errors.</p></li>
+            </ol>
+            <p>Exemple amb múltiples propietats:</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">teal</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">32</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-top</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Aquí teniu un exemple visual de com es construeix una
+            regla CSS:</p>
+            <figure>
+            <img src="images/uf1_css_regles.png" width="300"
+            alt="Regles CSS" />
+            <figcaption aria-hidden="true">Regles CSS</figcaption>
+            </figure>
+            <p>Consells de bones pràctiques:</p>
+            <ul>
+            <li>Escriu regles clares i senzilles per facilitar el
+            manteniment del codi.</li>
+            <li>Utilitza noms de selectors significatius, com classes o
+            IDs que descriguin la seva funció o context.</li>
+            <li>Organitza les regles CSS amb comentaris o agrupant-les
+            per seccions, especialment en projectes grans.</li>
+            <li>Organitza les regles de més general a més particular:
+            body, etiquetes de bloc, etiquetes en línia, classes,
+            id’s…</li>
+            </ul>
+            <h3 data-number="1.3.1"
+            id="aplicació-de-regles-en-cascada"><span
+            class="header-section-number">1.3.1</span> Aplicació de
+            Regles en Cascada</h3>
+            <p>La “C” de CSS significa <strong>“Cascading”</strong>, que
+            es tradueix com “en cascada”. Aquest principi implica que
+            els estils definits poden provenir de diverses fonts
+            (externes, internes i integrades en etiqueta) i es resolen
+            en funció d’una <strong>jerarquia de
+            prioritats</strong>.</p>
+            <p>Quan hi ha múltiples definicions d’estil per al mateix
+            element, s’aplica la següent jerarquia <strong>de menor a
+            major prioritat</strong>:</p>
+            <ol type="1">
+            <li><p><strong>Estils predeterminats del
+            navegador</strong><br />
+            Els navegadors defineixen estils bàsics per a totes les
+            etiquetes HTML si no s’especifica cap estil
+            personalitzat.</p></li>
+            <li><p><strong>Fulls d’estil externs</strong><br />
+            Són fitxers CSS separats, enllaçats al document HTML amb
+            l’etiqueta <code>&lt;link&gt;</code>.</p></li>
+            <li><p><strong>Fulls d’estil interns</strong><br />
+            Es defineixen dins del mateix document HTML, utilitzant
+            l’etiqueta <code>&lt;style&gt;</code> situada a la secció
+            <code>&lt;head&gt;</code>.</p></li>
+            <li><p><strong>Estils integrats</strong><br />
+            Es defineixen directament en una etiqueta HTML utilitzant
+            l’atribut <code>style</code>. Aquests tenen la prioritat més
+            alta perquè estan associats directament amb
+            l’element.</p></li>
+            </ol>
+            <p>Exemple: Conflicte entre estils:</p>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        h1 {</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;color:red&quot;</span><span class="dt">&gt;</span>Títol<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>De quin color es veurà el text del títol,
+            <strong>roig</strong> o <strong>blau</strong>?</p>
+            <h3 data-number="1.3.2" id="selectors-repetits"><span
+            class="header-section-number">1.3.2</span> Selectors
+            Repetits</h3>
+            <p>Quan una propietat es defineix més d’una vegada per al
+            mateix selector, es considera vàlid <strong>el darrer
+            valor</strong> trobat en el codi. Això passa fins i tot dins
+            del mateix full d’estil.</p>
+            <p>Exemple:</p>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>h1 { </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span>: Arial<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>h1 { <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span> }</span></code></pre></div>
+            <p><strong>Resultat</strong>: Els elements
+            <strong><code>h1</code></strong> es veuran de color
+            <strong>roig</strong>, ja que és l’última definició trobada
+            per al selector.</p>
+            <h3 data-number="1.3.3" id="herència-en-css"><span
+            class="header-section-number">1.3.3</span> Herència en
+            CSS</h3>
+            <p>Els estils CSS poden ser heretats automàticament d’un
+            element contenidor a un element fill. Aquesta característica
+            permet que els estils definits en un element superior
+            afecten tots els elements fills, sempre que aquests no
+            defineixen un estil diferent per a la mateixa propietat.</p>
+            <p>Exemple d’Herència:</p>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span>: Arial<span class="op">;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="cn">green</span><span class="op">;</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>h2 {</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-style</span>: <span class="dv">italic</span><span class="op">;</span> <span class="co">/* Cursiva */</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <ul>
+            <li><strong>Explicació</strong>:
+            <ul>
+            <li>El cos del document (<code>body</code>) tindrà text de
+            color vermell i un fons verd.</li>
+            <li>Les etiquetes <strong><code>h2</code></strong>, com a
+            elements fills, heretaran el tipus de lletra i el color del
+            <strong><code>body</code></strong>. A més, afegiran l’estil
+            <em>italic</em> definit específicament per a elles.</li>
+            </ul></li>
+            </ul>
+            <h2 data-number="1.4" id="comentaris"><span
+            class="header-section-number">1.4</span> Comentaris</h2>
+            <p>CSS permet incloure comentaris entre les seves regles.
+            Els navegadors ignoren aquests comentaris. Són molt adeqüats
+            per a estructurar els blocs d’elements en els fulls CSS
+            externs.</p>
+            <p>S’indiquen mitjançant els caràcters
+            <strong><code>/*</code></strong> i
+            <strong><code>*/</code></strong> i poden ocupar vàries
+            línies.</p>
+            <p>Exemple:</p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* Això és un comentari en CSS */</span></span></code></pre></div>
+            <blockquote>
+            <p><strong>Alerta!</strong> El comentaris s’envien al
+            navegador juntament amb la resta d’estils, per tant no és
+            convenient incloure dades confidencials.</p>
+            </blockquote>
+            <h2 data-number="1.5" id="propietats-css-bàsiques"><span
+            class="header-section-number">1.5</span> Propietats CSS
+            bàsiques</h2>
+            <p>CSS defineix moltes propietats i a cada versió
+            s’afegeixen més.</p>
+            <p>Les propietats poden ser agrupades en quatre grans
+            grups:</p>
+            <ul>
+            <li>Propietats de tipus de lletres</li>
+            <li>Propietats de text</li>
+            <li>Propietats de fons de pantalla</li>
+            <li>Propietats de caixes</li>
+            </ul>
+            <h3 data-number="1.5.1"
+            id="propietats-de-tipus-de-lletra"><span
+            class="header-section-number">1.5.1</span> Propietats de
+            tipus de lletra</h3>
+            <p>El tipus de lletra determina la font i l’estil dels
+            textos.</p>
+            <h4 data-number="1.5.1.1" id="famílies-de-fonts"><span
+            class="header-section-number">1.5.1.1</span> Famílies de
+            fonts</h4>
+            <p>En CSS hi ha cinc famílies de tipus de lletra
+            genèriques:</p>
+            <ul>
+            <li>Els tipus de lletra <strong>serif</strong> tenen un
+            petit traç a les vores de cada lletra. Creen una sensació de
+            formalitat i elegància.</li>
+            <li>Els tipus de lletra <strong>sans serif</strong> tenen
+            línies netes (no hi ha traços menuts). Creen un aspecte
+            modern i minimalista.</li>
+            <li>Tipus de lletra <strong>monospace</strong>: ací totes
+            les lletres tenen la mateixa amplada fixa. Creen un aspecte
+            mecànic. Útils per a representar codi.</li>
+            <li>Els tipus de lletra <strong>cursive</strong> imiten
+            l’escriptura humana.</li>
+            <li>Els tipus de lletra <strong>fantasy</strong> són tipus
+            de lletra decoratius o lúdics.</li>
+            </ul>
+            <figure>
+            <img src="images/serif.gif" width="400"
+            alt="Fonts serif i sans serif (W3Schools)" />
+            <figcaption aria-hidden="true">Fonts serif i sans serif
+            (W3Schools)</figcaption>
+            </figure>
+            <p>La propietat <strong><code>font-family</code></strong>
+            determina la font del text. S’indiquen vàries fonts per si
+            el navegador de l’usuari no té la primera d’elles, usar la
+            següent. La última font hauria de ser la familia:</p>
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.p1</span> {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span>: <span class="st">&quot;Times New Roman&quot;</span><span class="op">,</span> Times<span class="op">,</span> <span class="dv">serif</span><span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.p2</span> {</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span>: Arial<span class="op">,</span> Helvetica<span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p><a
+            href="https://www.w3schools.com/css/css_font_fallbacks.asp">Famílies
+            de fonts freqüents</a></p>
+            <h4 data-number="1.5.1.2" id="estils-de-font"><span
+            class="header-section-number">1.5.1.2</span> Estils de
+            font</h4>
+            <p>La propietat <strong><code>font-style</code></strong>
+            s’utilitza principalment per especificar text en
+            cursiva.</p>
+            <p>Aquesta propietat té tres valors:</p>
+            <ul>
+            <li><strong><code>normal</code></strong>: el text es mostra
+            amb normalitat</li>
+            <li><strong><code>italic</code></strong>: el text es mostra
+            en cursiva</li>
+            <li><strong><code>oblique</code></strong>: el text és
+            “inclinat” (és molt semblant a la cursiva)</li>
+            </ul>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.normal</span> {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-style</span>: <span class="dv">normal</span><span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.italic</span> {</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-style</span>: <span class="dv">italic</span><span class="op">;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.oblique</span> {</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-style</span>: <span class="dv">oblique</span><span class="op">;</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>La propietat <strong><code>font-weight</code></strong>
+            s’utilitza principalment per especificar el grossor de la
+            font:</p>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.normal</span> {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">normal</span><span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.thick</span> {</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>La propietat <strong><code>font-variant</code></strong>
+            s’empra per forçar que un text concret es mostre en
+            majúscules amb mida de minúscules, el que es coneix com a
+            <strong>versaletes</strong>.</p>
+            <p>Els seus valors són <strong><code>normal</code></strong>
+            o <strong><code>small-caps</code></strong>:</p>
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.normal</span> {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-variant</span>: <span class="dv">normal</span><span class="op">;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>p<span class="fu">.small</span> {</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-variant</span>: <span class="dv">small-caps</span><span class="op">;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h4 data-number="1.5.1.3" id="mida-del-text"><span
+            class="header-section-number">1.5.1.3</span> Mida del
+            text</h4>
+            <p>La propietat <strong><code>font-size</code></strong>
+            estableix la mida del text.</p>
+            <p>La mida del text és important en el disseny web.</p>
+            <p>No s’ha d’utilitzar ajustaments de mida de lletra perquè
+            els paràgrafs semblen encapçalaments o els encapçalaments
+            semblen paràgrafs. Feu servir sempre les etiquetes HTML
+            adequades, com ara
+            <strong><code>&lt;h1&gt; - &lt;h6&gt;</code></strong> per
+            als encapçalaments i <strong><code>&lt;p&gt;</code></strong>
+            per als paràgrafs.</p>
+            <blockquote>
+            <p><strong>Nota</strong>: si no especifiqueu una mida de
+            lletra, la mida predeterminada del text normal dels
+            paràgrafs és de <strong>16 píxels</strong> (<strong>16 px=1
+            em</strong>).</p>
+            </blockquote>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">40</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>h2 {</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">1.875</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>h3 {</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">110</span><span class="dt">%</span><span class="op">;</span> </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Una solució que funciona en tots els navegadors és
+            establir una mida de font predeterminada en percentatge per
+            a l’element <strong><code>&lt;body&gt;</code></strong> i
+            especificar la resta de mides amb <strong>em</strong>:</p>
+            <div class="sourceCode" id="cb20"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">2.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p><strong>Unitats</strong>:</p>
+            <ul>
+            <li><strong><code>px</code></strong>: píxels</li>
+            <li><strong><code>em</code></strong>: Relatiu a la mida de
+            la font de l’element (2em significa 2 vegades la mida de la
+            font actual)</li>
+            <li><strong><code>%</code></strong>: percentatge en relació
+            a la mida de l’element pare</li>
+            <li><strong><code>vw</code></strong>: <em>viewport
+            view</em>, la mida canvia en relació a la mida de la
+            finestra.</li>
+            <li><strong><code>Valors fixes</code></strong>:
+            <em>xx-small</em>, <em>x-small</em>, <em>small</em>,
+            <em>medium</em>, <em>large</em>, <em>x-large</em> i
+            <em>xx-large</em>. Aquests no necessiten un número i
+            assignen sempre la mateixa mida.</li>
+            <li><strong><code>Valors relatius</code></strong>: usant
+            <em>smaller</em> (més menut) i <em>larger</em> (més gran)
+            aconseguim que la tipografia augmente o disminuïsca la seva
+            mida respecte al seu valor original.</li>
+            </ul>
+            <p><a
+            href="https://www.w3schools.com/css/css_font_size.asp">Font-size</a></p>
+            <h4 data-number="1.5.1.4" id="propietat-font"><span
+            class="header-section-number">1.5.1.4</span> Propietat
+            <code>font</code></h4>
+            <p>Finalment, la propietat
+            <strong><code>font</code></strong> és una propietat ràpida
+            per a especificar totes les propietats de font en una
+            línia:</p>
+            <div class="sourceCode" id="cb21"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font</span>: <span class="dv">italic</span> <span class="dv">bold</span> <span class="dv">30</span><span class="dt">px</span> Georgia<span class="op">,</span> <span class="dv">serif</span><span class="op">;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Les propietats en ordre són: <code>font-style</code>,
+            <code>font-variant</code>, <code>font-weight</code>,
+            <code>font-size/line-height</code>,
+            <code>font-family</code>.</p>
+            <p>Els valors de <strong><code>font-size</code></strong> i
+            <strong><code>font-family</code></strong> són obligatoris.
+            Si falta un dels altres valors, s’utilitza el seu valor per
+            defecte.</p>
+            <h3 data-number="1.5.2" id="propietats-de-text"><span
+            class="header-section-number">1.5.2</span> Propietats de
+            text</h3>
+            <h4 data-number="1.5.2.1" id="colors"><span
+            class="header-section-number">1.5.2.1</span> Colors</h4>
+            <p>La propietat <strong><code>color</code></strong>
+            s’utilitza per definir el color del text. El color
+            s’especifica amb:</p>
+            <ul>
+            <li>un nom de color (red, blue…)</li>
+            <li>un valor hexadecimal, com “#ff0000”</li>
+            <li>un valor RGB, com “rgb(255,0,0)”</li>
+            </ul>
+            <p>Consulteu els <a
+            href="https://www.w3schools.com/cssref/css_colors_legal.asp">valors
+            de color CSS</a> per obtenir una llista completa de
+            possibles valors de color.</p>
+            <p>El color de text predeterminat per a una pàgina es
+            defineix al selector de cos.</p>
+            <div class="sourceCode" id="cb22"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">green</span><span class="op">;</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <ul>
+            <li><a
+            href="https://www.w3schools.com/colors/colors_names.asp">Noms
+            de colors</a></li>
+            <li><a
+            href="https://www.w3schools.com/colors/colors_picker.asp">Selector
+            de colors</a></li>
+            </ul>
+            <p>La propietat
+            <strong><code>background-color</code></strong> defineix el
+            color de fons d’un element.</p>
+            <div class="sourceCode" id="cb23"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">lightgrey</span><span class="op">;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h4 data-number="1.5.2.2" id="alineació"><span
+            class="header-section-number">1.5.2.2</span> Alineació</h4>
+            <p>La propietat <strong><code>text-align</code></strong>
+            s’utilitza per establir l’alineació horitzontal d’un
+            text.</p>
+            <div class="sourceCode" id="cb24"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>h2 {</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-align</span>: <span class="dv">left</span><span class="op">;</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>h3 {</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-align</span>: <span class="dv">right</span><span class="op">;</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>div {</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-align</span>: <span class="dv">justify</span><span class="op">;</span> <span class="co">/* Text alineat a esquerra i dreta */</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>La propietat <strong><code>vertical-align</code></strong>
+            estableix l’alineació vertical d’un element. És util per a
+            imatges i text de taules.</p>
+            <div class="sourceCode" id="cb25"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>img<span class="fu">.a</span> {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">vertical-align</span>: <span class="dv">baseline</span><span class="op">;</span> <span class="co">/* Valor per defecte */</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>img<span class="fu">.b</span> {</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">vertical-align</span>: <span class="dv">top</span><span class="op">;</span> <span class="co">/* Dalt */</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>img<span class="fu">.c</span> {</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">vertical-align</span>: <span class="dv">bottom</span><span class="op">;</span> <span class="co">/* Baix */</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>img<span class="fu">.d</span> {</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">vertical-align</span>: <span class="dv">middle</span><span class="op">;</span> <span class="co">/* Centrat verticalment */</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p><a
+            href="https://www.w3schools.com/css/tryit.asp?filename=trycss_vertical-align">Exemples
+            de vertical-align</a></p>
+            <h4 data-number="1.5.2.3" id="decoració-del-text"><span
+            class="header-section-number">1.5.2.3</span> Decoració del
+            text</h4>
+            <p>La propietat
+            <strong><code>text-decoration-line</code></strong>
+            s’utilitza per afegir una línia de decoració al text:
+            subratllat, sobreratllat, tatxat…</p>
+            <p>La propietat
+            <strong><code>text-decoration-color</code></strong>
+            s’utilitza per establir el color de la línia de
+            decoració.</p>
+            <p>La propietat
+            <strong><code>text-decoration-style</code></strong>
+            s’utilitza per definir l’estil de la línia de decoració:
+            contínua (<em>solid</em>), doble (<em>double</em>),
+            puntejada (<em>dotted</em>), ratlles (<em>dashed</em>)…</p>
+            <p>La propietat
+            <strong><code>text-decoration-thickness</code></strong>
+            s’utilitza per establir el gruix de la línia de
+            decoració.</p>
+            <p>Per últim, la propietat
+            <strong><code>text-decoration</code></strong> s’usa per a
+            establir totes les propietats.</p>
+            <div class="sourceCode" id="cb26"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-line</span>: <span class="dv">overline</span><span class="op">;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-style</span>: <span class="dv">solid</span><span class="op">;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-thickness</span>: <span class="dv">5</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>h2 {</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-line</span>: <span class="dv">line-through</span><span class="op">;</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-color</span>: <span class="cn">blue</span><span class="op">;</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-style</span>: <span class="dv">double</span><span class="op">;</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-thickness</span>: <span class="dv">25</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>h3 {</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-line</span>: <span class="dv">underline</span><span class="op">;</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-color</span>: <span class="cn">green</span><span class="op">;</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration-style</span>: <span class="dv">dotted</span><span class="op">;</span> </span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>}   </span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration</span>: <span class="dv">underline</span> <span class="cn">red</span> <span class="dv">double</span> <span class="dv">5</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>a {</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span> <span class="co">/* Elimina el subratllat dels enllaços */</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p><a
+            href="https://www.w3schools.com/css/css_text_decoration.asp">Text-decoration</a></p>
+            <h4 data-number="1.5.2.4" id="interlineat-i-espaiat"><span
+            class="header-section-number">1.5.2.4</span> Interlineat i
+            espaiat</h4>
+            <p>La propietat <strong><code>line-height</code></strong>
+            estableix l’espai entre línies. Es pot especificar amb les
+            unitats de mesura vistes fins ara:</p>
+            <div class="sourceCode" id="cb27"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">normal</span><span class="op">;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>blockquote {</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>pre {</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span>: <span class="dv">80</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>La propietat <strong><code>letter-spacing</code></strong>
+            serveix per a augmentar o disminuir l’espai entre caràcters
+            d’un text:</p>
+            <div class="sourceCode" id="cb28"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">letter-spacing</span>: <span class="dv">2</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>h2 {</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">letter-spacing</span>: <span class="dv">-1</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p><strong><code>text-indent</code></strong> serveix per a
+            indentar la primera línia d’un text, l’anomenat <em>sagnat
+            francès</em>. Permet valor positius (sagnat cap a la dreta)
+            i negatius (sagnat cap a l’esquerra):</p>
+            <div class="sourceCode" id="cb29"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-indent</span>: <span class="dv">50</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-indent</span>: <span class="dv">-2</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h3 data-number="1.5.3" id="imatges-de-fons"><span
+            class="header-section-number">1.5.3</span> Imatges de
+            fons</h3>
+            <p>Amb CSS podem posar imatges de fons de les nostres
+            pàgines. Ho podem fer en un element, com
+            <code>&lt;p&gt;</code> o <code>&lt;h1&gt;</code>, o a tota
+            la pàgina en el <code>&lt;body&gt;</code>.</p>
+            <p>Les propietats són:</p>
+            <ul>
+            <li><strong><code>background-color</code></strong>: el color
+            de fons</li>
+            <li><strong><code>background-image</code></strong>:
+            especifica la imatge de fons</li>
+            <li><strong><code>background-repeat</code></strong>: el mode
+            de repetició del fons: <em><code>repeat</code></em>,
+            <em><code>repeat-x</code></em>,
+            <em><code>repeat-y</code></em>,
+            <em><code>no-repeat</code></em>.</li>
+            <li><strong><code>background-position</code></strong>: la
+            posició de la imatge de fons: <em><code>left</code></em>,
+            <em><code>right</code></em>, <em><code>top</code></em>,
+            <em><code>bottom</code></em>.</li>
+            <li><strong><code>background-attachment</code></strong>: per
+            a establir si la imatge de fons es mou amb la pàgina
+            (<em><code>scroll</code></em>) o es queda estàtica
+            (<em><code>fixed</code></em>).</li>
+            <li><strong><code>background</code></strong>: per a establir
+            totes les propietats de fons.</li>
+            </ul>
+            <div class="sourceCode" id="cb30"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">&quot;img_tree.png&quot;</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-repeat</span>: <span class="dv">no-repeat</span><span class="op">;</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-position</span>: <span class="dv">right</span> <span class="dv">top</span><span class="op">;</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-attachment</span>: <span class="dv">scroll</span><span class="op">;</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb31"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background</span>: <span class="cn">#ffffff</span> <span class="fu">url(</span><span class="st">&quot;img_tree.png&quot;</span><span class="fu">)</span> <span class="dv">no-repeat</span> <span class="dv">right</span> <span class="dv">top</span><span class="op">;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h2 data-number="1.6" id="selectors"><span
+            class="header-section-number">1.6</span> Selectors</h2>
+            <p>Els <strong>selectors</strong> defineixen quin és
+            l’element de la pàgina que modifiquem des del CSS.</p>
+            <p>Disposem de diversos tipus de selectors:</p>
+            <ul>
+            <li>Selectors de tipus o etiqueta HTML</li>
+            <li>Selectors de classe</li>
+            <li>Selectors ID</li>
+            <li>Selectors descendents</li>
+            <li>Selectors pseudo-classe: links</li>
+            <li>Selectors pseudo-elements</li>
+            <li>Selector universal (*)</li>
+            </ul>
+            <h3 data-number="1.6.1"
+            id="selectors-de-tipus-o-etiqueta"><span
+            class="header-section-number">1.6.1</span> Selectors de
+            tipus o etiqueta</h3>
+            <p>Seleccionen els elements de la pàgina a partir de la seva
+            etiqueta HTML</p>
+            <p>HTML:</p>
+            <div class="sourceCode" id="cb32"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span> Títol 1 <span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span> Títol 2 <span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>CSS:</p>
+            <div class="sourceCode" id="cb33"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>h1 { <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span> }</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>h2 { <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span> }</span></code></pre></div>
+            <p>Visualització:</p>
+            <p><img src="images/eti.png" /></p>
+            <h3 data-number="1.6.2" id="selectors-de-classe-."><span
+            class="header-section-number">1.6.2</span> Selectors de
+            classe (.)</h3>
+            <p>Els <strong>selectors de classe</strong> seleccionen
+            totes les etiquetes que tinguen el mateix atribut
+            <strong><code>class</code></strong>. S’utilitza el punt
+            <code>.</code> precedit del nom de la classe.</p>
+            <p>Serveixen per declarar estils que s’utilitzaran
+            <strong>varies vegades</strong> en la mateixa pàgina.</p>
+            <p>HTML:</p>
+            <div class="sourceCode" id="cb34"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;destacat&quot;</span><span class="dt">&gt;</span>Primer paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Segon paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Definim una classe donant-li un nom que podreu utilitzar
+            en qualsevol altra etiqueta. S’escriuen darrere d’un
+            punt.</p>
+            <p>CSS:</p>
+            <div class="sourceCode" id="cb35"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.destacat</span> { <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span> }</span></code></pre></div>
+            <p>Visualització:</p>
+            <figure>
+            <img src="images/class.png" alt="CSS class" />
+            <figcaption aria-hidden="true">CSS class</figcaption>
+            </figure>
+            <p>Només els paràgrafs de classe destacat es mostraran de
+            color vermell.</p>
+            <p>Podem qualificar una etiqueta amb una classe, de manera
+            que les regles s’aplicaran només als elements que tinguen
+            eixa etiqueta i eixa classe:</p>
+            <div class="sourceCode" id="cb36"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>h2<span class="fu">.destacat</span> { <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span> } <span class="co">/* S&#39;aplicarà només als h2 que siguen de la classe destacat */</span></span></code></pre></div>
+            <blockquote>
+            <p>Varies etiquetes de la pàgina poden utilitzar el mateix
+            valor en l’atribut <strong><code>class</code></strong>.</p>
+            </blockquote>
+            <p>La mateixa etiqueta pot tindre vàries classes, separant
+            els noms per espais:</p>
+            <div class="sourceCode" id="cb37"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;destacat avis&quot;</span><span class="dt">&gt;</span>Primer paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.6.3" id="selectors-id"><span
+            class="header-section-number">1.6.3</span> Selectors ID
+            (#)</h3>
+            <p>Els <strong>selectors ID</strong> seleccionen qualsevol
+            etiqueta que tingui l’identificador especificat en l’atribut
+            <strong><code>id</code></strong>. S’utilitza el símbol
+            <code>#</code>.</p>
+            <p>Serveixen per declarar estils que s’utilitzaran
+            <strong>UNA SOLA vegada</strong>.</p>
+            <p>HTML:</p>
+            <div class="sourceCode" id="cb38"><pre
+            class="sourceCode htm"><code class="sourceCode djangotemplate"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>Xeresa<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;comarca&quot;</span><span class="kw">&gt;</span>La Safor<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span></code></pre></div>
+            <p>Definim un id donant-li un nom que podreu utilitzar en
+            qualsevol altra etiqueta.</p>
+            <p>CSS:</p>
+            <div class="sourceCode" id="cb39"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#comarca</span> { <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span> }</span></code></pre></div>
+            <p>Visualització:</p>
+            <figure>
+            <img src="images/id.png" alt="CSS id" />
+            <figcaption aria-hidden="true">CSS id</figcaption>
+            </figure>
+            <p>Al igual que amb les classes, podem qualificar una
+            etiqueta amb un id, de manera que les regles s’aplicaran
+            només als elements que tinguen eixa etiqueta i eixe id:</p>
+            <div class="sourceCode" id="cb40"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>nav<span class="pp">#menu</span> { <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span> } <span class="co">/* S&#39;aplicarà només als elements nav que tinguen el id menu */</span></span></code></pre></div>
+            <blockquote>
+            <p>El mateix valor en l’atribut
+            <strong><code>id</code></strong> <strong>NO es pot
+            repetir</strong> en dos etiquetes de la pàgina.</p>
+            </blockquote>
+            <h3 data-number="1.6.4" id="selectors-descendents"><span
+            class="header-section-number">1.6.4</span> Selectors
+            descendents</h3>
+            <p>Selecciona les etiquetes que es troben
+            <strong>dins</strong> (descendents) d’una altra d’etiqueta.
+            S’especifica indicant els noms dels elements descendents a
+            continuació i separats per un espai de l’element pare.</p>
+            <p>HTML:</p>
+            <div class="sourceCode" id="cb41"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>      Consulteu la pàgina del <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;www.w3.org&quot;</span><span class="dt">&gt;</span>W3C<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>CSS:</p>
+            <div class="sourceCode" id="cb42"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>p a { <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span> }</span></code></pre></div>
+            <p>Només els enllaços que siguen descendents d’un element
+            <code>p</code> seran de color roig.</p>
+            <p>Visualització:</p>
+            <figure>
+            <img src="images/descen.png" alt="Selectors descendents" />
+            <figcaption aria-hidden="true">Selectors
+            descendents</figcaption>
+            </figure>
+            <h3 data-number="1.6.5" id="grups-de-selectors"><span
+            class="header-section-number">1.6.5</span> Grups de
+            selectors</h3>
+            <p>Permeten assignar el mateix estil a diversos selectors.
+            S’utilitza la coma <code>,</code> per a separar els
+            selectors.</p>
+            <p>No són en realitat selectors, sinó una manera abreujada
+            de definir estils.</p>
+            <p>En aquest exemple, assignem les mateixes propietats a
+            <code>h1</code>, <code>h2</code> i <code>p</code>:</p>
+            <div class="sourceCode" id="cb43"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>h1<span class="op">,</span> h2<span class="op">,</span> p {</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span>: Trebuchet<span class="op">,</span> sans<span class="op">;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">olive</span><span class="op">;</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span>: <span class="dv">30</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h3 data-number="1.6.6"
+            id="selectors-pseudo-classe-enllaços"><span
+            class="header-section-number">1.6.6</span> Selectors
+            pseudo-classe: enllaços</h3>
+            <p>CSS permet aplicar diferents estils al mateix enllaç en
+            funció del seu estat.</p>
+            <ul>
+            <li><strong><code>:link</code></strong>: Enllaços que encara
+            no han sigut visitats</li>
+            <li><strong><code>:visited</code></strong>: Enllaços que ja
+            han sigut visitats</li>
+            <li><strong><code>:hover</code></strong>: Enllaç que té el
+            punter de ratolí a sobre</li>
+            <li><strong><code>:active</code></strong>: Enllaç que està
+            prement l’usuari</li>
+            </ul>
+            <div class="sourceCode" id="cb44"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>a<span class="in">:hover</span> { </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>      <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>      <span class="kw">background-color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>      <span class="kw">color</span>: <span class="cn">#FFF</span><span class="op">;</span> </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p><a
+            href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_sel_hover">Exemple</a></p>
+            <h3 data-number="1.6.7" id="selectors-pseudo-elements"><span
+            class="header-section-number">1.6.7</span> Selectors
+            pseudo-elements</h3>
+            <p>S’afegeixen a un selector per definir l’estil
+            d’<strong>una part de l’element</strong>.</p>
+            <ul>
+            <li><strong><code>::first-letter</code></strong>: Selecciona
+            la primera lletra</li>
+            <li><strong><code>::first-line</code></strong>: Selecciona
+            la primera línia</li>
+            <li><strong><code>::selection</code></strong>: Selecciona
+            allò que l’usuari ha seleccionat amb el ratolí.</li>
+            </ul>
+            <p>HTML:</p>
+            <div class="sourceCode" id="cb45"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Primer paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Segon paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>CSS:</p>
+            <div class="sourceCode" id="cb46"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>p<span class="in">::first-letter</span> { <span class="kw">font-size</span>: <span class="dv">200</span><span class="dt">%</span><span class="op">;</span> }</span></code></pre></div>
+            <p>Visualització:</p>
+            <figure>
+            <img src="images/pseudo.png" alt="CSS pseudo-selectors" />
+            <figcaption aria-hidden="true">CSS
+            pseudo-selectors</figcaption>
+            </figure>
+            <p>CSS3 afegeix molts més pseudo-elements.</p>
+            <p><a
+            href="http://www.w3schools.com/css/css_pseudo_elements.asp">Més
+            exemples</a></p>
+            <h3 data-number="1.6.8" id="el-selector-universal"><span
+            class="header-section-number">1.6.8</span> El selector
+            universal (*)</h3>
+            <blockquote>
+            <p>Selecciona <strong>totes</strong> les etiquetes del
+            document.</p>
+            </blockquote>
+            <p>HTML:</p>
+            <div class="sourceCode" id="cb47"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span> Títol principal <span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Primer paràgraf <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Segon paràgraf <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>CSS:</p>
+            <div class="sourceCode" id="cb48"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="op">*</span> {</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Visualització:</p>
+            <figure>
+            <img src="images/univ.png" alt="CSS univeral" />
+            <figcaption aria-hidden="true">CSS univeral</figcaption>
+            </figure>
+            <h2 data-number="1.7" id="referències"><span
+            class="header-section-number">1.7</span> Referències</h2>
+            <ul>
+            <li><a
+            href="https://www.w3schools.com/css/default.asp">W3Schools</a></li>
+            <li><a
+            href="https://developer.mozilla.org/es/docs/Web/CSS">Mozilla</a></li>
+            <li><a href="https://www.w3.org/Style/CSS/specs.en.html">W3C
+            CSS specifications</a></li>
+            </ul>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>4.3 Elements HTML i CSS</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">4.3 Elements HTML i CSS</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#elements-html-i-css" id="toc-elements-html-i-css"><span
+class="toc-section-number">1</span> Elements HTML i CSS</a>
+<ul>
+<li><a href="#enllaços" id="toc-enllaços"><span
+class="toc-section-number">1.1</span> Enllaços</a>
+<ul>
+<li><a href="#enllaços-locals" id="toc-enllaços-locals"><span
+class="toc-section-number">1.1.1</span> Enllaços locals</a></li>
+<li><a href="#enllaços-externs" id="toc-enllaços-externs"><span
+class="toc-section-number">1.1.2</span> Enllaços externs</a></li>
+<li><a href="#enllaços-interns" id="toc-enllaços-interns"><span
+class="toc-section-number">1.1.3</span> Enllaços interns</a></li>
+<li><a href="#enllaços-a-adreces-de-correu"
+id="toc-enllaços-a-adreces-de-correu"><span
+class="toc-section-number">1.1.4</span> Enllaços a adreces de
+correu</a></li>
+<li><a href="#enllaços-a-arxius" id="toc-enllaços-a-arxius"><span
+class="toc-section-number">1.1.5</span> Enllaços a arxius</a></li>
+<li><a href="#atribut-target" id="toc-atribut-target"><span
+class="toc-section-number">1.1.6</span> Atribut target</a></li>
+<li><a href="#estils-dels-enllaços" id="toc-estils-dels-enllaços"><span
+class="toc-section-number">1.1.7</span> Estils dels enllaços</a></li>
+</ul></li>
+<li><a href="#llistes" id="toc-llistes"><span
+class="toc-section-number">1.2</span> Llistes</a>
+<ul>
+<li><a href="#llistes-sense-ordre-unordered-lists"
+id="toc-llistes-sense-ordre-unordered-lists"><span
+class="toc-section-number">1.2.1</span> Llistes sense ordre
+(<em>Unordered Lists</em>)</a></li>
+<li><a href="#llistes-ordenades-ordered-lists"
+id="toc-llistes-ordenades-ordered-lists"><span
+class="toc-section-number">1.2.2</span> Llistes ordenades (<em>Ordered
+Lists</em>)</a></li>
+<li><a href="#llistes-de-definició-definition-lists"
+id="toc-llistes-de-definició-definition-lists"><span
+class="toc-section-number">1.2.3</span> Llistes de definició
+(<em>Definition Lists</em>)</a></li>
+<li><a href="#niuar-les-llistes" id="toc-niuar-les-llistes"><span
+class="toc-section-number">1.2.4</span> Niuar les llistes</a></li>
+<li><a href="#estils-de-les-llistes"
+id="toc-estils-de-les-llistes"><span
+class="toc-section-number">1.2.5</span> Estils de les llistes</a></li>
+</ul></li>
+<li><a href="#imatges" id="toc-imatges"><span
+class="toc-section-number">1.3</span> Imatges</a>
+<ul>
+<li><a href="#estils-de-les-imatges"
+id="toc-estils-de-les-imatges"><span
+class="toc-section-number">1.3.1</span> Estils de les imatges</a></li>
+</ul></li>
+<li><a href="#multimèdia" id="toc-multimèdia"><span
+class="toc-section-number">1.4</span> Multimèdia</a>
+<ul>
+<li><a href="#vídeo" id="toc-vídeo"><span
+class="toc-section-number">1.4.1</span> Vídeo</a></li>
+<li><a href="#audio" id="toc-audio"><span
+class="toc-section-number">1.4.2</span> Audio</a></li>
+</ul></li>
+<li><a href="#taules" id="toc-taules"><span
+class="toc-section-number">1.5</span> Taules</a>
+<ul>
+<li><a href="#colspan-i-rowspan" id="toc-colspan-i-rowspan"><span
+class="toc-section-number">1.5.1</span> Colspan i rowspan</a></li>
+<li><a href="#taules-avançades" id="toc-taules-avançades"><span
+class="toc-section-number">1.5.2</span> Taules avançades</a></li>
+<li><a href="#estils-de-les-taules" id="toc-estils-de-les-taules"><span
+class="toc-section-number">1.5.3</span> Estils de les taules</a></li>
+</ul></li>
+<li><a href="#referències" id="toc-referències"><span
+class="toc-section-number">1.6</span> Referències</a></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="elements-html-i-css"><span
+            class="header-section-number">1</span> Elements HTML i
+            CSS</h1>
+            <h2 data-number="1.1" id="enllaços"><span
+            class="header-section-number">1.1</span> Enllaços</h2>
+            <p>Els enllaços (<em>links</em> o <em>hyperlinks</em>)
+            sorgeixen de la necessitat de que les pàgines HTML estiguen
+            interconnectades (<em>hypertext</em>).</p>
+            <p>Per col·locar un enllaç utilitzarem les etiquetes
+            <strong><code>&lt;a&gt;</code></strong> i
+            <strong><code>&lt;/a&gt;</code></strong> .</p>
+            <p>L’atribut <strong><code>href</code></strong>, ens indica
+            el <strong>destí</strong> d’aquest enllaç, la pàgina o
+            l’element que s’obrirà en fer clic a l’enllaç.</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;destí&quot;</span><span class="dt">&gt;</span> Text de l&#39;enllaç <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/enllac.png" alt="Enllaç" />
+            <figcaption aria-hidden="true">Enllaç</figcaption>
+            </figure>
+            <p>El <strong>text de l’enllaç</strong> és el que l’usuari
+            veu a la pàgina web. Per defecte es decora de color blau i
+            subratllat. El destí es veu a la part baixa del navegador
+            web quan l’usuari passa el ratolí per damunt de
+            l’enllaç.</p>
+            <p>Els enllaços es poden classificar de la següent
+            manera:</p>
+            <ul>
+            <li><strong>Enllaços locals</strong>: els dirigeixen a una
+            altra pàgina dins del mateix lloc web.</li>
+            <li><strong>Enllaços remots</strong>: els dirigits cap a
+            altres pàgines web externes al lloc web.</li>
+            <li><strong>Enllaços interns</strong>: els que es dirigeixen
+            a diferents llocs de la mateixa pàgina.</li>
+            <li><strong>Enllaços amb direccions de correu</strong>: per
+            crear un missatge de correu dirigit a una direcció.</li>
+            <li><strong>Enllaços a arxius</strong>: perquè els usuaris
+            puguin descarregar arxius.</li>
+            </ul>
+            <h3 data-number="1.1.1" id="enllaços-locals"><span
+            class="header-section-number">1.1.1</span> Enllaços
+            locals</h3>
+            <p>Un lloc web està constituït per pàgines
+            interconnectades.</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;productes.html&quot;</span><span class="dt">&gt;</span> Productes <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Aquest exemple mostra un enllaç a una pàgina,
+            <em><code>productes.html</code></em>, que es troba al mateix
+            directori.</p>
+            <p>Per regla general, un lloc web ha d’estar ordenat per
+            directoris. S’ha d’utilitzar la <code>/</code> per
+            especificar la <strong>ruta relativa</strong> del destí.</p>
+            <p>Si la pàgina està en un subdirectori dins del directori
+            actual, l’enllaç quedaria així:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;subdirectori/productes.html&quot;</span><span class="dt">&gt;</span> Productes <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>I si estiguera en un directori superior, així:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;../productes.html&quot;</span><span class="dt">&gt;</span> Productes <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Els enllaços locals també poden apuntar a una secció en
+            concret dintre d’un altra pàgina, com en els enllaços
+            interns (veure més avant).</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;arxiu.html#seccio&quot;</span><span class="dt">&gt;</span> Arxiu <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>La pàgina arxiu.html ha de contenir la marca referent a
+            la secció.</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;seccio&quot;</span><span class="dt">&gt;</span> <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.1.2" id="enllaços-externs"><span
+            class="header-section-number">1.1.2</span> Enllaços
+            externs</h3>
+            <p>Són enllaços dirigits cap a altres llocs web externs al
+            nostre lloc web.</p>
+            <p>A l’atribut href escrivim la <strong>URL</strong> o
+            <strong>adreça completa</strong> de la pàgina amb la que es
+            vol enllaçar.</p>
+            <p>Totes les adreces van precedides de
+            <strong><code>http://</code></strong> o de
+            <strong><code>https://</code></strong>.</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;https://es.wikipedia.org&quot;</span><span class="dt">&gt;</span> Anar a Wikipedia <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.1.3" id="enllaços-interns"><span
+            class="header-section-number">1.1.3</span> Enllaços
+            interns</h3>
+            <p>Són enllaços que apunten a un lloc diferent dins de la
+            mateixa pàgina html.</p>
+            <p>Per a crear un enllaç d’aquest tipus és necessari, a part
+            de l’enllaç de l’origen, col·locar un enllaç al destí.</p>
+            <p>Exemple:</p>
+            <p>Enllaç origen:</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;#avall&quot;</span><span class="dt">&gt;</span> Anar al final <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Enllaç destí:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;avall&quot;</span><span class="dt">&gt;</span> <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>No convé utilitzar-los molt, és millor fer pàgines més
+            petites ja que llavors tarden menys a carregar-se i són més
+            fàcils de llegir.</p>
+            <h3 data-number="1.1.4"
+            id="enllaços-a-adreces-de-correu"><span
+            class="header-section-number">1.1.4</span> Enllaços a
+            adreces de correu</h3>
+            <p>Aquests enllaços ens obren una nova finestra de correu
+            electrònic per enviar a una adreça de correu determinat.</p>
+            <p>A l’atribut <strong><code>href</code></strong> hi
+            col·loquem la paraula <strong><code>mailto:</code></strong>
+            seguida de la direcció de correu.</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;mailto:pep@mail.com&quot;</span><span class="dt">&gt;</span> Contactar amb en Pep <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Per tal de configurar altres paràmetres del correu
+            electrònic s’afegeix un interrogant després de la direcció
+            de correu.</p>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;mailto:test@example.com?subject=Prova de mailto</span><span class="er">&amp;</span><span class="st">body=Açò és una prova&quot;</span><span class="dt">&gt;</span>Exemple<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>No és recomanable posar enllaços a correus, pel tema dels
+            robots i l’SPAM.</p>
+            <h3 data-number="1.1.5" id="enllaços-a-arxius"><span
+            class="header-section-number">1.1.5</span> Enllaços a
+            arxius</h3>
+            <p>El mecanisme és el mateix que hem vist en els enllaços
+            remots i locals.</p>
+            <p>En compte d’indicar la direcció web, el que hem de fer és
+            indicar el nom del fitxer (i en cas que sigui necessari la
+            ruta).</p>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;fitxer.pdf&quot;</span><span class="dt">&gt;</span> Descarregar el fitxer <span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.1.6" id="atribut-target"><span
+            class="header-section-number">1.1.6</span> Atribut
+            target</h3>
+            <p>L’atribut <strong><code>target</code></strong> especifica
+            on obrir el destí de l’enllaç. No es recomana el seu ús ja
+            que va associat al disseny web amb <code>frames</code>, el
+            qual està en desús. A més, va en contra del disseny
+            accessible, ja que a l’obrir els enllaços en una pàgina
+            nova, es perd el flux de lectura. No obstant això, encara
+            s’utilitza àmpliament.</p>
+            <p>Els dos valors més usats són:</p>
+            <ul>
+            <li><strong><code>_blank</code></strong>: Obri l’enllaç en
+            una finestra o pestanya nova.</li>
+            <li><strong><code>_self</code></strong>: Obri l’enllaç en la
+            mateixa finestra, pestanya o frame. És el valor per
+            defecte.</li>
+            </ul>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;https://ca.wikipedia.org&quot;</span><span class="ot"> target</span><span class="op">=</span><span class="st">&quot;_blank&quot;</span><span class="dt">&gt;</span>Viquipedia<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span></code></pre></div>
+            <h3 data-number="1.1.7" id="estils-dels-enllaços"><span
+            class="header-section-number">1.1.7</span> Estils dels
+            enllaços</h3>
+            <p>Els enllaços es poden modificar emprant qualsevol regla
+            que afecte al text, però les més utilitzades són
+            <strong><code>text-decoration</code></strong> (per a llevar
+            i afegir el subratllat),
+            <strong><code>color</code></strong>,
+            <strong><code>background-color</code></strong> i
+            <strong><code>border</code></strong>.</p>
+            <p>Recordar també els diferents estats que pot tindre un
+            enllaç:</p>
+            <ul>
+            <li><strong><code>a:link</code></strong>: Enllaços que
+            encara no han sigut visitats</li>
+            <li><strong><code>a:visited</code></strong>: Enllaços que ja
+            han sigut visitats</li>
+            <li><strong><code>a:hover</code></strong>: Enllaç que té el
+            punter de ratolí a sobre</li>
+            <li><strong><code>a:active</code></strong>: Enllaç que està
+            prement l’usuari</li>
+            </ul>
+            <blockquote>
+            <p>Quan utilitzem aquests pseudo-elements, s’han de seguir
+            unes regles d’ordenació:</p>
+            <ul>
+            <li><strong><code>a:hover</code></strong> ha d’anar
+            <strong>després</strong> de
+            <strong><code>a:link</code></strong> i de
+            <strong><code>a:visited</code></strong></li>
+            <li><strong><code>a:active</code></strong> ha d’anar
+            <strong>després</strong> de
+            <strong><code>a:hover</code></strong></li>
+            </ul>
+            </blockquote>
+            <p><a
+            href="https://www.w3schools.com/css/css_link.asp">Exemples
+            d’estils d’enllaços</a>.</p>
+            <h2 data-number="1.2" id="llistes"><span
+            class="header-section-number">1.2</span> Llistes</h2>
+            <blockquote>
+            <p>Les llistes serveixen per enumerar i definir
+            elements.</p>
+            </blockquote>
+            <p>Podem distingir tres tipus de llistes:</p>
+            <ul>
+            <li>Llistes sense ordre</li>
+            <li>Llistes ordenades</li>
+            <li>Llistes de definició</li>
+            </ul>
+            <h3 data-number="1.2.1"
+            id="llistes-sense-ordre-unordered-lists"><span
+            class="header-section-number">1.2.1</span> Llistes sense
+            ordre (<em>Unordered Lists</em>)</h3>
+            <p>Definides per les etiquetes
+            <strong><code>&lt;ul&gt;</code></strong> i
+            <strong><code>&lt;/ul&gt;</code></strong> (<em>unordered
+            list</em>).</p>
+            <p>Cada element de la llista queda emmarcat per l’etiqueta
+            <strong><code>&lt;li&gt;</code></strong> (<em>list
+            item</em>).</p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span> Països del món <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span> Argentina <span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span> Perú <span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/llista1.png" alt="Llista sense ordre" />
+            <figcaption aria-hidden="true">Llista sense
+            ordre</figcaption>
+            </figure>
+            <h3 data-number="1.2.2"
+            id="llistes-ordenades-ordered-lists"><span
+            class="header-section-number">1.2.2</span> Llistes ordenades
+            (<em>Ordered Lists</em>)</h3>
+            <p>Definides per les etiquetes
+            <strong><code>&lt;ol&gt;</code></strong> i
+            <strong><code>&lt;/ol&gt;</code></strong> (<em>ordered
+            list</em>).</p>
+            <p>Cada element de la llista queda emmarcat per l’etiqueta
+            <strong><code>&lt;li&gt;</code></strong> (<em>list
+            item</em>)</p>
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span> Països del món <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ol</span><span class="dt">&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span> Argentina <span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span> Perú <span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ol</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/llista2.png" alt="Llista ordenada" />
+            <figcaption aria-hidden="true">Llista ordenada</figcaption>
+            </figure>
+            <h3 data-number="1.2.3"
+            id="llistes-de-definició-definition-lists"><span
+            class="header-section-number">1.2.3</span> Llistes de
+            definició (<em>Definition Lists</em>)</h3>
+            <p>Cada element és presentat juntament amb la seva
+            definició.</p>
+            <ul>
+            <li>Definides per les etiquetes
+            <strong><code>&lt;dl&gt;</code></strong> i
+            <strong><code>&lt;/dl&gt;</code></strong> (<em>definition
+            list</em>).</li>
+            <li>Les etiquetes de cada element són
+            <strong><code>&lt;dt&gt;</code></strong> (<em>definition
+            term</em>) i la seva definició
+            <strong><code>&lt;dd&gt;</code></strong> (<em>definition
+            definition</em>).</li>
+            </ul>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">dl</span><span class="dt">&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">dt</span><span class="dt">&gt;</span>Casa<span class="dt">&lt;/</span><span class="kw">dt</span><span class="dt">&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">dd</span><span class="dt">&gt;</span>Lloc on habitar<span class="dt">&lt;/</span><span class="kw">dd</span><span class="dt">&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">dt</span><span class="dt">&gt;</span>Llar<span class="dt">&lt;/</span><span class="kw">dt</span><span class="dt">&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">dd</span><span class="dt">&gt;</span>Lloc on viure<span class="dt">&lt;/</span><span class="kw">dd</span><span class="dt">&gt;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">dl</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/llista3.png" alt="Llista de definició" />
+            <figcaption aria-hidden="true">Llista de
+            definició</figcaption>
+            </figure>
+            <h3 data-number="1.2.4" id="niuar-les-llistes"><span
+            class="header-section-number">1.2.4</span> Niuar les
+            llistes</h3>
+            <p>Podem niuar llistes, fins i tot de diferents tipus de
+            llista:</p>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Ciutats del mon<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    Argentina</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">ol</span><span class="dt">&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>           <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Buenos Aires<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>           <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Bariloche<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">ol</span><span class="dt">&gt;</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    Uruguay</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">ol</span><span class="dt">&gt;</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>       <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Montevideo<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>       <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Punta del Este<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">ol</span><span class="dt">&gt;</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/llista4.png" alt="Llistes niuades" />
+            <figcaption aria-hidden="true">Llistes niuades</figcaption>
+            </figure>
+            <h3 data-number="1.2.5" id="estils-de-les-llistes"><span
+            class="header-section-number">1.2.5</span> Estils de les
+            llistes</h3>
+            <p>La propietat
+            <strong><code>list-style-type</code></strong> especifica el
+            tipus de marcador de cada element de la llista.</p>
+            <p>Per a <strong>llistes sense ordre</strong>, tenim:</p>
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ul {<span class="kw">list-style-type</span>: <span class="dv">circle</span><span class="op">;</span>} <span class="co">/* Cercle sense pintar */</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>ul {<span class="kw">list-style-type</span>: <span class="dv">disc</span><span class="op">;</span>} <span class="co">/* Cercle pintat de negre */</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>ul {<span class="kw">list-style-type</span>: <span class="dv">square</span><span class="op">;</span>} <span class="co">/* Quadrat pintat de negre */</span></span></code></pre></div>
+            <p>I per a <strong>llistes ordenades</strong>:</p>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ol {<span class="kw">list-style-type</span>: <span class="dv">decimal</span><span class="op">;</span>} <span class="co">/* 1, 2, 3 */</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ol {<span class="kw">list-style-type</span>: <span class="dv">decimal-leading-zero</span><span class="op">;</span>} <span class="co">/* 01, 02, 03 */</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>ol {<span class="kw">list-style-type</span>: <span class="dv">lower-alpha</span><span class="op">;</span>} <span class="co">/* a, b, c */</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>ol {<span class="kw">list-style-type</span>: <span class="dv">upper-alpha</span><span class="op">;</span>} <span class="co">/* A, B, C */</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>ol {<span class="kw">list-style-type</span>: <span class="dv">lower-roman</span><span class="op">;</span>} <span class="co">/* i, ii, iii, iv */</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>ol {<span class="kw">list-style-type</span>: <span class="dv">upper-roman</span><span class="op">;</span>} <span class="co">/* I, II, III, IV */</span></span></code></pre></div>
+            <p><strong><code>list-style-type: none</code></strong>
+            elimina el marcador.</p>
+            <p>Podeu veure tots els tipus de marcadors en aquest <a
+            href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_list-style-type_all">enllaç</a>.</p>
+            <p>La propietat
+            <strong><code>list-style-image</code></strong> especifica
+            una imatge com a marcador:</p>
+            <div class="sourceCode" id="cb20"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ul {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">list-style-image</span>: <span class="fu">url(</span><span class="st">&#39;sqpurple.gif&#39;</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h2 data-number="1.3" id="imatges"><span
+            class="header-section-number">1.3</span> Imatges</h2>
+            <p>L’aspecte més vistós i atractiu d’una pàgina web és el
+            grafisme.</p>
+            <p>Les imatges són emmagatzemades en forma d’arxius,
+            principalment <strong>GIF/PNG</strong> (per gràfiques,
+            logotips i dibuixos) i <strong>JPG</strong> (per fotos).</p>
+            <p>L’etiqueta que utilitzem per inserir una imatge és
+            <strong><code>&lt;img&gt;</code></strong>, sense etiqueta de
+            tancament.</p>
+            <p>Mitjançant l’atribut <strong><code>src</code></strong>
+            (source), especifiquem la ruta on es troba la imatge.</p>
+            <div class="sourceCode" id="cb21"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;robot.jpg&quot;</span><span class="ot"> alt</span><span class="op">=</span><span class="st">&quot;Robot simpàtic&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Si la imatge es troba en una carpeta diferent de la qual
+            està la pàgina HTML, indiquem la ruta:</p>
+            <div class="sourceCode" id="cb22"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;img/robot.jpg&quot;</span><span class="ot"> alt</span><span class="op">=</span><span class="st">&quot;Robot simpàtic&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Atributs de l’etiqueta
+            <strong><code>&lt;img&gt;</code></strong>:</p>
+            <ul>
+            <li><p><strong>alt</strong>: Breu <strong>descripció de
+            l’imatge</strong>. És obligatori per tal que el document
+            HTLM sigui validat correctament. Aquesta descripció també es
+            mostra quan no es pot mostrar la imatge i és llegida pels
+            programes que lligen el text de les pàgines web per a
+            persones invidents.</p></li>
+            <li><p><strong>height</strong> i <strong>width</strong>:
+            Defineixen l’altura i amplada de les imatges en
+            píxels.</p></li>
+            </ul>
+            <p>Els atributs <strong><code>src</code></strong> i
+            <strong><code>alt</code></strong> són
+            <strong>requerits</strong>.</p>
+            <p>Quant als atributs <strong>height</strong> i
+            <strong>width</strong> no són obligatoris, però es recomana
+            el seu ús per a evitar que les pàgines no canvien de mida
+            mentre es carreguen les imatges.</p>
+            <div class="sourceCode" id="cb23"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;img/robot.jpg&quot;</span><span class="ot"> alt</span><span class="op">=</span><span class="st">&quot;Robot simpàtic&quot;</span><span class="ot"> width</span><span class="op">=</span><span class="st">&quot;500&quot;</span><span class="ot"> height</span><span class="op">=</span><span class="st">&quot;600&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Si indiquem només un valor, l’altre es canvia
+            automàticament en proporció:</p>
+            <div class="sourceCode" id="cb24"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;img/robot.jpg&quot;</span><span class="ot"> alt</span><span class="op">=</span><span class="st">&quot;Robot simpàtic&quot;</span><span class="ot"> width</span><span class="op">=</span><span class="st">&quot;500&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Mateix resultat que abans--&gt;</span></span></code></pre></div>
+            <p>També podem indicar la mida en percentage respecte de la
+            mida original de la imatge:</p>
+            <div class="sourceCode" id="cb25"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;img/robot.jpg&quot;</span><span class="ot"> alt</span><span class="op">=</span><span class="st">&quot;Robot simpàtic&quot;</span><span class="ot"> width</span><span class="op">=</span><span class="st">&quot;50%&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>La mida de les imatges també es pot especificar per mitjà
+            de CSS utilitzant l’atribut <strong>style</strong>. Aquesta
+            forma es recomana per a evitar que els fulls d’estil canvien
+            la mida de les imatges:</p>
+            <div class="sourceCode" id="cb26"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;img/robot.jpg&quot;</span><span class="ot"> alt</span><span class="op">=</span><span class="st">&quot;Robot simpàtic&quot;</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;width:500px; height:600px;&quot;</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Hem de procurar de <strong>no posar imatges de mida més
+            gran que el que s’ha de visualitzar</strong>. Per exemple,
+            si la imatge té 200x200 píxels no té sentit posar-hi una
+            imatge a descarregar de més de 1000x1000 píxels! Hauríem de
+            redimensionar-la amb un editor d’imatges abans d’inserir-la
+            en la pàgina web.</p>
+            <p>Així mateix, s’ha d’usar un tipus d’imatge amb
+            <strong>compressió</strong>: <strong>png</strong>,
+            <strong>jpeg</strong>, <strong>webm</strong>.</p>
+            <h3 data-number="1.3.1" id="estils-de-les-imatges"><span
+            class="header-section-number">1.3.1</span> Estils de les
+            imatges</h3>
+            <p>Les propietats més utilitzades per a establir l’estils de
+            les imatges són <strong><code>width</code></strong> i
+            <strong><code>height</code></strong>, per a establir l’ample
+            i l’alt.</p>
+            <blockquote>
+            <p>Recordeu utilitzar aquests valors en la pròpia etiqueta
+            amb l’atribut <strong><code>style</code></strong>, per tal
+            d’evitar que els estils canvien la mida de la imatge.</p>
+            </blockquote>
+            <p>Podem fer que les imatges siguen adaptables (responsive)
+            amb les propietats:</p>
+            <div class="sourceCode" id="cb27"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>img<span class="fu">.responsive</span> {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">max-width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">height</span>: <span class="bu">auto</span><span class="op">;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Si volem la imatge centrada, la hem de convertir en
+            element de bloc (recordeu que img és un element en línia) i
+            utilitzar les següents propietats:</p>
+            <div class="sourceCode" id="cb28"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>img<span class="fu">.centered</span> {</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">display</span>: <span class="dv">block</span><span class="op">;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-left</span>: <span class="bu">auto</span><span class="op">;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-right</span>: <span class="bu">auto</span><span class="op">;</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">width</span>: <span class="dv">50</span><span class="dt">%</span><span class="op">;</span> <span class="co">/* Canviar a l&#39;ample desitjat */</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>El mateix resultat el podem obtindre ficant la imatge
+            dins d’un element <code>&lt;p&gt;</code> o
+            <code>&lt;div&gt;</code> i usant la propietat
+            <strong><code>text-align: center</code></strong>:</p>
+            <div class="sourceCode" id="cb29"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>img<span class="fu">.centered</span> {</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">max-width</span>: <span class="dv">80</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">height</span>: <span class="bu">auto</span><span class="op">;</span>  </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;text-align: center;&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;centered&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;imgatge.jpg&quot;</span><span class="ot"> </span><span class="dt">&gt;</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>La propietat <strong><code>border-radius</code></strong>
+            permet arrodonir els cantons de la imatge:</p>
+            <div class="sourceCode" id="cb30"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>img {</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">8</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p><a
+            href="https://www.w3schools.com/css/css3_images.asp">Més
+            propietats d’imatges</a>.</p>
+            <h2 data-number="1.4" id="multimèdia"><span
+            class="header-section-number">1.4</span> Multimèdia</h2>
+            <p>Els elements multimèdia es presenten en molts formats
+            diferents. Poden ser imatges, música, so, vídeos, discos,
+            pel·lícules, animacions i molt més.</p>
+            <p>Les pàgines web sovint contenen elements multimèdia de
+            diferents tipus i formats.</p>
+            <h3 data-number="1.4.1" id="vídeo"><span
+            class="header-section-number">1.4.1</span> Vídeo</h3>
+            <p>L’etiqueta
+            <strong><code>&lt;video&gt; &lt;/video&gt;</code></strong>
+            s’utilitza per a mostrar un vídeo en una pàgina web.</p>
+            <div class="sourceCode" id="cb31"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">video</span><span class="ot"> width</span><span class="op">=</span><span class="st">&quot;320&quot;</span><span class="ot"> height</span><span class="op">=</span><span class="st">&quot;240&quot;</span><span class="ot"> controls</span><span class="dt">&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">source</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;movie.mp4&quot;</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;video/mp4&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">source</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;movie.ogg&quot;</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;video/ogg&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>El seu navegador no suporta l&#39;etiqueta video.</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">video</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Atributs de <strong><code>&lt;video&gt;</code></strong>
+            poden ser <strong><code>width</code></strong>,
+            <strong><code>height</code></strong>,
+            <strong><code>controls</code></strong> (per a que apareguen
+            els controls del reproductor),
+            <strong><code>autoplay</code></strong> (per a que comence
+            auto-reproduint-se) i <strong><code>mute</code></strong>
+            (per a que comence en silenci).</p>
+            <p>L’element <strong><code>&lt;source&gt;</code></strong>
+            amb l’atribut <strong><code>src</code></strong> indica la
+            ruta on està l’arxiu de vídeo en el nostre lloc web.
+            L’atribut <strong><code>type</code></strong> indica el
+            format del vídeo.</p>
+            <p>Convé escriure un text d’avís dins de
+            <strong><code>&lt;video&gt;</code></strong> per si el
+            navegador no suportara aquesta etiqueta.</p>
+            <h4 data-number="1.4.1.1" id="vídeo-incrustat"><span
+            class="header-section-number">1.4.1.1</span> Vídeo
+            incrustat</h4>
+            <p>Si tenim poc espai al nostre allotjament web, podem pujar
+            el nostre vídeo a plataformes com <strong>Youtube</strong>,
+            <strong>Vimeo</strong>, etc, i incrustar-lo a la nostra web
+            per mitjà d’un
+            <strong><code>&lt;iframe&gt;</code></strong>.</p>
+            <blockquote>
+            <p>L’element <strong><code>&lt;iframe&gt;</code></strong>
+            s’utilitza per a inserir una altra pàgina web en la nostra
+            pàgina. També serveix per a incrustar vídeos, podcasts,
+            jocs, de plataformes externes.</p>
+            </blockquote>
+            <div class="sourceCode" id="cb32"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> width</span><span class="op">=</span><span class="st">&quot;420&quot;</span><span class="ot"> height</span><span class="op">=</span><span class="st">&quot;315&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;https://www.youtube.com/embed/tgbNymZ7vqY&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Per a introduir un iframe, hem d’anar a la pàgina on està
+            el recurs que volem inserir i buscar el botó o apartat on
+            ens donen el codi per a inserir-ho correctament.</p>
+            <h3 data-number="1.4.2" id="audio"><span
+            class="header-section-number">1.4.2</span> Audio</h3>
+            <p>L’etiqueta
+            <strong><code>&lt;audio&gt; &lt;/audio&gt;</code></strong>
+            funciona de forma similar a
+            <strong><code>&lt;video&gt;</code></strong>, però mostra un
+            reproductor d’àudio per a poder escoltar un arxiu d’àudio
+            allotjat en la nostra web.</p>
+            <div class="sourceCode" id="cb33"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">audio</span><span class="ot"> controls</span><span class="dt">&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">source</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;moto.ogg&quot;</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;audio/ogg&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">source</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;moto.mp3&quot;</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;audio/mpeg&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>El seu navegador no suporta l&#39;etiqueta audio.</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">audio</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>També podem utilitzar els atributs
+            <strong><code>controls</code></strong>,
+            <strong><code>autoplay</code></strong> i
+            <strong><code>mute</code></strong>.</p>
+            <h2 data-number="1.5" id="taules"><span
+            class="header-section-number">1.5</span> Taules</h2>
+            <p>Una taula és un conjunt de cel·les organitzades dintre de
+            les quals podem col·locar diferents continguts.</p>
+            <p>L’etiqueta per definir les taules és:
+            <strong><code>&lt;table&gt; &lt;/table&gt;</code></strong>.</p>
+            <p>Les taules són descrites per <strong>files</strong>
+            d’esquerra a dreta, mitjançant
+            <strong><code>&lt;tr&gt; &lt;/tr&gt;</code></strong>
+            (<em>table row</em>).</p>
+            <p>Dins de les files, fiquem les cel·les amb l’etiqueta
+            <strong><code>&lt;td&gt; &lt;/td&gt;</code></strong> (table
+            data). Dins de cada etiqueta
+            <strong><code>&lt;td&gt;</code></strong> escrivim el
+            contingut de la cel·la.</p>
+            <div class="sourceCode" id="cb34"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la1-fila1 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la2-fila1 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la3-fila1 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la1-fila2 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la2-fila2 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la3-fila2 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/taula1.png" alt="Taula sense vores" />
+            <figcaption aria-hidden="true">Taula sense
+            vores</figcaption>
+            </figure>
+            <p>Com es pot veure així no es veu massa clar que hi hagi
+            una taula. Hem d’utilitzar CSS per a dibuixar les vores de
+            les cel·les i la taula:</p>
+            <div class="sourceCode" id="cb35"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!--Ací definim l&#39;estil de la taula --&gt;</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>        table<span class="op">,</span> th<span class="op">,</span> td {</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">border</span>:<span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">black</span><span class="op">;</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la1-fila1 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la2-fila1 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la3-fila1 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la1-fila2 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la2-fila2 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span> Cel.la3-fila2 <span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/taula2.png" alt="Taula amb vores" />
+            <figcaption aria-hidden="true">Taula amb vores</figcaption>
+            </figure>
+            <p>La primera fila de cada taula sol ser la capçalera i
+            estar més ressaltada. Per a estes cel·les utilitzem
+            l’etiqueta
+            <strong><code>&lt;th&gt; &lt;/th&gt;</code></strong> en lloc
+            de <strong><code>&lt;td&gt;</code></strong>.</p>
+            <div class="sourceCode" id="cb36"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Persona 1<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Persona 2<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Persona 3<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Emilia<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Tobias<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Mari<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/taula3.png" alt="Taula amb capçaleres" />
+            <figcaption aria-hidden="true">Taula amb
+            capçaleres</figcaption>
+            </figure>
+            <h3 data-number="1.5.1" id="colspan-i-rowspan"><span
+            class="header-section-number">1.5.1</span> Colspan i
+            rowspan</h3>
+            <p>Els atributs <strong>colspan</strong> i
+            <strong>rowspan</strong> s’utilitzen per a que les files o
+            columnes ocupen més d’una fila o columna.</p>
+            <ul>
+            <li><strong>colspan</strong>:: Expandeix una cel·la
+            horitzontalment.</li>
+            <li><strong>rowspan</strong>:: Expandeix una cel·la
+            verticalment.</li>
+            </ul>
+            <p>Al valor s’ha d’indicar el nombre de columnes o files a
+            expandir.</p>
+            <div class="sourceCode" id="cb37"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- La cel·la NOM ocupa 2 columnes --&gt;</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">th</span><span class="ot"> colspan</span><span class="op">=</span><span class="st">&quot;2&quot;</span><span class="dt">&gt;</span>Nom<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Edat<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Pep<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Peris<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>43<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Eva<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Miret<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>57<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/colspan.png" alt="colspan" />
+            <figcaption aria-hidden="true">colspan</figcaption>
+            </figure>
+            <div class="sourceCode" id="cb38"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Nom<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Pepa<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- La cel·la TELÈFON ocupa 2 files --&gt;</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">th</span><span class="ot"> rowspan</span><span class="op">=</span><span class="st">&quot;2&quot;</span><span class="dt">&gt;</span>Telèfon<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>555-1234<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>555-8745<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/rowspan.png" alt="rowspan" />
+            <figcaption aria-hidden="true">rowspan</figcaption>
+            </figure>
+            <h3 data-number="1.5.2" id="taules-avançades"><span
+            class="header-section-number">1.5.2</span> Taules
+            avançades</h3>
+            <p>L’etiqueta <strong><code>&lt;caption&gt;</code></strong>
+            serveix per a posar un títol a la taula. Ha d’estar
+            immediatament després de l’etiqueta d’obertura
+            <strong><code>&lt;table&gt;</code></strong>:</p>
+            <div class="sourceCode" id="cb39"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">caption</span><span class="dt">&gt;</span>Balanç mensual<span class="dt">&lt;/</span><span class="kw">caption</span><span class="dt">&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Mes<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">th</span><span class="dt">&gt;</span>Balanç<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Gener<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>100€<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Febrer<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>80€<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span></code></pre></div>
+            <figure>
+            <img src="images/caption.png" alt="caption" />
+            <figcaption aria-hidden="true">caption</figcaption>
+            </figure>
+            <p>Les etiquetes
+            <strong><code>&lt;thead&gt;</code></strong>,
+            <strong><code>&lt;tbody&gt;</code></strong> i
+            <strong><code>&lt;tfoot&gt;</code></strong> són etiquetes
+            <strong>semàntiques</strong> que s’utilitzen per a
+            especificar les files que formen part de la
+            <strong>capçalera</strong>, el <strong>cos</strong> i el
+            <strong>peu de la taula</strong>.</p>
+            <p>Els navegadors poden utilitzar aquests elements per
+            permetre el desplaçament del cos de la taula independentment
+            de la capçalera i el peu de pàgina. A més, quan s’imprimeix
+            una taula gran que abasta diverses pàgines, aquests elements
+            poden fer que la capçalera i el peu de pàgina de la taula
+            s’imprimeixen a la part superior i inferior de cada
+            pàgina.</p>
+            <p>Visualment no tenen cap efecte sobre l’aparença de la
+            taula, però faciliten la seua formatació per mitjà de
+            CSS.</p>
+            <p>Exemple a <a
+            href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_tbody">W3Schools</a>.</p>
+            <p>L’etiqueta <strong><code>&lt;colgroup&gt;</code></strong>
+            s’utilitza per a aplicar estils a vàries columnes d’una
+            taula. Veure exemples en <a
+            href="https://www.w3schools.com/html/html_table_colgroup.asp">W3Schools</a>.</p>
+            <h3 data-number="1.5.3" id="estils-de-les-taules"><span
+            class="header-section-number">1.5.3</span> Estils de les
+            taules</h3>
+            <p>La visualització de les taules pot millorar molt amb
+            CSS.</p>
+            <p>Per a visualitza les vores de les taules i de les
+            cel·les, usem la propietat
+            <strong><code>border</code></strong>:</p>
+            <div class="sourceCode" id="cb40"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>table<span class="op">,</span> th<span class="op">,</span> td {</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span><span class="op">;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <figure>
+            <img src="images/taula0.png" width="200"
+            alt="Taula amb vores" />
+            <figcaption aria-hidden="true">Taula amb vores</figcaption>
+            </figure>
+            <p>Si no volem vores dobles utilitzem la propietat
+            <strong><code>border-collapse: collapse</code></strong>:</p>
+            <div class="sourceCode" id="cb41"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>table<span class="op">,</span> th<span class="op">,</span> td {</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span><span class="op">;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-collapse</span>: <span class="dv">collapse</span><span class="op">;</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <figure>
+            <img src="images/taula01.png" width="200"
+            alt="Taula amb vores colapsades" />
+            <figcaption aria-hidden="true">Taula amb vores
+            colapsades</figcaption>
+            </figure>
+            <p>Més propietats utilitzades per a formatar les taules:</p>
+            <ul>
+            <li><strong><code>width i height</code></strong>: amb
+            <code>width:100%</code> aplicat a la taula podem fer que
+            aquesta ocupe tot l’ample de la pàgina. Podem aplicar un
+            <code>height</code> major que la resta a les cel·les
+            <code>th</code> per a que siguen més altes.</li>
+            <li><strong><code>margin:auto</code></strong>: aplicat a la
+            taula fa que aquesta es centre horitzontalment.</li>
+            <li><strong><code>background-color</code></strong>: canvia
+            el color de les cel·les.</li>
+            <li><strong><code>text-align</code></strong> i
+            <strong><code>vertical-align</code></strong>: per a alinear
+            horitzontal i verticalment el contingut de les cel·les.</li>
+            <li><strong><code>padding</code></strong>: per a separar el
+            contingut de les vores.</li>
+            </ul>
+            <div class="sourceCode" id="cb42"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>table<span class="op">,</span> th<span class="op">,</span> td {</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span><span class="op">;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-collapse</span>: <span class="dv">collapse</span><span class="op">;</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>table {</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin</span>: <span class="bu">auto</span><span class="op">;</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">width</span>: <span class="dv">50</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>th {</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#ffffa0</span><span class="op">;</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">height</span>: <span class="dv">40</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">vertical-align</span>: <span class="dv">bottom</span><span class="op">;</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>td {  </span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">height</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-align</span>: <span class="dv">right</span><span class="op">;</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">5</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <figure>
+            <img src="images/taula.png" alt="Taula amb estils" />
+            <figcaption aria-hidden="true">Taula amb estils</figcaption>
+            </figure>
+            <p><a href="https://www.w3schools.com/css/css_table.asp">Més
+            exemples de taules</a>.</p>
+            <h2 data-number="1.6" id="referències"><span
+            class="header-section-number">1.6</span> Referències</h2>
+            <ul>
+            <li><a href="https://www.w3schools.com/html/">HTML
+            W3Schools</a></li>
+            <li><a
+            href="http://www.ite.educacion.es/formacion/materiales/182/cd/indice.htm">Curs
+            HTML5 ITE</a></li>
+            <li><a href="https://html.spec.whatwg.org/">Especificació de
+            HTML</a></li>
+            <li><a href="https://validator.w3.org/">Validador
+            HTML</a></li>
+            <li><a href="https://www.w3schools.com/css/default.asp">CSS
+            W3Schools</a></li>
+            <li><a
+            href="https://developer.mozilla.org/es/docs/Web/CSS">CSS
+            Mozilla</a></li>
+            <li><a href="https://www.w3.org/Style/CSS/specs.en.html">W3C
+            CSS specifications</a></li>
+            </ul>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

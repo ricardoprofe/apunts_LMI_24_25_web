@@ -170,19 +170,21 @@ class="toc-section-number">1.6.3</span> Selectors ID (#)</a></li>
 <li><a href="#selectors-descendents"
 id="toc-selectors-descendents"><span
 class="toc-section-number">1.6.4</span> Selectors descendents</a></li>
+<li><a href="#selectors-fills" id="toc-selectors-fills"><span
+class="toc-section-number">1.6.5</span> Selectors fills</a></li>
 <li><a href="#grups-de-selectors" id="toc-grups-de-selectors"><span
-class="toc-section-number">1.6.5</span> Grups de selectors</a></li>
+class="toc-section-number">1.6.6</span> Grups de selectors</a></li>
 <li><a href="#selectors-pseudo-classe-enllaços"
 id="toc-selectors-pseudo-classe-enllaços"><span
-class="toc-section-number">1.6.6</span> Selectors pseudo-classe:
+class="toc-section-number">1.6.7</span> Selectors pseudo-classe:
 enllaços</a></li>
 <li><a href="#selectors-pseudo-elements"
 id="toc-selectors-pseudo-elements"><span
-class="toc-section-number">1.6.7</span> Selectors
+class="toc-section-number">1.6.8</span> Selectors
 pseudo-elements</a></li>
 <li><a href="#el-selector-universal"
 id="toc-el-selector-universal"><span
-class="toc-section-number">1.6.8</span> El selector universal
+class="toc-section-number">1.6.9</span> El selector universal
 (*)</a></li>
 </ul></li>
 <li><a href="#referències" id="toc-referències"><span
@@ -1246,8 +1248,21 @@ class="toc-section-number">1.7</span> Referències</a></li>
             <figcaption aria-hidden="true">Selectors
             descendents</figcaption>
             </figure>
-            <h3 data-number="1.6.5" id="grups-de-selectors"><span
-            class="header-section-number">1.6.5</span> Grups de
+            <h3 data-number="1.6.5" id="selectors-fills"><span
+            class="header-section-number">1.6.5</span> Selectors
+            fills</h3>
+            <p>Seleccionen els elements que són fills, o descendents
+            directes, d’un altre element. S’indiquem amb el símbol
+            <strong><code>&gt;</code></strong>:</p>
+            <div class="sourceCode" id="cb43"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>div <span class="op">&gt;</span> p { <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span> }</span></code></pre></div>
+            <p>Aquest exemple seleccione els elements <code>p</code> que
+            són descendents directes de elemens <code>div</code>:</p>
+            <div class="sourceCode" id="cb44"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span> Aquest element es seleccionaria <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span> <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">section</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span> Aquest element NO es seleccionaria <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span> <span class="dt">&lt;/</span><span class="kw">section</span><span class="dt">&gt;</span> <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.6.6" id="grups-de-selectors"><span
+            class="header-section-number">1.6.6</span> Grups de
             selectors</h3>
             <p>Permeten assignar el mateix estil a diversos selectors.
             S’utilitza la coma <code>,</code> per a separar els
@@ -1256,15 +1271,15 @@ class="toc-section-number">1.7</span> Referències</a></li>
             de definir estils.</p>
             <p>En aquest exemple, assignem les mateixes propietats a
             <code>h1</code>, <code>h2</code> i <code>p</code>:</p>
-            <div class="sourceCode" id="cb43"><pre
-            class="sourceCode css"><code class="sourceCode css"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>h1<span class="op">,</span> h2<span class="op">,</span> p {</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span>: Trebuchet<span class="op">,</span> sans<span class="op">;</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">olive</span><span class="op">;</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span>: <span class="dv">30</span><span class="dt">px</span><span class="op">;</span> </span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-            <h3 data-number="1.6.6"
+            <div class="sourceCode" id="cb45"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>h1<span class="op">,</span> h2<span class="op">,</span> p {</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span>: Trebuchet<span class="op">,</span> sans<span class="op">;</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">olive</span><span class="op">;</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span>: <span class="dv">30</span><span class="dt">px</span><span class="op">;</span> </span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h3 data-number="1.6.7"
             id="selectors-pseudo-classe-enllaços"><span
-            class="header-section-number">1.6.6</span> Selectors
+            class="header-section-number">1.6.7</span> Selectors
             pseudo-classe: enllaços</h3>
             <p>CSS permet aplicar diferents estils al mateix enllaç en
             funció del seu estat.</p>
@@ -1278,16 +1293,16 @@ class="toc-section-number">1.7</span> Referències</a></li>
             <li><strong><code>:active</code></strong>: Enllaç que està
             prement l’usuari</li>
             </ul>
-            <div class="sourceCode" id="cb44"><pre
-            class="sourceCode css"><code class="sourceCode css"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>a<span class="in">:hover</span> { </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>      <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>      <span class="kw">background-color</span>: <span class="cn">red</span><span class="op">;</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>      <span class="kw">color</span>: <span class="cn">#FFF</span><span class="op">;</span> </span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb46"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>a<span class="in">:hover</span> { </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>      <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>      <span class="kw">background-color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>      <span class="kw">color</span>: <span class="cn">#FFF</span><span class="op">;</span> </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p><a
             href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_sel_hover">Exemple</a></p>
-            <h3 data-number="1.6.7" id="selectors-pseudo-elements"><span
-            class="header-section-number">1.6.7</span> Selectors
+            <h3 data-number="1.6.8" id="selectors-pseudo-elements"><span
+            class="header-section-number">1.6.8</span> Selectors
             pseudo-elements</h3>
             <p>S’afegeixen a un selector per definir l’estil
             d’<strong>una part de l’element</strong>.</p>
@@ -1300,14 +1315,14 @@ class="toc-section-number">1.7</span> Referències</a></li>
             allò que l’usuari ha seleccionat amb el ratolí.</li>
             </ul>
             <p>HTML:</p>
-            <div class="sourceCode" id="cb45"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Primer paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Segon paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb47"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Primer paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Segon paràgraf<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
             <p>CSS:</p>
-            <div class="sourceCode" id="cb46"><pre
-            class="sourceCode css"><code class="sourceCode css"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>p<span class="in">::first-letter</span> { <span class="kw">font-size</span>: <span class="dv">200</span><span class="dt">%</span><span class="op">;</span> }</span></code></pre></div>
+            <div class="sourceCode" id="cb48"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>p<span class="in">::first-letter</span> { <span class="kw">font-size</span>: <span class="dv">200</span><span class="dt">%</span><span class="op">;</span> }</span></code></pre></div>
             <p>Visualització:</p>
             <figure>
             <img src="images/pseudo.png" alt="CSS pseudo-selectors" />
@@ -1318,25 +1333,25 @@ class="toc-section-number">1.7</span> Referències</a></li>
             <p><a
             href="http://www.w3schools.com/css/css_pseudo_elements.asp">Més
             exemples</a></p>
-            <h3 data-number="1.6.8" id="el-selector-universal"><span
-            class="header-section-number">1.6.8</span> El selector
+            <h3 data-number="1.6.9" id="el-selector-universal"><span
+            class="header-section-number">1.6.9</span> El selector
             universal (*)</h3>
             <blockquote>
             <p>Selecciona <strong>totes</strong> les etiquetes del
             document.</p>
             </blockquote>
             <p>HTML:</p>
-            <div class="sourceCode" id="cb47"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span> Títol principal <span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Primer paràgraf <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Segon paràgraf <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb49"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span> Títol principal <span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Primer paràgraf <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Segon paràgraf <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
             <p>CSS:</p>
-            <div class="sourceCode" id="cb48"><pre
-            class="sourceCode css"><code class="sourceCode css"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="op">*</span> {</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb50"><pre
+            class="sourceCode css"><code class="sourceCode css"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="op">*</span> {</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>Visualització:</p>
             <figure>
             <img src="images/univ.png" alt="CSS univeral" />

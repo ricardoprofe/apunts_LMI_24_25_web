@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>UD 5.1 Introducció a Javascript</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        html { -webkit-text-size-adjust: 100%; }
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">UD 5.1 Introducció a Javascript</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#javascript-bàsic" id="toc-javascript-bàsic"><span
+class="toc-section-number">1</span> JavaScript bàsic</a>
+<ul>
+<li><a href="#inclusió-de-javascript-en-html"
+id="toc-inclusió-de-javascript-en-html"><span
+class="toc-section-number">1.1</span> Inclusió de JavaScript en
+HTML</a></li>
+<li><a href="#eixida-de-dades" id="toc-eixida-de-dades"><span
+class="toc-section-number">1.2</span> Eixida de dades</a>
+<ul>
+<li><a href="#amb-document.write" id="toc-amb-document.write"><span
+class="toc-section-number">1.2.1</span> Amb
+<code>document.write</code></a></li>
+<li><a href="#accedint-als-element-pel-seu-id"
+id="toc-accedint-als-element-pel-seu-id"><span
+class="toc-section-number">1.2.2</span> Accedint als element pel seu
+ID</a></li>
+<li><a href="#amb-window.alert" id="toc-amb-window.alert"><span
+class="toc-section-number">1.2.3</span> Amb
+<code>window.alert</code></a></li>
+<li><a href="#eixida-per-consola" id="toc-eixida-per-consola"><span
+class="toc-section-number">1.2.4</span> Eixida per consola</a></li>
+</ul></li>
+<li><a href="#lectura-de-dades" id="toc-lectura-de-dades"><span
+class="toc-section-number">1.3</span> Lectura de dades</a></li>
+<li><a href="#sintàxi-bàsica" id="toc-sintàxi-bàsica"><span
+class="toc-section-number">1.4</span> Sintàxi bàsica</a>
+<ul>
+<li><a href="#comentaris" id="toc-comentaris"><span
+class="toc-section-number">1.4.1</span> Comentaris</a></li>
+</ul></li>
+<li><a href="#variables" id="toc-variables"><span
+class="toc-section-number">1.5</span> Variables</a>
+<ul>
+<li><a href="#constants" id="toc-constants"><span
+class="toc-section-number">1.5.1</span> Constants</a></li>
+</ul></li>
+<li><a href="#tipus-de-dades" id="toc-tipus-de-dades"><span
+class="toc-section-number">1.6</span> Tipus de dades</a>
+<ul>
+<li><a href="#number" id="toc-number"><span
+class="toc-section-number">1.6.1</span> Number</a></li>
+<li><a href="#string" id="toc-string"><span
+class="toc-section-number">1.6.2</span> String</a></li>
+<li><a href="#boolean" id="toc-boolean"><span
+class="toc-section-number">1.6.3</span> Boolean</a></li>
+<li><a href="#altres-valors" id="toc-altres-valors"><span
+class="toc-section-number">1.6.4</span> Altres valors</a></li>
+<li><a href="#loperador-typeof" id="toc-loperador-typeof"><span
+class="toc-section-number">1.6.5</span> L’operador
+<code>typeof</code></a></li>
+</ul></li>
+<li><a href="#operadors-matemàtics" id="toc-operadors-matemàtics"><span
+class="toc-section-number">1.7</span> Operadors matemàtics</a>
+<ul>
+<li><a href="#concatenació-de-strings"
+id="toc-concatenació-de-strings"><span
+class="toc-section-number">1.7.1</span> Concatenació de strings</a></li>
+<li><a href="#assignació" id="toc-assignació"><span
+class="toc-section-number">1.7.2</span> Assignació</a></li>
+<li><a href="#increment-decrement-i-operadors-abreviats"
+id="toc-increment-decrement-i-operadors-abreviats"><span
+class="toc-section-number">1.7.3</span> Increment, decrement i operadors
+abreviats</a></li>
+<li><a href="#precedència-doperadors"
+id="toc-precedència-doperadors"><span
+class="toc-section-number">1.7.4</span> Precedència d’operadors</a></li>
+</ul></li>
+<li><a href="#operadors-de-comparació"
+id="toc-operadors-de-comparació"><span
+class="toc-section-number">1.8</span> Operadors de comparació</a></li>
+<li><a href="#sentencies-condicionals"
+id="toc-sentencies-condicionals"><span
+class="toc-section-number">1.9</span> Sentencies condicionals</a>
+<ul>
+<li><a href="#if---else" id="toc-if---else"><span
+class="toc-section-number">1.9.1</span> if - else</a></li>
+<li><a href="#operador-ternari" id="toc-operador-ternari"><span
+class="toc-section-number">1.9.2</span> Operador ternari
+<strong><code>?</code></strong></a></li>
+<li><a href="#operadors-lògics" id="toc-operadors-lògics"><span
+class="toc-section-number">1.9.3</span> Operadors lògics</a></li>
+<li><a href="#switch---case" id="toc-switch---case"><span
+class="toc-section-number">1.9.4</span>
+<code>switch - case</code></a></li>
+</ul></li>
+<li><a href="#bucles" id="toc-bucles"><span
+class="toc-section-number">1.10</span> Bucles</a>
+<ul>
+<li><a href="#bucles-amb-while" id="toc-bucles-amb-while"><span
+class="toc-section-number">1.10.1</span> Bucles amb while</a></li>
+<li><a href="#bucles-for" id="toc-bucles-for"><span
+class="toc-section-number">1.10.2</span> Bucles for</a></li>
+<li><a href="#continue-i-break" id="toc-continue-i-break"><span
+class="toc-section-number">1.10.3</span> continue i break</a></li>
+</ul></li>
+<li><a href="#funcions" id="toc-funcions"><span
+class="toc-section-number">1.11</span> Funcions</a>
+<ul>
+<li><a href="#funcions-anònimes" id="toc-funcions-anònimes"><span
+class="toc-section-number">1.11.1</span> Funcions anònimes</a></li>
+</ul></li>
+<li><a href="#arrays" id="toc-arrays"><span
+class="toc-section-number">1.12</span> Arrays</a>
+<ul>
+<li><a href="#iterar-un-array" id="toc-iterar-un-array"><span
+class="toc-section-number">1.12.1</span> Iterar un array</a></li>
+</ul></li>
+<li><a href="#objectes" id="toc-objectes"><span
+class="toc-section-number">1.13</span> Objectes</a>
+<ul>
+<li><a href="#mètodes" id="toc-mètodes"><span
+class="toc-section-number">1.13.1</span> Mètodes</a></li>
+<li><a href="#iterant-objectes" id="toc-iterant-objectes"><span
+class="toc-section-number">1.13.2</span> Iterant objectes</a></li>
+</ul></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="javascript-bàsic"><span
+            class="header-section-number">1</span> JavaScript bàsic</h1>
+            <h2 data-number="1.1"
+            id="inclusió-de-javascript-en-html"><span
+            class="header-section-number">1.1</span> Inclusió de
+            JavaScript en HTML</h2>
+            <p>Podem incloure el codi JavaScript dins del codi HTML amb
+            l’etiqueta <code>&lt;script&gt;</code>:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span>            </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;missatge&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;Hola món&quot;</span><span class="op">;</span>           </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div>
+            <p>L’etiqueta <code>&lt;script&gt;</code> pot anar dins de
+            <code>&lt;head&gt;</code> o dins de
+            <code>&lt;body&gt;</code>, però és preferible posar-la al
+            final de <code>&lt;body&gt;</code> per tal d’accelerar la
+            càrrega de la pàgina:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span>        </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">document</span><span class="op">.</span><span class="fu">write</span>(<span class="st">&quot;Hola món&quot;</span>)<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <blockquote>
+            <p>És possible tindre vàries etiquetes
+            <code>&lt;script&gt;</code> en un document HTML.</p>
+            </blockquote>
+            <p>També podem incloure codi JavaScript directament en el
+            codi HTML, com a valor d’un atribut. Generalment s’utilitza
+            per a associar un esdeveniment, com el clic d’un botó, a una
+            acció JavaScript:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;document.write(&#39;Hola món&#39;);&quot;</span><span class="dt">&gt;</span>Saludar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Però la forma més usual d’incloure codi JavaScript és per
+            mitjà d’arxius externs. Això té l’advantatge de que el
+            mateix codi és accessible per vàries pàgines:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;scriptExtern.js&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span> </span></code></pre></div>
+            <blockquote>
+            <p>Els scripts en arxius externs solen tindre l’extensió
+            <strong>.js</strong> i no s’escriuen entre etiquetes
+            <code>&lt;script&gt;</code>.</p>
+            </blockquote>
+            <h2 data-number="1.2" id="eixida-de-dades"><span
+            class="header-section-number">1.2</span> Eixida de
+            dades</h2>
+            <p>Hi ha vàries formes de mostrar dades amb Javascript.</p>
+            <h3 data-number="1.2.1" id="amb-document.write"><span
+            class="header-section-number">1.2.1</span> Amb
+            <code>document.write</code></h3>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">document</span><span class="op">.</span><span class="fu">write</span>(<span class="st">&quot;&lt;h1&gt;Hola món&lt;/h1&gt;&quot;</span>)<span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <blockquote>
+            <p>Aquest mètode escriu directament al document HTML. Si
+            s’invoca una vegada ja s’ha carregat la pàgina, esborrarà
+            tot el contingut HTML.</p>
+            <p>Es recomana usar aquest mètode només per a testing.</p>
+            </blockquote>
+            <h3 data-number="1.2.2"
+            id="accedint-als-element-pel-seu-id"><span
+            class="header-section-number">1.2.2</span> Accedint als
+            element pel seu ID</h3>
+            <p>Consisteix en associar un id a l’element HTML en què
+            volem mostrar la informació, accedir a ell amb el mètode
+            <strong><code>document.getElementById</code></strong> i
+            canviar el seu HTML intern (propietat
+            <strong><em>innerHTML</em></strong>):</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;missatge&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;missatge&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;Hola món&quot;</span><span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.2.3" id="amb-window.alert"><span
+            class="header-section-number">1.2.3</span> Amb
+            <code>window.alert</code></h3>
+            <p>El mètode <code>window.alert</code> mostra un diàleg
+            d’alerta:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;window.alert(&#39;Hola món&#39;)&quot;</span><span class="dt">&gt;</span>Saludar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Es pot omitir l’objecte <code>window</code>:</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;alert(&#39;Hola món&#39;)&quot;</span><span class="dt">&gt;</span>Saludar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Aquest mètode no s’utilitza molt en l’actualitat, ja que
+            es considera que mostrar aquest tipus de diàlegs és
+            intrusiu.</p>
+            <h3 data-number="1.2.4" id="eixida-per-consola"><span
+            class="header-section-number">1.2.4</span> Eixida per
+            consola</h3>
+            <p>Amb <code>console.log()</code> podem escriure directament
+            a la consola del navegador. Aquesta opció és útil per a
+            depurar:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Hola món&quot;</span>)<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h2 data-number="1.3" id="lectura-de-dades"><span
+            class="header-section-number">1.3</span> Lectura de
+            dades</h2>
+            <p>La forma més normal de llegir dades de l’usuari amb
+            JavaScript és per mitjà d’<strong>inputs de
+            formularis</strong>. Generalment accedim a l’input pel seu
+            <strong>id</strong> i llegim el valor introduït per l’usuari
+            (<strong>value</strong>):</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;alert(&#39;Hola &#39; + document.getElementById(&#39;nom&#39;).value);&quot;</span><span class="dt">&gt;</span>Enviar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>També podem utilizar el mètode
+            <code>window.prompt</code>:</p>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;missatge&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span>    </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        nom <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="at">prompt</span>(<span class="st">&quot;Com et diuen?&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;missatge&#39;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;Hola &quot;</span> <span class="op">+</span> nom<span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h2 data-number="1.4" id="sintàxi-bàsica"><span
+            class="header-section-number">1.4</span> Sintàxi bàsica</h2>
+            <p>Cada sentència finalitza mb un punt i coma
+            (<strong><code>;</code></strong>):</p>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">alert</span>(<span class="st">&#39;Hola&#39;</span>)<span class="op">;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alert</span>(<span class="st">&#39;Món&#39;</span>)<span class="op">;</span></span></code></pre></div>
+            <p>A l’igual que en altres llenguatges, es recomana escriure
+            una sentència per línia.</p>
+            <blockquote>
+            <p>El punt i coma no es obligatori escriure’l si escrivim
+            una sentència per línia, però es recomana fer-ho.</p>
+            </blockquote>
+            <h3 data-number="1.4.1" id="comentaris"><span
+            class="header-section-number">1.4.1</span> Comentaris</h3>
+            <p>JavaScript admet comentaris d’una línia i de vàries
+            línies:</p>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Aquest és un comentari d&#39;una línia</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">//Aquest és un altre comentari d&#39;una línia</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* Aquest és</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">un comentari</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">de vàries </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">línies*/</span></span></code></pre></div>
+            <h2 data-number="1.5" id="variables"><span
+            class="header-section-number">1.5</span> Variables</h2>
+            <p>Les variables es declaren amb la paraula reservada
+            <code>let</code>:</p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> nom<span class="op">;</span> <span class="co">//Declaració sense assignació</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> edat <span class="op">=</span> <span class="dv">15</span><span class="op">;</span> <span class="co">//Declaració amb assignació</span></span></code></pre></div>
+            <p>Una vegada declarada una variable, es pot accedir a ella
+            i modificar el seu contingut:</p>
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> missatge<span class="op">;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>missatge <span class="op">=</span> <span class="st">&quot;Hola&quot;</span><span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(missatge)<span class="op">;</span> <span class="co">//mostra &#39;Hola&#39; per consola </span></span></code></pre></div>
+            <p>Els noms de les variables només poden incloure lletres,
+            dígits o els símbols <code>$</code> i<code>_</code>. El
+            primer caràcter no pot ser un dígit.</p>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Noms vàlids:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> nomAlumne<span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> a123<span class="op">;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> _edat<span class="op">;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> $<span class="op">;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> _<span class="op">;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">//Noms no vàlids:</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> nom<span class="op">-</span>alumne<span class="op">;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="dv">1</span><span class="er">abc</span><span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.5.1" id="constants"><span
+            class="header-section-number">1.5.1</span> Constants</h3>
+            <p>Les constants són variables a les quals s’assigna un
+            valor en el moment de la seua creació i aquest no pot ser
+            modificat:</p>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> GRAVETAT <span class="op">=</span> <span class="fl">9.8</span><span class="op">;</span></span></code></pre></div>
+            <h2 data-number="1.6" id="tipus-de-dades"><span
+            class="header-section-number">1.6</span> Tipus de dades</h2>
+            <p>JavaScript és un llenguatge <strong>dinàmicament
+            tipat</strong>, el que significa que una variable pot tindre
+            un valor d’un tipus i després tindre un valor d’un tipus
+            diferent.</p>
+            <p>JavaScript té un nombre molt reduït de tipus de dades:
+            numèriques, cadenes de caràcters i booleanes.</p>
+            <h3 data-number="1.6.1" id="number"><span
+            class="header-section-number">1.6.1</span> Number</h3>
+            <p>Representa números enters i amb decimals.</p>
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> edat <span class="op">=</span> <span class="dv">51</span><span class="op">;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> area <span class="op">=</span> <span class="fl">4.56</span><span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.6.2" id="string"><span
+            class="header-section-number">1.6.2</span> String</h3>
+            <p>Representa cadenes de caràcters. Es pot escriure amb
+            cometes simples, dobles o invertides.</p>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> cad1 <span class="op">=</span> <span class="st">&quot;Hola&quot;</span><span class="op">;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> cad2 <span class="op">=</span> <span class="st">&#39;Món&#39;</span><span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> cad3 <span class="op">=</span> <span class="vs">`El valor de cad1 és: </span><span class="sc">${</span>cad1<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span></code></pre></div>
+            <p>Les cometes invertides permeten interpretar variables i
+            operacions dins dels delimitadors <code>${ }</code>.</p>
+            <h3 data-number="1.6.3" id="boolean"><span
+            class="header-section-number">1.6.3</span> Boolean</h3>
+            <p>Les variables booleanes poden tindre els valors true o
+            false. Generalment guarden el resultat d’una comparació.</p>
+            <div class="sourceCode" id="cb20"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> casat <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> actiu <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.6.4" id="altres-valors"><span
+            class="header-section-number">1.6.4</span> Altres
+            valors</h3>
+            <p>Quan una variable ha sigut declarada però no se li ha
+            assignat cap valor, té el tipus
+            <strong><code>undefined</code></strong>:</p>
+            <div class="sourceCode" id="cb21"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> nom<span class="op">;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(nom)<span class="op">;</span> <span class="co">//Mostra undefined</span></span></code></pre></div>
+            <p>El valor <strong><code>null</code></strong> s’utilitza
+            per a representar valors inexistents o desconeguts:</p>
+            <div class="sourceCode" id="cb22"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> alumne <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(alumne)<span class="op">;</span> <span class="co">//Mostra null</span></span></code></pre></div>
+            <p>El valor <strong><code>Infinity</code></strong> s’obté al
+            dividir un número entre 0:</p>
+            <div class="sourceCode" id="cb23"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">/</span> <span class="dv">0</span>)<span class="op">;</span> <span class="co">//Mostra Infinity</span></span></code></pre></div>
+            <p>El valor <strong><code>NaN</code></strong> significa
+            <strong>Not a Number</strong>. S’obté quan una operació
+            dónaria un resultar matemàtic erroni:</p>
+            <div class="sourceCode" id="cb24"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Hola&quot;</span> <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">//Mostra NaN</span></span></code></pre></div>
+            <h3 data-number="1.6.5" id="loperador-typeof"><span
+            class="header-section-number">1.6.5</span> L’operador
+            <code>typeof</code></h3>
+            <p>L’operador <code>typeof</code> retorna un string amb el
+            tipus de la variable o del valor que escrivim a
+            continuació:</p>
+            <div class="sourceCode" id="cb25"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> nom <span class="op">=</span> <span class="st">&quot;Pepa&quot;</span><span class="op">;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> edat <span class="op">=</span> <span class="dv">15</span><span class="op">;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> actiu <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(nom)<span class="op">;</span> <span class="co">// Mostra &quot;string&quot;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(edat)<span class="op">;</span> <span class="co">// Mostra &quot;number&quot;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(actiu)<span class="op">;</span> <span class="co">// Mostra &quot;boolean&quot;</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(nom <span class="op">/</span> edat)<span class="op">;</span> <span class="co">// Mostra NaN</span></span></code></pre></div>
+            <h2 data-number="1.7" id="operadors-matemàtics"><span
+            class="header-section-number">1.7</span> Operadors
+            matemàtics</h2>
+            <p>Els operadors matemàtics bàsics són la
+            <strong>suma</strong>, <strong>resta</strong>,
+            <strong>multiplicació</strong> i <strong>divisió</strong>. A
+            ells podem afegir els operadors de <strong>mòdul</strong>
+            (calcula el residu de la resta entera) i l’operador
+            d’<strong>exponenciació</strong>. Els seus símbols són:</p>
+            <ul>
+            <li>Suma: <strong><code>+</code></strong>,</li>
+            <li>Resta: <strong><code>-</code></strong>,</li>
+            <li>Multiplicació: <strong><code>*</code></strong>,</li>
+            <li>Divisió: <strong><code>/</code></strong>,</li>
+            <li>Mòdul: <strong><code>%</code></strong>,</li>
+            <li>Exponenciació: <strong><code>**</code></strong></li>
+            </ul>
+            <p>Exemples:</p>
+            <div class="sourceCode" id="cb26"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">8</span> <span class="op">%</span> <span class="dv">3</span>) <span class="co">// 2</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">**</span> <span class="dv">3</span>) <span class="co">// 8</span></span></code></pre></div>
+            <p>També tenim altres operadors unaris com la negació
+            (<strong><code>-</code></strong>).</p>
+            <div class="sourceCode" id="cb27"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> num <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="op">-</span>num) <span class="co">// -5</span></span></code></pre></div>
+            <h3 data-number="1.7.1" id="concatenació-de-strings"><span
+            class="header-section-number">1.7.1</span> Concatenació de
+            strings</h3>
+            <p>L’operador binari <code>**+**</code> usat amb cadenes,
+            torna la concatenació de les 2 cadenes. Si un dels 2
+            operands és una cadena, conveteix l’altre operand en cadena
+            i els concatena.</p>
+            <div class="sourceCode" id="cb28"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> cad1 <span class="op">=</span> <span class="st">&quot;Hola &quot;</span><span class="op">;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> cad2 <span class="op">=</span> <span class="st">&quot;Món&quot;</span><span class="op">;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> num <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> bool <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(cad1 <span class="op">+</span> cad2)<span class="op">;</span> <span class="co">// &quot;Hola Món&quot;</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(cad1 <span class="op">+</span> num)<span class="op">;</span> <span class="co">// &quot;Hola 5&quot;</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(cad1 <span class="op">+</span> bool)<span class="op">;</span> <span class="co">// &quot;Hola true&quot;</span></span></code></pre></div>
+            <h3 data-number="1.7.2" id="assignació"><span
+            class="header-section-number">1.7.2</span> Assignació</h3>
+            <p>L’operador assignació <code>**=**</code> significa que
+            s’assigna a la variable de la part esquerra de l’operador,
+            el valor resultat d’avaluar la part dreta:</p>
+            <div class="sourceCode" id="cb29"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> num <span class="op">=</span> (<span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span>) <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(num)<span class="op">;</span> <span class="co">// 14</span></span></code></pre></div>
+            <h3 data-number="1.7.3"
+            id="increment-decrement-i-operadors-abreviats"><span
+            class="header-section-number">1.7.3</span> Increment,
+            decrement i operadors abreviats</h3>
+            <p>L’<strong>increment</strong>
+            <strong><code>++</code></strong> augmenta el valor d’una
+            variable en 1. El <strong>decrement</strong>
+            <strong><code>--</code></strong> disminueix el seu valor en
+            1:</p>
+            <div class="sourceCode" id="cb30"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> num <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>num<span class="op">++;</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(num)<span class="op">;</span> <span class="co">// 2</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>num<span class="op">--</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(num)<span class="op">;</span> <span class="co">// 1</span></span></code></pre></div>
+            <p>Aquests 2 operadors es poden usar darrere de la variable
+            (<strong>post-increment</strong> o
+            <strong>post-decrement</strong>) o davant
+            (<strong>pre-increment</strong> o
+            <strong>pre-decrement</strong>). La diferència és que amb
+            els operadors <strong>post</strong>, primer s’avalua el
+            valor de la variable i després es modifica, mentre que amb
+            els operadors <strong>pre</strong>, primer es modifica i
+            després s’avalua:</p>
+            <div class="sourceCode" id="cb31"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> num <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(num<span class="op">++</span>)<span class="op">;</span> <span class="co">// 1</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> num2 <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="op">++</span>num)<span class="op">;</span> <span class="co">// 2</span></span></code></pre></div>
+            <p>També tenim els operadors abreviats com en altres
+            llenguatges, que combinen una operació aritmètica amb una
+            assignació:</p>
+            <div class="sourceCode" id="cb32"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> num <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>num <span class="op">+=</span> <span class="dv">5</span><span class="op">;</span> <span class="co">// num = num + 5</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(num)<span class="op">;</span> <span class="co">// 6</span></span></code></pre></div>
+            <p>Els operadors abreviats són:
+            <strong><code>+=</code></strong>,
+            <strong><code>-=</code></strong>,
+            <strong><code>*=</code></strong>,
+            <strong><code>/=</code></strong>,
+            <strong><code>%=</code></strong>,
+            <strong><code>**=</code></strong>.</p>
+            <h3 data-number="1.7.4" id="precedència-doperadors"><span
+            class="header-section-number">1.7.4</span> Precedència
+            d’operadors</h3>
+            <p>Si una operació té més d’un operador, el seu ordre de
+            prioritat es defneix generalment amb les mateixes regles que
+            coneixem de matemàtiques.</p>
+            <p>En la següent taula es mostren els valors de precedència
+            que té cada operador, a major valor major precedència:</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th>Precedència</th>
+            <th>Nom</th>
+            <th>Signe</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td>16</td>
+            <td>post-increment</td>
+            <td><code>variable++</code></td>
+            </tr>
+            <tr class="even">
+            <td>16</td>
+            <td>post-decrement</td>
+            <td><code>variable--</code></td>
+            </tr>
+            <tr class="odd">
+            <td>15</td>
+            <td>pre-increment</td>
+            <td><code>++variable</code></td>
+            </tr>
+            <tr class="even">
+            <td>15</td>
+            <td>pre-decrement</td>
+            <td><code>--variable</code></td>
+            </tr>
+            <tr class="odd">
+            <td>15</td>
+            <td>negació unaria</td>
+            <td><code>-</code></td>
+            </tr>
+            <tr class="even">
+            <td>14</td>
+            <td>exponenciació</td>
+            <td><code>**</code></td>
+            </tr>
+            <tr class="odd">
+            <td>13</td>
+            <td>multiplicació</td>
+            <td><code>*</code></td>
+            </tr>
+            <tr class="even">
+            <td>13</td>
+            <td>divisió</td>
+            <td><code>/</code></td>
+            </tr>
+            <tr class="odd">
+            <td>13</td>
+            <td>mòdul</td>
+            <td><code>%</code></td>
+            </tr>
+            <tr class="even">
+            <td>12</td>
+            <td>suma</td>
+            <td><code>+</code></td>
+            </tr>
+            <tr class="odd">
+            <td>12</td>
+            <td>resta</td>
+            <td><code>-</code></td>
+            </tr>
+            <tr class="even">
+            <td>2</td>
+            <td>asignacions</td>
+            <td><code>=</code>, <code>+=</code>, etc.</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>A l’igual que en matemàtiques, si 2 operadors tenen la
+            mateixa precedència, s’avaluen d’esquerra a dreta i els
+            <strong>parèntesis</strong> poden modificar la preferència
+            agrupant operacions.</p>
+            <h2 data-number="1.8" id="operadors-de-comparació"><span
+            class="header-section-number">1.8</span> Operadors de
+            comparació</h2>
+            <p>Els operadors de comparació retornen un valor
+            <strong>booleà</strong>. Són els següents:</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th>Operador</th>
+            <th>Descripció</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td>==</td>
+            <td>igual</td>
+            </tr>
+            <tr class="even">
+            <td>===</td>
+            <td>igualtat estricta (mateix valor i mateix tipus)</td>
+            </tr>
+            <tr class="odd">
+            <td>!=</td>
+            <td>distint</td>
+            </tr>
+            <tr class="even">
+            <td>!==</td>
+            <td>desigualtat estricta (distint valor i distint
+            tipus)</td>
+            </tr>
+            <tr class="odd">
+            <td>&gt;</td>
+            <td>major</td>
+            </tr>
+            <tr class="even">
+            <td>&lt;</td>
+            <td>menor</td>
+            </tr>
+            <tr class="odd">
+            <td>&gt;=</td>
+            <td>major o gual</td>
+            </tr>
+            <tr class="even">
+            <td>&lt;=</td>
+            <td>menor o igual</td>
+            </tr>
+            <tr class="odd">
+            <td>?</td>
+            <td>operador ternari</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>En comparar valors de diferents tipus, JavaScript
+            converteix els valors a nombres:</p>
+            <div class="sourceCode" id="cb33"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="st">&#39;1&#39;</span> <span class="op">&gt;</span> <span class="dv">0</span> )<span class="op">;</span> <span class="co">// true, la cadena &#39;1&#39; es converteix en el número 1</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="st">&#39;01&#39;</span> <span class="op">==</span> <span class="dv">1</span> )<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+            <p>Per a valors booleans, <code>true</code> es converteix en
+            <code>1</code> i <code>false</code> en <code>0</code>.</p>
+            <div class="sourceCode" id="cb34"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="kw">true</span> <span class="op">==</span> <span class="dv">1</span> )<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="kw">false</span> <span class="op">==</span> <span class="dv">0</span> )<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+            <p>L’operador d’igualtat estricta comprova els valors sense
+            convertir els tipus:</p>
+            <div class="sourceCode" id="cb35"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="dv">0</span> <span class="op">===</span> <span class="kw">false</span> )<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>( <span class="st">&#39;01&#39;</span> <span class="op">==</span> <span class="dv">1</span> )<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
+            <h2 data-number="1.9" id="sentencies-condicionals"><span
+            class="header-section-number">1.9</span> Sentencies
+            condicionals</h2>
+            <p>Les <strong>sentències condicionals</strong> s’utilitzen
+            quan volem trencar l’estructura seqüencial del codi. Ens
+            permet fer salts a altres parts del codi depenent d’unes
+            determinades condicions.</p>
+            <h3 data-number="1.9.1" id="if---else"><span
+            class="header-section-number">1.9.1</span> if - else</h3>
+            <p>La sentència <strong><code>if (...)</code></strong>
+            avalua l’expressió booleana entre els parèntesis i executa
+            el bloc de codi a continuació si el resultat de l’expressió
+            és <code>true</code>:</p>
+            <div class="sourceCode" id="cb36"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> edat <span class="op">=</span> <span class="dv">18</span><span class="op">;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (edat <span class="op">&gt;=</span> <span class="dv">18</span>) {</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Eres major d&#39;edat&quot;</span>)<span class="op">;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Podem afegir la sentència
+            <strong><code>else</code></strong> per a que s’execute un
+            bloc de codi alternatiu si l’avaluació de l’expressió entre
+            parèntesis és <code>false</code>:</p>
+            <div class="sourceCode" id="cb37"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (edat <span class="op">&gt;=</span> <span class="dv">18</span>) {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Eres major d&#39;edat&quot;</span>)<span class="op">;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Eres menor d&#39;edat&quot;</span>)<span class="op">;</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Si tenim més d’una condició, podem utilitzar
+            <strong><code>else if</code></strong> per a avaluar-les
+            totes:</p>
+            <div class="sourceCode" id="cb38"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (edat <span class="op">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Encara no has nascut!&quot;</span>)<span class="op">;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (edat <span class="op">&lt;</span> <span class="dv">18</span>) {</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Eres menor d&#39;edat&quot;</span>)<span class="op">;</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Eres major d&#39;edat&quot;</span>)<span class="op">;</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h3 data-number="1.9.2" id="operador-ternari"><span
+            class="header-section-number">1.9.2</span> Operador ternari
+            <strong><code>?</code></strong></h3>
+            <p>L’<strong>operador ternari</strong> s’utilitza per a
+            simplificar una expressió <code>if else</code>. És
+            especialment útil en assignacions.</p>
+            <p>Per exemple, el següent codi:</p>
+            <div class="sourceCode" id="cb39"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> missatge <span class="op">=</span> edat <span class="op">&gt;=</span> <span class="dv">18</span> <span class="op">?</span> <span class="st">&quot;Eres major d&#39;edat&quot;</span> <span class="op">:</span> <span class="st">&quot;Eres menor d&#39;edat&quot;</span><span class="op">;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(missatge)<span class="op">;</span></span></code></pre></div>
+            <p>Seria l’equivalent a:</p>
+            <div class="sourceCode" id="cb40"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> missatge<span class="op">;</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (edat <span class="op">&gt;=</span> <span class="dv">18</span>) {</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    missatge <span class="op">=</span> <span class="st">&quot;Eres major d&#39;edat&quot;</span><span class="op">;</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    missatge <span class="op">=</span> <span class="st">&quot;Eres menor d&#39;edat&quot;</span><span class="op">;</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(missatge)<span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.9.3" id="operadors-lògics"><span
+            class="header-section-number">1.9.3</span> Operadors
+            lògics</h3>
+            <p>Els <strong>operadors lògics</strong> són:</p>
+            <table>
+            <colgroup>
+            <col style="width: 40%" />
+            <col style="width: 20%" />
+            <col style="width: 20%" />
+            <col style="width: 20%" />
+            </colgroup>
+            <thead>
+            <tr class="header">
+            <th>Operador</th>
+            <th>Valor</th>
+            <th>Descripció</th>
+            <th>Exemple <code>(x = 5; y = 2;</code>)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td><code>&amp;&amp;</code></td>
+            <td><code>and</code></td>
+            <td><code>true</code> si les 2 expressions són
+            <code>true</code></td>
+            <td><code>(x &lt; 6 &amp;&amp; y &gt; 1) // true</code></td>
+            </tr>
+            <tr class="even">
+            <td><code>||</code></td>
+            <td><code>or</code></td>
+            <td><code>true</code> si almenys una de les 2 expressions és
+            <code>true</code></td>
+            <td><code>(x == 4 || y == 1) // false</code></td>
+            </tr>
+            <tr class="odd">
+            <td><code>!</code></td>
+            <td><code>not</code></td>
+            <td>Negació de l’expressió</td>
+            <td><code>!(x == 5) // false</code></td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Aquests operadors poden combinar-se en vàries
+            expressions, tenint en compte que l’odre de precedència
+            és:</p>
+            <p><strong><code>NOT &gt; AND &gt; OR</code></strong></p>
+            <p>Per exemple:</p>
+            <div class="sourceCode" id="cb41"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="op">=</span> <span class="dv">6</span><span class="op">,</span> y <span class="op">=</span> <span class="dv">2</span><span class="op">,</span> z <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="op">&gt;</span> <span class="dv">5</span> <span class="op">&amp;&amp;</span> (y <span class="op">==</span> <span class="dv">2</span> <span class="op">||</span> z <span class="op">!=</span> <span class="dv">0</span>) <span class="op">&amp;&amp;</span> <span class="op">!</span>(z <span class="op">&lt;</span> <span class="dv">1</span>)) <span class="co">// true</span></span></code></pre></div>
+            <h3 data-number="1.9.4" id="switch---case"><span
+            class="header-section-number">1.9.4</span>
+            <code>switch - case</code></h3>
+            <p>La sentència <strong><code>switch - case</code></strong>
+            és similar a l’estructura <code>if - else if - else</code> i
+            s’utilitza per a simplificar aquesta quan tenim moltes
+            condicions:</p>
+            <div class="sourceCode" id="cb42"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(condicio) {</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="st">&#39;valor1&#39;</span><span class="op">:</span>  <span class="co">// if (condicio === &#39;valor1&#39;)</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="st">&#39;valor2&#39;</span><span class="op">:</span>  <span class="co">// if (condicio === &#39;valor2&#39;)</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Els valors poden ser numèrics o cadenes.</p>
+            <p>La condició s’avalua sempre amb l’<strong>operador
+            d’igualtat estricta <code>===</code></strong>.</p>
+            <p>La sentència <strong><code>break</code></strong> causa
+            l’eixida de l’estructura <code>switch</code>. No és
+            necessària, però en general s’utilitza ja que una vegada es
+            compleix la condició, el <code>case</code> que coincideix
+            amb aquesta actua com a punt d’entrada, executant-se les
+            instruccions de tots els case a continuació d’aquest. Per
+            exemple:</p>
+            <div class="sourceCode" id="cb43"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span> (x) {</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="dv">0</span><span class="op">:</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="st">&quot;Zero&quot;</span><span class="op">;</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="dv">1</span><span class="op">:</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="st">&quot;U&quot;</span><span class="op">;</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="dv">2</span><span class="op">:</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="st">&quot;Dos&quot;</span><span class="op">;</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="dv">3</span><span class="op">:</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="st">&quot;Tres&quot;</span><span class="op">;</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(num) <span class="co">// &quot;Dos&quot;</span></span></code></pre></div>
+            <p>En aquest codi si <code>x</code> val 0 o 1 el valor
+            mostrat seria <code>"Dos"</code> ja que no tenim una
+            sentència <code>break</code> per a eixir del
+            <code>switch</code>.</p>
+            <p>Per últim, la sentència
+            <strong><code>default</code></strong> s’utilitza per a
+            executar codi quan la condició no coincideix amb cap
+            <code>case</code>. Si <code>default</code> està al final del
+            <code>switch</code>, no és necessari el
+            <code>break</code>.</p>
+            <h2 data-number="1.10" id="bucles"><span
+            class="header-section-number">1.10</span> Bucles</h2>
+            <p>Els bucles s’utilitzen per a repetir a mateixa acció un
+            nombre determinat de voltes o mentre es complisca una
+            condició.</p>
+            <h3 data-number="1.10.1" id="bucles-amb-while"><span
+            class="header-section-number">1.10.1</span> Bucles amb
+            while</h3>
+            <p>La forma bàsica d’un bucle
+            <strong><code>while</code></strong> és la següent:</p>
+            <div class="sourceCode" id="cb44"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (condició) {</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// instruccions</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>És a dir, mentre es complisca la condició, s’entrarà al
+            bucle i s’executaran les instruccions del seu cos.</p>
+            <p>També existeix una variant
+            <strong><code>do .. while</code></strong> en la qual es
+            comprova la condició al final de l’execució del cos del
+            bucle:</p>
+            <div class="sourceCode" id="cb45"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> {</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// instruccions</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">while</span> (condició)<span class="op">;</span></span></code></pre></div>
+            <p>Exemples:</p>
+            <div class="sourceCode" id="cb46"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="op">&lt;</span> <span class="dv">10</span>) {</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  i<span class="op">++;</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> {</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(j)<span class="op">;</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  j<span class="op">++;</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>} <span class="cf">while</span> (j <span class="op">&lt;</span> <span class="dv">10</span>)<span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.10.2" id="bucles-for"><span
+            class="header-section-number">1.10.2</span> Bucles for</h3>
+            <p>Els bucles <strong><code>for</code></strong> són
+            especialment útils quan coneguem el nombre de repeticions.
+            Tenen la forma:</p>
+            <div class="sourceCode" id="cb47"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (inicialització<span class="op">;</span> condició<span class="op">;</span> increment<span class="op">/</span>decrement) {</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// instruccions</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <ul>
+            <li>Inicialització: assignem un valor inicial a la variable
+            comptador.</li>
+            <li>Condició: la condició que s’ha de complir per a executar
+            les instruccions del cos del bucle.</li>
+            <li>Increment o decrement de la variable comptador:</li>
+            </ul>
+            <p>Alguns exemples típics:</p>
+            <div class="sourceCode" id="cb48"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Imprimir els números del 0 al 9</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Imprimir els números 10, 8, 6, 4, 2</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">10</span><span class="op">;</span> i <span class="op">&gt;</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">-=</span> <span class="dv">2</span>) {</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(i)<span class="op">;</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h3 data-number="1.10.3" id="continue-i-break"><span
+            class="header-section-number">1.10.3</span> continue i
+            break</h3>
+            <p>Existeixen 2 instruccions que trenquen l’execució del
+            bucle:</p>
+            <ul>
+            <li><strong><code>continue</code></strong>: no executa la
+            resta de la iteració actual i salta al començament de la
+            següent iteració.</li>
+            <li><strong><code>break</code></strong>: ix del bucle sense
+            executar la resta d’instruccions de la iteració actual ni la
+            resta d’iteracions.</li>
+            </ul>
+            <h2 data-number="1.11" id="funcions"><span
+            class="header-section-number">1.11</span> Funcions</h2>
+            <p>Les <strong>funcions</strong> són fragments de codi que
+            s’associen a un nom simbòlic i executen una sèrie
+            d’instruccions. Serveixen per a repetir el mateix codi en
+            diferents parts del programa sense necessitat de
+            reescriure’l.</p>
+            <p>La forma general de declarar una funció és:</p>
+            <div class="sourceCode" id="cb49"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">nomFuncio</span> (llista_paràmetres) {</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// intruccions</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> valor<span class="op">;</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>El <strong>nom de la funció</strong> pot contindre els
+            mateixos caràcters que els noms de variables (lletres,
+            dígits, _ i $).</p>
+            <p>La <strong>llista de paràmetres</strong> pot tindre 0 o
+            més paràmetres. En cas de no tindre paràmetres els
+            parèntesis s’han d’escriure igualment.</p>
+            <p>La instrucció <strong><code>return</code></strong>
+            s’utilitza per a retornar un valor, generalment resultat
+            d’operacions sobre els paràmetres d’entrada. La seua
+            execució comporta l’eixida de la funció i el retorn de
+            l’execució al programa principal. No és obligatòria la
+            inclusió de la instrucció <code>return</code>. Si la funció
+            arriba al final del seu codi sense trobar un
+            <code>return</code>, finalitza la seua execució i retorna al
+            programa principal.</p>
+            <p>La instrucció <code>return</code> també pot utilitzar-se
+            per a eixir d’una funció sense tornar cap valor.</p>
+            <p>Les funcions es poden cridar des de qualsevol lloc del
+            programa on siguen visibles, escrivint el seu nom i els
+            possibles paràmetres requerits.</p>
+            <p>El valor de retorn d’una funció pot ser utilitzat en
+            qualsevol expressió del programa, generalment és assignat a
+            una variable.</p>
+            <p>Alguns exemples de funcions i del seu ús:</p>
+            <div class="sourceCode" id="cb50"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Funció sense paràmetres ni return</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">hola</span> () {</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">window</span><span class="op">.</span><span class="fu">alert</span>(<span class="st">&quot;Hola&quot;</span>)<span class="op">;</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co">//Funció amb 1 paràmetre</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">holaNom</span> (nom) {</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">window</span><span class="op">.</span><span class="fu">alert</span>(<span class="st">&quot;Hola &quot;</span> <span class="op">+</span> nom)<span class="op">;</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co">//Funció amb 2 paràmetres i return</span></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">suma</span> (num1<span class="op">,</span> num2) {</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> resultat <span class="op">=</span> num1 <span class="op">+</span> num2<span class="op">;</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> resultat<span class="op">;</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a><span class="co">//Formes de cridar a les funcions</span></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="fu">hola</span>()<span class="op">;</span></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a><span class="fu">hola</span>(<span class="st">&quot;Joan&quot;</span>)<span class="op">;</span></span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> resultat <span class="op">=</span> <span class="fu">suma</span>(<span class="dv">4</span><span class="op">,</span><span class="dv">6</span>)<span class="op">;</span></span></code></pre></div>
+            <p>Una qüestió important és l’<strong>àmbit de
+            visibilitat</strong> de les variables. Quan declarem una
+            variable dins d’una funció (en l’exemple anterior
+            <code>resultat</code> dins de la funció <code>suma</code>),
+            aquesta és <strong>local</strong> i no és visible des de
+            fora de la funció. Tanmateix, la variable
+            <code>resultat</code> del cos principal és
+            <strong>global</strong> i és visible des de dins de totes
+            les funcions. En l’exemple anterior, al coincidir el nom de
+            les variables <code>resultat</code>, el que tenim són 2
+            variables diferents, una global i l’altra local, que poden
+            tindre valors diferents.</p>
+            <blockquote>
+            <p>Per a evitar problemes amb la visibilitat de les
+            variables, es recomana declarar-les totes amb
+            <code>let</code>. Si es declaren amb <code>var</code> o
+            sense res, les variables locals poden ser visibles des de
+            fora de les funcions i generar problemes al depurar.</p>
+            <p>També és una bona pràctica reduir el nombre de variables
+            globals.</p>
+            </blockquote>
+            <p>Quan una funció té paràmetres per no li passem cap valor,
+            el valor del paràmetre és <code>undefined</code>:</p>
+            <div class="sourceCode" id="cb51"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">f</span> (a) {</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a)<span class="op">;</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()<span class="op">;</span> <span class="co">// undefined</span></span></code></pre></div>
+            <p>Podem assignar <strong>valors per defecte</strong> als
+            paràmetres, els quals s’assignaran quan la funció s’invoca
+            sense passar-li cap valor al paràmetre en concret:</p>
+            <div class="sourceCode" id="cb52"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">f</span> (a <span class="op">=</span> <span class="st">&quot;Hola&quot;</span>) {</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a)<span class="op">;</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()<span class="op">;</span> <span class="co">// &quot;Hola&quot;</span></span></code></pre></div>
+            <p>En JavaScript les funcions són valors i poden ser
+            assignades a variables:</p>
+            <div class="sourceCode" id="cb53"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">f</span> (a <span class="op">=</span> <span class="st">&quot;Hola&quot;</span>) {</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a)<span class="op">;</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> copia <span class="op">=</span> f<span class="op">;</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="fu">copia</span>()<span class="op">;</span> <span class="co">// &quot;Hola&quot;</span></span></code></pre></div>
+            <p>Aquesta característica permet passar funcions com a
+            arguments d’altres funcions. Veurem exemples més
+            endavant.</p>
+            <h3 data-number="1.11.1" id="funcions-anònimes"><span
+            class="header-section-number">1.11.1</span> Funcions
+            anònimes</h3>
+            <h2 data-number="1.12" id="arrays"><span
+            class="header-section-number">1.12</span> Arrays</h2>
+            <p>Els <strong>arrays</strong> són <strong>col·leccions
+            ordenades</strong> de variables o objectes.</p>
+            <p>Es pot declarar un array de vàries maneres:</p>
+            <div class="sourceCode" id="cb54"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> a <span class="op">=</span> <span class="kw">new</span> <span class="bu">Array</span>()<span class="op">;</span> <span class="co">//Array buit</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> b <span class="op">=</span> []<span class="op">;</span> <span class="co">//Array buit</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> dies <span class="op">=</span> [<span class="st">&quot;Dilluns&quot;</span><span class="op">,</span> <span class="st">&quot;Dimarts&quot;</span><span class="op">,</span> <span class="st">&quot;Dimecres&quot;</span>]<span class="op">;</span> <span class="co">// Array amb valors inicials</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> notes <span class="op">=</span> <span class="kw">new</span> <span class="bu">Array</span>(<span class="st">&quot;Suficient&quot;</span><span class="op">,</span> <span class="st">&quot;Bé&quot;</span><span class="op">,</span> <span class="st">&quot;Notable&quot;</span>)<span class="op">;</span> <span class="co">// Array amb valors inicials</span></span></code></pre></div>
+            <p>En el cas de l’arrays dies, podem accedir als seus valor
+            indicant el seu índex, tenint en compte que el primer valor
+            té l’index 0:</p>
+            <div class="sourceCode" id="cb55"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies[<span class="dv">0</span>])<span class="op">;</span> <span class="co">// &quot;Dilluns&quot;</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies[<span class="dv">1</span>])<span class="op">;</span> <span class="co">// &quot;Dimarts&quot;</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies[<span class="dv">2</span>])<span class="op">;</span> <span class="co">// &quot;Dimecres&quot;</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies[<span class="dv">3</span>])<span class="op">;</span> <span class="co">// undefined</span></span></code></pre></div>
+            <p>Com es pot veure, si accedim a un índex sense cap valor
+            obtenim <code>undefined</code>.</p>
+            <p>De la mateixa manera podem modificar un valor en
+            concret:</p>
+            <div class="sourceCode" id="cb56"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>dies[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&quot;Diumenge&quot;</span><span class="op">;</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies[<span class="dv">0</span>])<span class="op">;</span> <span class="co">// &quot;Diumenge&quot;</span></span></code></pre></div>
+            <p>També podem afegir elements indicant l’index del nou
+            element, inclús si deixem índexs buits sense assignar:</p>
+            <div class="sourceCode" id="cb57"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>dies[<span class="dv">3</span>] <span class="op">=</span> <span class="st">&quot;Dijous&quot;</span><span class="op">;</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>dies[<span class="dv">5</span>] <span class="op">=</span> <span class="st">&quot;Dissabte&quot;</span><span class="op">;</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies[<span class="dv">3</span>])<span class="op">;</span> <span class="co">// &quot;Dijous&quot;</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies[<span class="dv">4</span>])<span class="op">;</span> <span class="co">// undefined</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies[<span class="dv">5</span>])<span class="op">;</span> <span class="co">// &quot;Dissabte&quot;</span></span></code></pre></div>
+            <p>Per a evitar tindre en compte quins índexs estan lliures
+            a l’hora d’afegir elements, és millor utilitzar el mètode
+            <strong><code>push()</code></strong>, el qual afegeix el nou
+            element al final de l’array:</p>
+            <div class="sourceCode" id="cb58"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>dies<span class="op">.</span><span class="fu">push</span>(<span class="st">&quot;Divendres&quot;</span>)<span class="op">;</span></span></code></pre></div>
+            <p>La propietat <strong><code>length</code></strong> retorna
+            el nombre total d’elements de l’array:</p>
+            <div class="sourceCode" id="cb59"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> dies <span class="op">=</span> [<span class="st">&quot;Dilluns&quot;</span><span class="op">,</span> <span class="st">&quot;Dimarts&quot;</span><span class="op">,</span> <span class="st">&quot;Dimecres&quot;</span>]<span class="op">;</span> </span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies<span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 3</span></span></code></pre></div>
+            <p>El mètode <strong><code>toString()</code></strong>
+            retorna un string amb tots els valors de l’array separats
+            per comes:</p>
+            <div class="sourceCode" id="cb60"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies<span class="op">.</span><span class="fu">toString</span>())<span class="op">;</span></span></code></pre></div>
+            <p>Per últim, recordar que els arrays són objectes:</p>
+            <div class="sourceCode" id="cb61"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">typeof</span> dies)<span class="op">;</span> <span class="co">// object</span></span></code></pre></div>
+            <h3 data-number="1.12.1" id="iterar-un-array"><span
+            class="header-section-number">1.12.1</span> Iterar un
+            array</h3>
+            <p>La forma més usual de recórrer arrays és utilitzant un
+            bucle <strong><code>for</code></strong> utilitzant els
+            índexs:</p>
+            <div class="sourceCode" id="cb62"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> dies<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dies[i])<span class="op">;</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Existeix una forma de bucle,
+            <strong><code>for .. of</code></strong>, per a recórrer
+            arrays:</p>
+            <div class="sourceCode" id="cb63"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> dia <span class="kw">of</span> dies) {</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dia)<span class="op">;</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>El mètode
+            <strong><code>array.foreach(func)</code></strong> també es
+            pot emprar per a executar una determinada funció per a cada
+            valor de l’array:</p>
+            <div class="sourceCode" id="cb64"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>dies<span class="op">.</span><span class="fu">foreach</span>(myFunction)<span class="op">;</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Imprimeix tots els valors en majúscules</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myFunction</span>(value) {</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> value<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(value)<span class="op">;</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>FER ALTRE EXEMPLE AMB FUNC ANONIMA</p>
+            <h2 data-number="1.13" id="objectes"><span
+            class="header-section-number">1.13</span> Objectes</h2>
+            <p>El <strong>objectes</strong> són variables que poden
+            tindre altres variables, anomenades
+            <strong>propietats</strong>, i funcions, anomenades
+            <strong>mètodes</strong>.</p>
+            <p>Les <strong>propietats</strong> poden ser de diferents
+            tipus de dades, inclús poden ser altres objectes o arrays de
+            variables o d’objectes.</p>
+            <p>Per a crear un objecte en JavaScript, al contrari que en
+            altres llenguatges, no és necessari definir primer la classe
+            a partir de la qual s’ha d’instanciar. Es poden declarar
+            directament:</p>
+            <div class="sourceCode" id="cb65"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> alumne <span class="op">=</span> {<span class="dt">nom</span><span class="op">:</span> <span class="st">&quot;Pep&quot;</span><span class="op">,</span> <span class="dt">edat</span><span class="op">:</span> <span class="dv">15</span>}<span class="op">;</span></span></code></pre></div>
+            <p>Les propietats són parelles de <strong>clau</strong>
+            (nom) i <strong>valor</strong> (“Pep”) separades per 2 punts
+            (<strong><code>:</code></strong>).</p>
+            <p>És freqüent escriure cada propietat en una línia nova per
+            a més claredat:</p>
+            <div class="sourceCode" id="cb66"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> alumne <span class="op">=</span> {</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">nom</span><span class="op">:</span> <span class="st">&quot;Pep&quot;</span><span class="op">,</span> </span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">cognoms</span><span class="op">:</span> <span class="st">&quot;Peris Llopis&quot;</span><span class="op">,</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">edat</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span></code></pre></div>
+            <p>Compte amb la última coma després de l’edat. Aquesta
+            sintaxi és correcta i facilita l’adició i supressió de noves
+            propietats en el codi.</p>
+            <p>També podem crear objectes buits:</p>
+            <div class="sourceCode" id="cb67"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> alumne <span class="op">=</span> {}<span class="op">;</span> <span class="co">// Sintaxi d&#39;objecte literal</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> professor <span class="op">=</span> <span class="kw">new</span> <span class="bu">Object</span>()<span class="op">;</span> <span class="co">// Sintaxi de contrstructor d&#39;objectes</span></span></code></pre></div>
+            <p>Podem accedir a les propietats amb la notació de
+            punt:</p>
+            <div class="sourceCode" id="cb68"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(alumne<span class="op">.</span><span class="at">nom</span>)<span class="op">;</span> <span class="co">// &quot;Pep&quot;</span></span></code></pre></div>
+            <p>O amb la notació de claudàtors, indicar el nom de la clau
+            entre cometes:</p>
+            <div class="sourceCode" id="cb69"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(alumne[<span class="st">&quot;edat&quot;</span>])<span class="op">;</span> <span class="co">// 15</span></span></code></pre></div>
+            <p>Canviar els valor d’un objecte es fa de manera
+            similar:</p>
+            <div class="sourceCode" id="cb70"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>alumne<span class="op">.</span><span class="at">nom</span> <span class="op">=</span> <span class="st">&quot;Maria&quot;</span><span class="op">;</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>alumne[<span class="st">&quot;edat&quot;</span>] <span class="op">=</span> <span class="dv">18</span><span class="op">;</span></span></code></pre></div>
+            <p>Una vegada creat un objecte, li podem afegir propietats
+            dinàmicament:</p>
+            <div class="sourceCode" id="cb71"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> alumne <span class="op">=</span> {<span class="dt">nom</span><span class="op">:</span> <span class="st">&quot;Pep&quot;</span><span class="op">,</span> <span class="dt">edat</span><span class="op">:</span> <span class="dv">15</span>}<span class="op">;</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>alumne<span class="op">.</span><span class="at">poblacio</span> <span class="op">=</span> <span class="st">&quot;València&quot;</span><span class="op">;</span></span></code></pre></div>
+            <p>I també les podem eliminar dinàmicament:</p>
+            <div class="sourceCode" id="cb72"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="kw">delete</span> alumne<span class="op">.</span><span class="at">cognoms</span><span class="op">;</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(alumne<span class="op">.</span><span class="at">cognoms</span>)<span class="op">;</span> <span class="co">// undefined</span></span></code></pre></div>
+            <p>Si accedim a una propietat d’un objecte inexistent, ens
+            tornarà <code>undefined</code>. Podem comprovar si una
+            propietat existeix amb la instrucció
+            <strong><code>in</code></strong>:</p>
+            <div class="sourceCode" id="cb73"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="st">&quot;cognoms&quot;</span> <span class="kw">in</span> alumne) {</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(alumne<span class="op">.</span><span class="at">cognoms</span>)<span class="op">;</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h3 data-number="1.13.1" id="mètodes"><span
+            class="header-section-number">1.13.1</span> Mètodes</h3>
+            <p>Els <strong>mètodes</strong> es poden definir de la
+            mateixa forma que les <em>funcions anònimes</em>: el nom de
+            la funció és la <strong>clau</strong> i la definició és el
+            <strong>valor</strong>:</p>
+            <div class="sourceCode" id="cb74"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> alumne <span class="op">=</span> {</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">nom</span><span class="op">:</span> <span class="st">&quot;Pep&quot;</span><span class="op">,</span> </span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">cognoms</span><span class="op">:</span> <span class="st">&quot;Peris Llopis&quot;</span><span class="op">,</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">edat</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">nomComplet</span><span class="op">:</span> <span class="kw">function</span>() {</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">nom</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="at">cognoms</span><span class="op">;</span></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">sumarEdat</span><span class="op">:</span> <span class="kw">function</span>(anys) {</span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">edat</span> <span class="op">+=</span> anys<span class="op">;</span></span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(alumne<span class="op">.</span><span class="fu">nomComplet</span>())<span class="op">;</span> <span class="co">// &quot;Pep Peris Llopis&quot;</span></span>
+<span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-15"><a href="#cb74-15" aria-hidden="true" tabindex="-1"></a>alumne<span class="op">.</span><span class="fu">sumarEdat</span>(<span class="dv">2</span>)<span class="op">;</span> </span>
+<span id="cb74-16"><a href="#cb74-16" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(alumne<span class="op">.</span><span class="at">edat</span>)<span class="op">;</span> <span class="co">// 17</span></span></code></pre></div>
+            <p>Com es pot veure, els mètodes s’utilitzen amb la notació
+            de punt. També es poden utilitzar la notació de
+            claudàtors:</p>
+            <div class="sourceCode" id="cb75"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>alumne[<span class="st">&quot;sumarEdat&quot;</span>](<span class="dv">2</span>)<span class="op">;</span> </span></code></pre></div>
+            <p>La paraula reservada <strong><code>this</code></strong>,
+            quan es troba dins d’un mètode, fa referència al propi
+            objecte. En l’exemple anterior <code>this.nom</code> té el
+            valor “<em>Pep”</em>.</p>
+            <p>Al igual que amb les propietats, els mètodes es poden
+            afegir a un objecte una vegada que aquest s’ha creat:</p>
+            <div class="sourceCode" id="cb76"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>alumne<span class="op">.</span><span class="at">nouMetode</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h3 data-number="1.13.2" id="iterant-objectes"><span
+            class="header-section-number">1.13.2</span> Iterant
+            objectes</h3>
+            <p>Podem iterar per les propietats d’un objecte usant bucles
+            <strong><code>for ... in</code></strong>:</p>
+            <div class="sourceCode" id="cb77"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> key <span class="kw">in</span> alumne) {</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(key <span class="op">+</span> <span class="st">&quot;: &quot;</span> <span class="op">+</span> alumne[key])<span class="op">;</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>En aquest exemple la variable <code>key</code> recorre
+            totes les claus de l’objecte <code>alumne</code>, i amb això
+            dins del bucle podem accedir als valors amb
+            <code>alumne[key]</code>.</p>
+            <p>El problema del codi anterior és que imprimeix també les
+            funcions. Podem visualitzar només les propietats usant la
+            instrucció <code>typeof</code>:</p>
+            <div class="sourceCode" id="cb78"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> key <span class="kw">in</span> alumne) {</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="kw">typeof</span> alumne[key] <span class="op">!=</span> <span class="st">&#39;function&#39;</span>) {</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(key <span class="op">+</span> <span class="st">&quot;: &quot;</span> <span class="op">+</span> alumne[key])<span class="op">;</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

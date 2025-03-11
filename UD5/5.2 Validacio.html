@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>UD 5.2 Validació de formularis</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">UD 5.2 Validació de formularis</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#validació-de-formularis"
+id="toc-validació-de-formularis"><span
+class="toc-section-number">1</span> Validació de formularis</a>
+<ul>
+<li><a href="#validació-bàsica" id="toc-validació-bàsica"><span
+class="toc-section-number">1.1</span> Validació bàsica</a></li>
+<li><a href="#validació-de-tipus" id="toc-validació-de-tipus"><span
+class="toc-section-number">1.2</span> Validació de tipus</a></li>
+<li><a href="#validacions-de-rangs-i-longituds"
+id="toc-validacions-de-rangs-i-longituds"><span
+class="toc-section-number">1.3</span> Validacions de rangs i
+longituds</a></li>
+<li><a href="#validació-avançada" id="toc-validació-avançada"><span
+class="toc-section-number">1.4</span> Validació avançada</a></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="validació-de-formularis"><span
+            class="header-section-number">1</span> Validació de
+            formularis</h1>
+            <p>En aquest apartat veurem la validació de les dades
+            introduïdes en formularis HTML. Cal recordar que l’estàndard
+            <strong>HTML5</strong> ja proporciona un validació bàsica
+            per a alguns tipus de inputs (<code>type="email"</code>,
+            <code>type="number"</code>, etc) així com altres
+            restriccions (<code>maxlength</code>, <code>min</code>,
+            <code>max</code>, <code>required</code>, etc). Però en
+            aquests apunts farem tota la validació amb codi JavaScript,
+            per tant el tipus dels inputs serà <code>type="text"</code>
+            i no usarem cap altra restricció.</p>
+            <h2 data-number="1.1" id="validació-bàsica"><span
+            class="header-section-number">1.1</span> Validació
+            bàsica</h2>
+            <p>El primer pas serà validar els camps requerits. Això es
+            pot detectar si el valor introduït és igual a la cadena
+            buida (<code>""</code>).</p>
+            <p>Per exemple, si tenim el següent formulari:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="ot"> onsubmit</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Nom<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;validar()&quot;</span><span class="dt">&gt;</span>Enviar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>La funció <code>validar()</code> validaria que el
+            <code>input</code> <strong>nom</strong> no és buit:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validar</span>() {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> nom <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;nom&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (nom <span class="op">==</span> <span class="st">&quot;&quot;</span>) {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&quot;El nom no pot estar buit&quot;</span>)<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>L’ús de <code>alert</code> no és recomanat per a mostrar
+            informació a l’usuari. Al seu lloc és millor fer-ho mostrant
+            el text de l’error al costat, dalt o baix de l’input. Per a
+            això podem usar un element de text que inicialment estarà
+            buit i on podrem mostrar el text de l’error:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="ot"> onsubmit</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Nom<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;error&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nomErr&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;validar()&quot;</span><span class="dt">&gt;</span>Enviar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validar</span>() {</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> nom <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;nom&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (nom <span class="op">===</span> <span class="st">&quot;&quot;</span>) {</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;nomErr&#39;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&#39;Camp requerit&#39;</span><span class="op">;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>En aquest exemple estariem mostrant l’error dins del
+            <code>span</code> amb <code>id</code> <em>“nomErr”</em>. La
+            classe <em>“error”</em> ens servirà per a assignar un estil
+            CSS a tos els missatges d’error.</p>
+            <p>Una funció molt util és
+            <strong><code>trim()</code></strong>, que s’utilitza per a
+            eliminar els espais a l’inici i al final de una cadena.
+            Així, si un usuari escriu només espais en blanc en un camp
+            d’un formulari, els podem eliminar:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> camp <span class="op">=</span> <span class="st">&#39;   &#39;</span><span class="op">;</span> <span class="co">// Només espais</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(camp <span class="op">===</span> <span class="st">&#39;&#39;</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>camp <span class="op">=</span> camp<span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(camp <span class="op">===</span> <span class="st">&#39;&#39;</span>)<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+            <h2 data-number="1.2" id="validació-de-tipus"><span
+            class="header-section-number">1.2</span> Validació de
+            tipus</h2>
+            <p>Podem utilitzar la funció
+            <strong><code>isNan()</code></strong> per a saber si un
+            valor conté un número vàlid (recordem que tots els valors
+            dels formularis es llegeixen com a strings). Aquesta funció
+            converteix el valor a nombre i després comprova si el
+            resultat és <strong><code>NaN</code></strong> (Not a
+            number):</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;Hola&#39;</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;5&#39;</span>))<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;5.4&#39;</span>))<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;5,4&#39;</span>))<span class="op">;</span> <span class="co">// true, la conversió falla per la coma</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;&#39;</span>))<span class="op">;</span> <span class="co">// false!!, el valor de la conversió és 0</span></span></code></pre></div>
+            <h2 data-number="1.3"
+            id="validacions-de-rangs-i-longituds"><span
+            class="header-section-number">1.3</span> Validacions de
+            rangs i longituds</h2>
+            <p>Podem validar que la cadena llegida tinga una longitud
+            mínima o màxima usant la propietat
+            <strong><code>length</code></strong> dels strings:</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;hola&#39;</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 4</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;&#39;</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 0</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;  hola  &#39;</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 8, compte amb els espais en blanc!</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;  hola  &#39;</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 4</span></span></code></pre></div>
+            <p>Com podem veure, és convenient usar
+            <strong><code>trim()</code></strong> per a eliminar espais a
+            l’inici i al final.</p>
+            <p>En el cas de <strong>valors numèrics</strong>, podem
+            comprovar fàcilment que estiguen entre un valor mínim i
+            màxim:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="bu">Number</span>(valor) <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">||</span> <span class="bu">Number</span>(valor) <span class="op">&gt;</span> <span class="dv">15</span>) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;El valor ha d&#39;estar entre 0 i 15&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Valor correcte&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Recordem que és convenient fer abans la comprovació
+            numèrica i convertir els strings a valors numèrics.</p>
+            <p>En el cas de les <strong>dates</strong>, podem
+            comparar-les directament si tenim en compte que tenen el
+            format <strong><code>yyyy-mm-dd</code></strong> i que són
+            strings:</p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dataActual <span class="op">=</span> <span class="st">&#39;2023-04-19&#39;</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dataLlegida <span class="op">=</span> <span class="st">&#39;2021-01-01&#39;</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (dataLlegida <span class="op">===</span> dataActual)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;La data llegida correspon a hui&#39;</span>)<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (dataLlegida <span class="op">&lt;</span> dataActual)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;La data llegida és anterior a la data actual&#39;</span>)<span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (dataLlegida <span class="op">&gt;</span> dataActual)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;La data llegida és posterior a la data actual&#39;</span>)<span class="op">;</span></span></code></pre></div>
+            <h2 data-number="1.4" id="validació-avançada"><span
+            class="header-section-number">1.4</span> Validació
+            avançada</h2>
+            <p>Podem fer fer una validació més acurada utilitzant
+            expressions regulars i els mètodes
+            <strong><code>test()</code></strong> o
+            <strong><code>match()</code></strong>. Per exemple,
+            <code>test()</code> retorna <code>true</code> si l’expressió
+            regular es troba a la cadena passada com a argument:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>expressioRegular<span class="op">.</span><span class="fu">test</span>(cadena)</span></code></pre></div>
+            <p>Per exemple, tenim l’espressió regular
+            <code>/^\d*$/</code> que correspon amb una cadena que té
+            només dígits, sense altres caracters i una cadena llegida en
+            la variable <em><code>valor</code></em>:</p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> ( <span class="ss">/</span><span class="sc">^\d*$</span><span class="ss">/</span><span class="op">.</span><span class="fu">test</span>(valor) ) {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;El valor llegit és un número&#39;</span>)<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;El valor llegit NO és un número&#39;</span>)<span class="op">;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

@@ -22,8 +22,9 @@
         }
         .display.math{display: block; text-align: center; margin: 0.5rem auto;}
         /* CSS for syntax highlighting */
+        html { -webkit-text-size-adjust: 100%; }
         pre > code.sourceCode { white-space: pre; position: relative; }
-        pre > code.sourceCode > span { line-height: 1.25; }
+        pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
         pre > code.sourceCode > span:empty { height: 1.2em; }
         .sourceCode { overflow: visible; }
         code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -102,27 +103,140 @@
                  <nav id="TOC" role="doc-toc">
             <div class="navContainer">
                  <ul>
+<li><a href="#lectura-de-formularis"
+id="toc-lectura-de-formularis"><span class="toc-section-number">1</span>
+Lectura de formularis</a>
+<ul>
+<li><a href="#inputs" id="toc-inputs"><span
+class="toc-section-number">1.1</span> inputs</a></li>
+<li><a href="#checkbox" id="toc-checkbox"><span
+class="toc-section-number">1.2</span> checkbox</a></li>
+<li><a href="#radio-buttons" id="toc-radio-buttons"><span
+class="toc-section-number">1.3</span> radio buttons</a></li>
+<li><a href="#select" id="toc-select"><span
+class="toc-section-number">1.4</span> select</a></li>
+</ul></li>
 <li><a href="#validació-de-formularis"
 id="toc-validació-de-formularis"><span
-class="toc-section-number">1</span> Validació de formularis</a>
+class="toc-section-number">2</span> Validació de formularis</a>
 <ul>
 <li><a href="#validació-bàsica" id="toc-validació-bàsica"><span
-class="toc-section-number">1.1</span> Validació bàsica</a></li>
+class="toc-section-number">2.1</span> Validació bàsica</a></li>
 <li><a href="#validació-de-tipus" id="toc-validació-de-tipus"><span
-class="toc-section-number">1.2</span> Validació de tipus</a></li>
+class="toc-section-number">2.2</span> Validació de tipus</a></li>
 <li><a href="#validacions-de-rangs-i-longituds"
 id="toc-validacions-de-rangs-i-longituds"><span
-class="toc-section-number">1.3</span> Validacions de rangs i
+class="toc-section-number">2.3</span> Validacions de rangs i
 longituds</a></li>
 <li><a href="#validació-avançada" id="toc-validació-avançada"><span
-class="toc-section-number">1.4</span> Validació avançada</a></li>
+class="toc-section-number">2.4</span> Validació avançada</a></li>
 </ul></li>
 </ul>
             </div>
         </nav>
                 <main>
-            <h1 data-number="1" id="validació-de-formularis"><span
-            class="header-section-number">1</span> Validació de
+            <h1 data-number="1" id="lectura-de-formularis"><span
+            class="header-section-number">1</span> Lectura de
+            formularis</h1>
+            <h2 data-number="1.1" id="inputs"><span
+            class="header-section-number">1.1</span> inputs</h2>
+            <p>Ja hem vist com llegir els <em>inputs</em> generals
+            (text, password, email, etc.):</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> myTextValue <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;myText&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span></code></pre></div>
+            <p>De la mateixa manera llegim els <em>textarea</em>.</p>
+            <p>Recordar que tots els inputs es lligen com a string i que
+            hem de fer la validació i transformació a valor numèric en
+            cas d’estar treballant amb nombres:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> myNumberValue <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;myNumber&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="pp">isNaN</span>(myNumberValue)) {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  myNumberValue <span class="op">=</span> <span class="bu">Number</span>(myNumberValue)<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;demo&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="kw">typeof</span> myNumberValue<span class="op">;</span></span></code></pre></div>
+            <h2 data-number="1.2" id="checkbox"><span
+            class="header-section-number">1.2</span> checkbox</h2>
+            <p>Per a llegir si un <strong>checkbox</strong> està marcat,
+            podem utilitzar la propietat
+            <strong><code>checked</code></strong>:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;myCheck&quot;</span>)<span class="op">.</span><span class="at">checked</span><span class="op">;</span></span></code></pre></div>
+            <blockquote>
+            <p>Recordar que cada <em>ckeckbox</em> ha de tindre un
+            <code>name</code> diferent i pel mateix motiu, hauria de
+            tindre un <code>id</code> únic.</p>
+            </blockquote>
+            <p>També podem canviar l’estat del checkbox amb la mateixa
+            propietat:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;myCheck&quot;</span>)<span class="op">.</span><span class="at">checked</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span></code></pre></div>
+            <h2 data-number="1.3" id="radio-buttons"><span
+            class="header-section-number">1.3</span> radio buttons</h2>
+            <p>Recordem que els <em>radio buttons</em> d’un mateix grup
+            han de tindre el mateix <code>name</code> i
+            <code>value</code> diferent:</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;size&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;S&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;s&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;xs&quot;</span><span class="dt">&gt;</span>S<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;size&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;M&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;m&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;s&quot;</span><span class="dt">&gt;</span>M<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;size&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;L&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;l&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;m&quot;</span><span class="dt">&gt;</span>L<span class="dt">&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>Per a llegir el valor seleccionat, hem de llegir tots els
+            elements del grup amb <code>querySelectorAll</code> i buscar
+            amb un bucle l’element seleccionat:</p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myFunction</span>() {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> radioButtons <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&#39;input[name=&quot;size&quot;]&#39;</span>)<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> selectedSize<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> radioButton <span class="kw">of</span> radioButtons) {</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (radioButton<span class="op">.</span><span class="at">checked</span>) {</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      selectedSize <span class="op">=</span> radioButton<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;demo&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> selectedSize<span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h2 data-number="1.4" id="select"><span
+            class="header-section-number">1.4</span> select</h2>
+            <p>Llegir el valor seleccionat d’un <code>select</code>
+            d’opció única és senzill: seleccionem el <code>select</code>
+            pel seu <code>id</code> i llegim <code>value</code>:</p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">select</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;sizes&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;sizes&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;s&quot;</span><span class="dt">&gt;</span>S<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;m&quot;</span><span class="dt">&gt;</span>M<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;l&quot;</span><span class="dt">&gt;</span>L<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">select</span><span class="dt">&gt;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myFunction</span>() {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  selectedSize <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;#sizes&#39;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;demo&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> selectedSize<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <p>Si el <code>select</code> és d’<strong>opció
+            múltiple</strong>, hem d’iterar amb un bucle buscant tots
+            els elements seleccionats:</p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">select</span><span class="ot"> multiple name</span><span class="op">=</span><span class="st">&quot;foods&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;foods&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;paella&quot;</span><span class="dt">&gt;</span>Paella<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;fideua&quot;</span><span class="dt">&gt;</span>Fideuà<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">option</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;arrosbanda&quot;</span><span class="dt">&gt;</span>Arròs a banda<span class="dt">&lt;/</span><span class="kw">option</span><span class="dt">&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">select</span><span class="dt">&gt;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">selectFoods</span>() {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  select <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;#foods&#39;</span>)<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  selectedOptions <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> option <span class="kw">of</span> select<span class="op">.</span><span class="at">options</span>) {</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (option<span class="op">.</span><span class="at">selected</span>) {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>      selectedOptions<span class="op">.</span><span class="fu">push</span>(option<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;demo2&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> selectedOptions<span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h1 data-number="2" id="validació-de-formularis"><span
+            class="header-section-number">2</span> Validació de
             formularis</h1>
             <p>En aquest apartat veurem la validació de les dades
             introduïdes en formularis HTML. Cal recordar que l’estàndard
@@ -134,51 +248,51 @@ class="toc-section-number">1.4</span> Validació avançada</a></li>
             aquests apunts farem tota la validació amb codi JavaScript,
             per tant el tipus dels inputs serà <code>type="text"</code>
             i no usarem cap altra restricció.</p>
-            <h2 data-number="1.1" id="validació-bàsica"><span
-            class="header-section-number">1.1</span> Validació
+            <h2 data-number="2.1" id="validació-bàsica"><span
+            class="header-section-number">2.1</span> Validació
             bàsica</h2>
             <p>El primer pas serà validar els camps requerits. Això es
             pot detectar si el valor introduït és igual a la cadena
             buida (<code>""</code>).</p>
             <p>Per exemple, si tenim el següent formulari:</p>
-            <div class="sourceCode" id="cb1"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="ot"> onsubmit</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Nom<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;validar()&quot;</span><span class="dt">&gt;</span>Enviar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="ot"> onsubmit</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Nom<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;validar()&quot;</span><span class="dt">&gt;</span>Enviar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span></code></pre></div>
             <p>La funció <code>validar()</code> validaria que el
             <code>input</code> <strong>nom</strong> no és buit:</p>
-            <div class="sourceCode" id="cb2"><pre
-            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validar</span>() {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> nom <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;nom&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (nom <span class="op">==</span> <span class="st">&quot;&quot;</span>) {</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&quot;El nom no pot estar buit&quot;</span>)<span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validar</span>() {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> nom <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;nom&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (nom <span class="op">==</span> <span class="st">&quot;&quot;</span>) {</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">alert</span>(<span class="st">&quot;El nom no pot estar buit&quot;</span>)<span class="op">;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>L’ús de <code>alert</code> no és recomanat per a mostrar
             informació a l’usuari. Al seu lloc és millor fer-ho mostrant
             el text de l’error al costat, dalt o baix de l’input. Per a
             això podem usar un element de text que inicialment estarà
             buit i on podrem mostrar el text de l’error:</p>
-            <div class="sourceCode" id="cb3"><pre
-            class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="ot"> onsubmit</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Nom<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;error&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nomErr&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;validar()&quot;</span><span class="dt">&gt;</span>Enviar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validar</span>() {</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> nom <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;nom&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (nom <span class="op">===</span> <span class="st">&quot;&quot;</span>) {</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;nomErr&#39;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&#39;Camp requerit&#39;</span><span class="op">;</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">&quot;#&quot;</span><span class="ot"> onsubmit</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Nom<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nom&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;error&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;nomErr&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick</span><span class="op">=</span><span class="st">&quot;validar()&quot;</span><span class="dt">&gt;</span>Enviar<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validar</span>() {</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> nom <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;nom&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (nom <span class="op">===</span> <span class="st">&quot;&quot;</span>) {</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;nomErr&#39;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&#39;Camp requerit&#39;</span><span class="op">;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
             <p>En aquest exemple estariem mostrant l’error dins del
             <code>span</code> amb <code>id</code> <em>“nomErr”</em>. La
             classe <em>“error”</em> ens servirà per a assignar un estil
@@ -188,13 +302,13 @@ class="toc-section-number">1.4</span> Validació avançada</a></li>
             eliminar els espais a l’inici i al final de una cadena.
             Així, si un usuari escriu només espais en blanc en un camp
             d’un formulari, els podem eliminar:</p>
-            <div class="sourceCode" id="cb4"><pre
-            class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> camp <span class="op">=</span> <span class="st">&#39;   &#39;</span><span class="op">;</span> <span class="co">// Només espais</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(camp <span class="op">===</span> <span class="st">&#39;&#39;</span>)<span class="op">;</span> <span class="co">// false</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>camp <span class="op">=</span> camp<span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(camp <span class="op">===</span> <span class="st">&#39;&#39;</span>)<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
-            <h2 data-number="1.2" id="validació-de-tipus"><span
-            class="header-section-number">1.2</span> Validació de
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> camp <span class="op">=</span> <span class="st">&#39;   &#39;</span><span class="op">;</span> <span class="co">// Només espais</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(camp <span class="op">===</span> <span class="st">&#39;&#39;</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>camp <span class="op">=</span> camp<span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(camp <span class="op">===</span> <span class="st">&#39;&#39;</span>)<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+            <h2 data-number="2.2" id="validació-de-tipus"><span
+            class="header-section-number">2.2</span> Validació de
             tipus</h2>
             <p>Podem utilitzar la funció
             <strong><code>isNan()</code></strong> per a saber si un
@@ -203,56 +317,56 @@ class="toc-section-number">1.4</span> Validació avançada</a></li>
             converteix el valor a nombre i després comprova si el
             resultat és <strong><code>NaN</code></strong> (Not a
             number):</p>
-            <div class="sourceCode" id="cb5"><pre
-            class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;Hola&#39;</span>))<span class="op">;</span> <span class="co">// true</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;5&#39;</span>))<span class="op">;</span> <span class="co">// false</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;5.4&#39;</span>))<span class="op">;</span> <span class="co">// false</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;5,4&#39;</span>))<span class="op">;</span> <span class="co">// true, la conversió falla per la coma</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;&#39;</span>))<span class="op">;</span> <span class="co">// false!!, el valor de la conversió és 0</span></span></code></pre></div>
-            <h2 data-number="1.3"
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;Hola&#39;</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;5&#39;</span>))<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;5.4&#39;</span>))<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;5,4&#39;</span>))<span class="op">;</span> <span class="co">// true, la conversió falla per la coma</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="pp">isNaN</span>(<span class="st">&#39;&#39;</span>))<span class="op">;</span> <span class="co">// false!!, el valor de la conversió és 0</span></span></code></pre></div>
+            <h2 data-number="2.3"
             id="validacions-de-rangs-i-longituds"><span
-            class="header-section-number">1.3</span> Validacions de
+            class="header-section-number">2.3</span> Validacions de
             rangs i longituds</h2>
             <p>Podem validar que la cadena llegida tinga una longitud
             mínima o màxima usant la propietat
             <strong><code>length</code></strong> dels strings:</p>
-            <div class="sourceCode" id="cb6"><pre
-            class="sourceCode js"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;hola&#39;</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 4</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;&#39;</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 0</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;  hola  &#39;</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 8, compte amb els espais en blanc!</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;  hola  &#39;</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 4</span></span></code></pre></div>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;hola&#39;</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 4</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;&#39;</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 0</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;  hola  &#39;</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 8, compte amb els espais en blanc!</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;  hola  &#39;</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 4</span></span></code></pre></div>
             <p>Com podem veure, és convenient usar
             <strong><code>trim()</code></strong> per a eliminar espais a
             l’inici i al final.</p>
             <p>En el cas de <strong>valors numèrics</strong>, podem
             comprovar fàcilment que estiguen entre un valor mínim i
             màxim:</p>
-            <div class="sourceCode" id="cb7"><pre
-            class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="bu">Number</span>(valor) <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">||</span> <span class="bu">Number</span>(valor) <span class="op">&gt;</span> <span class="dv">15</span>) {</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;El valor ha d&#39;estar entre 0 i 15&quot;</span>)<span class="op">;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Valor correcte&quot;</span>)<span class="op">;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="bu">Number</span>(valor) <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">||</span> <span class="bu">Number</span>(valor) <span class="op">&gt;</span> <span class="dv">15</span>) {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;El valor ha d&#39;estar entre 0 i 15&quot;</span>)<span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Valor correcte&quot;</span>)<span class="op">;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
             <p>Recordem que és convenient fer abans la comprovació
             numèrica i convertir els strings a valors numèrics.</p>
             <p>En el cas de les <strong>dates</strong>, podem
             comparar-les directament si tenim en compte que tenen el
             format <strong><code>yyyy-mm-dd</code></strong> i que són
             strings:</p>
-            <div class="sourceCode" id="cb8"><pre
-            class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dataActual <span class="op">=</span> <span class="st">&#39;2023-04-19&#39;</span><span class="op">;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dataLlegida <span class="op">=</span> <span class="st">&#39;2021-01-01&#39;</span><span class="op">;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (dataLlegida <span class="op">===</span> dataActual)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;La data llegida correspon a hui&#39;</span>)<span class="op">;</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (dataLlegida <span class="op">&lt;</span> dataActual)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;La data llegida és anterior a la data actual&#39;</span>)<span class="op">;</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (dataLlegida <span class="op">&gt;</span> dataActual)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;La data llegida és posterior a la data actual&#39;</span>)<span class="op">;</span></span></code></pre></div>
-            <h2 data-number="1.4" id="validació-avançada"><span
-            class="header-section-number">1.4</span> Validació
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dataActual <span class="op">=</span> <span class="st">&#39;2023-04-19&#39;</span><span class="op">;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dataLlegida <span class="op">=</span> <span class="st">&#39;2021-01-01&#39;</span><span class="op">;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (dataLlegida <span class="op">===</span> dataActual)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;La data llegida correspon a hui&#39;</span>)<span class="op">;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (dataLlegida <span class="op">&lt;</span> dataActual)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;La data llegida és anterior a la data actual&#39;</span>)<span class="op">;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (dataLlegida <span class="op">&gt;</span> dataActual)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;La data llegida és posterior a la data actual&#39;</span>)<span class="op">;</span></span></code></pre></div>
+            <h2 data-number="2.4" id="validació-avançada"><span
+            class="header-section-number">2.4</span> Validació
             avançada</h2>
             <p>Podem fer fer una validació més acurada utilitzant
             expressions regulars i els mètodes
@@ -260,18 +374,18 @@ class="toc-section-number">1.4</span> Validació avançada</a></li>
             <strong><code>match()</code></strong>. Per exemple,
             <code>test()</code> retorna <code>true</code> si l’expressió
             regular es troba a la cadena passada com a argument:</p>
-            <div class="sourceCode" id="cb9"><pre
-            class="sourceCode js"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>expressioRegular<span class="op">.</span><span class="fu">test</span>(cadena)</span></code></pre></div>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>expressioRegular<span class="op">.</span><span class="fu">test</span>(cadena)</span></code></pre></div>
             <p>Per exemple, tenim l’espressió regular
             <code>/^\d*$/</code> que correspon amb una cadena que té
             només dígits, sense altres caracters i una cadena llegida en
             la variable <em><code>valor</code></em>:</p>
-            <div class="sourceCode" id="cb10"><pre
-            class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> ( <span class="ss">/</span><span class="sc">^\d*$</span><span class="ss">/</span><span class="op">.</span><span class="fu">test</span>(valor) ) {</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;El valor llegit és un número&#39;</span>)<span class="op">;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;El valor llegit NO és un número&#39;</span>)<span class="op">;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <div class="sourceCode" id="cb20"><pre
+            class="sourceCode js"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> ( <span class="ss">/</span><span class="sc">^\d*$</span><span class="ss">/</span><span class="op">.</span><span class="fu">test</span>(valor) ) {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;El valor llegit és un número&#39;</span>)<span class="op">;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;El valor llegit NO és un número&#39;</span>)<span class="op">;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
         </main>
         
 

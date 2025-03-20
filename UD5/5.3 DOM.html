@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />        <title>UD 5.3 DOM</title>
+    <style>
+        code{white-space: pre-wrap;}
+        span.smallcaps{font-variant: small-caps;}
+        div.columns{display: flex; gap: min(4vw, 1.5em);}
+        div.column{flex: auto; overflow-x: auto;}
+        div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+        /* The extra [class] is a hack that increases specificity enough to
+           override a similar rule in reveal.js */
+        ul.task-list[class]{list-style: none;}
+        ul.task-list li input[type="checkbox"] {
+          font-size: inherit;
+          width: 0.8em;
+          margin: 0 0.8em 0.2em -1.6em;
+          vertical-align: middle;
+        }
+        .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        /* CSS for syntax highlighting */
+        html { -webkit-text-size-adjust: 100%; }
+        pre > code.sourceCode { white-space: pre; position: relative; }
+        pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+        pre > code.sourceCode > span:empty { height: 1.2em; }
+        .sourceCode { overflow: visible; }
+        code.sourceCode > span { color: inherit; text-decoration: inherit; }
+        div.sourceCode { margin: 1em 0; }
+        pre.sourceCode { margin: 0; }
+        @media screen {
+        div.sourceCode { overflow: auto; }
+        }
+        @media print {
+        pre > code.sourceCode { white-space: pre-wrap; }
+        pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+        }
+        pre.numberSource code
+          { counter-reset: source-line 0; }
+        pre.numberSource code > span
+          { position: relative; left: -4em; counter-increment: source-line; }
+        pre.numberSource code > span > a:first-child::before
+          { content: counter(source-line);
+            position: relative; left: -1em; text-align: right; vertical-align: baseline;
+            border: none; display: inline-block;
+            -webkit-touch-callout: none; -webkit-user-select: none;
+            -khtml-user-select: none; -moz-user-select: none;
+            -ms-user-select: none; user-select: none;
+            padding: 0 4px; width: 4em;
+            color: #aaaaaa;
+          }
+        pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+        div.sourceCode
+          {  background-color: #f8f8f8; }
+        @media screen {
+        pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+        }
+        code span.al { color: #ef2929; } /* Alert */
+        code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+        code span.at { color: #204a87; } /* Attribute */
+        code span.bn { color: #0000cf; } /* BaseN */
+        code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+        code span.ch { color: #4e9a06; } /* Char */
+        code span.cn { color: #8f5902; } /* Constant */
+        code span.co { color: #8f5902; font-style: italic; } /* Comment */
+        code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+        code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+        code span.dt { color: #204a87; } /* DataType */
+        code span.dv { color: #0000cf; } /* DecVal */
+        code span.er { color: #a40000; font-weight: bold; } /* Error */
+        code span.ex { } /* Extension */
+        code span.fl { color: #0000cf; } /* Float */
+        code span.fu { color: #204a87; font-weight: bold; } /* Function */
+        code span.im { } /* Import */
+        code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+        code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+        code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+        code span.ot { color: #8f5902; } /* Other */
+        code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+        code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+        code span.ss { color: #4e9a06; } /* SpecialString */
+        code span.st { color: #4e9a06; } /* String */
+        code span.va { color: #000000; } /* Variable */
+        code span.vs { color: #4e9a06; } /* VerbatimString */
+        code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+        <link rel="stylesheet" href="../web_template/aqua.css" />  
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+      
+</head>
+
+<body>
+    <div id="content">
+                 <header id="title-block-header">
+            <h1 class="title">UD 5.3 DOM</h1>
+            <!---->
+            <!--  -->
+                    </header>
+                 <nav id="TOC" role="doc-toc">
+            <div class="navContainer">
+                 <ul>
+<li><a href="#dom-document-object-model"
+id="toc-dom-document-object-model"><span
+class="toc-section-number">1</span> DOM (Document Object Model)</a>
+<ul>
+<li><a href="#lestructura-del-dom" id="toc-lestructura-del-dom"><span
+class="toc-section-number">1.1</span> L’estructura del DOM</a>
+<ul>
+<li><a href="#correcció-automàtica-del-dom"
+id="toc-correcció-automàtica-del-dom"><span
+class="toc-section-number">1.1.1</span> Correcció automàtica del
+DOM</a></li>
+<li><a href="#exploració-del-dom" id="toc-exploració-del-dom"><span
+class="toc-section-number">1.1.2</span> Exploració del DOM</a></li>
+</ul></li>
+<li><a href="#navegació-pel-dom" id="toc-navegació-pel-dom"><span
+class="toc-section-number">1.2</span> Navegació pel DOM</a>
+<ul>
+<li><a href="#accés-als-elements-principals-del-document"
+id="toc-accés-als-elements-principals-del-document"><span
+class="toc-section-number">1.2.1</span> Accés als elements principals
+del document</a></li>
+<li><a href="#propietats-per-accedir-als-nodes-fills"
+id="toc-propietats-per-accedir-als-nodes-fills"><span
+class="toc-section-number">1.2.2</span> Propietats per accedir als nodes
+fills</a></li>
+<li><a href="#propietats-per-accedir-als-nodes-pare"
+id="toc-propietats-per-accedir-als-nodes-pare"><span
+class="toc-section-number">1.2.3</span> Propietats per accedir als nodes
+pare</a></li>
+<li><a href="#propietats-per-accedir-als-nodes-germans"
+id="toc-propietats-per-accedir-als-nodes-germans"><span
+class="toc-section-number">1.2.4</span> Propietats per accedir als nodes
+germans</a></li>
+<li><a href="#propietats-específiques-per-a-elements"
+id="toc-propietats-específiques-per-a-elements"><span
+class="toc-section-number">1.2.5</span> Propietats específiques per a
+elements</a></li>
+</ul></li>
+<li><a href="#cerca-delements" id="toc-cerca-delements"><span
+class="toc-section-number">1.3</span> Cerca d’elements</a>
+<ul>
+<li><a href="#document.getelementbyidid"
+id="toc-document.getelementbyidid"><span
+class="toc-section-number">1.3.1</span>
+<code>document.getElementById(id)</code></a></li>
+<li><a href="#elem.queryselectorallcss"
+id="toc-elem.queryselectorallcss"><span
+class="toc-section-number">1.3.2</span>
+<code>elem.querySelectorAll(css)</code></a></li>
+<li><a href="#elem.queryselectorcss"
+id="toc-elem.queryselectorcss"><span
+class="toc-section-number">1.3.3</span>
+<code>elem.querySelector(css)</code></a></li>
+<li><a href="#elem.matchescss" id="toc-elem.matchescss"><span
+class="toc-section-number">1.3.4</span>
+<code>elem.matches(css)</code></a></li>
+<li><a href="#elem.getelementsbytagnametag"
+id="toc-elem.getelementsbytagnametag"><span
+class="toc-section-number">1.3.5</span>
+<code>elem.getElementsByTagName(tag)</code></a></li>
+<li><a href="#elem.getelementsbyclassnameclassname"
+id="toc-elem.getelementsbyclassnameclassname"><span
+class="toc-section-number">1.3.6</span>
+<code>elem.getElementsByClassName(className)</code></a></li>
+<li><a href="#document.getelementsbynamename"
+id="toc-document.getelementsbynamename"><span
+class="toc-section-number">1.3.7</span>
+<code>document.getElementsByName(name)</code></a></li>
+<li><a href="#resum" id="toc-resum"><span
+class="toc-section-number">1.3.8</span> Resum</a></li>
+<li><a href="#observacions" id="toc-observacions"><span
+class="toc-section-number">1.3.9</span> Observacions:</a></li>
+</ul></li>
+<li><a href="#propietats-del-node" id="toc-propietats-del-node"><span
+class="toc-section-number">1.4</span> Propietats del node</a>
+<ul>
+<li><a href="#innerhtml" id="toc-innerhtml"><span
+class="toc-section-number">1.4.1</span> <code>innerHTML</code></a></li>
+<li><a href="#outerhtml" id="toc-outerhtml"><span
+class="toc-section-number">1.4.2</span> <code>outerHTML</code></a></li>
+<li><a href="#data-per-a-nodes-de-text-i-comentaris"
+id="toc-data-per-a-nodes-de-text-i-comentaris"><span
+class="toc-section-number">1.4.3</span> <code>data</code> (per a nodes
+de text i comentaris)</a></li>
+<li><a href="#textcontent" id="toc-textcontent"><span
+class="toc-section-number">1.4.4</span>
+<code>textContent</code></a></li>
+<li><a href="#hidden" id="toc-hidden"><span
+class="toc-section-number">1.4.5</span> <code>hidden</code></a></li>
+<li><a href="#value" id="toc-value"><span
+class="toc-section-number">1.4.6</span> <code>value</code></a></li>
+</ul></li>
+<li><a href="#modificació-del-dom" id="toc-modificació-del-dom"><span
+class="toc-section-number">1.5</span> Modificació del DOM</a>
+<ul>
+<li><a href="#document.createelementtagname"
+id="toc-document.createelementtagname"><span
+class="toc-section-number">1.5.1</span>
+<code>document.createElement(tagName)</code></a></li>
+<li><a href="#append...nodesordomstrings"
+id="toc-append...nodesordomstrings"><span
+class="toc-section-number">1.5.2</span>
+<code>append(...nodesOrDOMStrings)</code></a></li>
+<li><a href="#prepend...nodesordomstrings"
+id="toc-prepend...nodesordomstrings"><span
+class="toc-section-number">1.5.3</span>
+<code>prepend(...nodesOrDOMStrings)</code></a></li>
+<li><a href="#after...nodesordomstrings"
+id="toc-after...nodesordomstrings"><span
+class="toc-section-number">1.5.4</span>
+<code>after(...nodesOrDOMStrings)</code></a></li>
+<li><a href="#before...nodesordomstrings"
+id="toc-before...nodesordomstrings"><span
+class="toc-section-number">1.5.5</span>
+<code>before(...nodesOrDOMStrings)</code></a></li>
+<li><a href="#replacewith...nodesordomstrings"
+id="toc-replacewith...nodesordomstrings"><span
+class="toc-section-number">1.5.6</span>
+<code>replaceWith(...nodesOrDOMStrings)</code></a></li>
+<li><a href="#clonenodedeep" id="toc-clonenodedeep"><span
+class="toc-section-number">1.5.7</span>
+<code>cloneNode(deep)</code></a></li>
+<li><a href="#remove" id="toc-remove"><span
+class="toc-section-number">1.5.8</span> <code>remove()</code></a></li>
+<li><a href="#mètodes-de-la-vella-escola"
+id="toc-mètodes-de-la-vella-escola"><span
+class="toc-section-number">1.5.9</span> Mètodes de la “vella
+escola”</a></li>
+</ul></li>
+<li><a href="#modificant-estils" id="toc-modificant-estils"><span
+class="toc-section-number">1.6</span> Modificant estils</a>
+<ul>
+<li><a href="#style" id="toc-style"><span
+class="toc-section-number">1.6.1</span> <code>style</code></a></li>
+<li><a href="#característiques-de-style"
+id="toc-característiques-de-style"><span
+class="toc-section-number">1.6.2</span> Característiques de
+<code>style</code>:</a></li>
+<li><a href="#classname" id="toc-classname"><span
+class="toc-section-number">1.6.3</span> <code>className</code></a></li>
+<li><a href="#característiques-de-classname"
+id="toc-característiques-de-classname"><span
+class="toc-section-number">1.6.4</span> Característiques de
+<code>className</code>:</a></li>
+<li><a href="#classlist" id="toc-classlist"><span
+class="toc-section-number">1.6.5</span> <code>classList</code></a></li>
+<li><a href="#mètodes-de-classlist" id="toc-mètodes-de-classlist"><span
+class="toc-section-number">1.6.6</span> Mètodes de
+<code>classList</code>:</a></li>
+<li><a href="#característiques-de-classlist"
+id="toc-característiques-de-classlist"><span
+class="toc-section-number">1.6.7</span> Característiques de
+<code>classList</code>:</a></li>
+<li><a href="#combinació-de-classlist-i-style"
+id="toc-combinació-de-classlist-i-style"><span
+class="toc-section-number">1.6.8</span> Combinació de
+<code>classList</code> i <code>style</code></a></li>
+</ul></li>
+<li><a href="#referències" id="toc-referències"><span
+class="toc-section-number">1.7</span> Referències:</a></li>
+</ul></li>
+</ul>
+            </div>
+        </nav>
+                <main>
+            <h1 data-number="1" id="dom-document-object-model"><span
+            class="header-section-number">1</span> DOM (Document Object
+            Model)</h1>
+            <p>El navegador representa internament un document HTML
+            mitjançant una estructura jeràrquica anomenada <strong>DOM
+            (Document Object Model)</strong>. Aquesta estructura
+            converteix cada etiqueta HTML en <strong>nodes
+            d’element</strong>, i el contingut dins de les etiquetes en
+            <strong>nodes de text</strong>, fent que la pàgina web siga
+            accessible i manipulable mitjançant
+            <strong>JavaScript</strong>.</p>
+            <h2 data-number="1.1" id="lestructura-del-dom"><span
+            class="header-section-number">1.1</span> L’estructura del
+            DOM</h2>
+            <p>Quan un navegador carrega un document HTML, el converteix
+            en un arbre de nodes. Per exemple, si tenim aquest HTML:</p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>My Document<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Header<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Paragraph<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p>L’estructura del DOM resultant serà:</p>
+            <figure>
+            <img src="images/using_the_w3c_dom_level_1_core-doctree.jpg"
+            alt="Arbre del document" />
+            <figcaption aria-hidden="true">Arbre del
+            document</figcaption>
+            </figure>
+            <p>Cada element del document es representa com un
+            <strong>node</strong> en aquest arbre.</p>
+            <p>El DOM conté diferents <strong>tipus de nodes</strong>,
+            cadascun amb les seues pròpies propietats i funcions:</p>
+            <ol type="1">
+            <li><strong>Node d’element
+            (<code>element node</code>)</strong>
+            <ul>
+            <li>Representa una etiqueta HTML (<code>&lt;div&gt;</code>,
+            <code>&lt;p&gt;</code>, <code>&lt;span&gt;</code>,
+            etc.).</li>
+            <li>Conté altres nodes com a fills (altres elements o
+            text).</li>
+            </ul></li>
+            <li><strong>Node de text (<code>text node</code>)</strong>
+            <ul>
+            <li>Conté únicament text.</li>
+            <li>No pot tindre fills, només representa el text dins d’un
+            element.</li>
+            </ul></li>
+            <li><strong>Node de comentari
+            (<code>comment node</code>)</strong>
+            <ul>
+            <li>Representa un comentari HTML.</li>
+            <li>No afecta la representació visual de la pàgina.</li>
+            </ul></li>
+            <li><strong>Node d’atribut
+            (<code>attribute node</code>)</strong>
+            <ul>
+            <li>Representa atributs HTML (<code>class</code>,
+            <code>id</code>, <code>src</code>, etc.).</li>
+            <li>No es considera part de l’arbre principal, sinó com a
+            propietats dels nodes d’element.</li>
+            </ul></li>
+            </ol>
+            <h3 data-number="1.1.1"
+            id="correcció-automàtica-del-dom"><span
+            class="header-section-number">1.1.1</span> Correcció
+            automàtica del DOM</h3>
+            <p>Els navegadors poden corregir errors en l’HTML en crear
+            el DOM. Per exemple:</p>
+            <ul>
+            <li>Si falta la etiqueta <code>&lt;tbody&gt;</code> en una
+            taula, el navegador l’afegirà automàticament.</li>
+            <li>Si una etiqueta no es tanca correctament
+            (<code>&lt;p&gt;Text</code> sense <code>&lt;/p&gt;</code>),
+            el navegador intentarà corregir-ho.</li>
+            </ul>
+            <p>Aquest comportament pot causar diferències entre el codi
+            HTML original i l’estructura final del DOM.</p>
+            <h3 data-number="1.1.2" id="exploració-del-dom"><span
+            class="header-section-number">1.1.2</span> Exploració del
+            DOM</h3>
+            <p>Els navegadors ofereixen eines de desenvolupador per
+            explorar i modificar el DOM en temps real. Per
+            accedir-hi:</p>
+            <ol type="1">
+            <li><strong>Obrir la consola de desenvolupador</strong>
+            (<code>F12</code> o <code>Ctrl + Shift + I</code> en
+            Chrome/Firefox).</li>
+            <li><strong>Usar <code>document</code> o
+            <code>inspector</code> a la consola</strong> per veure
+            l’estructura de la pàgina.</li>
+            <li><strong>Modificar elements en temps real</strong>
+            canviant els estils i continguts de la pàgina.</li>
+            </ol>
+            <h2 data-number="1.2" id="navegació-pel-dom"><span
+            class="header-section-number">1.2</span> Navegació pel
+            DOM</h2>
+            <p>La navegació pel DOM (Document Object Model) és
+            fonamental per manipular i accedir als elements d’una pàgina
+            web mitjançant JavaScript. A continuació, es detallen les
+            principals propietats i mètodes utilitzats per desplaçar-se
+            per l’estructura del DOM</p>
+            <h3 data-number="1.2.1"
+            id="accés-als-elements-principals-del-document"><span
+            class="header-section-number">1.2.1</span> Accés als
+            elements principals del document</h3>
+            <ul>
+            <li><p><strong><code>document.documentElement</code></strong>:
+            Representa l’element <code>&lt;html&gt;</code> del
+            document.</p></li>
+            <li><p><strong><code>document.body</code></strong>: Accedeix
+            a l’element <code>&lt;body&gt;</code>.</p></li>
+            <li><p><strong><code>document.head</code></strong>: Accedeix
+            a l’element <code>&lt;head&gt;</code>.</p></li>
+            </ul>
+            <p>És important destacar que, si el script s’executa abans
+            que el navegador haja carregat completament l’element
+            <code>&lt;body&gt;</code>, <code>document.body</code> pot
+            retornar <code>null</code>. Això succeirà si l’script es
+            troba en el <code>&lt;head&gt;</code>.</p>
+            <h3 data-number="1.2.2"
+            id="propietats-per-accedir-als-nodes-fills"><span
+            class="header-section-number">1.2.2</span> Propietats per
+            accedir als nodes fills</h3>
+            <ul>
+            <li><p><strong><code>childNodes</code></strong>: Retorna una
+            col·lecció de tots els nodes fills, incloent-hi els nodes de
+            text.</p></li>
+            <li><p><strong><code>firstChild</code></strong>: Accedeix al
+            primer node fill.</p></li>
+            <li><p><strong><code>lastChild</code></strong>: Accedeix a
+            l’últim node fill.</p></li>
+            </ul>
+            <p>Per exemple, per iterar sobre tots els fills de
+            <code>document.body</code>:</p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">childNodes</span><span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="at">childNodes</span>[i])<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+            <h3 data-number="1.2.3"
+            id="propietats-per-accedir-als-nodes-pare"><span
+            class="header-section-number">1.2.3</span> Propietats per
+            accedir als nodes pare</h3>
+            <ul>
+            <li><strong><code>parentNode</code></strong>: Retorna el
+            node pare immediat.</li>
+            </ul>
+            <p>Per exemple, per obtenir el pare d’un element:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;li&#39;</span>)<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(element<span class="op">.</span><span class="at">parentNode</span>)<span class="op">;</span> <span class="co">// Mostra l&#39;element &lt;ul&gt;</span></span></code></pre></div>
+            <h3 data-number="1.2.4"
+            id="propietats-per-accedir-als-nodes-germans"><span
+            class="header-section-number">1.2.4</span> Propietats per
+            accedir als nodes germans</h3>
+            <ul>
+            <li><p><strong><code>previousSibling</code></strong>:
+            Accedeix al node germà anterior.</p></li>
+            <li><p><strong><code>nextSibling</code></strong>: Accedeix
+            al node germà següent.</p></li>
+            </ul>
+            <p>Per exemple, per obtenir el germà següent d’un
+            element:</p>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;li&#39;</span>)<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(element<span class="op">.</span><span class="at">nextSibling</span>)<span class="op">;</span> <span class="co">// Pot retornar un node de text o un element</span></span></code></pre></div>
+            <h3 data-number="1.2.5"
+            id="propietats-específiques-per-a-elements"><span
+            class="header-section-number">1.2.5</span> Propietats
+            específiques per a elements</h3>
+            <p>Les propietats esmentades anteriorment consideren tots
+            els nodes, incloent-hi els nodes de text. Per treballar
+            exclusivament amb elements HTML, s’utilitzen les següents
+            propietats:</p>
+            <ul>
+            <li><p><strong><code>children</code></strong>: Retorna una
+            col·lecció HTML dels elements fills.</p></li>
+            <li><p><strong><code>firstElementChild</code></strong>:
+            Accedeix al primer element fill.</p></li>
+            <li><p><strong><code>lastElementChild</code></strong>:
+            Accedeix a l’últim element fill.</p></li>
+            <li><p><strong><code>parentElement</code></strong>: Retorna
+            l’element pare.</p></li>
+            <li><p><strong><code>previousElementSibling</code></strong>:
+            Accedeix a l’element germà anterior.</p></li>
+            <li><p><strong><code>nextElementSibling</code></strong>:
+            Accedeix a l’element germà següent.</p></li>
+            </ul>
+            <p>Aquestes propietats són útils per evitar nodes de text
+            innecessaris en la navegació del DOM.</p>
+            <h2 data-number="1.3" id="cerca-delements"><span
+            class="header-section-number">1.3</span> Cerca
+            d’elements</h2>
+            <p>A continuació, es presenten els principals mètodes per
+            buscar elements dins del DOM:</p>
+            <h3 data-number="1.3.1" id="document.getelementbyidid"><span
+            class="header-section-number">1.3.1</span>
+            <code>document.getElementById(id)</code></h3>
+            <p>Aquest mètode retorna l’element amb l’atribut
+            <code>id</code> especificat. És important que
+            l’<code>id</code> siga únic dins del document; en cas
+            contrari, el comportament pot ser imprevisible.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;element&quot;</span><span class="dt">&gt;</span>Contingut<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> elem <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;element&#39;</span>)<span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  elem<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">background</span> <span class="op">=</span> <span class="st">&#39;yellow&#39;</span><span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.3.2" id="elem.queryselectorallcss"><span
+            class="header-section-number">1.3.2</span>
+            <code>elem.querySelectorAll(css)</code></h3>
+            <p>Retorna tots els elements dins de <code>elem</code> que
+            coincideixen amb el selector CSS proporcionat. Aquest mètode
+            és molt versàtil, ja que permet utilitzar qualsevol selector
+            CSS, incloent pseudoclases com <code>:hover</code> i
+            <code>:active</code>.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Element 1<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Element 2<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Element 3<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Element 4<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> elements <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&#39;ul &gt; li:last-child&#39;</span>)<span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  elements<span class="op">.</span><span class="fu">forEach</span>(elem <span class="kw">=&gt;</span> {</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(elem<span class="op">.</span><span class="at">innerHTML</span>)<span class="op">;</span> <span class="co">// &quot;Element 2&quot;, &quot;Element 4&quot;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.3.3" id="elem.queryselectorcss"><span
+            class="header-section-number">1.3.3</span>
+            <code>elem.querySelector(css)</code></h3>
+            <p>Similar a <code>querySelectorAll</code>, però retorna
+            només el primer element que coincideix amb el selector CSS
+            especificat. És més eficient quan només es necessita un únic
+            element.</p>
+            <p>Per exemple <code>document.querySelector('#menu')</code>
+            és equivalent a
+            <code>document.getElementById('menu')</code>.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb7"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;contenidor&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Paràgraf 1<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Paràgraf 2<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> parrafo <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;.contenidor p&#39;</span>)<span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(parrafo<span class="op">.</span><span class="at">innerHTML</span>)<span class="op">;</span> <span class="co">// &quot;Paràgraf 1&quot;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.3.4" id="elem.matchescss"><span
+            class="header-section-number">1.3.4</span>
+            <code>elem.matches(css)</code></h3>
+            <p>Aquest mètode verifica si l’element <code>elem</code>
+            coincideix amb el selector CSS proporcionat, retornant
+            <code>true</code> o <code>false</code>. És útil per a
+            filtres durant la iteració d’elements.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb8"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;archivo.zip&quot;</span><span class="dt">&gt;</span>Descarregar arxiu<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;pagina.html&quot;</span><span class="dt">&gt;</span>Anar a la pàgina<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&#39;a&#39;</span>)<span class="op">.</span><span class="fu">forEach</span>(link <span class="kw">=&gt;</span> {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (link<span class="op">.</span><span class="fu">matches</span>(<span class="st">&#39;a[href$=&quot;.zip&quot;]&#39;</span>)) {</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Enllaç a arxiu ZIP: &quot;</span> <span class="op">+</span> link<span class="op">.</span><span class="at">href</span>)<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.3.5"
+            id="elem.getelementsbytagnametag"><span
+            class="header-section-number">1.3.5</span>
+            <code>elem.getElementsByTagName(tag)</code></h3>
+            <p>Retorna una col·lecció d’elements amb el nom de
+            l’etiqueta especificada. Aquest mètode és viu, és a dir, la
+            col·lecció s’actualitza automàticament si es modifiquen els
+            elements del DOM.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb9"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Paràgraf 1<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Paràgraf 2<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> parrafos <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementsByTagName</span>(<span class="st">&#39;p&#39;</span>)<span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(parrafos<span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 2</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.3.6"
+            id="elem.getelementsbyclassnameclassname"><span
+            class="header-section-number">1.3.6</span>
+            <code>elem.getElementsByClassName(className)</code></h3>
+            <p>Retorna una col·lecció d’elements que tenen la classe CSS
+            especificada. També és una col·lecció viva.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb10"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;caixa&quot;</span><span class="dt">&gt;</span>Caixa 1<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;caixa&quot;</span><span class="dt">&gt;</span>Caixa 2<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> caixes <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementsByClassName</span>(<span class="st">&#39;caixa&#39;</span>)<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(caixes<span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 2</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.3.7"
+            id="document.getelementsbynamename"><span
+            class="header-section-number">1.3.7</span>
+            <code>document.getElementsByName(name)</code></h3>
+            <p>Retorna una col·lecció d’elements amb l’atribut
+            <code>name</code> especificat. S’utilitza principalment per
+            a formularis.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb11"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;usuari&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;email&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inputs <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementsByName</span>(<span class="st">&#39;usuari&#39;</span>)<span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(inputs<span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 1</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.3.8" id="resum"><span
+            class="header-section-number">1.3.8</span> Resum</h3>
+            <table>
+            <colgroup>
+            <col style="width: 24%" />
+            <col style="width: 36%" />
+            <col style="width: 19%" />
+            <col style="width: 19%" />
+            </colgroup>
+            <thead>
+            <tr class="header">
+            <th>Mètode</th>
+            <th>Descripció</th>
+            <th>Retorna un únic element?</th>
+            <th>Retorna una col·lecció?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td><code>querySelector(css)</code></td>
+            <td>Selecciona el <strong>primer</strong> element que
+            coincideix amb el selector CSS.</td>
+            <td>Sí</td>
+            <td>No</td>
+            </tr>
+            <tr class="even">
+            <td><code>querySelectorAll(css)</code></td>
+            <td>Selecciona <strong>tots</strong> els elements que
+            coincideixen amb el selector CSS.</td>
+            <td>No</td>
+            <td>Sí</td>
+            </tr>
+            <tr class="odd">
+            <td><code>getElementById(id)</code></td>
+            <td>Selecciona un element pel seu <code>id</code>.</td>
+            <td>Sí</td>
+            <td>No</td>
+            </tr>
+            <tr class="even">
+            <td><code>getElementsByTagName(tag)</code></td>
+            <td>Selecciona tots els elements per nom de l’etiqueta.</td>
+            <td>No</td>
+            <td>Sí</td>
+            </tr>
+            <tr class="odd">
+            <td><code>getElementsByClassName(class)</code></td>
+            <td>Selecciona tots els elements per classe CSS.</td>
+            <td>No</td>
+            <td>Sí</td>
+            </tr>
+            <tr class="even">
+            <td><code>getElementsByName(name)</code></td>
+            <td>Selecciona elements amb l’atribut
+            <code>name</code>.</td>
+            <td>No</td>
+            <td>Sí</td>
+            </tr>
+            </tbody>
+            </table>
+            <h3 data-number="1.3.9" id="observacions"><span
+            class="header-section-number">1.3.9</span>
+            Observacions:</h3>
+            <ul>
+            <li>Els mètodes <strong><code>getElementById</code></strong>
+            i <strong><code>querySelector</code></strong> retornen
+            <strong>un únic element</strong>.</li>
+            <li>Els mètodes
+            <strong><code>getElementsByTagName</code></strong>,
+            <strong><code>getElementsByClassName</code></strong>,
+            <strong><code>getElementsByName</code></strong> i
+            <strong><code>querySelectorAll</code></strong> retornen
+            <strong>una col·lecció</strong> d’elements.</li>
+            <li><strong><code>querySelectorAll</code></strong> retorna
+            un <strong>NodeList</strong>, mentre que els altres mètodes
+            que retornen col·leccions utilitzen una
+            <strong>HTMLCollection</strong> (que es pot modificar en
+            temps real si el DOM canvia).</li>
+            </ul>
+            <h2 data-number="1.4" id="propietats-del-node"><span
+            class="header-section-number">1.4</span> Propietats del
+            node</h2>
+            <p>En el Document Object Model (DOM), els elements HTML
+            posseeixen diverses propietats que permeten accedir i
+            modificar el seu contingut i atributs. A continuació, es
+            detallen les propietats
+            <strong><code>innerHTML</code></strong>,
+            <strong><code>outerHTML</code></strong>,
+            <strong><code>data</code></strong>,
+            <strong><code>textContent</code></strong>,
+            <strong><code>hidden</code></strong> i
+            <strong><code>value</code></strong>:</p>
+            <h3 data-number="1.4.1" id="innerhtml"><span
+            class="header-section-number">1.4.1</span>
+            <code>innerHTML</code></h3>
+            <p>La propietat <code>innerHTML</code> permet obtenir o
+            establir el contingut HTML d’un element com una cadena de
+            text. És útil per inserir o reemplaçar elements fills dins
+            d’un element existent.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb12"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;contenidor&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Paràgraf inicial<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Obtenir el contingut HTML</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;contenidor&#39;</span>)<span class="op">.</span><span class="at">innerHTML</span>)<span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Eixida: &lt;p&gt;Paràgraf inicial&lt;/p&gt;</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Establir un nou contingut HTML</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;contenidor&#39;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&#39;&lt;p&gt;Nou paràgraf&lt;/p&gt;&#39;</span><span class="op">;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p><strong>Consideracions:</strong></p>
+            <ul>
+            <li><p>Quan s’estableix <code>innerHTML</code>, el contingut
+            anterior de l’element es reemplaça.</p></li>
+            <li><p>Si s’insereixen etiquetes <code>&lt;script&gt;</code>
+            mitjançant <code>innerHTML</code>, aquestes no
+            s’executen.</p></li>
+            </ul>
+            <h3 data-number="1.4.2" id="outerhtml"><span
+            class="header-section-number">1.4.2</span>
+            <code>outerHTML</code></h3>
+            <p>La propietat <code>outerHTML</code> proporciona el codi
+            HTML complet de l’element, incloent-hi l’element mateix. A
+            diferència de <code>innerHTML</code>, modificar
+            <code>outerHTML</code> reemplaça l’element en si mateix en
+            el DOM.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb13"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;contenidor&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Paràgraf inicial<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;contenidor&#39;</span>)<span class="op">;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Obtenir l&#39;HTML complet de l&#39;element</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(element<span class="op">.</span><span class="at">outerHTML</span>)<span class="op">;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Eixida: &lt;div id=&quot;contenidor&quot;&gt;&lt;p&gt;Paràgraf inicial&lt;/p&gt;&lt;/div&gt;</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Reemplaçar l&#39;element per un altre</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  element<span class="op">.</span><span class="at">outerHTML</span> <span class="op">=</span> <span class="st">&#39;&lt;section id=&quot;nou-contenidor&quot;&gt;&lt;p&gt;Nou contingut&lt;/p&gt;&lt;/section&gt;&#39;</span><span class="op">;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">// L&#39;element &#39;element&#39; encara fa referència al vell &lt;div&gt;</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(element<span class="op">.</span><span class="at">innerHTML</span>)<span class="op">;</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Eixida: &lt;p&gt;Paràgraf inicial&lt;/p&gt;</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p><strong>Consideracions:</strong></p>
+            <ul>
+            <li>Després de reemplaçar un element amb
+            <code>outerHTML</code>, la referència a l’element antic
+            encara existeix, però ja no forma part del DOM.</li>
+            </ul>
+            <h3 data-number="1.4.3"
+            id="data-per-a-nodes-de-text-i-comentaris"><span
+            class="header-section-number">1.4.3</span> <code>data</code>
+            (per a nodes de text i comentaris)</h3>
+            <p>La propietat <code>data</code> s’utilitza per accedir o
+            modificar el contingut de nodes de text o comentaris.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb14"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;contenidor&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- Comentari inicial --&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  Text inicial</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;contenidor&#39;</span>)<span class="op">;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Accedir al node de text</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> textNode <span class="op">=</span> element<span class="op">.</span><span class="at">childNodes</span>[<span class="dv">1</span>]<span class="op">;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(textNode<span class="op">.</span><span class="at">data</span>)<span class="op">;</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Eixida: Text inicial</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Accedir al node de comentari</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> commentNode <span class="op">=</span> element<span class="op">.</span><span class="at">childNodes</span>[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(commentNode<span class="op">.</span><span class="at">data</span>)<span class="op">;</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Eixida: Comentari inicial</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h3 data-number="1.4.4" id="textcontent"><span
+            class="header-section-number">1.4.4</span>
+            <code>textContent</code></h3>
+            <p>La propietat <code>textContent</code> retorna o estableix
+            el text dins d’un element, excloent-hi qualsevol etiquetes
+            HTML. És útil per obtenir o establir el text sense format
+            d’un element.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb15"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;contenidor&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>Text en negreta<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span> i text normal.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;contenidor&#39;</span>)<span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Obtenir el text sense etiquetes</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(element<span class="op">.</span><span class="at">textContent</span>)<span class="op">;</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Eixida: Text en negreta i text normal.</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Establir un nou text</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  element<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;Nou text sense HTML.&#39;</span><span class="op">;</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(element<span class="op">.</span><span class="at">innerHTML</span>)<span class="op">;</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Eixida: Nou text sense HTML.</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p><strong>Consideracions:</strong></p>
+            <ul>
+            <li><p>A diferència de <code>innerHTML</code>,
+            <code>textContent</code> tracta tot el contingut com a text
+            pla, sense interpretar etiquetes HTML.</p></li>
+            <li><p>És una manera segura d’inserir text, ja que evita
+            l’execució de codi HTML o JavaScript potencialment
+            maliciós.</p></li>
+            </ul>
+            <h3 data-number="1.4.5" id="hidden"><span
+            class="header-section-number">1.4.5</span>
+            <code>hidden</code></h3>
+            <p>La propietat <code>hidden</code> és un atribut booleà que
+            indica si un element és visible o no. Quan es estableix a
+            <code>true</code>, l’element es comporta com si tingués
+            <code>display: none</code> en CSS.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb16"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;contenidor&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  Contingut visible</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;contenidor&#39;</span>)<span class="op">;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Amagar l&#39;element</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  element<span class="op">.</span><span class="at">hidden</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Mostrar l&#39;element després de 2 segons</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    element<span class="op">.</span><span class="at">hidden</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> <span class="dv">2000</span>)<span class="op">;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <p><strong>Consideracions:</strong></p>
+            <ul>
+            <li>És una manera senzilla de controlar la visibilitat d’un
+            element sense manipular directament els estils CSS.</li>
+            </ul>
+            <h3 data-number="1.4.6" id="value"><span
+            class="header-section-number">1.4.6</span>
+            <code>value</code></h3>
+            <p>La propietat <code>value</code> s’utilitza principalment
+            en elements de formulari com <code>&lt;input&gt;</code>,
+            <code>&lt;textarea&gt;</code> i <code>&lt;select&gt;</code>
+            per obtenir o establir el seu valor actual.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb17"><pre
+            class="sourceCode html"><code class="sourceCode html"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;camp&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;Valor inicial&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> inputElement <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;camp&#39;</span>)<span class="op">;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Obtenir el valor actual</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(inputElement<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Sortida: Valor inicial</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Establir un nou valor</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  inputElement<span class="op">.</span><span class="at">value</span> <span class="op">=</span> <span class="st">&#39;Nou valor&#39;</span><span class="op">;</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+            <h2 data-number="1.5" id="modificació-del-dom"><span
+            class="header-section-number">1.5</span> Modificació del
+            DOM</h2>
+            <p>La manipulació del Document Object Model (DOM) és
+            essencial per crear pàgines web dinàmiques i interactives. A
+            continuació, es presenten diverses funcions modernes per
+            crear, inserir, reemplaçar i eliminar elements del DOM.</p>
+            <h3 data-number="1.5.1"
+            id="document.createelementtagname"><span
+            class="header-section-number">1.5.1</span>
+            <code>document.createElement(tagName)</code></h3>
+            <p>Crea un nou element HTML amb el nom d’etiqueta
+            especificat.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb18"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Crear un nou element &lt;div&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> div <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;div&#39;</span>)<span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.5.2"
+            id="append...nodesordomstrings"><span
+            class="header-section-number">1.5.2</span>
+            <code>append(...nodesOrDOMStrings)</code></h3>
+            <p>Insereix un o més nodes o cadenes de text al final de
+            l’element. Si s’insereixen cadenes de text, es converteixen
+            en nodes de text.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb19"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> div <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;div&#39;</span>)<span class="op">;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>div<span class="op">.</span><span class="fu">append</span>(<span class="st">&#39;Hola, món!&#39;</span><span class="op">,</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;span&#39;</span>))<span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.5.3"
+            id="prepend...nodesordomstrings"><span
+            class="header-section-number">1.5.3</span>
+            <code>prepend(...nodesOrDOMStrings)</code></h3>
+            <p>Insereix un o més nodes o cadenes de text al principi de
+            l’element.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb20"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> ul <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;ul&#39;</span>)<span class="op">;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ul<span class="op">.</span><span class="fu">prepend</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;li&#39;</span>)<span class="op">,</span> <span class="st">&#39;Primer element&#39;</span>)<span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.5.4" id="after...nodesordomstrings"><span
+            class="header-section-number">1.5.4</span>
+            <code>after(...nodesOrDOMStrings)</code></h3>
+            <p>Insereix un o més nodes o cadenes de text immediatament
+            després de l’element en el mateix nivell jeràrquic.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb21"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> p <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;p&#39;</span>)<span class="op">;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>p<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;Paràgraf existent&#39;</span><span class="op">;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">append</span>(p)<span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>p<span class="op">.</span><span class="fu">after</span>(<span class="st">&#39;Text després del paràgraf&#39;</span><span class="op">,</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;hr&#39;</span>))<span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.5.5"
+            id="before...nodesordomstrings"><span
+            class="header-section-number">1.5.5</span>
+            <code>before(...nodesOrDOMStrings)</code></h3>
+            <p>Insereix un o més nodes o cadenes de text immediatament
+            abans de l’element en el mateix nivell jeràrquic.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb22"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> p <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;p&#39;</span>)<span class="op">;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>p<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;Paràgraf existent&#39;</span><span class="op">;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">append</span>(p)<span class="op">;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>p<span class="op">.</span><span class="fu">before</span>(<span class="st">&#39;Text abans del paràgraf&#39;</span><span class="op">,</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;hr&#39;</span>))<span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.5.6"
+            id="replacewith...nodesordomstrings"><span
+            class="header-section-number">1.5.6</span>
+            <code>replaceWith(...nodesOrDOMStrings)</code></h3>
+            <p>Reemplaça l’element pel conjunt de nodes o cadenes de
+            text especificats.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb23"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> oldElement <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;div&#39;</span>)<span class="op">;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>oldElement<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;Element antic&#39;</span><span class="op">;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">append</span>(oldElement)<span class="op">;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>oldElement<span class="op">.</span><span class="fu">replaceWith</span>(<span class="st">&#39;Element nou&#39;</span><span class="op">,</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;span&#39;</span>))<span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.5.7" id="clonenodedeep"><span
+            class="header-section-number">1.5.7</span>
+            <code>cloneNode(deep)</code></h3>
+            <p>Crea una còpia de l’element en què es crida. Si el
+            paràmetre <code>deep</code> és <code>true</code>, es clonen
+            també tots els seus descendents; si és <code>false</code>,
+            només es clona l’element en si.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb24"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> originalNode <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;div&#39;</span>)<span class="op">;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>originalNode<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;Original&#39;</span><span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> shallowClone <span class="op">=</span> originalNode<span class="op">.</span><span class="fu">cloneNode</span>(<span class="kw">false</span>)<span class="op">;</span> <span class="co">// Sense fills</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> deepClone <span class="op">=</span> originalNode<span class="op">.</span><span class="fu">cloneNode</span>(<span class="kw">true</span>)<span class="op">;</span> <span class="co">// Amb fills</span></span></code></pre></div>
+            <h3 data-number="1.5.8" id="remove"><span
+            class="header-section-number">1.5.8</span>
+            <code>remove()</code></h3>
+            <p>Elimina l’element del DOM.</p>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb25"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;p&#39;</span>)<span class="op">;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;Aquest paràgraf serà eliminat.&#39;</span><span class="op">;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">append</span>(element)<span class="op">;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="fu">remove</span>()<span class="op">;</span></span></code></pre></div>
+            <h3 data-number="1.5.9"
+            id="mètodes-de-la-vella-escola"><span
+            class="header-section-number">1.5.9</span> Mètodes de la
+            “vella escola”</h3>
+            <p>Abans de la introducció dels mètodes esmentats
+            anteriorment, s’utilitzaven altres mètodes per manipular el
+            DOM:</p>
+            <ul>
+            <li><p><strong><code>parentNode.insertBefore(newNode, referenceNode)</code></strong>:
+            Insereix <code>newNode</code> abans de
+            <code>referenceNode</code> com a fill de
+            <code>parentNode</code>.</p></li>
+            <li><p><strong><code>parentNode.replaceChild(newNode, oldNode)</code></strong>:
+            Reemplaça <code>oldNode</code> per <code>newNode</code> com
+            a fill de <code>parentNode</code>.</p></li>
+            <li><p><strong><code>parentNode.removeChild(childNode)</code></strong>:
+            Elimina <code>childNode</code> de
+            <code>parentNode</code>.</p></li>
+            <li><p><strong><code>document.write(html)</code></strong>:
+            Agrega HTML a la pàgina abans de terminar la càrrega. Si
+            s’executa quan s’ha carregat, esborra tot el contingut de la
+            pàgina.</p></li>
+            </ul>
+            <p>Aquests mètodes encara són vàlids i àmpliament
+            compatibles, però les funcions modernes proporcionen una
+            sintaxi més senzilla i llegible per a la manipulació del
+            DOM.</p>
+            <h2 data-number="1.6" id="modificant-estils"><span
+            class="header-section-number">1.6</span> Modificant
+            estils</h2>
+            <p>A continuació vorem com manipular els estils i les
+            classes d’elements HTML amb JavaScript. Expliquem el
+            funcionament de tres elements importants:
+            <strong><code>style</code></strong>,
+            <strong><code>className</code></strong> i
+            <strong><code>classList</code></strong>.</p>
+            <h3 data-number="1.6.1" id="style"><span
+            class="header-section-number">1.6.1</span>
+            <code>style</code></h3>
+            <p>El <strong><code>style</code></strong> és una propietat
+            que permet modificar els estils en línia d’un element HTML
+            mitjançant JavaScript. Aquesta propietat es tracta com un
+            objecte, on cada propietat correspon a una regla CSS. Per
+            exemple:</p>
+            <div class="sourceCode" id="cb26"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&quot;red&quot;</span><span class="op">;</span> <span class="co">// Canvia el color de fons a vermell</span></span></code></pre></div>
+            <h3 data-number="1.6.2" id="característiques-de-style"><span
+            class="header-section-number">1.6.2</span> Característiques
+            de <code>style</code>:</h3>
+            <ul>
+            <li>Modifica només els estils en línia, és a dir, els que
+            s’apliquen directament a l’element.</li>
+            <li>No permet afegir estils CSS complets (com els definits
+            en fulls d’estils externs).</li>
+            <li>S’utilitza per canvis dinàmics de l’estil d’un
+            element.</li>
+            <li>Pot ser útil quan es vol canviar de manera ràpida
+            l’estil d’un element (per exemple, al passar el ratolí per
+            sobre o durant animacions).</li>
+            <li>Els estils aplicats amb <code>style</code> tenen més
+            prioritat que els estils definits en fulls d’estils CSS,
+            però menys prioritat que els estils inline.</li>
+            </ul>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb27"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;miElemento&quot;</span>)<span class="op">;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">color</span> <span class="op">=</span> <span class="st">&quot;blue&quot;</span><span class="op">;</span>  <span class="co">// Canvia el color del text a blau</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">fontSize</span> <span class="op">=</span> <span class="st">&quot;20px&quot;</span><span class="op">;</span> <span class="co">// Canvia la mida del text</span></span></code></pre></div>
+            <h3 data-number="1.6.3" id="classname"><span
+            class="header-section-number">1.6.3</span>
+            <code>className</code></h3>
+            <p>La propietat <strong><code>className</code></strong>
+            permet obtenir o establir la cadena completa de classes de
+            l’element. És una cadena de text que conté tots els noms de
+            les classes que s’hi han aplicat. Quan utilitzem
+            <strong><code>className</code></strong>, reemplaçarem totes
+            les classes anteriors amb la nova cadena de classes.</p>
+            <h3 data-number="1.6.4"
+            id="característiques-de-classname"><span
+            class="header-section-number">1.6.4</span> Característiques
+            de <code>className</code>:</h3>
+            <ul>
+            <li>Permet establir totes les classes de l’element.</li>
+            <li>Si assignem una nova cadena de text a
+            <strong><code>className</code></strong>, eliminarem totes
+            les classes prèviament assignades i les substituirem per la
+            nova.</li>
+            <li>És útil per a situacions en què volem establir un
+            conjunt complet de classes per a un element, però pot ser
+            menys flexible que altres mètodes si només volem modificar
+            una classe específica.</li>
+            </ul>
+            <p><strong>Exemple:</strong></p>
+            <div class="sourceCode" id="cb28"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;miElemento&quot;</span>)<span class="op">;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">className</span> <span class="op">=</span> <span class="st">&quot;clase1 clase2&quot;</span><span class="op">;</span>  <span class="co">// Substitueix totes les classes per &quot;clase1&quot; i &quot;clase2&quot;</span></span></code></pre></div>
+            <p>Si volem afegir classes de manera dinàmica sense
+            substituir les existents, hauríem d’utilitzar
+            <strong><code>classList</code></strong> (veure més
+            endavant).</p>
+            <h3 data-number="1.6.5" id="classlist"><span
+            class="header-section-number">1.6.5</span>
+            <code>classList</code></h3>
+            <p><strong><code>classList</code></strong> és una propietat
+            que proporciona una forma més flexible i moderna de
+            manipular les classes d’un element. A diferència de
+            <strong><code>className</code></strong>,
+            <strong><code>classList</code></strong> ens permet afegir,
+            eliminar o alternar (<em>toggle</em>) classes individualment
+            sense haver de preocupar-nos de substituir tota la cadena de
+            classes de l’element.</p>
+            <h3 data-number="1.6.6" id="mètodes-de-classlist"><span
+            class="header-section-number">1.6.6</span> Mètodes de
+            <code>classList</code>:</h3>
+            <ul>
+            <li><p><strong><code>add(className)</code></strong>: Afegeix
+            una classe a l’element.</p>
+            <div class="sourceCode" id="cb29"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(<span class="st">&quot;novaClasse&quot;</span>)<span class="op">;</span></span></code></pre></div></li>
+            <li><p><strong><code>remove(className)</code></strong>:
+            Elimina una classe de l’element.</p>
+            <div class="sourceCode" id="cb30"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">remove</span>(<span class="st">&quot;claseAntiga&quot;</span>)<span class="op">;</span></span></code></pre></div></li>
+            <li><p><strong><code>toggle(className)</code></strong>:
+            Alterna l’estat d’una classe. Si l’element té la classe,
+            se’n treu; si no la té, se n’afegeix.</p>
+            <div class="sourceCode" id="cb31"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">toggle</span>(<span class="st">&quot;actiu&quot;</span>)<span class="op">;</span></span></code></pre></div></li>
+            <li><p><strong><code>contains(className)</code></strong>:
+            Comprova si l’element té una classe específica.</p>
+            <div class="sourceCode" id="cb32"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">&quot;actiu&quot;</span>)) {</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;L&#39;element té la classe &#39;actiu&#39;&quot;</span>)<span class="op">;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div></li>
+            </ul>
+            <h3 data-number="1.6.7"
+            id="característiques-de-classlist"><span
+            class="header-section-number">1.6.7</span> Característiques
+            de <code>classList</code>:</h3>
+            <ul>
+            <li>Ens permet manipular classes de manera més flexible,
+            evitant la necessitat de substituir tota la cadena de
+            classes com passa amb
+            <strong><code>className</code></strong>.</li>
+            <li>És ideal per a afegir o eliminar classes específiques
+            sense afectar altres classes de l’element.</li>
+            <li><strong><code>classList</code></strong> és un objecte
+            que té mètodes per manipular les classes de manera molt
+            precisa.</li>
+            <li>A més, és iterable, el que significa que podem iterar
+            sobre totes les classes d’un element.</li>
+            </ul>
+            <h4 data-number="1.6.7.1" id="exemple"><span
+            class="header-section-number">1.6.7.1</span> Exemple:</h4>
+            <div class="sourceCode" id="cb33"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;miElemento&quot;</span>)<span class="op">;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(<span class="st">&quot;highlight&quot;</span>)<span class="op">;</span> <span class="co">// Afegeix la classe &quot;highlight&quot;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">remove</span>(<span class="st">&quot;oldClass&quot;</span>)<span class="op">;</span> <span class="co">// Elimina la classe &quot;oldClass&quot;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">toggle</span>(<span class="st">&quot;active&quot;</span>)<span class="op">;</span> <span class="co">// Alterna la classe &quot;active&quot;</span></span></code></pre></div>
+            <h3 data-number="1.6.8"
+            id="combinació-de-classlist-i-style"><span
+            class="header-section-number">1.6.8</span> Combinació de
+            <code>classList</code> i <code>style</code></h3>
+            <p>És possible utilitzar <code>classList</code> per
+            gestionar classes dinàmicament mentre que els estils es
+            gestionen amb <code>style</code>. Això permet una
+            manipulació més senzilla i més eficaç de l’aspecte i les
+            interaccions de l’element.</p>
+            <div class="sourceCode" id="cb34"><pre
+            class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(<span class="st">&quot;visible&quot;</span>)<span class="op">;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">color</span> <span class="op">=</span> <span class="st">&quot;green&quot;</span><span class="op">;</span> <span class="co">// Modifica el color de l&#39;element amb l&#39;estil en línia</span></span></code></pre></div>
+            <p>Amb aquests tres mètodes, podem manipular els estils i
+            les classes de manera dinàmica, creant interaccions més
+            riques i controlades per part de JavaScript. La millor
+            pràctica depèn de la situació: si necessitem canvis ràpids i
+            temporals, <strong><code>style</code></strong> és una bona
+            opció, però si volem modificar classes específiques sense
+            alterar la resta, <strong><code>classList</code></strong> és
+            el mètode preferit.</p>
+            <h2 data-number="1.7" id="referències"><span
+            class="header-section-number">1.7</span> Referències:</h2>
+            <ul>
+            <li><a
+            href="https://es.javascript.info/browser-environment">Tutorial
+            de DOM (Javascript.info)</a></li>
+            <li><a
+            href="https://www.w3schools.com/js/js_htmldom.asp">Tutorial
+            DOM W3Schools</a></li>
+            </ul>
+        </main>
+        
+
+        <!--- Modal images -->
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <!--span class="close">&times;</span-->
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+
+        <!-- End Modal Images -->
+
+        <!-- Snackbar for copy code -->
+        <div id="snackbar">Codi copiat!</div>
+        <!-- End Snackbar -->
+
+        <script>
+            function ModalizeImages() {
+                // Script basat en https://www.w3schools.com/howto/howto_css_modal_images.asp
+                // PEr ampliar imatges en fer click
+
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById("myImg");
+                document.querySelectorAll("img").forEach((img => {
+                        img.onclick = function() {
+                            modal.style.display = "block";
+                            modalImg.src = this.src;
+                            captionText.innerHTML = this.alt;
+                        }
+                    }))
+                    // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                //span.onclick = function() {
+                myModal.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+
+            function markItem(id) {
+                // Restaurem format de tots
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                        //item.style.fontWeight = "300";
+                        item.classList.remove("navItemSelected");
+                    })
+                    //item.style.color = "#ff0000";
+
+                // Afegim format
+                let items = document.querySelectorAll("#TOC a[href='#" + id + "']");
+                items.forEach(function(item) {
+                    //item.style.fontWeight = "bolder";
+                    item.classList.add("navItemSelected");
+                })
+
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                if (entries[0].isIntersecting === true) {
+                    let id = entries[0].target.id;
+                    markItem(id);
+                }
+
+            }, {
+                threshold: [0]
+            });
+
+            window.addEventListener("load", function() {
+                document.querySelectorAll("h1, h2, h3").forEach(function(item) {
+                    observer.observe(item);
+                });
+
+                document.querySelectorAll("#TOC a").forEach(function(item) {
+                    item.addEventListener("click", function(item) {
+                        markItem(item.id);
+                    })
+                })
+
+                // Fem modals totes les imatges
+                ModalizeImages();
+            })
+
+            document.querySelector("#TOC").addEventListener("click", function(event) {
+                let toc = event.target
+                if (toc.offsetWidth > 10) {
+                    toc.classList.add("minimizedToc");
+                }
+            })
+
+            document.querySelector("#TOC").addEventListener("mouseover", function(event) {
+                let toc = event.target
+                if (toc.classList.contains("minimizedToc"))
+                    toc.classList.remove("minimizedToc");
+            })
+
+
+                        
+            /* PER COPIAR CODI */
+
+
+            // Busca tots els elements amb la classe "sourceCode"
+            var sourceCodeElements = document.querySelectorAll('div.sourceCode');
+
+            /*Afegim el botó a tots els divs */
+            // Afegir un botó per a cada element "sourceCode"
+            sourceCodeElements.forEach(function(element) {
+                console.log(element.id);
+                var button = document.createElement('div');
+                button.className = 'button-copy';
+
+                // Afegir una icona al botó (fa servir FontAwesome com a exemple)
+                //var icon = document.createElement('i');
+                //icon.className = 'fas fa-copy'; // Utilitza l'ícona "copy" de FontAwesome
+
+                // Obté l'ID de l'element actual
+                var elementId = element.id;
+
+                // Afegeix un event listener al botó per cridar la funció amb l'ID
+                button.addEventListener('click', function() {
+                    copyContent(elementId);
+                });
+
+                // Afegeix l'icona al botó i el botó just dins de l'element "sourceCode"
+                //button.appendChild(icon);
+                element.appendChild(button);
+            });
+
+
+
+            // Funció per copiar el contingut d'un element amb l'ID donat
+            function copyContent(elementId) {
+                var element = document.getElementById(elementId);
+                var textToCopy = element.innerText;
+
+                // Crea un element de text i copia el contingut
+                var textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+
+                // Selecciona i copia el text
+                textArea.select();
+                document.execCommand('copy');
+
+                // Elimina l'element de text afegit temporalment
+                document.body.removeChild(textArea);
+
+                // Notifica a l'usuari que el codi s'ha copiat
+                mostraSnackbar();
+            }
+
+            /* SNACKBAR EN COPIAR CODI */
+
+            function mostraSnackbar() {
+            // Busquem l'snackbar
+            var x = document.getElementById("snackbar");
+
+            // Li afegim la classe show
+            x.className = "show";
+
+            // I als tres segons la llevem
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            } 
+
+
+
+
+        </script>
+    </div>
+</body>
+
+</html>

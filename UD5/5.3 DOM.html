@@ -248,8 +248,10 @@ id="toc-combinació-de-classlist-i-style"><span
 class="toc-section-number">1.6.5</span> Combinació de
 <code>classList</code> i <code>style</code></a></li>
 </ul></li>
+<li><a href="#resum-1" id="toc-resum-1"><span
+class="toc-section-number">1.7</span> Resum</a></li>
 <li><a href="#referències" id="toc-referències"><span
-class="toc-section-number">1.7</span> Referències</a></li>
+class="toc-section-number">1.8</span> Referències</a></li>
 </ul></li>
 </ul>
             </div>
@@ -666,6 +668,20 @@ class="toc-section-number">1.7</span> Referències</a></li>
             <strong>HTMLCollection</strong> (que es pot modificar en
             temps real si el DOM canvia).</li>
             </ul>
+            <blockquote>
+            <p><strong><code>HTMLCollection</code></strong> i
+            <strong><code>NodeList</code></strong> són col·leccions
+            d’elements HTML, semblants a un <code>array</code>, però no
+            ho son. Es pot utilitzar <code>.length</code>, accedir als
+            seus elements pel seu index i iterar com si foren arrays,
+            però no es poden utilitzar mètodes d’arrays com
+            <code>valueOf()</code>, <code>pop()</code>,
+            <code>push()</code>, o <code>join()</code>.
+            <code>HTMLCollection</code> és una <em>collection</em>
+            d’<strong>elements HTML</strong>. <code>NodeList</code> és
+            una col·lecció de <strong>nodes</strong> (elements,
+            atributs, i nodes de text).</p>
+            </blockquote>
             <h2 data-number="1.4" id="propietats-del-node"><span
             class="header-section-number">1.4</span> Propietats del
             node</h2>
@@ -1129,8 +1145,54 @@ class="toc-section-number">1.7</span> Referències</a></li>
             opció, però si volem modificar classes específiques sense
             alterar la resta, <strong><code>classList</code></strong> és
             el mètode preferit.</p>
-            <h2 data-number="1.7" id="referències"><span
-            class="header-section-number">1.7</span> Referències</h2>
+            <h2 data-number="1.7" id="resum-1"><span
+            class="header-section-number">1.7</span> Resum</h2>
+            <ul>
+            <li>Per a accedir a un element pel seu id podem utilitzar
+            <code>document.getElementById('id')</code> o
+            <code>document.querySelector('#id')</code>. Ambdos mètodes
+            retornen un únic element.</li>
+            <li>Per a accedir a varis elements (com <em>list items</em>
+            d’una llista o els <em>inputs</em> d’un formulari)
+            utilitzarem <code>document.querySelectorAll('sel')</code>,
+            sent <em>sel</em> un selector de CSS. Aquest mètode retorna
+            una col·lecció d’elements.</li>
+            <li>Per a iterar sobre una col·lecció d’elements podem
+            utilitzar un bucle <code>for .. of</code>. També un
+            <code>for</code> amb comptador i un <code>foreach</code>. En
+            canvi, no és recomanable fer-ho amb
+            <code>for .. in</code>.</li>
+            <li>Per a establir el contingut d’un element utilitzem
+            <code>innerHTML</code> o <code>textContent</code>.
+            <code>innerHTML</code> permet incloure etiquetes, mentres
+            que <code>textContent</code> no.</li>
+            <li>Per a crear un nou element, usem
+            <code>document.createElement('elem')</code>, sent
+            <code>elem</code> l’etiqueta o tipus d’element. Per exemple
+            <code>document.createElement('p')</code>.</li>
+            <li>Una vegada creat l’element, el podem afegir al DOM amb
+            <code>append</code>. <code>append</code> inserix l’element
+            dins d’un altre, al final. Per exemple
+            <code>ul.append(li)</code> afegeix l’element <code>li</code>
+            al final de la llista <code>ul</code>. També podem utilitzar
+            <code>prepend</code> (afegeix dins però al principi),
+            <code>before</code> (afegeix abans) i <code>after</code>
+            (afegeix després).</li>
+            <li>Per a eliminar un element usem
+            <code>elem.remove()</code>.</li>
+            <li>Per a modificar o afegir un estil css podem utilitzar
+            <code>style.propietat</code>. Per exemple
+            <code>elem.style.color = "red"</code> canvia o estableix el
+            color de <code>elem</code> a roig.</li>
+            <li>Si hem de modificar vàries propietats CSS és millor
+            tindre definits els estils en un full css i afegir-los o
+            eliminar-los dels elements amb <code>elem.classList</code> i
+            els mètodes <code>add</code>, <code>remove</code> i
+            <code>toggle</code>. Per exemple
+            <code>elem.classList.add('estil')</code></li>
+            </ul>
+            <h2 data-number="1.8" id="referències"><span
+            class="header-section-number">1.8</span> Referències</h2>
             <ul>
             <li><a
             href="https://es.javascript.info/browser-environment">Tutorial
